@@ -1,0 +1,52 @@
+  /* =========================
+   TOP MENU – STATISK
+   ========================= */
+
+.top-nav {
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    border-radius: 20px;
+  }
+  
+  
+  
+  /* indhold matcher resten af siden */
+  .top-nav .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 23px;
+  }
+  
+  
+  
+  /* logo/tekst */
+  .top-nav .nav-logo {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .5px;
+    color: #111;
+    text-transform: uppercase;
+  }
+  
+  /* feedback-knap */
+  .top-nav .nav-feedback {
+    background: #1f2bff;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 999px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  
+  .top-nav .nav-feedback:active {
+    transform: scale(.97);
+  }
+  
+  
+  .top-nav.hidden {
+    transform: translateY(-100%);
+  }
+  

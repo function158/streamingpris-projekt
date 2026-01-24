@@ -1,0 +1,300 @@
+* {
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+
+  
+  body {
+    margin: 0;
+    background: #f3f4f6;
+    padding: 20px;
+    color: #111;
+  }
+  
+  .title {
+    text-align: center;
+    margin-top: 4%;
+    font-size: 40px;
+    color: #1f2bff;
+  }
+  
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  
+  /* CARD */
+  .sub-card {
+    position: relative;
+    background: white;
+    border-radius: 18px;
+    padding: 26px 18px;
+    box-shadow: 0 10px 24px rgba(0,0,0,.15);
+    text-align: center;
+    cursor: pointer;
+    transition: .15s ease;
+  }
+  
+  .sub-card:active {
+    transform: scale(.98);
+  }
+  
+  .sub-card img {
+    width: 100%;
+    max-width: 150px;
+    height: auto;
+    object-fit: contain;
+  }
+  
+  
+  /* SELECTED STATE */
+  .sub-card.selected {
+    padding-bottom: 18px;
+  }
+  
+  /* CHECKMARK BADGE */
+  .check {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    background: #1f2bff;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 6px 16px rgba(0,0,0,.25);
+  }
+  
+  /* PLAN DROPDOWN (pill) */
+  .plan-pill {
+    margin-top: 14px;
+    width: 100%;
+    background: #f6f6f4;
+    color: #333;
+    border-radius: 999px;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #ddd;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  
+  .plan-pill:hover {
+    background: #f0f0ee;
+  }
+  
+  .plan-pill span {
+    font-size: 13px;
+    color: #666;
+  }
+  
+  /* DROPDOWN MENU */
+  .plan-menu {
+    margin-top: 8px;
+    background: #fff;
+    border-radius: 14px;
+    overflow: hidden;
+    display: none;
+    border: 1px solid #ddd;
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity .15s ease, transform .15s ease;
+  }
+  
+  .plan-menu.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .plan-option {
+    padding: 10px 14px;
+    color: #333;
+    font-size: 14px;
+    cursor: pointer;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .plan-option:last-child {
+    border-bottom: none;
+  }
+  
+  .plan-option:hover {
+    background: #f6f6f4;
+  }
+  
+  
+  /* SUMMARY */
+  .summary {
+    margin: 32px auto 0;
+    max-width: 420px;
+    background: white;
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+  }
+  
+  .summary span {
+    display: block;
+    font-size: 13px;
+    color: #666;
+  }
+  
+  .summary strong {
+    font-size: 20px;
+  }
+  
+  @media (max-width: 420px) {
+    .sub-card img {
+      max-width: 120px;
+    }
+  }
+  
+  @media (max-width: 360px) {
+    .sub-card img {
+      max-width: 100px;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .card-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .top-bar {
+    max-width: 420px;
+    margin: 0 auto 16px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .reset-btn {
+    background: #f6f6f4;
+    border: 1px solid #ddd;
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    cursor: pointer;
+    transition: background .15s ease, transform .1s ease;
+  }
+  
+  .reset-btn:hover {
+    background: #eee;
+  }
+  
+  .reset-btn:active {
+    transform: scale(.96);
+  }
+  
+
+  .insight {
+    max-width: 420px;
+    margin: 24px auto 0;
+    padding: 16px 18px;
+    background: #f6f6f4;
+    border-radius: 14px;
+    font-size: 15px;
+    color: #333;
+    line-height: 1.4;
+  }
+  
+  .modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+  
+  .modal-backdrop.active {
+    display: flex;
+  }
+  
+  .modal {
+    background: white;
+    border-radius: 18px;
+    padding: 22px 20px;
+    max-width: 360px;
+    width: calc(100% - 40px);
+    box-shadow: 0 20px 40px rgba(0,0,0,.25);
+  }
+  
+  .modal h2 {
+    margin-top: 0;
+    font-size: 20px;
+  }
+  
+  .modal p {
+    font-size: 15px;
+    color: #333;
+    line-height: 1.5;
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #666;
+  }
+
+  
+  .seo-text {
+    max-width: 420px;
+    margin: 40px auto 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    font-size: 14px;
+    color: #555;
+  }
+  .intro {
+    margin: 20px auto 28px;
+    max-width: 420px;
+  
+    font-size: 18px;
+    font-weight: 600;
+    color: #1f2bff; /* samme blå som CTA */
+  
+    text-align: center;
+  }
+  
+  
+  .seo-text h2 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .seo-text p {
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 420px) {
+    .seo-text {
+      font-size: 13px;
+    }
+  }
