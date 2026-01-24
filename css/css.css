@@ -175,12 +175,6 @@
       max-width: 100px;
     }
   }
-
-  @media (max-width: 420px) {
-    .card-grid {
-      grid-template-columns: 1fr;
-    }
-  }
   
   .top-bar {
     max-width: 420px;
@@ -275,6 +269,7 @@
     font-size: 14px;
     color: #555;
   }
+
   .intro {
     margin: 20px auto 28px;
     max-width: 420px;
@@ -303,3 +298,46 @@
       font-size: 13px;
     }
   }
+
+  .extra-info {
+    margin-top: 24px;
+  }
+  
+  .extra-info details {
+    background: white;
+    border-radius: 16px;
+    padding: 18px 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.12);
+  }
+  
+  .extra-info summary {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+    cursor: pointer;
+    list-style: none;
+  }
+  
+  .extra-info summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  .extra-info summary::after {
+    content: "▾";
+    float: right;
+    font-size: 16px;
+    color: #666;
+    transition: transform .2s ease;
+  }
+  
+  .extra-info details[open] summary::after {
+    transform: rotate(180deg);
+  }
+  
+  .extra-info p {
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #444;
+  }
+  

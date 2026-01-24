@@ -39,6 +39,10 @@
     border-radius: 999px;
     text-decoration: none;
     white-space: nowrap;
+    transition:
+    background-color .30s ease,
+    transform .30s ease,
+    box-shadow .30s ease;
   }
   
   .top-nav .nav-feedback:active {
@@ -50,3 +54,8 @@
     transform: translateY(-100%);
   }
   
+  .nav-feedback:hover {
+    background-color: #1620cc; /* lidt mørkere blå */
+    box-shadow: 0 6px 16px rgba(31, 43, 255, .25);
+    transform: translateY(-1px);
+  }

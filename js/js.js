@@ -51,7 +51,7 @@ const services = [
   {
     id: "skyshowtime",
     name: "SkyShowTime",
-    logo: "./images/skyshowtime-logo.svg",
+    logo: "./images/skyshowtime.svg",
     plans: [
       { name: "Standard", price: 89 },
       { name: "Premium", price: 129 },
@@ -132,64 +132,100 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function render() {
     cardsEl.innerHTML = "";
-
+  
     services.forEach(service => {
       const card = document.createElement("div");
-      card.className = "sub-card" + (selected[service.id] ? " selected" : "");
-
+      const isSelected = !!selected[service.id];
+  
+      card.className = "sub-card" + (isSelected ? " selected" : "");
+  
       card.innerHTML = `
-        ${selected[service.id] ? `<div class="check">✓</div>` : ""}
+        ${isSelected ? `<div class="check">✓</div>` : ""}
         <img src="${service.logo}" alt="${service.name}">
       `;
-
+  
+      // CLICK PÅ CARD (vælg / fravælg service)
       card.addEventListener("click", () => {
         if (!selected[service.id]) {
-          selected[service.id] = service.plans[0];
+          // VÆLG SERVICE (default plan)
+          const plan = service.plans[0];
+          selected[service.id] = plan;
+  
+          // TRACK: service valgt
+          if (window.umami) {
+            umami.track("card-selected", {
+              service_id: service.id,
+              service_name: service.name,
+              plan: plan.name,
+              price: plan.price
+            });
+          }
         } else {
+          // FRAVÆLG SERVICE
           delete selected[service.id];
         }
+  
         render();
         calculate();
       });
-
-      if (selected[service.id]) {
+  
+      // PLAN VALG (kun hvis service er valgt)
+      if (isSelected) {
         const pill = document.createElement("button");
         pill.className = "plan-pill";
         pill.innerHTML = `
           ${selected[service.id].name} – ${selected[service.id].price} kr
           <span>▾</span>
         `;
-
+  
         const menu = document.createElement("div");
         menu.className = "plan-menu";
-
+  
         service.plans.forEach(plan => {
           const option = document.createElement("div");
           option.className = "plan-option";
           option.textContent = `${plan.name} – ${plan.price} kr`;
-
+  
           option.addEventListener("click", e => {
             e.stopPropagation();
+  
+            const previousPlan = selected[service.id];
             selected[service.id] = plan;
+  
+            // TRACK: plan ændret (kun hvis forskellig)
+            if (
+              window.umami &&
+              previousPlan.name !== plan.name
+            ) {
+              umami.track("plan-changed", {
+                service_id: service.id,
+                service_name: service.name,
+                from_plan: previousPlan.name,
+                to_plan: plan.name,
+                price: plan.price
+              });
+            }
+  
             render();
             calculate();
           });
-
+  
           menu.appendChild(option);
         });
-
+  
         pill.addEventListener("click", e => {
           e.stopPropagation();
           menu.classList.toggle("active");
         });
-
+  
         card.appendChild(pill);
         card.appendChild(menu);
       }
-
+  
       cardsEl.appendChild(card);
     });
   }
+  
 
   function updateInsight() {
     const count = Object.keys(selected).length;
