@@ -18,6 +18,11 @@
     font-size: 40px;
     color: #1f2bff;
   }
+
+  .nav-logo img {
+    width: 50%;
+    height: auto; /* Eller en specifik højde, f.eks. 50px */
+  }
   
   .card-grid {
     display: grid;
