@@ -1,8 +1,16 @@
+const categories = {
+  film: "Film & serier",
+  audio: "Musik og podcasts",
+  books: "Lydbøger"
+};
+
+
 const services = [
   {
     id: "netflix",
     name: "Netflix",
-    logo: "./images/netlfix_logo.png",
+    logo: "./images/netflix-logo.svg",
+    category: "film",
     plans: [
       { name: "Basis", price: 89 },
       { name: "Standard (HD)", price: 129 },
@@ -12,7 +20,8 @@ const services = [
   {
     id: "max",
     name: "Max",
-    logo: "./images/max_logo.png",
+    logo: "./images/hbo-max-logo.svg",
+    category: "film",
     plans: [
       { name: "Basis med reklamer", price: 79 },
       { name: "Standard", price: 129 },
@@ -23,6 +32,7 @@ const services = [
     id: "disney",
     name: "Disney",
     logo: "./images/disney_plus.svg",
+    category: "film",
     plans: [
       { name: "Standard med reklamer", price: 59 },
       { name: "Standard", price: 99 },
@@ -32,7 +42,8 @@ const services = [
   {
     id: "amazon-prime",
     name: "Amazon Prime",
-    logo: "./images/amz-logo.png",
+    logo: "./images/amazon-prime-logo.svg",
+    category: "film",
     plans: [
       { name: "Basis", price: 69 }
     ]
@@ -40,7 +51,8 @@ const services = [
   {
     id: "viaplay",
     name: "Viaplay",
-    logo: "./images/viaplay-logo.png",
+    logo: "./images/viaplay-logo.svg",
+    category: "film",
     plans: [
       { name: "Film & Serier", price: 149 },
       { name: "Champions League, Film & Serier", price: 299 },
@@ -52,6 +64,7 @@ const services = [
     id: "skyshowtime",
     name: "SkyShowTime",
     logo: "./images/skyshowtime.svg",
+    category: "film",
     plans: [
       { name: "Standard", price: 89 },
       { name: "Premium", price: 129 },
@@ -62,6 +75,7 @@ const services = [
     id: "tv2play",
     name: "TV2 Play",
     logo: "./images/tv2play.webp",
+    category: "film",
     plans: [
       { name: "Basis med reklamer", price: 69 },
       { name: "Basis uden reklamer", price: 99 },
@@ -75,6 +89,7 @@ const services = [
     id: "nordiskfilmplus",
     name: "Nordisk Film Plus",
     logo: "./images/nordiskfilmplus.png",
+    category: "film",
     plans: [
       { name: "Basis", price: 69 }
     ]
@@ -83,6 +98,7 @@ const services = [
     id: "spotify",
     name: "Spotify",
     logo: "./images/spotify.svg",
+    category: "audio",
     plans: [
       { name: "Basis", price: 119 }
     ]
@@ -90,7 +106,8 @@ const services = [
   {
     id: "podimo",
     name: "Podimo",
-    logo: "./images/podimo.svg",
+    logo: "./images/podimo-logo.svg",
+    category: "audio",
     plans: [
       { name: "Premium", price: 99 },
       { name: "Premium Plus", price: 129 }
@@ -100,6 +117,7 @@ const services = [
     id: "mofibo",
     name: "Mofibo",
     logo: "./images/mofibo.svg",
+    category: "books",
     plans: [
       { name: "Premium", price: 129 },
       { name: "Unlimited", price: 159 },
@@ -111,13 +129,37 @@ const services = [
     id: "deezer",
     name: "Deezer",
     logo: "./images/deezer.svg",
+    category: "audio",
     plans: [
       { name: "Premium", price: 119 },
       { name: "Duo", price: 159 },
       { name: "Family", price: 199 },
       { name: "Flex", price: 89 }
     ]
+  },
+  {
+    id: "bookbeat",
+    name: "BookBeat",
+    logo: "./images/bookbeat-logo.svg",
+    category: "books",
+    plans: [
+      { name: "Basic", price: 59 },
+      { name: "Standard", price: 99 },
+      { name: "Premium", price: 129 }
+    ]
+  },
+  {
+    id: "saxo",
+    name: "Saxo",
+    logo: "./images/saxo-logo.svg",
+    category: "books",
+    plans: [
+      { name: "Saxo Premium", price: 99 },
+      { name: "Saxo Streaming", price: 79 },
+      { name: "Saxo Ung", price: 59 }
+    ]
   }
+  
 ];
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -127,104 +169,133 @@ document.addEventListener("DOMContentLoaded", () => {
   const monthlyEl = document.getElementById("monthly");
   const yearlyEl = document.getElementById("yearly");
   const insightEl = document.getElementById("insight");
+  const feedbackBox = document.getElementById("feedbackBox");
+  const feedbackThanks = document.getElementById("feedbackThanks");
+  const feedbackActions = feedbackBox?.querySelector(".feedback-actions");
+  const feedbackButtons = feedbackBox?.querySelectorAll(".feedback-btn");
+
 
   const selected = {};
 
   function render() {
     cardsEl.innerHTML = "";
   
-    services.forEach(service => {
-      const card = document.createElement("div");
-      const isSelected = !!selected[service.id];
+    Object.entries(categories).forEach(([categoryKey, categoryLabel]) => {
+      const servicesInCategory = services.filter(
+        service => service.category === categoryKey
+      );
   
-      card.className = "sub-card" + (isSelected ? " selected" : "");
+      if (servicesInCategory.length === 0) return;
   
-      card.innerHTML = `
-        ${isSelected ? `<div class="check">✓</div>` : ""}
-        <img src="${service.logo}" alt="${service.name}">
-      `;
+      // Section (bryder grid-kontekst)
+      const section = document.createElement("section");
+      section.className = "category-section";
   
-      // CLICK PÅ CARD (vælg / fravælg service)
-      card.addEventListener("click", () => {
-        if (!selected[service.id]) {
-          // VÆLG SERVICE (default plan)
-          const plan = service.plans[0];
-          selected[service.id] = plan;
+      // Titel
+      const heading = document.createElement("h2");
+      heading.className = "category-title";
+      heading.textContent = categoryLabel;
+      section.appendChild(heading);
   
-          // TRACK: service valgt
-          if (window.umami) {
-            umami.track("card-selected", {
-              service_id: service.id,
-              service_name: service.name,
-              plan: plan.name,
-              price: plan.price
-            });
-          }
-        } else {
-          // FRAVÆLG SERVICE
-          delete selected[service.id];
-        }
+      // Grid for cards
+      const grid = document.createElement("div");
+      grid.className = "card-grid";
   
-        render();
-        calculate();
-      });
+      servicesInCategory.forEach(service => {
+        const card = document.createElement("div");
+        const isSelected = !!selected[service.id];
   
-      // PLAN VALG (kun hvis service er valgt)
-      if (isSelected) {
-        const pill = document.createElement("button");
-        pill.className = "plan-pill";
-        pill.innerHTML = `
-          ${selected[service.id].name} – ${selected[service.id].price} kr
-          <span>▾</span>
+        card.className = "sub-card" + (isSelected ? " selected" : "");
+        card.innerHTML = `
+          ${isSelected ? `<div class="check">✓</div>` : ""}
+          <img src="${service.logo}" alt="${service.name} logo">
         `;
   
-        const menu = document.createElement("div");
-        menu.className = "plan-menu";
-  
-        service.plans.forEach(plan => {
-          const option = document.createElement("div");
-          option.className = "plan-option";
-          option.textContent = `${plan.name} – ${plan.price} kr`;
-  
-          option.addEventListener("click", e => {
-            e.stopPropagation();
-  
-            const previousPlan = selected[service.id];
+        // CARD CLICK (vælg / fravælg)
+        card.addEventListener("click", () => {
+          if (!selected[service.id]) {
+            const plan = service.plans[0];
             selected[service.id] = plan;
   
-            // TRACK: plan ændret (kun hvis forskellig)
-            if (
-              window.umami &&
-              previousPlan.name !== plan.name
-            ) {
-              umami.track("plan-changed", {
+            // TRACK: service valgt
+            if (window.umami) {
+              umami.track("card-selected", {
                 service_id: service.id,
                 service_name: service.name,
-                from_plan: previousPlan.name,
-                to_plan: plan.name,
+                plan: plan.name,
                 price: plan.price
               });
             }
+          } else {
+            delete selected[service.id];
+          }
   
-            render();
-            calculate();
+          render();
+          calculate();
+        });
+  
+        // PLAN VALG (kun hvis valgt)
+        if (isSelected) {
+          const pill = document.createElement("button");
+          pill.className = "plan-pill";
+          pill.innerHTML = `
+            ${selected[service.id].name} – ${selected[service.id].price} kr
+            <span>▾</span>
+          `;
+  
+          const menu = document.createElement("div");
+          menu.className = "plan-menu";
+  
+          service.plans.forEach(plan => {
+            const option = document.createElement("div");
+            option.className = "plan-option";
+            option.textContent = `${plan.name} – ${plan.price} kr`;
+  
+            option.addEventListener("click", e => {
+              e.stopPropagation();
+  
+              const previousPlan = selected[service.id];
+              selected[service.id] = plan;
+  
+              // TRACK: plan ændret
+              if (
+                window.umami &&
+                previousPlan.name !== plan.name
+              ) {
+                umami.track("plan-changed", {
+                  service_id: service.id,
+                  service_name: service.name,
+                  from_plan: previousPlan.name,
+                  to_plan: plan.name,
+                  price: plan.price
+                });
+              }
+  
+              render();
+              calculate();
+            });
+  
+            menu.appendChild(option);
           });
   
-          menu.appendChild(option);
-        });
+          pill.addEventListener("click", e => {
+            e.stopPropagation();
+            menu.classList.toggle("active");
+          });
   
-        pill.addEventListener("click", e => {
-          e.stopPropagation();
-          menu.classList.toggle("active");
-        });
+          card.appendChild(pill);
+          card.appendChild(menu);
+        }
   
-        card.appendChild(pill);
-        card.appendChild(menu);
-      }
+        grid.appendChild(card);
+      });
   
-      cardsEl.appendChild(card);
+      section.appendChild(grid);
+      cardsEl.appendChild(section);
     });
   }
+  
+  
   
 
   function updateInsight() {
@@ -251,20 +322,49 @@ document.addEventListener("DOMContentLoaded", () => {
   function calculate() {
     const monthly = Object.values(selected)
       .reduce((sum, s) => sum + s.price, 0);
-
+  
     monthlyEl.textContent = monthly + " kr";
     yearlyEl.textContent = (monthly * 12) + " kr";
-
+  
     updateInsight();
+  
+    // 👉 VIS feedback KUN når brugeren har valgt noget
+    if (feedbackBox) {
+      feedbackBox.hidden = monthly === 0;
+    }
   }
+  
 
   resetBtn.addEventListener("click", () => {
     Object.keys(selected).forEach(key => delete selected[key]);
     render();
     calculate();
+  
+    if (feedbackActions) feedbackActions.style.display = "flex";
+    if (feedbackThanks) feedbackThanks.hidden = true;
   });
+  
 
   render();
   calculate();
+
+  feedbackButtons?.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const answer = btn.dataset.answer;
+  
+      // Skjul knapper, vis tak
+      if (feedbackActions) feedbackActions.style.display = "none";
+      if (feedbackThanks) feedbackThanks.hidden = false;
+  
+      // Track i Umami
+      if (window.umami) {
+        umami.track("feedback_overblik", {
+          answer: answer
+        });
+      }
+    });
+  });
+  
+  
 });
 

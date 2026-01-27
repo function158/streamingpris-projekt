@@ -15,5 +15,9 @@
     <loc>https://mineudgifter.dk/ansvarsfraskrivelse.html</loc>
     <priority>0.3</priority>
   </url>
+   <url>
+    <loc>https://mineudgifter.dk/streaming-priser-danmark.html</loc>
+    <priority>0.3</priority>
+  </url>
 
 </urlset>

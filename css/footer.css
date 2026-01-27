@@ -1,39 +1,89 @@
-.footer {
-  max-width: 420px;
-  margin: 48px auto 24px;
-  padding: 24px 16px 0;
-  text-align: center;
+/* =========================
+   SITE FOOTER
+   ========================= */
 
-  border-top: 1px solid #ddd;
-  color: #666;
-  font-size: 13px;
-}
-
-.footer-text {
-  margin-bottom: 14px;
-  line-height: 1.4;
-}
-
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px 14px;
-  margin-bottom: 14px;
-}
-
-.footer-links a {
-  color: #444;
-  text-decoration: none;
-  font-weight: 500;
-  font-size: 13px;
-}
-
-.footer-links a:hover {
-  text-decoration: underline;
-}
-
-.footer-meta {
-  font-size: 12px;
-  color: #999;
-}
+   .site-footer {
+    background: #fff;
+    margin-top: 64px;
+    padding: 48px 20px 28px;
+    border-top: 1px solid #e5e7eb;
+    color: #4b5563;
+  }
+  
+  /* GRID */
+  .footer-grid {
+    max-width: 1100px;
+    margin: 0 auto 32px;
+  
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 40px;
+  }
+  
+  /* COLUMNS */
+  .footer-col h4 {
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: #111;
+    margin-bottom: 12px;
+  }
+  
+  .footer-col p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+  }
+  
+  .footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .footer-col li {
+    margin-bottom: 10px;
+  }
+  
+  .footer-col a {
+    color: #4b5563;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .footer-col a:hover {
+    text-decoration: underline;
+  }
+  
+  /* BOTTOM */
+  .footer-bottom {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+  }
+  
+  .footer-disclaimer {
+    font-size: 13px;
+    color: #6b7280;
+    margin-bottom: 12px;
+  }
+  
+  .footer-meta {
+    font-size: 13px;
+    color: #9ca3af;
+  }
+  
+  /* MOBILE */
+  @media (max-width: 600px) {
+    .site-footer {
+      padding: 40px 16px 24px;
+    }
+  
+    .footer-grid {
+      gap: 28px;
+    }
+  }
+  

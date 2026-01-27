@@ -3,14 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hvad betaler du for streaming? | Beregn din pris</title>
-  <meta name="description" content="Beregn hvad dine streamingtjenester koster pr. måned og pr. år. Få hurtigt overblik over Netflix, TV 2 Play, Viaplay m.fl. i Danmark." />
+  <title>Hvad betaler du for streaming i 2026? | Beregn din pris</title>
+  <meta name="description" content="Beregn hvad dine streamingtjenester koster pr. måned og pr. år i Danmark. Få hurtigt overblik over Netflix, TV 2 Play, Viaplay og andre populære streamingtjenester samlet ét sted." />
   <link rel="stylesheet" href="./css/css.css">
   <link rel="stylesheet" href="./css/footer.css">
   <link rel="stylesheet" href="./css/menu.css">
   <link rel="canonical" href="https://mineudgifter.dk/" />
   <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="e51de17b-f27c-4606-9aa4-90699fd13555"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Streaming priser i Danmark",
+      "url": "https://mineudgifter.dk/",
+      "description": "Beregn hvad dine streamingtjenester koster pr. måned og pr. år i Danmark. Få overblik over Netflix, TV 2 Play, Viaplay og andre populære streamingtjenester.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "inLanguage": "da-DK",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "DKK"
+      }
+    }
+    </script>
+    
 </head>
 <body>  
   <header class="top-nav">
@@ -26,10 +44,12 @@
       </a>
     </div>
   </header>
-  <h1 class="title">Hvad koster dine streamingtjenester?</h1>
+  <h1 class="title">Hvad koster dine <span>streamingtjenester?</span></h1>
   <p class="intro">
-    Vælg de tjenester, du bruger.
+    Vælg de streamingtjenester og digitale abonnementer, du bruger –
+    film, serier, musik og lydbøger.
   </p>
+  
   
   
   <div class="top-bar">
@@ -51,16 +71,34 @@
       <strong id="yearly">0 kr</strong>
     </div>
   </div>
-
+  <section class="extra-info" id="feedbackBox" hidden>
+    <div class="feedback-card">
+      <p class="feedback-question">
+        Fik du overblik over dine streamingudgifter?
+      </p>
+  
+      <div class="feedback-actions">
+        <button class="feedback-btn" data-answer="yes">👍 Ja</button>
+        <button class="feedback-btn" data-answer="no">👎 Nej</button>
+      </div>
+  
+      <p class="feedback-thanks" id="feedbackThanks" hidden>
+        Tak for din feedback 🙌
+      </p>
+    </div>
+  </section>
   <section class="seo-text">
     <h2>Streaming i Danmark – hvad koster det?</h2>
     <p>
       Mange danskere har flere streamingtjenester som Netflix, TV 2 Play og Viaplay
-      uden at kende den samlede pris. Med dette værktøj kan du hurtigt få overblik
-      over dine streamingudgifter.
-    </p>
+      – ofte kombineret med musik- og lydbogstjenester som Spotify, Podimo og BookBeat –
+      uden at kende den samlede pris.
+      <br>
+      <br>
+      Vil du have et samlet overblik, kan du læse mere om
+      <a href="/streaming-priser-danmark.html">streaming priser i Danmark</a>.
+    </p>    
   </section>
-
   <section class="seo-text extra-info">
 
     <details>
@@ -81,6 +119,28 @@
       </p>
     </details>
     <br>
+    <details>
+      <summary>Er priserne altid korrekte?</summary>
+    
+      <p>
+        Priserne vises som et vejledende overblik og kan ændre sig, hvis
+        streamingtjenesterne justerer deres abonnementer, kampagner
+        eller pakkeindhold.
+      </p>
+    
+      <p>
+        Vi opdaterer priserne løbende, men der kan forekomme midlertidige
+        forskelle mellem beregningen her og den pris, du ser hos
+        streamingtjenesten.
+      </p>
+    
+      <p>
+        Den endelige pris vil altid være den, der fremgår på
+        streamingtjenestens egen hjemmeside.
+      </p>
+    </details>
+    
+<br>
     <details>
       <summary>Hvordan beregnes prisen?</summary>
     
@@ -104,25 +164,134 @@
         Beregningen er udelukkende ment som et overblik – ikke som et
         bindende tilbud.
       </p>
+    
+      <p><strong>Hvor kommer priserne fra?</strong></p>
+    
+      <ul>
+        <li>
+          <a href="https://www.netflix.com/dk/" target="_blank" rel="noopener">
+            Netflix Danmark – officielle priser
+          </a>
+        </li>
+        <li>
+          <a href="https://play.tv2.dk/" target="_blank" rel="noopener">
+            TV 2 Play – abonnementer og priser
+          </a>
+        </li>
+        <li>
+          <a href="https://viaplay.dk/dk-da/ target="_blank" rel="noopener">
+            Viaplay – aktuelle pakker
+          </a>
+        </li>
+        <li>
+          <a href="https://www.hbomax.com/dk/da?_gl=1*9pvyji*_up*MQ..*_gs*MQ..&gclid=Cj0KCQiAm9fLBhCQARIsAJoNOctJeIpPVos-ZS9hCq_ZiprzyyRqCUYMsJILFAPD5UMhFwacFOiktd4aAkvgEALw_wcB&gclsrc=aw.ds&gbraid=0AAAAApH9fnoZ63UhLqtK41-OYtcE8T9xk" target="_blank" rel="noopener">
+            HBO Max – priser i Danmark
+          </a>
+        </li>
+        <li>
+          <a href="https://www.disneyplus.com/da-dk" target="_blank" rel="noopener">
+            Disney Plus – priser i Danmark
+          </a>
+        </li>
+        <li>
+          <a href="https://www.primevideo.com/-/da/offers/nonprimehomepage/ref=dv_web_force_root?language=da" target="_blank" rel="noopener">
+            Amazon Prime – priser i Danmark
+          </a>
+        </li>
+        <li>
+          <a href="https://www.skyshowtime.com/dk" target="_blank" rel="noopener">
+            Skyshowtime – priser i Danmark
+          </a>
+        </li>
+        <li>
+          <a href="https://nordiskfilmplus.com/" target="_blank" rel="noopener">
+            Nordisk Film Plus – priser i Danmark
+          </a>
+        </li>
+        <li>
+          <a href="https://www.spotify.com/dk-da/premium/" target="_blank" rel="noopener">
+            Spotify Premium – priser i Danmark
+          </a>
+        </li>
+        <li>
+          <a href="https://www.spotify.com/dk/premium/" target="_blank" rel="noopener">
+            Spotify Premium – priser i Danmark
+          </a>
+        </li>
+        <li>
+          <a href="https://podimo.com/dk/home" target="_blank" rel="noopener">
+            Podimo – priser i Danmark
+          </a>
+        </li>
+        <li>
+          <a href="https://www.deezer.com/da/offers/" target="_blank" rel="noopener">
+            Deezer – Musik
+          </a>
+        </li>
+        <li>
+          <a href="https://mofibo.com/dk" target="_blank" rel="noopener">
+            Mofibo – Lydbøger og podcasts
+          </a>
+        </li>
+        <li>
+          <a href="https://www.bookbeat.com/dk" target="_blank" rel="noopener">
+            Bookbeat – Lydbøger
+          </a>
+        </li>
+        <li>
+          <a href="https://www.saxo.com/dk/medlemskaber" target="_blank" rel="noopener">
+            Saxo – Lydbøger og podcasts
+          </a>
+        </li>
+
+      </ul>
     </details>
+    
   
   </section>
   
-  <footer class="footer">
-    <p class="footer-text">
-      Priser er vejledende og kan ændre sig. Beregningen er udelukkende informativ.
-    </p>
+  <footer class="site-footer">
+    <div class="footer-grid">
   
-    <div class="footer-links">
-      <a href="privatlivspolitik.html">Privatlivspolitik</a>
-      <a href="ansvarsfraskrivelse.html">Ansvarsfraskrivelse</a>
-      <a href="/">brug beregneren ovenfor</a>
-      <a href="mailto:info@mineudgifter.dk">Kontakt</a>
+      <!-- OM OS -->
+      <div class="footer-col">
+        <h4>Om os</h4>
+        <p>
+          Mine Udgifter hjælper dig med at få overblik over dine
+          streaming- og digitale abonnementer, så du nemt kan se,
+          hvad du samlet betaler.
+        </p>
+      </div>
+  
+      <!-- HURTIGE LINKS -->
+      <div class="footer-col">
+        <h4>Hurtige links</h4>
+        <ul>
+          <li><a href="/">Beregn dine streamingudgifter</a></li>
+          <li><a href="mailto:info@mineudgifter.dk">Kontakt</a></li>
+        </ul>
+      </div>
+  
+      <!-- INFORMATION -->
+      <div class="footer-col">
+        <h4>Information</h4>
+        <ul>
+          <li><a href="privatlivspolitik.html">Privatlivspolitik</a></li>
+          <li><a href="ansvarsfraskrivelse.html">Ansvarsfraskrivelse</a></li>
+        </ul>
+      </div>
+  
     </div>
   
-    <p class="footer-meta">
-      © 2026 · Lavet i Danmark 🇩🇰
-    </p>
+    <div class="footer-bottom">
+      <p class="footer-disclaimer">
+        Priser er vejledende og kan ændre sig. Beregningen er udelukkende informativ.
+      </p>
+  
+      <p class="footer-meta">
+        © 2026 · Lavet i Danmark 🇩🇰
+      </p>
+    </div>
   </footer>
   
 

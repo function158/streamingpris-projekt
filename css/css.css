@@ -13,11 +13,52 @@
   }
   
   .title {
+    max-width: 720px;
+    margin: 60px auto 20px;
     text-align: center;
-    margin-top: 4%;
-    font-size: 40px;
-    color: #1f2bff;
+  
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+  
+    color: #111;
   }
+  
+  .title span {
+    background: linear-gradient(90deg, #4a63ff 0%, #6b82ff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+        
+  
+  @media (max-width: 480px) {
+    .title {
+      font-size: 34px;
+    }
+  }
+
+  .intro {
+    max-width: 640px;
+    margin: 0 auto 40px;
+  
+    text-align: center;
+  
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+  
+    color: #4b5563; /* rolig grå */
+  }
+  
+  @media (max-width: 480px) {
+    .intro {
+      font-size: 16px;
+    }
+  }
+  
+  
 
   .nav-logo img {
     width: 50%;
@@ -39,9 +80,13 @@
     border-radius: 18px;
     padding: 26px 18px;
     box-shadow: 0 10px 24px rgba(0,0,0,.15);
-    text-align: center;
     cursor: pointer;
     transition: .15s ease;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   
   .sub-card:active {
@@ -176,6 +221,43 @@
     }
   }
   
+  /* =========================
+   DETAILS – SMOOTH DROPDOWN
+   ========================= */
+
+.extra-info details {
+  overflow: hidden;
+}
+
+/* wrapper-animation */
+.extra-info details > *:not(summary) {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+/* når details er åbent */
+.extra-info details[open] > *:not(summary) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* lille delay så summary klik føles naturligt */
+.extra-info details[open] > *:not(summary) {
+  transition-delay: 0.05s;
+}
+
+.extra-info summary {
+  transition: color 0.2s ease;
+}
+
+.extra-info summary:hover {
+  color: #1f2bff;
+}
+
+
   .top-bar {
     max-width: 420px;
     margin: 0 auto 16px;
@@ -270,16 +352,6 @@
     color: #555;
   }
 
-  .intro {
-    margin: 20px auto 28px;
-    max-width: 420px;
-  
-    font-size: 18px;
-    font-weight: 600;
-    color: #1f2bff; /* samme blå som CTA */
-  
-    text-align: center;
-  }
   
   
   .seo-text h2 {
@@ -341,3 +413,106 @@
     color: #444;
   }
   
+  .category-section {
+    width: 100%;
+    margin-bottom: 32px;
+  }
+  
+  
+  .category-title {
+    max-width: 420px;
+    margin: 0 auto 12px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  #cards {
+    display: block;
+  }
+  
+  /* FEEDBACK (matcher extra-info cards) */
+.feedback-card {
+  background: white;
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+  max-width: 420px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.feedback-question {
+  font-size: 15px;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 12px;
+}
+
+.feedback-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.feedback-btn {
+  background: #f6f6f4;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s ease, transform .1s ease;
+}
+
+.feedback-btn:hover {
+  background: #eee;
+}
+
+.feedback-btn:active {
+  transform: scale(.97);
+}
+
+.feedback-thanks {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #333;
+}
+
+  
+/* PRIMARY CTA (samme stil som menu-knap) */
+.cta-wrap {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.cta-primary {
+  display: inline-block;
+  background: #1f2bff;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 999px;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background .15s ease, transform .1s ease;
+}
+
+.cta-primary:hover {
+  background: #1822d8;
+}
+
+.cta-primary:active {
+  transform: scale(.97);
+}
