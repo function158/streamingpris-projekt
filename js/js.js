@@ -74,7 +74,7 @@ const services = [
   {
     id: "tv2play",
     name: "TV2 Play",
-    logo: "./images/tv2play.webp",
+    logo: "./images/tv2play-logo.svg",
     category: "film",
     plans: [
       { name: "Basis med reklamer", price: 69 },
@@ -86,14 +86,16 @@ const services = [
     ]
   },
   {
+
     id: "nordiskfilmplus",
     name: "Nordisk Film Plus",
-    logo: "./images/nordiskfilmplus.png",
+    logo: "./images/nordisk-film-plus-logo.svg",
     category: "film",
     plans: [
       { name: "Basis", price: 69 }
     ]
-  },
+  }
+  ,
   {
     id: "spotify",
     name: "Spotify",
@@ -211,28 +213,37 @@ document.addEventListener("DOMContentLoaded", () => {
           <img src="${service.logo}" alt="${service.name} logo">
         `;
   
-        // CARD CLICK (vælg / fravælg)
-        card.addEventListener("click", () => {
-          if (!selected[service.id]) {
-            const plan = service.plans[0];
-            selected[service.id] = plan;
-  
-            // TRACK: service valgt
-            if (window.umami) {
-              umami.track("card-selected", {
-                service_id: service.id,
-                service_name: service.name,
-                plan: plan.name,
-                price: plan.price
-              });
-            }
-          } else {
-            delete selected[service.id];
-          }
-  
-          render();
-          calculate();
-        });
+     // CARD CLICK (vælg / fravælg)
+card.addEventListener("click", (e) => {
+  // ⛔ Ignorér klik inde i dropdown / pill
+  if (
+    e.target.closest(".plan-pill") ||
+    e.target.closest(".plan-menu")
+  ) {
+    return;
+  }
+
+  if (!selected[service.id]) {
+    const plan = service.plans[0];
+    selected[service.id] = plan;
+
+    // TRACK: service valgt
+    if (window.umami) {
+      umami.track("card-selected", {
+        service_id: service.id,
+        service_name: service.name,
+        plan: plan.name,
+        price: plan.price
+      });
+    }
+  } else {
+    delete selected[service.id];
+  }
+
+  render();
+  calculate();
+});
+
   
         // PLAN VALG (kun hvis valgt)
         if (isSelected) {
@@ -325,6 +336,13 @@ document.addEventListener("DOMContentLoaded", () => {
   
     monthlyEl.textContent = monthly + " kr";
     yearlyEl.textContent = (monthly * 12) + " kr";
+
+  
+    updateStickySummary(
+    monthly,
+    monthly * 12
+  );
+
   
     updateInsight();
   
@@ -368,3 +386,85 @@ document.addEventListener("DOMContentLoaded", () => {
   
 });
 
+const stickySummary = document.getElementById("stickySummary");
+const stickyMonthly = document.getElementById("stickyMonthly");
+const stickyYearly = document.getElementById("stickyYearly");
+const summaryEl = document.querySelector(".summary");
+
+let currentMonthly = 0;
+
+function isDesktop() {
+  return window.innerWidth > 600;
+}
+
+function updateStickySummary(monthly, yearly) {
+  currentMonthly = monthly;
+
+  if (!isDesktop() || monthly <= 0) {
+    stickySummary.classList.remove("visible");
+    return;
+  }
+
+  stickyMonthly.textContent = `${monthly} kr`;
+  stickyYearly.textContent = `${yearly} kr`;
+  stickySummary.classList.add("visible");
+}
+
+/* 👇 styr synlighed ift. summary (DESKTOP ONLY) */
+if ("IntersectionObserver" in window && summaryEl) {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (!isDesktop()) return;
+
+      if (entry.isIntersecting) {
+        // prisen kan ses → skjul sticky
+        stickySummary.classList.remove("visible");
+      } else {
+        // prisen kan IKKE ses → vis sticky igen (hvis der er noget valgt)
+        if (currentMonthly > 0) {
+          stickySummary.classList.add("visible");
+        }
+      }
+    },
+    {
+      threshold: 0.2
+    }
+  );
+
+  observer.observe(summaryEl);
+}
+
+/* sikkerhed ved resize */
+window.addEventListener("resize", () => {
+  if (!isDesktop()) {
+    stickySummary.classList.remove("visible");
+  } else if (currentMonthly > 0) {
+    stickySummary.classList.add("visible");
+  }
+});
+
+const shareBtn = document.getElementById("shareBtn");
+
+if (shareBtn) {
+  shareBtn.addEventListener("click", () => {
+    const monthly = document.getElementById("monthly")?.innerText || "";
+    const yearly = document.getElementById("yearly")?.innerText || "";
+
+    const text = `Jeg bruger ${monthly} (${yearly}) på streaming 🤯 Tjek dit eget forbrug her:`;
+    const url = window.location.href;
+
+    if (navigator.share) {
+      navigator.share({
+        title: "Mit streamingforbrug",
+        text,
+        url
+      });
+    } else {
+      navigator.clipboard.writeText(`${text} ${url}`);
+      shareBtn.innerText = "✔ Link kopieret";
+      setTimeout(() => {
+        shareBtn.innerText = "🔗 Del dit streamingforbrug";
+      }, 2000);
+    }
+  });
+}

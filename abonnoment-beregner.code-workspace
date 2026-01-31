@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"name": "abonnoment-beregner",
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "abonnoment-beregner"
+	}
+}

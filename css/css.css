@@ -83,6 +83,9 @@
     cursor: pointer;
     transition: .15s ease;
 
+
+    height: 160px;   /* præcis som nu visuelt */
+    overflow: visible;   /* MEGET VIGTIG */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -90,9 +93,9 @@
   }
   
   .sub-card:active {
-    transform: scale(.98);
-  }
-  
+  transform: scale(.97);
+  box-shadow: 0 8px 18px rgba(0,0,0,.15);
+}
   .sub-card img {
     width: 100%;
     max-width: 150px;
@@ -100,18 +103,31 @@
     object-fit: contain;
   }
   
+/* 🔧 FIX: dropdown skal altid ligge over cards under */
+.sub-card.dropdown-open {
+  z-index: 100;
+  transform: none !important;
+}
+
+
+.card-grid:has(.plan-menu.active) .sub-card {
+  pointer-events: none;
+}
+
+/* Tillad klik på dropdown + pill i det aktive card */
+.card-grid:has(.plan-menu.active) .sub-card:has(.plan-menu.active),
+.card-grid:has(.plan-menu.active) .sub-card:has(.plan-menu.active) .plan-pill,
+.card-grid:has(.plan-menu.active) .sub-card:has(.plan-menu.active) .plan-menu {
+  pointer-events: auto;
+}
   
-  /* SELECTED STATE */
-  .sub-card.selected {
-    padding-bottom: 18px;
-  }
   
   /* CHECKMARK BADGE */
   .check {
     position: absolute;
     top: -14px;
     right: -14px;
-    background: #1f2bff;
+    background: #2B3EFF;
     color: white;
     width: 36px;
     height: 36px;
@@ -123,68 +139,73 @@
     box-shadow: 0 6px 16px rgba(0,0,0,.25);
   }
   
-  /* PLAN DROPDOWN (pill) */
-  .plan-pill {
-    margin-top: 14px;
-    width: 100%;
-    background: #f6f6f4;
-    color: #333;
-    border-radius: 999px;
-    padding: 10px 14px;
-    font-size: 14px;
-    font-weight: 500;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    border: 1px solid #ddd;
-    transition: background .15s ease, border-color .15s ease;
-  }
-  
-  .plan-pill:hover {
-    background: #f0f0ee;
-  }
-  
-  .plan-pill span {
-    font-size: 13px;
-    color: #666;
-  }
-  
-  /* DROPDOWN MENU */
-  .plan-menu {
-    margin-top: 8px;
-    background: #fff;
-    border-radius: 14px;
-    overflow: hidden;
-    display: none;
-    border: 1px solid #ddd;
-    box-shadow: 0 8px 20px rgba(0,0,0,.12);
-    opacity: 0;
-    transform: translateY(-4px);
-    transition: opacity .15s ease, transform .15s ease;
-  }
-  
-  .plan-menu.active {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  .plan-option {
-    padding: 10px 14px;
-    color: #333;
-    font-size: 14px;
-    cursor: pointer;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .plan-option:last-child {
-    border-bottom: none;
-  }
-  
-  .plan-option:hover {
-    background: #f6f6f4;
-  }
+  /* =========================
+   DROPDOWN – FIXED & ROBUST
+   ========================= */
+
+/* card skal være reference */
+.sub-card {
+  position: relative;
+}
+
+/* pill */
+.plan-pill {
+  margin-top: 14px;
+  width: 100%;
+  background: #f6f6f4;
+  color: #333;
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: 500;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+  border: 1px solid #ddd;
+}
+
+/* dropdown menu */
+.plan-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(100% + 8px);
+
+  background: #fff;
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  box-shadow: 0 12px 28px rgba(0,0,0,.18);
+
+  display: none;
+  z-index: 9999; /* OVER ALT */
+}
+
+
+/* åben state */
+.plan-menu.active {
+  display: block;
+}
+
+/* option */
+.plan-option {
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #333;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+}
+
+.plan-option:last-child {
+  border-bottom: none;
+}
+
+.plan-option:hover {
+  background: #f6f6f4;
+}
+
   
   
   /* SUMMARY */
@@ -254,7 +275,7 @@
 }
 
 .extra-info summary:hover {
-  color: #1f2bff;
+  color: #2B3EFF;
 }
 
 
@@ -385,6 +406,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 16px;
+    overflow: visible; 
   
     max-width: 420px;
     margin: 0 auto;
@@ -452,7 +474,7 @@
 
 .cta-primary {
   display: inline-block;
-  background: #1f2bff;
+  background: #2B3EFF;
   color: #fff;
   font-size: 13px;
   font-weight: 600;
@@ -538,4 +560,92 @@
   }
   
   
-  
+  /* Gør Nordisk Film Plus-logo mindre */
+.sub-card img[src*="nordisk"] {
+  max-height: 90px;
+  width: auto;
+}
+
+/* Gør TV 2 Play-logo mindre */
+.sub-card img[src*="tv2"] {
+  max-height: 50px;
+  width: auto;
+}
+
+/* ===== STICKY SUMMARY ===== */
+
+/* ===== STICKY SUMMARY – DESKTOP ONLY ===== */
+
+.sticky-summary {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+
+  transform: translateX(120%);
+  opacity: 0;
+  pointer-events: none;
+
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.sticky-summary.visible {
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.sticky-box {
+  background: white;
+  border-radius: 20px;
+  padding: 18px 22px;
+  display: flex;
+  gap: 32px;
+  box-shadow: 0 14px 40px rgba(0,0,0,.18);
+}
+
+.sticky-item span {
+  display: block;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.sticky-item strong {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111;
+}
+
+/* 🚫 SLUK STICKY HELT PÅ MOBIL */
+@media (max-width: 600px) {
+  .sticky-summary {
+    display: none !important;
+  }
+}
+
+
+.share-wrap {
+  max-width: 420px;
+  margin: 16px auto 0;
+  text-align: center;
+}
+
+.share-btn {
+  background: #f6f6f4;
+  border: 1px solid #ddd;
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  cursor: pointer;
+  transition: background .15s ease, transform .1s ease;
+}
+
+.share-btn:hover {
+  background: #eee;
+}
+
+.share-btn:active {
+  transform: scale(.97);
+}
