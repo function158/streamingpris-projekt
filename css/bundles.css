@@ -1,6 +1,6 @@
 
    .bundle-section {
-    max-width: 480px;
+    max-width: 960px; /* Udvid max-width så der er plads til 2 kolonner */
     margin: 40px auto;
     padding: 0 20px;
   }
@@ -32,6 +32,17 @@
     box-shadow: 0 16px 36px rgba(0,0,0,.12);
   }
   
+  .bundle-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  @media (max-width: 520px) {
+    .bundle-grid {
+      grid-template-columns: 1fr;
+    }
+  }
   /* =========================
      TOP ROW
      ========================= */

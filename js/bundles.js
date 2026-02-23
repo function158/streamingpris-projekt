@@ -1,33 +1,3 @@
-/**
- * BUNDLES.JS v2 – med mode-switch support
- *
- * Ændringer fra original:
- * 1. calculateSavings() returnerer nu også `separateCost` (listepris for tjenesterne separat)
- * 2. renderBundles() viser bundles i "vil"-mode selvom savings <= 0
- * 3. createBundleCard() bruger window.activeMode til at vise enten
- *    "DU SPARER"-boks (har-mode) eller "VILLE KOSTE MERE"-boks (vil-mode)
- *
- * JSON-struktur per tjeneste i streamingIncluded:
- *
- * Case 1 — Simpel listepris:
- *   { "id": "podimo", "planIndex": 0 }
- *
- * Case 2 — Fast partnerrabat:
- *   { "id": "spotify", "planIndex": 0, "partnerNormalPrice": 89 }
- *
- * Case 3 — Intro-rabat der udløber:
- *   { "id": "tv2play", "planIndex": 3, "partnerIntroPrice": 169, "partnerIntroMonths": 3, "partnerNormalPrice": 179 }
- *
- * Case 4 — Gratis inkluderet:
- *   { "id": "nordiskfilmplus", "planIndex": 0, "partnerNormalPrice": 0 }
- *
- * Case 5 — Valgmuligheder (bruger vælger tier på kortet):
- *   { "id": "tv2play", "valgmuligheder": [
- *       { "label": "Basis Partner", "planIndex": 1, "partnerIntroPrice": 0, "partnerIntroMonths": 2, "partnerNormalPrice": 89 },
- *       { "label": "Favorit Partner", "planIndex": 3, "partnerNormalPrice": 169 }
- *   ]}
- */
-
 let providersData = [];
 
 async function fetchProviders() {
@@ -119,8 +89,6 @@ function calculateSavings(bundle, coveredEntries, selectedServices, currentMobil
         if (selectedServices[id]) currentCostForCovered += selectedServices[id].price;
     });
 
-    // ── Separat listepris (hvad tjenesterne koster købt enkeltvis) ──
-    // Bruges i "vil"-mode til at vise "ville koste X kr. mere"
     let separateCost = 0;
     coveredEntries.forEach(entry => {
         const resolved  = resolveEntry(entry);
@@ -171,9 +139,8 @@ function calculateSavings(bundle, coveredEntries, selectedServices, currentMobil
     const introPriceTotal  = hasIntro ? (mobileIntro + streamingIntroPrice) : null;
     const monthlySavings   = (currentCostForCovered + currentMobile) - normalPriceTotal;
 
-    // Hvad koster streaming separat + mobilpris (bruges til "vil"-mode framing)
     const separateMonthly = separateCost + currentMobile;
-    const extraIfSeparate = separateMonthly - normalPriceTotal; // positiv = bundlen er billigere
+    const extraIfSeparate = separateMonthly - normalPriceTotal;
 
     return {
         totalSavings:         monthlySavings,
@@ -184,14 +151,15 @@ function calculateSavings(bundle, coveredEntries, selectedServices, currentMobil
         introPriceTotal,
         introMonths:          bundle.introMonths ?? null,
         currentCostForCovered,
-        // Nye felter til "vil"-mode:
-        separateCost,          // hvad tjenesterne koster separat (uden mobil)
-        separateMonthly,       // separat streaming + currentMobile
-        extraIfSeparate,       // hvad du betaler ekstra hvis du IKKE tager bundlen
+        separateCost,
+        separateMonthly,
+        extraIfSeparate,
     };
 }
 
 // ─── RENDER ───────────────────────────────────────────────────────────────────
+
+const INITIAL_SHOW = 3;
 
 async function renderBundles(selectedServices) {
     const grid          = document.getElementById("bundleGrid");
@@ -199,6 +167,9 @@ async function renderBundles(selectedServices) {
     if (!grid) return;
 
     if (providersData.length === 0) await fetchProviders();
+
+    // Ryd op: fjern evt. gammel "Vis flere"-knap fra forrige render
+    document.getElementById('loadMoreBundles')?.remove();
 
     grid.innerHTML      = "";
     const selectedIds   = Object.keys(selectedServices);
@@ -221,8 +192,6 @@ async function renderBundles(selectedServices) {
             if (coveredEntries.length > 0) {
                 const savings = calculateSavings(bundle, coveredEntries, selectedServices, currentMobile);
                 if (savings) {
-                    // "har"-mode: vis kun hvis der er en reel besparelse
-                    // "vil"-mode: vis altid (brugeren har ikke tjenesterne endnu)
                     if (isVilMode || savings.totalSavings > 0) {
                         results.push({ provider, bundle, coveredEntries, savings });
                     }
@@ -231,16 +200,62 @@ async function renderBundles(selectedServices) {
         });
     });
 
-    // Sorter: i begge modes — størst besparelse/forskel øverst
+    // ── SORTERING ────────────────────────────────────────────────────────────
     if (isVilMode) {
-        results.sort((a, b) => b.savings.extraIfSeparate - a.savings.extraIfSeparate);
+        results.sort((a, b) => {
+            const coverageDiff = b.coveredEntries.length - a.coveredEntries.length;
+            if (coverageDiff !== 0) return coverageDiff;
+            return b.savings.extraIfSeparate - a.savings.extraIfSeparate;
+        });
     } else {
-        results.sort((a, b) => b.savings.totalSavings - a.savings.totalSavings);
+        results.sort((a, b) => {
+            const coverageDiff = b.coveredEntries.length - a.coveredEntries.length;
+            if (coverageDiff !== 0) return coverageDiff;
+            return b.savings.totalSavings - a.savings.totalSavings;
+        });
     }
 
     if (results.length > 0) {
         if (bundleSection) bundleSection.hidden = false;
-        results.forEach(item => grid.appendChild(createBundleCard(item)));
+
+        // Vis de første INITIAL_SHOW tilbud
+        results.slice(0, INITIAL_SHOW).forEach(item => grid.appendChild(createBundleCard(item)));
+
+        // Hvis der er flere: vis "Vis X flere tilbud"-knap
+        if (results.length > INITIAL_SHOW) {
+            const remaining = results.slice(INITIAL_SHOW);
+            const loadMoreBtn = document.createElement('button');
+            loadMoreBtn.id = 'loadMoreBundles';
+            loadMoreBtn.textContent = `Vis ${remaining.length} flere tilbud ▾`;
+            loadMoreBtn.style.cssText = `
+                display: block;
+                width: 100%;
+                max-width: 480px;
+                margin: 8px auto 32px auto;
+                padding: 14px 0;
+                background: white;
+                color: #2B3EFF;
+                border: 2px solid #2B3EFF;
+                border-radius: 14px;
+                font-size: 15px;
+                font-weight: 700;
+                cursor: pointer;
+                transition: all .2s ease;
+            `;
+            loadMoreBtn.onmouseenter = () => {
+                loadMoreBtn.style.background = '#eff6ff';
+            };
+            loadMoreBtn.onmouseleave = () => {
+                loadMoreBtn.style.background = 'white';
+            };
+            loadMoreBtn.onclick = () => {
+                remaining.forEach(item => grid.appendChild(createBundleCard(item)));
+                loadMoreBtn.remove();
+            };
+
+            // Indsæt knappen EFTER grid (ikke inde i grid)
+            grid.parentNode.insertBefore(loadMoreBtn, grid.nextSibling);
+        }
     } else {
         if (bundleSection) bundleSection.hidden = true;
     }
@@ -256,7 +271,6 @@ function createBundleCard(item) {
 
     const isVilMode = window.activeMode === 'vil';
 
-    // Byg tjeneste-rækker
     const buildServicesHtml = (entries) => entries.map(entry => {
         const resolved  = resolveEntry(entry);
         const src       = getServiceLogo(entry.id);
@@ -302,7 +316,6 @@ function createBundleCard(item) {
     const introPriceTotal = savings.introPriceTotal;
     const expiryLabel     = getExpiryLabel(bundle.expiryDate);
 
-    // ── Besparelsesboks: forskellig framing afhængig af mode ──────────────────
     const savingsBoxHtml = isVilMode
         ? buildVilSavingsBox(savings)
         : buildHarSavingsBox(savings);
@@ -389,7 +402,6 @@ function createBundleCard(item) {
       </div>
     `;
 
-    // ── Toggle detaljer ───────────────────────────────────────────────────────
     const toggleBtn = card.querySelector('.bundle-details-toggle');
     const content   = card.querySelector('.bundle-details-content');
     toggleBtn.onclick = (e) => {
@@ -399,7 +411,6 @@ function createBundleCard(item) {
         toggleBtn.querySelector('span').innerText = isHidden ? '▴' : '▾';
     };
 
-    // ── Valgmuligheder dropdown ───────────────────────────────────────────────
     attachValgListeners(card, coveredEntries, bundle, buildServicesHtml);
 
     document.addEventListener('click', () => {
@@ -423,7 +434,6 @@ function buildHarSavingsBox(savings) {
 function buildVilSavingsBox(savings) {
     const extraMonthly = Math.round(savings.extraIfSeparate);
     const extraYearly  = Math.round(savings.extraIfSeparate * 12);
-    // Kun vis "dyrere separat"-boks hvis der faktisk er en forskel
     if (extraMonthly <= 0) {
         return `
           <div style="background:#f3f4f6;border-radius:16px;padding:16px;text-align:center;margin-bottom:15px;border:1px solid #e5e7eb;">
@@ -474,7 +484,6 @@ function attachValgListeners(card, coveredEntries, bundle, buildServicesHtml) {
             if (newSavings) {
                 const isVilMode = window.activeMode === 'vil';
 
-                // Re-render hele savings-boksen så tekst + stil altid er korrekt
                 const savingsWrap = card.querySelector('.bundle-savings-wrap');
                 if (savingsWrap) {
                     savingsWrap.innerHTML = isVilMode
