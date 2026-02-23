@@ -86,16 +86,15 @@
 
   <div class="mobile-picker-wrap">
     <div class="mobile-picker-card">
-  
+
       <div class="mobile-picker-header">
+        <div class="mobile-picker-icon">📱</div>
         <div class="mobile-picker-titles">
           <h3>Hvad betaler du for mobil?</h3>
-          <p>Vi finder bundter, der kan spare dig penge på både streaming og mobil.</p>
+          <p>Vi finder bundter der kan spare dig penge på <strong>både streaming og mobil</strong></p>
         </div>
       </div>
-  
-      <div class="mobile-picker-divider"></div>
-  
+
       <div class="mobile-picker-chips" id="mobileChips">
         <button class="mobile-chip" data-value="0">Ved ikke</button>
         <button class="mobile-chip" data-value="79">~79 kr</button>
@@ -105,7 +104,7 @@
         <button class="mobile-chip" data-value="199">~199 kr</button>
         <button class="mobile-chip" data-value="custom">Andet beløb</button>
       </div>
-  
+
       <div class="mobile-custom-input" id="mobileCustomInput" style="display:none;">
         <input
           type="number"
@@ -114,8 +113,11 @@
           min="0"
         />
       </div>
-  
+
     </div>
+
+    <input type="hidden" id="currentMobileValue" value="0">
+  </div>
   
     <input type="hidden" id="currentMobileValue" value="0">
   </div>
