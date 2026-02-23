@@ -159,7 +159,8 @@ function calculateSavings(bundle, coveredEntries, selectedServices, currentMobil
 
 // ─── RENDER ───────────────────────────────────────────────────────────────────
 
-const INITIAL_SHOW = 3;
+const INITIAL_SHOW  = 3;
+const LOAD_MORE_STEP = 3; // ← antal ekstra tilbud per klik
 
 async function renderBundles(selectedServices) {
     const grid          = document.getElementById("bundleGrid");
@@ -200,7 +201,7 @@ async function renderBundles(selectedServices) {
         });
     });
 
-    // ── SORTERING ────────────────────────────────────────────────────────────
+    // ── SORTERING ───────────────────────���────────────────────────────────────
     if (isVilMode) {
         results.sort((a, b) => {
             const coverageDiff = b.coveredEntries.length - a.coveredEntries.length;
@@ -221,12 +222,20 @@ async function renderBundles(selectedServices) {
         // Vis de første INITIAL_SHOW tilbud
         results.slice(0, INITIAL_SHOW).forEach(item => grid.appendChild(createBundleCard(item)));
 
-        // Hvis der er flere: vis "Vis X flere tilbud"-knap
+        // Hvis der er flere: vis "Indlæs flere tilbud"-knap (loader LOAD_MORE_STEP ad gangen)
         if (results.length > INITIAL_SHOW) {
-            const remaining = results.slice(INITIAL_SHOW);
+            let shownCount = INITIAL_SHOW;
+
             const loadMoreBtn = document.createElement('button');
             loadMoreBtn.id = 'loadMoreBundles';
-            loadMoreBtn.textContent = `Vis ${remaining.length} flere tilbud ▾`;
+
+            const updateBtn = () => {
+                const remaining = results.length - shownCount;
+                loadMoreBtn.textContent = `Indlæs flere tilbud (${remaining} tilbage) ▾`;
+            };
+
+            updateBtn();
+
             loadMoreBtn.style.cssText = `
                 display: block;
                 width: 100%;
@@ -249,8 +258,15 @@ async function renderBundles(selectedServices) {
                 loadMoreBtn.style.background = 'white';
             };
             loadMoreBtn.onclick = () => {
-                remaining.forEach(item => grid.appendChild(createBundleCard(item)));
-                loadMoreBtn.remove();
+                const nextBatch = results.slice(shownCount, shownCount + LOAD_MORE_STEP);
+                nextBatch.forEach(item => grid.appendChild(createBundleCard(item)));
+                shownCount += nextBatch.length;
+
+                if (shownCount >= results.length) {
+                    loadMoreBtn.remove();
+                } else {
+                    updateBtn();
+                }
             };
 
             // Indsæt knappen EFTER grid (ikke inde i grid)
