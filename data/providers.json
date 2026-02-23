@@ -1,0 +1,1376 @@
+[
+  {
+    "name": "CBB Mobil",
+    "logo": "./images/cbb-mobil.png",
+    "network": "Telenor/Telia (5G)",
+    "bundles": [
+      {
+        "id": "cbb-mix-100gb",
+        "name": "CBB MIX",
+        "type": "cbb-mix",
+        "dataAmount": "100 GB",
+        "dataEU": "30 GB i EU",
+        "mobileBasePrice": 99,
+        "introPriceMobile": 49,
+        "introMonths": 2,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 129
+              },
+              {
+                "label": "Netflix Premium",
+                "planIndex": 2,
+                "partnerNormalPrice": 169
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "Max Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 129
+              }
+            ]
+          },
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerNormalPrice": 99
+              },
+              {
+                "label": "TV 2 Play Favorit Partner",
+                "planIndex": 3,
+                "partnerNormalPrice": 179
+              },
+              {
+                "label": "TV 2 Play Favorit + Sport Partner",
+                "planIndex": 5,
+                "partnerNormalPrice": 249
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 149
+              }
+            ]
+          },
+          {
+            "id": "podimo",
+            "valgmuligheder": [
+              {
+                "label": "Podimo Premium",
+                "planIndex": 0,
+                "partnerNormalPrice": 99
+              }
+            ]
+          },
+          {
+            "id": "mofibo",
+            "valgmuligheder": [
+              {
+                "label": "Mofibo 20 timer",
+                "planIndex": 3,
+                "partnerNormalPrice": 89
+              },
+              {
+                "label": "Mofibo 50 timer",
+                "planIndex": 0,
+                "partnerNormalPrice": 119
+              },
+              {
+                "label": "Mofibo Premium 100 timer",
+                "planIndex": 1,
+                "partnerNormalPrice": 149
+              }
+            ]
+          },
+          {
+            "id": "deezer",
+            "valgmuligheder": [
+              {
+                "label": "Deezer Premium",
+                "planIndex": 0,
+                "partnerNormalPrice": 119
+              },
+              {
+                "label": "Deezer Family",
+                "planIndex": 2,
+                "partnerNormalPrice": 199
+              }
+            ]
+          },
+          {
+            "id": "nordiskfilmplus",
+            "valgmuligheder": [
+              {
+                "label": "Nordisk Film+",
+                "planIndex": 0,
+                "partnerNormalPrice": 69
+              }
+            ]
+          }
+        ],
+        "link": "https://www.cbb.dk/shop/mobilabonnement-med-streaming/#valg-abonnement-mix",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "cbb-mix-200gb",
+        "name": "CBB MIX",
+        "type": "cbb-mix",
+        "dataAmount": "200 GB",
+        "dataEU": "30 GB i EU",
+        "mobileBasePrice": 119,
+        "introPriceMobile": 59,
+        "introMonths": 2,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 129
+              },
+              {
+                "label": "Netflix Premium",
+                "planIndex": 2,
+                "partnerNormalPrice": 169
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "Max Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 129
+              }
+            ]
+          },
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerNormalPrice": 99
+              },
+              {
+                "label": "TV 2 Play Favorit Partner",
+                "planIndex": 3,
+                "partnerNormalPrice": 179
+              },
+              {
+                "label": "TV 2 Play Favorit + Sport Partner",
+                "planIndex": 5,
+                "partnerNormalPrice": 249
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 149
+              }
+            ]
+          },
+          {
+            "id": "podimo",
+            "valgmuligheder": [
+              {
+                "label": "Podimo Premium",
+                "planIndex": 0,
+                "partnerNormalPrice": 99
+              }
+            ]
+          },
+          {
+            "id": "mofibo",
+            "valgmuligheder": [
+              {
+                "label": "Mofibo 20 timer",
+                "planIndex": 3,
+                "partnerNormalPrice": 89
+              },
+              {
+                "label": "Mofibo 50 timer",
+                "planIndex": 0,
+                "partnerNormalPrice": 119
+              },
+              {
+                "label": "Mofibo Premium 100 timer",
+                "planIndex": 1,
+                "partnerNormalPrice": 149
+              }
+            ]
+          },
+          {
+            "id": "deezer",
+            "valgmuligheder": [
+              {
+                "label": "Deezer Premium",
+                "planIndex": 0,
+                "partnerNormalPrice": 119
+              },
+              {
+                "label": "Deezer Family",
+                "planIndex": 2,
+                "partnerNormalPrice": 199
+              }
+            ]
+          },
+          {
+            "id": "nordiskfilmplus",
+            "valgmuligheder": [
+              {
+                "label": "Nordisk Film+",
+                "planIndex": 0,
+                "partnerNormalPrice": 69
+              }
+            ]
+          }
+        ],
+        "link": "https://www.cbb.dk/shop/mobilabonnement-med-streaming/#valg-abonnement-mix",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "cbb-mix-fri",
+        "name": "CBB MIX",
+        "type": "cbb-mix",
+        "dataAmount": "Fri Data",
+        "dataEU": "30 GB i EU",
+        "mobileBasePrice": 149,
+        "introPriceMobile": 74,
+        "introMonths": 2,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 129
+              },
+              {
+                "label": "Netflix Premium",
+                "planIndex": 2,
+                "partnerNormalPrice": 169
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "Max Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 129
+              }
+            ]
+          },
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerNormalPrice": 99
+              },
+              {
+                "label": "TV 2 Play Favorit Partner",
+                "planIndex": 3,
+                "partnerNormalPrice": 179
+              },
+              {
+                "label": "TV 2 Play Favorit + Sport Partner",
+                "planIndex": 5,
+                "partnerNormalPrice": 249
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 149
+              }
+            ]
+          },
+          {
+            "id": "podimo",
+            "valgmuligheder": [
+              {
+                "label": "Podimo Premium",
+                "planIndex": 0,
+                "partnerNormalPrice": 99
+              }
+            ]
+          },
+          {
+            "id": "mofibo",
+            "valgmuligheder": [
+              {
+                "label": "Mofibo 20 timer",
+                "planIndex": 3,
+                "partnerNormalPrice": 89
+              },
+              {
+                "label": "Mofibo 50 timer",
+                "planIndex": 0,
+                "partnerNormalPrice": 119
+              },
+              {
+                "label": "Mofibo Premium 100 timer",
+                "planIndex": 1,
+                "partnerNormalPrice": 149
+              }
+            ]
+          },
+          {
+            "id": "deezer",
+            "valgmuligheder": [
+              {
+                "label": "Deezer Premium",
+                "planIndex": 0,
+                "partnerNormalPrice": 119
+              },
+              {
+                "label": "Deezer Family",
+                "planIndex": 2,
+                "partnerNormalPrice": 199
+              }
+            ]
+          },
+          {
+            "id": "nordiskfilmplus",
+            "valgmuligheder": [
+              {
+                "label": "Nordisk Film+",
+                "planIndex": 0,
+                "partnerNormalPrice": 69
+              }
+            ]
+          }
+        ],
+        "link": "https://www.cbb.dk/shop/mobilabonnement-med-streaming/#valg-abonnement-mix",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Call me",
+    "logo": "./images/call-me.svg",
+    "network": "Telia/Telenor (5G)",
+    "bundles": [
+      {
+        "id": "callme-50gb",
+        "name": "Mobil 50 GB",
+        "type": "fixed",
+        "dataAmount": "50 GB",
+        "dataEU": "30 GB i EU",
+        "mobileBasePrice": 129,
+        "introPriceMobile": 64,
+        "introMonths": 3,
+        "expiryDate": "2026-03-02",
+        "streamingIncluded": [
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 89
+              },
+              {
+                "label": "TV 2 Play Basis Partner (fast rabat)",
+                "planIndex": 1,
+                "partnerNormalPrice": 169
+              },
+              {
+                "label": "TV 2 Play Favorit + Sport Partner",
+                "planIndex": 4,
+                "partnerNormalPrice": 239
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "Max Standard",
+                "planIndex": 1,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 109
+              },
+              {
+                "label": "Max Standard + Sport",
+                "planIndex": 1,
+                "partnerIntroPrice": 40,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 149
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 139
+              }
+            ]
+          },
+          {
+            "id": "deezer",
+            "valgmuligheder": [
+              {
+                "label": "Deezer Premium",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 89
+              },
+              {
+                "label": "Deezer Family",
+                "planIndex": 2,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 159
+              }
+            ]
+          },
+          {
+            "id": "podimo",
+            "valgmuligheder": [
+              {
+                "label": "Podimo Podcast",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 69
+              }
+            ]
+          }
+        ],
+        "link": "https://www.callme.dk/abonnementer/mobil/mobilabonnement-med-fri-tale-og-50gb/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "callme-80gb",
+        "name": "Mobil 80 GB",
+        "type": "fixed",
+        "dataAmount": "80 GB",
+        "dataEU": "30 GB i EU",
+        "mobileBasePrice": 139,
+        "introMonths": null,
+        "expiryDate": "2026-03-02",
+        "streamingIncluded": [
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 89
+              },
+              {
+                "label": "TV 2 Play Basis Partner (fast rabat)",
+                "planIndex": 1,
+                "partnerNormalPrice": 169
+              },
+              {
+                "label": "TV 2 Play Favorit + Sport Partner",
+                "planIndex": 4,
+                "partnerNormalPrice": 239
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "Max Standard",
+                "planIndex": 1,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 109
+              },
+              {
+                "label": "Max Standard + Sport",
+                "planIndex": 1,
+                "partnerIntroPrice": 40,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 149
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 139
+              }
+            ]
+          },
+          {
+            "id": "deezer",
+            "valgmuligheder": [
+              {
+                "label": "Deezer Premium",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 89
+              },
+              {
+                "label": "Deezer Family",
+                "planIndex": 2,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 159
+              }
+            ]
+          },
+          {
+            "id": "podimo",
+            "valgmuligheder": [
+              {
+                "label": "Podimo Podcast",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 69
+              }
+            ]
+          }
+        ],
+        "link": "https://www.callme.dk/abonnementer/mobil/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "callme-fri",
+        "name": "Mobil Fri Data",
+        "type": "fixed",
+        "dataAmount": "Fri Data",
+        "dataEU": "45 GB i EU",
+        "mobileBasePrice": 219,
+        "introMonths": null,
+        "expiryDate": "2026-03-02",
+        "streamingIncluded": [
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 89
+              },
+              {
+                "label": "TV 2 Play Basis Partner (fast rabat)",
+                "planIndex": 1,
+                "partnerNormalPrice": 169
+              },
+              {
+                "label": "TV 2 Play Favorit + Sport Partner",
+                "planIndex": 4,
+                "partnerNormalPrice": 239
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "Max Standard",
+                "planIndex": 1,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 109
+              },
+              {
+                "label": "Max Standard + Sport",
+                "planIndex": 1,
+                "partnerIntroPrice": 40,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 149
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 139
+              }
+            ]
+          },
+          {
+            "id": "deezer",
+            "valgmuligheder": [
+              {
+                "label": "Deezer Premium",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 89
+              },
+              {
+                "label": "Deezer Family",
+                "planIndex": 2,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 159
+              }
+            ]
+          },
+          {
+            "id": "podimo",
+            "valgmuligheder": [
+              {
+                "label": "Podimo Podcast",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 69
+              }
+            ]
+          }
+        ],
+        "link": "https://www.callme.dk/abonnementer/mobil/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Oister",
+    "logo": "./images/oister.svg",
+    "network": "3 (5G)",
+    "bundles": [
+      {
+        "id": "oister-40gb-intro",
+        "name": "Fri tale + 40 GB",
+        "type": "fixed",
+        "dataAmount": "40 GB",
+        "dataEU": "14 GB i EU",
+        "mobileBasePrice": 89,
+        "introPriceMobile": 39,
+        "introMonths": 1,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [],
+        "link": "https://www.oister.dk/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-45gb-podimo",
+        "name": "Fri tale + 45 GB",
+        "type": "fixed",
+        "dataAmount": "45 GB",
+        "dataEU": "30 GB i EU",
+        "mobileBasePrice": 129,
+        "introPriceMobile": 79,
+        "introMonths": 1,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "podimo",
+            "valgmuligheder": [
+              {
+                "label": "Podimo Podcast",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-65gb-tv2basis",
+        "name": "Fri tale + 65 GB",
+        "type": "fixed",
+        "dataAmount": "65 GB",
+        "dataEU": "35 GB i EU",
+        "mobileBasePrice": 179,
+        "introPriceMobile": 99,
+        "introMonths": 3,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/oistertainment/tv2play/oister-mobil-fri-tale-65-gb-med-tv2playbasis/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-85gb-disney-reklamer",
+        "name": "Fri tale + 85 GB",
+        "type": "fixed",
+        "dataAmount": "85 GB",
+        "dataEU": "30 GB i EU",
+        "mobileBasePrice": 139,
+        "introPriceMobile": 89,
+        "introMonths": 1,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "disney",
+            "valgmuligheder": [
+              {
+                "label": "Disney+ Standard med reklamer",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/oistertainment/disneyplus/oister-mobil-fri-tale-85-gb-med-disneyplusstandard-med-reklamer/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-85gb-disney-standard",
+        "name": "Fri tale + 85 GB",
+        "type": "fixed",
+        "dataAmount": "85 GB",
+        "dataEU": "35 GB i EU",
+        "mobileBasePrice": 179,
+        "introPriceMobile": 99,
+        "introMonths": 1,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "disney",
+            "valgmuligheder": [
+              {
+                "label": "Disney+ Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/oistertainment/disneyplus/oister-mobil-fri-tale-85-gb-med-disneyplusstandard/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-15gb-deezer",
+        "name": "Fri tale + 15 GB",
+        "type": "fixed",
+        "dataAmount": "15 GB",
+        "dataEU": "15 GB i EU",
+        "mobileBasePrice": 139,
+        "introPriceMobile": 111,
+        "introMonths": 6,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "deezer",
+            "valgmuligheder": [
+              {
+                "label": "Deezer Premium",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-175gb-disney-standard",
+        "name": "Fri tale + 175 GB",
+        "type": "fixed",
+        "dataAmount": "175 GB",
+        "dataEU": "40 GB i EU",
+        "mobileBasePrice": 199,
+        "introPriceMobile": 119,
+        "introMonths": 1,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "disney",
+            "valgmuligheder": [
+              {
+                "label": "Disney+ Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/oistertainment/disneyplus/oister-mobil-fri-tale-175-gb-med-disneyplusstandard/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-70gb-viaplay-reklamer",
+        "name": "Fri tale + 70 GB",
+        "type": "fixed",
+        "dataAmount": "70 GB",
+        "dataEU": "40 GB i EU",
+        "mobileBasePrice": 179,
+        "introPriceMobile": 143,
+        "introMonths": 6,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier (med reklamer)",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/oistertainment/viaplay/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-70gb-viaplay",
+        "name": "Fri tale + 70 GB",
+        "type": "fixed",
+        "dataAmount": "70 GB",
+        "dataEU": "40 GB i EU",
+        "mobileBasePrice": 199,
+        "introPriceMobile": 159,
+        "introMonths": 6,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/oistertainment/viaplay/oister-mobil-fri-tale-70-gb-med-viaplay/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-75gb-disney-tv2play",
+        "name": "Fri tale + 75 GB",
+        "type": "fixed",
+        "dataAmount": "75 GB",
+        "dataEU": "50 GB i EU",
+        "mobileBasePrice": 249,
+        "introPriceMobile": 169,
+        "introMonths": 1,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "disney",
+            "valgmuligheder": [
+              {
+                "label": "Disney+ Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-75gb-disney-viaplay",
+        "name": "Fri tale + 75 GB",
+        "type": "fixed",
+        "dataAmount": "75 GB",
+        "dataEU": "55 GB i EU",
+        "mobileBasePrice": 279,
+        "introPriceMobile": 199,
+        "introMonths": 1,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "disney",
+            "valgmuligheder": [
+              {
+                "label": "Disney+ Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-75gb-disney-tv2play-favorit",
+        "name": "Fri tale + 75 GB",
+        "type": "fixed",
+        "dataAmount": "75 GB",
+        "dataEU": "65 GB i EU",
+        "mobileBasePrice": 309,
+        "introPriceMobile": 229,
+        "introMonths": 1,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "disney",
+            "valgmuligheder": [
+              {
+                "label": "Disney+ Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Favorit Partner",
+                "planIndex": 3,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-85gb-viaplay-tv2play-basis-partner",
+        "name": "Fri tale + 85 GB",
+        "type": "fixed",
+        "dataAmount": "85 GB",
+        "dataEU": "50 GB i EU",
+        "mobileBasePrice": 279,
+        "introPriceMobile": 199,
+        "introMonths": 1,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Favorit Partner",
+                "planIndex": 2,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/oistertainment/viaplay/oister-mobil-fri-tale-85-gb-med-viaplay-og-tv2play/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-115gb-viaplay-deezer",
+        "name": "Fri tale + 115 GB",
+        "type": "fixed",
+        "dataAmount": "115 GB",
+        "dataEU": "55 GB i EU",
+        "mobileBasePrice": 269,
+        "introPriceMobile": 215,
+        "introMonths": 6,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "deezer",
+            "valgmuligheder": [
+              {
+                "label": "Deezer",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/oistertainment/viaplay/oister-mobil-fri-tale-115-gb-med-viaplay-og-deezer/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-55gb-podimo-premium",
+        "name": "Fri tale + 55 GB",
+        "type": "fixed",
+        "dataAmount": "55 GB",
+        "dataEU": "30 GB i EU",
+        "mobileBasePrice": 149,
+        "introPriceMobile": 99,
+        "introMonths": 1,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "podimo",
+            "valgmuligheder": [
+              {
+                "label": "Podimo Premium",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-fridata-podimo-podcast",
+        "name": "Fri tale + Fri data",
+        "type": "fixed",
+        "dataAmount": "Fri data",
+        "dataEU": "40 GB i EU",
+        "mobileBasePrice": 199,
+        "introPriceMobile": 149,
+        "introMonths": 1,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "podimo",
+            "valgmuligheder": [
+              {
+                "label": "Podimo Podcast",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-fridata-podimo-premium",
+        "name": "Fri tale + Fri data",
+        "type": "fixed",
+        "dataAmount": "Fri data",
+        "dataEU": "45 GB i EU",
+        "mobileBasePrice": 219,
+        "introPriceMobile": 169,
+        "introMonths": 1,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "podimo",
+            "valgmuligheder": [
+              {
+                "label": "Podimo Premium",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-65gb-tv2favorit",
+        "name": "Fri tale + 65 GB",
+        "type": "fixed",
+        "dataAmount": "65 GB",
+        "dataEU": "50 GB i EU",
+        "mobileBasePrice": 239,
+        "introPriceMobile": 159,
+        "introMonths": 1,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Favorit Partner",
+                "planIndex": 3,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-85gb-tv2sport",
+        "name": "Fri tale + 85 GB",
+        "type": "fixed",
+        "dataAmount": "85 GB",
+        "dataEU": "65 GB i EU",
+        "mobileBasePrice": 309,
+        "introPriceMobile": 229,
+        "introMonths": 1,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Sport Partner",
+                "planIndex": 4,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-130gb-viaplay-tv2favorit",
+        "name": "Fri tale + 130 GB",
+        "type": "fixed",
+        "dataAmount": "130 GB",
+        "dataEU": "75 GB i EU",
+        "mobileBasePrice": 359,
+        "introPriceMobile": 279,
+        "introMonths": 1,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Favorit Partner",
+                "planIndex": 3,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-45gb-deezer",
+        "name": "Fri tale + 45 GB",
+        "type": "fixed",
+        "dataAmount": "45 GB",
+        "dataEU": "35 GB i EU",
+        "mobileBasePrice": 159,
+        "introPriceMobile": 127,
+        "introMonths": 6,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "deezer",
+            "valgmuligheder": [
+              {
+                "label": "Deezer Premium",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "oister-65gb-deezer-family",
+        "name": "Fri tale + 65 GB",
+        "type": "fixed",
+        "dataAmount": "65 GB",
+        "dataEU": "50 GB i EU",
+        "mobileBasePrice": 239,
+        "introPriceMobile": 191,
+        "introMonths": 6,
+        "expiryDate": "2026-03-31",
+        "streamingIncluded": [
+          {
+            "id": "deezer",
+            "valgmuligheder": [
+              {
+                "label": "Deezer Family",
+                "planIndex": 2,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.oister.dk/",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      }
+    ]
+  }
+]

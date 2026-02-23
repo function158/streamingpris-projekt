@@ -8,11 +8,14 @@
   <link rel="stylesheet" href="./css/css.css">
   <link rel="stylesheet" href="./css/footer.css">
   <link rel="stylesheet" href="./css/menu.css">
+  <link rel="stylesheet" href="css/bundles.css">
+  <link rel="stylesheet" href="css/mode-switch.css">
   <link rel="canonical" href="https://mineudgifter.dk/" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32-blue.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16-blue.png">
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <meta name="msvalidate.01" content="4FE24FFC0FF5E49B9808D026E8AF2966" />
   <script defer src="https://cloud.umami.is/script.js" data-website-id="e51de17b-f27c-4606-9aa4-90699fd13555"></script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2260388383616992"
      crossorigin="anonymous"></script>
@@ -39,64 +42,90 @@
   <header class="top-nav">
     <div class="nav-inner">
       <div class="nav-logo">
-        <a href="index.html">
+        <a href="/index.html">
         <img src="images/mineudgifter-logo.svg" alt="mine-udigfter-logo-sort">
       </a>
       </div>
 
-      <a href="mailto:info@mineudgifter.dk" class="nav-feedback">
-        Giv feedback
+      <a href="/index.html" class="nav-feedback">
+        Beregn dine streamingudgifter
       </a>
     </div>
   </header>
-  <h1 class="title">Hvad koster dine <span>streamingtjenester?</span></h1>
+  <h1 class="title">
+    Vælg dine streamingtjenester og se din samlede <span>pris & tilbud</span>
+  </h1>
   <p class="intro">
-    Vælg de streamingtjenester og digitale abonnementer, du bruger –
-    film, serier, musik og lydbøger.
+    Sammensæt dine streamingtjenester, få din samlede pris og se om du kan spare med mobilabonnementer med inkluderet streaming.
   </p>
   
   
   
   <div class="top-bar">
-    <button id="resetBtn" class="reset-btn">
+    <button id="resetBtn" class="btn">
       Nulstil
     </button>
   </div>
   <div id="cards" class="card-grid"></div>
 
-  <div class="insight" id="insight"></div>
-
   <div class="summary">
-    <div>
-      <span>Månedligt</span>
-      <strong id="monthly">0 kr</strong>
-    </div>
-    <div>
-      <span>Årligt</span>
-      <strong id="yearly">0 kr</strong>
+    <p class="summary-label">Din samlede pris for valgte tjenester</p>
+    <div class="summary-numbers">
+      <div>
+        <span>Månedligt</span>
+        <strong id="monthly">0 kr</strong>
+      </div>
+      <div>
+        <span>Årligt</span>
+        <strong id="yearly">0 kr</strong>
+      </div>
     </div>
   </div>
-  <div class="share-wrap">
-    <button id="shareBtn" class="share-btn">
-      🔗 Del dit streamingforbrug
-    </button>
-  </div>
+
+  <!-- ERSTAT din nuværende .mobile-input-wrap med dette i index.html -->
+
+  <div class="mobile-picker-wrap">
+    <div class="mobile-picker-card">
   
-  <section class="extra-info" id="feedbackBox" hidden>
-    <div class="feedback-card">
-      <p class="feedback-question">
-        Fik du overblik over dine streamingudgifter?
-      </p>
-  
-      <div class="feedback-actions">
-        <button class="feedback-btn" data-answer="yes">👍 Ja</button>
-        <button class="feedback-btn" data-answer="no">👎 Nej</button>
+      <div class="mobile-picker-header">
+        <div class="mobile-picker-titles">
+          <h3>Hvad betaler du for mobil?</h3>
+          <p>Vi finder bundter, der kan spare dig penge på både streaming og mobil.</p>
+        </div>
       </div>
   
-      <p class="feedback-thanks" id="feedbackThanks" hidden>
-        Tak for din feedback 🙌
-      </p>
+      <div class="mobile-picker-divider"></div>
+  
+      <div class="mobile-picker-chips" id="mobileChips">
+        <button class="mobile-chip" data-value="0">Ved ikke</button>
+        <button class="mobile-chip" data-value="79">~79 kr</button>
+        <button class="mobile-chip" data-value="99">~99 kr</button>
+        <button class="mobile-chip" data-value="129">~129 kr</button>
+        <button class="mobile-chip" data-value="149">~149 kr</button>
+        <button class="mobile-chip" data-value="199">~199 kr</button>
+        <button class="mobile-chip" data-value="custom">Andet beløb</button>
+      </div>
+  
+      <div class="mobile-custom-input" id="mobileCustomInput" style="display:none;">
+        <input
+          type="number"
+          id="currentMobile"
+          placeholder="Fx 169 kr/md."
+          min="0"
+        />
+      </div>
+  
     </div>
+  
+    <input type="hidden" id="currentMobileValue" value="0">
+  </div>
+  <!-- Skjult felt der bruges af bundles.js — synkroniseres automatisk -->
+  <input type="hidden" id="currentMobileValue" value="0">
+</div>
+
+  <section id="bundleSection" class="bundle-section" hidden>
+    <h2 class="bundle-title">Du kan måske spare penge</h2>
+    <div id="bundleGrid" class="bundle-grid"></div>
   </section>
   <section class="seo-text">
     <h2>Streaming i Danmark – hvad koster det?</h2>
@@ -254,21 +283,111 @@
             Saxo – Lydbøger og podcasts
           </a>
         </li>
-
       </ul>
     </details>
-    <div id="stickySummary" class="sticky-summary">
-      <div class="sticky-box">
-        <div class="sticky-item">
-          <span>Månedligt</span>
-          <strong id="stickyMonthly">0 kr</strong>
-        </div>
-        <div class="sticky-item">
-          <span>Årligt</span>
-          <strong id="stickyYearly">0 kr</strong>
-        </div>
-      </div>
-    </div>
+
+    <section class="seo-text">
+      <h2>Gratis, anonym og uden login</h2>
+    
+      <p>
+        Du skal ikke oprette bruger eller indtaste personlige oplysninger.
+        Beregningen sker direkte i din browser.
+      </p>
+    
+      <p>
+        Ingen spam. Ingen skjulte funktioner.
+        Bare et simpelt værktøj til at skabe overblik.
+      </p>
+    </section>
+
+    <section class="seo-text">
+      <h2>Den skjulte samlede streamingpris</h2>
+    
+      <p>
+        Mange tænker ikke over streaming som én samlet udgift.
+        I stedet opleves den som flere små betalinger, der trækkes
+        automatisk hver måned.
+      </p>
+    
+      <p>
+        Problemet er, at små faste betalinger sjældent føles tunge.
+        99 kr. her. 149 kr. der.
+        Men over et år kan det løbe op i flere tusinde kroner.
+      </p>
+    
+      <p>
+        Hvis du betaler 550 kr. om måneden for streaming,
+        svarer det til 6.600 kr. om året.
+        Det er for mange danskere en af de største digitale faste udgifter.
+      </p>
+    
+      <p>
+        Derfor giver det mening at samle alle streamingabonnementer ét sted
+        og se den reelle pris.
+      </p>
+    </section>
+
+    <section class="seo-text">
+      <h2>Sådan får du overblik over dine streamingudgifter</h2>
+    
+      <p>
+        Det første skridt er at identificere alle de tjenester,
+        du betaler for.
+      </p>
+    
+      <p>
+        Mange opdager, at de stadig betaler for abonnementer,
+        de sjældent bruger.
+      </p>
+    
+      <p>
+        Når du vælger dine tjenester i beregneren ovenfor,
+        lægges de månedlige priser automatisk sammen,
+        og du får vist både:
+      </p>
+    
+      <ul>
+        <li>Samlet månedlig pris</li>
+        <li>Samlet årlig pris</li>
+      </ul>
+    
+      <p>
+        Det giver et klart billede af,
+        hvor stor en del af dit budget streaming reelt udgør.
+      </p>
+    </section>
+    <section class="seo-text">
+      <h2>Månedlig og årlig streamingudgift</h2>
+    
+      <p>
+        Månedlige beløb virker ofte små,
+        men over et år bliver forskellen markant.
+      </p>
+    
+      <ul>
+        <li>400 kr. pr. måned = 4.800 kr. om året</li>
+        <li>550 kr. pr. måned = 6.600 kr. om året</li>
+        <li>700 kr. pr. måned = 8.400 kr. om året</li>
+      </ul>
+    
+      <p>
+        Derfor viser beregneren både din månedlige
+        og din årlige streamingpris.
+      </p>
+    </section>
+    
+
+    <section class="seo-text">
+      <h2>Klar til at se din samlede streamingpris?</h2>
+    
+      <p>
+        Vælg dine tjenester øverst på siden
+        og få dit samlede beløb med det samme.
+      </p>
+    </section>
+
+    
+    
     
   
   </section>
@@ -288,11 +407,19 @@
   
       <!-- HURTIGE LINKS -->
       <div class="footer-col">
+        <h4>Tjenester</h4>
+        <ul>
+          <li><a href="/netflix">Netflix i Danmark</a></li>
+          <li><a href="/amazon-prime">Amazon Prime i Danmark</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
         <h4>Hurtige links</h4>
         <ul>
           <li><a href="/">Beregn dine streamingudgifter</a></li>
-          <li><a href="hvorfor-stiger-streaming-priser.html">Hvorfor stiger streaming priser?</a></li>
-          <li><a href="streaming-priser-danmark.html">Streaming priser i danmark</a></li>
+          <li><a href="/guides/hvorfor-stiger-streaming-priser/">Hvorfor stiger streaming priser?</a></li>
+          <li><a href="/guides/streaming-priser/">Streaming priser i danmark</a></li>
           <li><a href="mailto:info@mineudgifter.dk">Kontakt</a></li>
         </ul>
       </div>
@@ -301,8 +428,8 @@
       <div class="footer-col">
         <h4>Information</h4>
         <ul>
-          <li><a href="privatlivspolitik.html">Privatlivspolitik</a></li>
-          <li><a href="ansvarsfraskrivelse.html">Ansvarsfraskrivelse</a></li>
+          <li><a href="/legal/privatlivspolitik/">Privatlivspolitik</a></li>
+          <li><a href="/legal/ansvarsfraskrivelse/">Ansvarsfraskrivelse</a></li>
         </ul>
       </div>
   
@@ -321,5 +448,7 @@
 
   <script src="./js/js.js"></script>
   <script src="./js/menu.js"></script>
+  <script src="./js/bundles.js"></script>
+  <script src="./js/mode-switch.js"></script>
 </body>
 </html>

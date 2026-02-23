@@ -1,470 +1,200 @@
+/**
+ * JS.JS - RENSUR VERSION (Uden dagspris og uden sticky summary)
+ */
 const categories = {
   film: "Film & serier",
   audio: "Musik og podcasts",
   books: "Lydbøger"
-};
-
-
-const services = [
-  {
-    id: "netflix",
-    name: "Netflix",
-    logo: "./images/netflix-logo.svg",
-    category: "film",
-    plans: [
-      { name: "Basis", price: 89 },
-      { name: "Standard (HD)", price: 129 },
-      { name: "Premium (Ultra HD)", price: 169 }
-    ]
-  },
-  {
-    id: "max",
-    name: "Max",
-    logo: "./images/hbo-max-logo.svg",
-    category: "film",
-    plans: [
-      { name: "Basis med reklamer", price: 79 },
-      { name: "Standard", price: 129 },
-      { name: "Premium", price: 169 }
-    ]
-  },
-  {
-    id: "disney",
-    name: "Disney",
-    logo: "./images/disney_plus.svg",
-    category: "film",
-    plans: [
-      { name: "Standard med reklamer", price: 59 },
-      { name: "Standard", price: 99 },
-      { name: "Premium", price: 149 },
-    ]
-  },
-  {
-    id: "amazon-prime",
-    name: "Amazon Prime",
-    logo: "./images/amazon-prime-logo.svg",
-    category: "film",
-    plans: [
-      { name: "Basis", price: 69 }
-    ]
-  },
-  {
-    id: "viaplay",
-    name: "Viaplay",
-    logo: "./images/viaplay-logo.svg",
-    category: "film",
-    plans: [
-      { name: "Film & Serier", price: 149 },
-      { name: "Champions League, Film & Serier", price: 299 },
-      { name: "Dansk Fodbold, Film & Serier", price: 299 },
-      { name: "Premium", price: 499 }
-    ]
-  },
-  {
-    id: "skyshowtime",
-    name: "SkyShowTime",
-    logo: "./images/skyshowtime.svg",
-    category: "film",
-    plans: [
-      { name: "Standard", price: 89 },
-      { name: "Premium", price: 129 },
-      { name: "Standard med reklamer", price: 49 }
-    ]
-  },
-  {
-    id: "tv2play",
-    name: "TV2 Play",
-    logo: "./images/tv2play-logo.svg",
-    category: "film",
-    plans: [
-      { name: "Basis med reklamer", price: 69 },
-      { name: "Basis uden reklamer", price: 99 },
-      { name: "Favorit med reklamer", price: 149 },
-      { name: "Favorit uden reklamer", price: 179 },
-      { name: "Favorit + Sport med reklamer", price: 219 },
-      { name: "Favorit + Sport uden reklamer", price: 249 }
-    ]
-  },
-  {
-
-    id: "nordiskfilmplus",
-    name: "Nordisk Film Plus",
-    logo: "./images/nordisk-film-plus-logo.svg",
-    category: "film",
-    plans: [
-      { name: "Basis", price: 69 }
-    ]
-  }
-  ,
-  {
-    id: "spotify",
-    name: "Spotify",
-    logo: "./images/spotify.svg",
-    category: "audio",
-    plans: [
-      { name: "Basis", price: 119 }
-    ]
-  },
-  {
-    id: "podimo",
-    name: "Podimo",
-    logo: "./images/podimo-logo.svg",
-    category: "audio",
-    plans: [
-      { name: "Premium", price: 99 },
-      { name: "Premium Plus", price: 129 }
-    ]
-  },
-  {
-    id: "mofibo",
-    name: "Mofibo",
-    logo: "./images/mofibo.svg",
-    category: "books",
-    plans: [
-      { name: "Premium", price: 129 },
-      { name: "Unlimited", price: 159 },
-      { name: "Family", price: 179 },
-      { name: "Flex", price: 89 }
-    ]
-  },
-  {
-    id: "deezer",
-    name: "Deezer",
-    logo: "./images/deezer.svg",
-    category: "audio",
-    plans: [
-      { name: "Premium", price: 119 },
-      { name: "Duo", price: 159 },
-      { name: "Family", price: 199 },
-      { name: "Flex", price: 89 }
-    ]
-  },
-  {
-    id: "bookbeat",
-    name: "BookBeat",
-    logo: "./images/bookbeat-logo.svg",
-    category: "books",
-    plans: [
-      { name: "Basic", price: 59 },
-      { name: "Standard", price: 99 },
-      { name: "Premium", price: 129 }
-    ]
-  },
-  {
-    id: "saxo",
-    name: "Saxo",
-    logo: "./images/saxo-logo.svg",
-    category: "books",
-    plans: [
-      { name: "Saxo Premium", price: 99 },
-      { name: "Saxo Streaming", price: 79 },
-      { name: "Saxo Ung", price: 59 }
-    ]
-  }
-  
-];
-
-document.addEventListener("DOMContentLoaded", () => {
-
-  const resetBtn = document.getElementById("resetBtn");
+  };
+  let services = [];
+  const selected = {};
+  // Gør 'selected' global med det samme, så bundles.js kan se den
+  window.selected = selected;
+  document.addEventListener("DOMContentLoaded", async () => {
   const cardsEl = document.getElementById("cards");
   const monthlyEl = document.getElementById("monthly");
   const yearlyEl = document.getElementById("yearly");
   const insightEl = document.getElementById("insight");
-  const feedbackBox = document.getElementById("feedbackBox");
-  const feedbackThanks = document.getElementById("feedbackThanks");
-  const feedbackActions = feedbackBox?.querySelector(".feedback-actions");
-  const feedbackButtons = feedbackBox?.querySelectorAll(".feedback-btn");
-
-
-  const selected = {};
-
+  const resetBtn = document.getElementById("resetBtn");
+  const mobileInput = document.getElementById("currentMobile");
+  // 1. HENT SERVICES FRA JSON
+  try {
+  const response = await fetch('./data/services.json');
+  if (!response.ok) throw new Error("Kunne ikke hente services.json");
+  services = await response.json();
+  window.services = services;
+  render();
+  calculate();
+    } catch (error) {
+  console.error("Fejl:", error);
+  if (cardsEl) cardsEl.innerHTML = "<p>Fejl ved indlæsning af data.</p>";
+  return;
+    }
+  // 2. RENDER FUNKTION
   function render() {
-    cardsEl.innerHTML = "";
-  
-    Object.entries(categories).forEach(([categoryKey, categoryLabel]) => {
-      const servicesInCategory = services.filter(
-        service => service.category === categoryKey
-      );
-  
-      if (servicesInCategory.length === 0) return;
-  
-      // Section (bryder grid-kontekst)
-      const section = document.createElement("section");
-      section.className = "category-section";
-  
-      // Titel
-      const heading = document.createElement("h2");
-      heading.className = "category-title";
-      heading.textContent = categoryLabel;
-      section.appendChild(heading);
-  
-      // Grid for cards
-      const grid = document.createElement("div");
-      grid.className = "card-grid";
-  
-      servicesInCategory.forEach(service => {
-        const card = document.createElement("div");
-        const isSelected = !!selected[service.id];
-  
-        card.className = "sub-card" + (isSelected ? " selected" : "");
-        card.innerHTML = `
-          ${isSelected ? `<div class="check">✓</div>` : ""}
-          <img src="${service.logo}" alt="${service.name} logo">
-        `;
-  
-     // CARD CLICK (vælg / fravælg)
-card.addEventListener("click", (e) => {
-  // ⛔ Ignorér klik inde i dropdown / pill
-  if (
-    e.target.closest(".plan-pill") ||
-    e.target.closest(".plan-menu")
-  ) {
-    return;
-  }
-
-  if (!selected[service.id]) {
-    const plan = service.plans[0];
-    selected[service.id] = plan;
-
-    // TRACK: service valgt
-    if (window.umami) {
-      umami.track("card-selected", {
-        service_id: service.id,
-        service_name: service.name,
-        plan: plan.name,
-        price: plan.price
-      });
-    }
-  } else {
-    delete selected[service.id];
-  }
-
-  render();
-  calculate();
-});
-
-  
-        // PLAN VALG (kun hvis valgt)
-        if (isSelected) {
-          const pill = document.createElement("button");
-          pill.className = "plan-pill";
-          pill.innerHTML = `
-            ${selected[service.id].name} – ${selected[service.id].price} kr
-            <span>▾</span>
+  if (!cardsEl) return;
+  cardsEl.innerHTML = "";
+  Object.entries(categories).forEach(([categoryKey, categoryLabel]) => {
+  const servicesInCategory = services.filter(s => s.category === categoryKey);
+  if (servicesInCategory.length === 0) return;
+  const section = document.createElement("section");
+  section.className = "category-section";
+  section.innerHTML = `<h2 class="category-title">${categoryLabel}</h2>`;
+  const grid = document.createElement("div");
+  grid.className = "card-grid";
+  servicesInCategory.forEach(service => {
+  const isSelected = !!selected[service.id];
+  const card = document.createElement("div");
+  card.className = "sub-card" + (isSelected ? " selected" : "");
+  card.innerHTML = `
+  ${isSelected ? `<div class="check">✓</div>` : ""}
+            <img src="${service.logo}" alt="${service.name} logo">
           `;
-  
-          const menu = document.createElement("div");
-          menu.className = "plan-menu";
-  
-          service.plans.forEach(plan => {
-            const option = document.createElement("div");
-            option.className = "plan-option";
-            option.textContent = `${plan.name} – ${plan.price} kr`;
-  
-            option.addEventListener("click", e => {
-              e.stopPropagation();
-  
-              const previousPlan = selected[service.id];
-              selected[service.id] = plan;
-  
-              // TRACK: plan ændret
-              if (
-                window.umami &&
-                previousPlan.name !== plan.name
-              ) {
-                umami.track("plan-changed", {
-                  service_id: service.id,
-                  service_name: service.name,
-                  from_plan: previousPlan.name,
-                  to_plan: plan.name,
-                  price: plan.price
-                });
-              }
-  
-              render();
-              calculate();
-            });
-  
-            menu.appendChild(option);
-          });
-  
-          pill.addEventListener("click", e => {
-            e.stopPropagation();
-            menu.classList.toggle("active");
-          });
-  
-          card.appendChild(pill);
-          card.appendChild(menu);
-        }
-  
-        grid.appendChild(card);
-      });
-  
-      section.appendChild(grid);
-      cardsEl.appendChild(section);
-    });
-  }
-  
-  
-  
-
-  function updateInsight() {
-    const count = Object.keys(selected).length;
-
-    if (count === 0) {
-      insightEl.textContent =
-        "Vælg dine streamingtjenester for at få et overblik.";
-      return;
-    }
-
-    const monthly = Object.values(selected)
-      .reduce((sum, s) => sum + s.price, 0);
-
-    const daily = Math.round((monthly / 30) * 10) / 10;
-
-    insightEl.innerHTML = `
-      Du har <strong>${count} streamingtjenester</strong> og bruger cirka
-      <strong>${daily} kr om dagen</strong>.
-      <br>
-    `;
-  }
-
-  function calculate() {
-    const monthly = Object.values(selected)
-      .reduce((sum, s) => sum + s.price, 0);
-  
-    monthlyEl.textContent = monthly + " kr";
-    yearlyEl.textContent = (monthly * 12) + " kr";
-
-  
-    updateStickySummary(
-    monthly,
-    monthly * 12
-  );
-
-  
-    updateInsight();
-  
-    // 👉 VIS feedback KUN når brugeren har valgt noget
-    if (feedbackBox) {
-      feedbackBox.hidden = monthly === 0;
-    }
-  }
-  
-
-  resetBtn.addEventListener("click", () => {
-    Object.keys(selected).forEach(key => delete selected[key]);
-    render();
-    calculate();
-  
-    if (feedbackActions) feedbackActions.style.display = "flex";
-    if (feedbackThanks) feedbackThanks.hidden = true;
-  });
-  
-
+  card.addEventListener("click", (e) => {
+  if (e.target.closest(".plan-pill") || e.target.closest(".plan-menu")) return;
+  if (!selected[service.id]) {
+  selected[service.id] = service.plans[0];
+            } else {
+  delete selected[service.id];
+            }
   render();
   calculate();
-
-  feedbackButtons?.forEach(btn => {
-    btn.addEventListener("click", () => {
-      const answer = btn.dataset.answer;
-  
-      // Skjul knapper, vis tak
-      if (feedbackActions) feedbackActions.style.display = "none";
-      if (feedbackThanks) feedbackThanks.hidden = false;
-  
-      // Track i Umami
-      if (window.umami) {
-        umami.track("feedback_overblik", {
-          answer: answer
-        });
-      }
-    });
-  });
-  
-  
-});
-
-const stickySummary = document.getElementById("stickySummary");
-const stickyMonthly = document.getElementById("stickyMonthly");
-const stickyYearly = document.getElementById("stickyYearly");
-const summaryEl = document.querySelector(".summary");
-
-let currentMonthly = 0;
-
-function isDesktop() {
-  return window.innerWidth > 600;
-}
-
-function updateStickySummary(monthly, yearly) {
-  currentMonthly = monthly;
-
-  if (!isDesktop() || monthly <= 0) {
-    stickySummary.classList.remove("visible");
-    return;
-  }
-
-  stickyMonthly.textContent = `${monthly} kr`;
-  stickyYearly.textContent = `${yearly} kr`;
-  stickySummary.classList.add("visible");
-}
-
-/* 👇 styr synlighed ift. summary (DESKTOP ONLY) */
-if ("IntersectionObserver" in window && summaryEl) {
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (!isDesktop()) return;
-
-      if (entry.isIntersecting) {
-        // prisen kan ses → skjul sticky
-        stickySummary.classList.remove("visible");
-      } else {
-        // prisen kan IKKE ses → vis sticky igen (hvis der er noget valgt)
-        if (currentMonthly > 0) {
-          stickySummary.classList.add("visible");
+          });
+  if (isSelected) {
+  const hasMultiplePlans = service.plans.length > 1;
+  const pill = document.createElement("div");
+  pill.className = "plan-pill";
+  pill.style.cssText = hasMultiplePlans ? "cursor:pointer;" : "cursor:default;pointer-events:none;";
+  pill.innerHTML = `
+            <span style="display:flex;flex-direction:column;align-items:flex-start;line-height:1.3;flex:1">
+              <span style="font-size:10px;color:#999;font-weight:600;text-transform:uppercase;letter-spacing:0.4px">${selected[service.id].name}</span>
+              <strong style="font-size:13px;color:#111;font-weight:700">${selected[service.id].price} kr</strong>
+            </span>
+            ${hasMultiplePlans ? `<svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <circle cx="10" cy="10" r="10" fill="#f0f2ff"/>
+              <path d="M7 9l3 3 3-3" stroke="#2B3EFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>` : ''}`;
+  card.appendChild(pill);
+  if (hasMultiplePlans) {
+  const menu = document.createElement("div");
+  menu.className = "plan-menu";
+  service.plans.forEach(plan => {
+  const option = document.createElement("div");
+  option.className = "plan-option";
+  option.textContent = `${plan.name} – ${plan.price} kr`;
+  option.addEventListener("click", e => {
+  e.stopPropagation();
+  selected[service.id] = plan;
+  render();
+  calculate();
+              });
+  menu.appendChild(option);
+            });
+  pill.addEventListener("click", e => {
+  e.stopPropagation();
+  const isOpen = menu.classList.contains("active");
+  // Luk alle andre
+  document.querySelectorAll(".plan-menu.active").forEach(m => {
+  m.classList.remove("active");
+  m.closest(".sub-card")?.classList.remove("dropdown-open");
+              });
+  if (!isOpen) {
+  menu.classList.add("active");
+  card.classList.add("dropdown-open");
+              }
+            });
+  card.appendChild(menu);
+          }
         }
-      }
-    },
-    {
-      threshold: 0.2
-    }
-  );
-
-  observer.observe(summaryEl);
-}
-
-/* sikkerhed ved resize */
-window.addEventListener("resize", () => {
-  if (!isDesktop()) {
-    stickySummary.classList.remove("visible");
-  } else if (currentMonthly > 0) {
-    stickySummary.classList.add("visible");
-  }
-});
-
-const shareBtn = document.getElementById("shareBtn");
-
-if (shareBtn) {
-  shareBtn.addEventListener("click", () => {
-    const monthly = document.getElementById("monthly")?.innerText || "";
-    const yearly = document.getElementById("yearly")?.innerText || "";
-
-    const text = `Jeg bruger ${monthly} (${yearly}) på streaming 🤯 Tjek dit eget forbrug her:`;
-    const url = window.location.href;
-
-    if (navigator.share) {
-      navigator.share({
-        title: "Mit streamingforbrug",
-        text,
-        url
+  grid.appendChild(card);
+        });
+  section.appendChild(grid);
+  cardsEl.appendChild(section);
       });
-    } else {
-      navigator.clipboard.writeText(`${text} ${url}`);
-      shareBtn.innerText = "✔ Link kopieret";
-      setTimeout(() => {
-        shareBtn.innerText = "🔗 Del dit streamingforbrug";
-      }, 2000);
+    }
+  // 3. LUK DROPDOWN VED KLIK UDENFOR
+  document.addEventListener("click", () => {
+  document.querySelectorAll(".plan-menu.active").forEach(menu => {
+  menu.classList.remove("active");
+  menu.closest(".sub-card")?.classList.remove("dropdown-open");
+      });
+    });
+  // 4. BEREGN OG OPDATER
+  function calculate() {
+  const selectedList = Object.values(selected);
+  const monthly = selectedList.reduce((sum, s) => sum + s.price, 0);
+  if (monthlyEl) monthlyEl.textContent = monthly + " kr";
+  if (yearlyEl) yearlyEl.textContent = (monthly * 12) + " kr";
+  // Insight er nu tømt for dagspris-snak
+  if (insightEl) {
+  insightEl.innerHTML = ""; 
+      }
+  // INTEGRATION TIL BUNDLES.JS
+  if (typeof renderBundles === "function") {
+  renderBundles(selected);
+      }
+    }
+  // EVENT LISTENERS
+  if (resetBtn) {
+  resetBtn.addEventListener("click", () => {
+  Object.keys(selected).forEach(key => delete selected[key]);
+  render();
+  calculate();
+      });
+    }
+  if (mobileInput) {
+  mobileInput.addEventListener("input", () => calculate());
     }
   });
-}
+  /**
+   * MOBILE PICKER
+   * Chip-baseret mobilpris-vælger
+   */
+  function initMobilePicker() {
+  const chips = document.querySelectorAll('.mobile-chip');
+  const customWrap = document.getElementById('mobileCustomInput');
+  const customInput = document.getElementById('currentMobile');
+  const hiddenInput = document.getElementById('currentMobileValue');
+  if (!chips.length) return;
+  // Sæt "Ved ikke" som default aktiv
+  const defaultChip = document.querySelector('.mobile-chip[data-value="0"]');
+  if (defaultChip) defaultChip.classList.add('active');
+  function setMobileValue(value) {
+  if (hiddenInput) hiddenInput.value = value;
+  // Trigger bundles.js beregning
+  if (typeof renderBundles === 'function') {
+  renderBundles(window.selected || {});
+      }
+    }
+  chips.forEach(chip => {
+  chip.addEventListener('click', () => {
+  // Fjern aktiv fra alle
+  chips.forEach(c => c.classList.remove('active'));
+  chip.classList.add('active');
+  const val = chip.dataset.value;
+  if (val === 'custom') {
+  // Vis fritekst-felt
+  if (customWrap) customWrap.style.display = 'block';
+  if (customInput) customInput.focus();
+  // Brug hvad der allerede er i feltet, eller 0
+  setMobileValue(customInput?.value || 0);
+        } else {
+  // Skjul fritekst-felt
+  if (customWrap) customWrap.style.display = 'none';
+  setMobileValue(Number(val));
+        }
+      });
+    });
+  // Lyt på fritekst-feltet
+  if (customInput) {
+  customInput.addEventListener('input', () => {
+  setMobileValue(Number(customInput.value) || 0);
+      });
+    }
+  }
+  // Kør når DOM er klar
+  if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMobilePicker);
+  } else {
+  initMobilePicker();
+  }

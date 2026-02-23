@@ -1,0 +1,155 @@
+[
+    {
+      "id": "netflix",
+      "name": "Netflix",
+      "logo": "./images/netflix-logo.svg",
+      "category": "film",
+      "plans": [
+        { "name": "Basis", "price": 89 },
+        { "name": "Standard (HD)", "price": 129 },
+        { "name": "Premium (Ultra HD)", "price": 169 }
+      ]
+    },
+    {
+      "id": "max",
+      "name": "Max",
+      "logo": "./images/hbo-max-logo.svg",
+      "category": "film",
+      "plans": [
+        { "name": "Basis med reklamer", "price": 79 },
+        { "name": "Standard", "price": 129 },
+        { "name": "Premium", "price": 169 }
+      ]
+    },
+    {
+      "id": "disney",
+      "name": "Disney",
+      "logo": "./images/disney_plus.svg",
+      "category": "film",
+      "plans": [
+        { "name": "Standard med reklamer", "price": 59 },
+        { "name": "Standard", "price": 99 },
+        { "name": "Premium", "price": 149 }
+      ]
+    },
+    {
+      "id": "amazon-prime",
+      "name": "Amazon Prime",
+      "logo": "./images/amazon-prime-logo.svg",
+      "category": "film",
+      "plans": [
+        { "name": "Basis", "price": 69 }
+      ]
+    },
+    {
+      "id": "viaplay",
+      "name": "Viaplay",
+      "logo": "./images/viaplay-logo.svg",
+      "category": "film",
+      "plans": [
+        { "name": "Film & Serier", "price": 149 },
+        { "name": "Champions League, Film & Serier", "price": 299 },
+        { "name": "Dansk Fodbold, Film & Serier", "price": 299 },
+        { "name": "Premium", "price": 499 }
+      ]
+    },
+    {
+      "id": "skyshowtime",
+      "name": "SkyShowTime",
+      "logo": "./images/skyshowtime.svg",
+      "category": "film",
+      "plans": [
+        { "name": "Standard", "price": 89 },
+        { "name": "Premium", "price": 129 },
+        { "name": "Standard med reklamer", "price": 49 }
+      ]
+    },
+    {
+      "id": "tv2play",
+      "name": "TV2 Play",
+      "logo": "./images/tv2play-logo.svg",
+      "category": "film",
+      "plans": [
+        { "name": "Basis med reklamer", "price": 69 },
+        { "name": "Basis uden reklamer", "price": 99 },
+        { "name": "Favorit med reklamer", "price": 149 },
+        { "name": "Favorit uden reklamer", "price": 179 },
+        { "name": "Favorit + Sport med reklamer", "price": 219 },
+        { "name": "Favorit + Sport uden reklamer", "price": 249 }
+      ]
+    },
+    {
+      "id": "nordiskfilmplus",
+      "name": "Nordisk Film Plus",
+      "logo": "./images/nordisk-film-plus-logo.svg",
+      "category": "film",
+      "plans": [
+        { "name": "Basis", "price": 69 }
+      ]
+    },
+    {
+      "id": "spotify",
+      "name": "Spotify",
+      "logo": "./images/spotify.svg",
+      "category": "audio",
+      "plans": [
+        { "name": "Basis", "price": 119 }
+      ]
+    },
+    {
+      "id": "podimo",
+      "name": "Podimo",
+      "logo": "./images/podimo-logo.svg",
+      "category": "audio",
+      "plans": [
+        { "name": "Premium", "price": 99 },
+        { "name": "Premium Plus", "price": 129 }
+      ]
+    },
+    {
+      "id": "mofibo",
+      "name": "Mofibo",
+      "logo": "./images/mofibo.svg",
+      "category": "books",
+      "plans": [
+        { "name": "Premium", "price": 129 },
+        { "name": "Unlimited", "price": 159 },
+        { "name": "Family", "price": 179 },
+        { "name": "Flex", "price": 89 }
+      ]
+    },
+    {
+      "id": "deezer",
+      "name": "Deezer",
+      "logo": "./images/deezer.svg",
+      "category": "audio",
+      "plans": [
+        { "name": "Premium", "price": 119 },
+        { "name": "Duo", "price": 159 },
+        { "name": "Family", "price": 199 },
+        { "name": "Flex", "price": 89 }
+      ]
+    },
+    {
+      "id": "bookbeat",
+      "name": "BookBeat",
+      "logo": "./images/bookbeat-logo.svg",
+      "category": "books",
+      "plans": [
+        { "name": "Basic", "price": 59 },
+        { "name": "Standard", "price": 99 },
+        { "name": "Premium", "price": 129 }
+      ]
+    },
+    {
+      "id": "saxo",
+      "name": "Saxo",
+      "logo": "./images/saxo-logo.svg",
+      "category": "books",
+      "plans": [
+        { "name": "Saxo Premium", "price": 99 },
+        { "name": "Saxo Streaming", "price": 79 },
+        { "name": "Saxo Ung", "price": 59 }
+      ]
+    }
+  ]
