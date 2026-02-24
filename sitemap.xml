@@ -2,25 +2,44 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
   <url>
-    <loc>https://mineudgifter.dk/index.html</loc>
+    <loc>https://mineudgifter.dk/</loc>
+    <lastmod>2026-02-24</lastmod>
     <priority>1.0</priority>
   </url>
 
   <url>
-    <loc>https://mineudgifter.dk/privatlivspolitik.html</loc>
+    <loc>https://mineudgifter.dk/guides/streaming-priser/</loc>
+    <lastmod>2026-02-24</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mineudgifter.dk/guides/hvorfor-stiger-streaming-priser/</loc>
+    <lastmod>2026-02-24</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mineudgifter.dk/netflix/</loc>
+    <lastmod>2026-02-24</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mineudgifter.dk/amazon-prime/</loc>
+    <lastmod>2026-02-24</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://mineudgifter.dk/legal/privatlivspolitik/</loc>
+    <lastmod>2026-02-24</lastmod>
     <priority>0.3</priority>
   </url>
 
   <url>
-    <loc>https://mineudgifter.dk/ansvarsfraskrivelse.html</loc>
-    <priority>0.3</priority>
-  </url>
-   <url>
-    <loc>https://mineudgifter.dk/streaming-priser-danmark.html</loc>
-    <priority>0.3</priority>
-  </url>
-   <url>
-    <loc>https://mineudgifter.dk/hvorfor-stiger-streaming-priser.html</loc>
+    <loc>https://mineudgifter.dk/legal/ansvarsfraskrivelse/</loc>
+    <lastmod>2026-02-24</lastmod>
     <priority>0.3</priority>
   </url>
 

@@ -35,9 +35,9 @@
      margin: 60px auto 20px;
      text-align: center;
      font-family: var(--serif);
-     font-size: clamp(36px, 6vw, 52px);
+     font-size: clamp(28px, 6vw, 52px);
      font-weight: 700;
-     line-height: 1.1;
+     line-height: 1.15;
      letter-spacing: -0.5px;
      color: var(--ink);
    }
@@ -50,7 +50,7 @@
    }
    
    @media (max-width: 480px) {
-     .title { font-size: 32px; }
+     .title { font-size: 26px; line-height: 1.2; margin-top: 32px; }
    }
    
    /* INTRO */
@@ -65,7 +65,7 @@
    }
    
    @media (max-width: 480px) {
-     .intro { font-size: 15px; }
+     .intro { font-size: 14px; line-height: 1.6; margin-bottom: 24px; padding: 0 4px; }
    }
    
    .nav-logo img { width: 50%; height: auto; }
@@ -78,6 +78,8 @@
      padding: 20px 18px 16px;
      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
      cursor: pointer;
+     touch-action: manipulation;
+     -webkit-tap-highlight-color: transparent;
      transition: transform 0.2s ease, box-shadow 0.2s ease;
      height: 160px;
      overflow: visible;
@@ -91,6 +93,7 @@
    .sub-card:active { transform: scale(.97); box-shadow: 0 8px 18px rgba(0,0,0,.15); }
    .sub-card img { height: 60px; width: auto; max-width: 130px; object-fit: contain; }
    .sub-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.12); }
+   @media (hover: none) { .sub-card:hover { transform: none; box-shadow: 0 10px 24px rgba(0,0,0,0.08); } }
    
    .sub-card.dropdown-open {
      z-index: 9999 !important;
