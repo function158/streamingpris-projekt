@@ -1414,7 +1414,7 @@
             ]
           },
           {
-            "id": "prime",
+            "id": "amazon-prime",
             "valgmuligheder": [
               {
                 "label": "Amazon Prime Video",
@@ -1524,7 +1524,7 @@
             ]
           },
           {
-            "id": "prime",
+            "id": "amazon-prime",
             "valgmuligheder": [
               {
                 "label": "Amazon Prime Video",
@@ -1634,7 +1634,7 @@
             ]
           },
           {
-            "id": "prime",
+            "id": "amazon-prime",
             "valgmuligheder": [
               {
                 "label": "Amazon Prime Video",
@@ -1744,7 +1744,7 @@
             ]
           },
           {
-            "id": "prime",
+            "id": "amazon-prime",
             "valgmuligheder": [
               {
                 "label": "Amazon Prime Video",
@@ -1911,7 +1911,7 @@
         "newCustomersOnly": true,
         "streamingIncluded": [
           {
-            "id": "prime",
+            "id": "amazon-prime",
             "valgmuligheder": [
               {
                 "label": "Amazon Prime Video",
@@ -1955,7 +1955,7 @@
               {
                 "label": "Max Standard",
                 "planIndex": 1,
-                "partnerNormalPrice": 0
+                "partnerNormalPrice": 129
               }
             ]
           },
@@ -1965,7 +1965,7 @@
               {
                 "label": "Netflix Standard",
                 "planIndex": 1,
-                "partnerNormalPrice": 0
+                "partnerNormalPrice": 129
               }
             ]
           }
