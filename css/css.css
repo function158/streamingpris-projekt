@@ -529,6 +529,17 @@
    .sub-card img[src*="nordisk"] { max-height: 90px; width: auto; }
    .sub-card img[src*="tv2"] { max-height: 50px; width: auto; }
    
+   .sub-card.selected {
+    height: auto;
+    min-height: 160px;
+  }
+  
+  .plan-pill > span > span,
+  .plan-pill > span > strong {
+    overflow: visible;   /* var: hidden – det skjulte teksten */
+    white-space: normal;
+    text-overflow: unset;
+  }
    .service-summary {
      position: relative; z-index: 2;
      display: flex; align-items: center; gap: 12px;
