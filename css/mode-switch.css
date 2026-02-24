@@ -61,15 +61,6 @@
   .intro.fading {
     opacity: 0;
   }
-
-  /* ── Mobil: skjul pris på tjeneste-kort (plan-pill) ── */
-  @media (max-width: 600px) {
-    .plan-pill strong,
-    .plan-pill span[style*="font-size:10px"],
-    .plan-pill > span > strong {
-      display: none !important;
-    }
-  }
   
   /* ── Desktop ── */
   @media (min-width: 601px) {
