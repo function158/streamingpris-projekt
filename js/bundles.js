@@ -159,8 +159,8 @@ function calculateSavings(bundle, coveredEntries, selectedServices, currentMobil
 
 // ─── RENDER ───────────────────────────────────────────────────────────────────
 
-const INITIAL_SHOW  = 3;
-const LOAD_MORE_STEP = 3; // ← antal ekstra tilbud per klik
+const INITIAL_SHOW  = 4;
+const LOAD_MORE_STEP = 4; // ← antal ekstra tilbud per klik
 
 async function renderBundles(selectedServices) {
     const grid          = document.getElementById("bundleGrid");

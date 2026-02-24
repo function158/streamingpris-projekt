@@ -1372,5 +1372,610 @@
         }
       }
     ]
+  },
+  {
+    "name": "Telmore",
+    "logo": "./images/telmore-logo.svg",
+    "network": "TDC (5G)",
+    "newCustomersOnly": true,
+    "newCustomersNote": "Tilbuddet gælder kun for nye Telmore Play-kunder og ikke ved samtidigt køb af telefon.",
+    "bundles": [
+      {
+        "id": "telmore-play-3",
+        "name": "Telmore Play + 3 tjenester",
+        "type": "telmore-play",
+        "dataAmount": "Fri data",
+        "dataEU": "83 GB i EU",
+        "mobileBasePrice": 399,
+        "introPriceMobile": 99,
+        "introMonths": 1,
+        "expiryDate": "2026-12-31",
+        "newCustomersOnly": true,
+        "streamingChoiceCount": 3,
+        "streamingIncluded": [
+          {
+            "id": "disney",
+            "valgmuligheder": [
+              {
+                "label": "Disney+ Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "prime",
+            "valgmuligheder": [
+              {
+                "label": "Amazon Prime Video",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "Max Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "skyshowtime",
+            "valgmuligheder": [
+              {
+                "label": "SkyShowtime Standard Plus",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "saxo",
+            "valgmuligheder": [
+              {
+                "label": "Saxo Streaming 20 timer",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "telmore-musik",
+            "valgmuligheder": [
+              {
+                "label": "Telmore Musik",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.telmore.dk/abonnementer/telmore-play",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "telmore-play-4",
+        "name": "Telmore Play + 4 tjenester",
+        "type": "telmore-play",
+        "dataAmount": "Fri data",
+        "dataEU": "88 GB i EU",
+        "mobileBasePrice": 449,
+        "introPriceMobile": 99,
+        "introMonths": 1,
+        "expiryDate": "2026-12-31",
+        "newCustomersOnly": true,
+        "streamingChoiceCount": 4,
+        "streamingIncluded": [
+          {
+            "id": "disney",
+            "valgmuligheder": [
+              {
+                "label": "Disney+ Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "prime",
+            "valgmuligheder": [
+              {
+                "label": "Amazon Prime Video",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "Max Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "skyshowtime",
+            "valgmuligheder": [
+              {
+                "label": "SkyShowtime Standard Plus",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "saxo",
+            "valgmuligheder": [
+              {
+                "label": "Saxo Streaming 20 timer",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "telmore-musik",
+            "valgmuligheder": [
+              {
+                "label": "Telmore Musik",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.telmore.dk/abonnementer/telmore-play",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "telmore-play-5",
+        "name": "Telmore Play + 5 tjenester",
+        "type": "telmore-play",
+        "dataAmount": "Fri data",
+        "dataEU": "98 GB i EU",
+        "mobileBasePrice": 499,
+        "introPriceMobile": 99,
+        "introMonths": 1,
+        "expiryDate": "2026-12-31",
+        "newCustomersOnly": true,
+        "streamingChoiceCount": 5,
+        "streamingIncluded": [
+          {
+            "id": "disney",
+            "valgmuligheder": [
+              {
+                "label": "Disney+ Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "prime",
+            "valgmuligheder": [
+              {
+                "label": "Amazon Prime Video",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "Max Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "skyshowtime",
+            "valgmuligheder": [
+              {
+                "label": "SkyShowtime Standard Plus",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "saxo",
+            "valgmuligheder": [
+              {
+                "label": "Saxo Streaming 20 timer",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "telmore-musik",
+            "valgmuligheder": [
+              {
+                "label": "Telmore Musik",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.telmore.dk/abonnementer/telmore-play",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "telmore-play-alle",
+        "name": "Telmore Play + Alle tjenester",
+        "type": "telmore-play",
+        "dataAmount": "Fri data",
+        "dataEU": "118 GB i EU",
+        "mobileBasePrice": 599,
+        "introPriceMobile": 99,
+        "introMonths": 1,
+        "expiryDate": "2026-12-31",
+        "newCustomersOnly": true,
+        "streamingChoiceCount": 9,
+        "streamingIncluded": [
+          {
+            "id": "disney",
+            "valgmuligheder": [
+              {
+                "label": "Disney+ Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "prime",
+            "valgmuligheder": [
+              {
+                "label": "Amazon Prime Video",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "Max Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "skyshowtime",
+            "valgmuligheder": [
+              {
+                "label": "SkyShowtime Standard Plus",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "saxo",
+            "valgmuligheder": [
+              {
+                "label": "Saxo Streaming 20 timer",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "telmore-musik",
+            "valgmuligheder": [
+              {
+                "label": "Telmore Musik",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.telmore.dk/abonnementer/telmore-play",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "telmore-100gb-netflix-viaplay",
+        "name": "Fri tale + 100 GB",
+        "type": "fixed",
+        "dataAmount": "100 GB",
+        "dataEU": "59 GB i EU",
+        "mobileBasePrice": 299,
+        "introPriceMobile": 99,
+        "introMonths": 1,
+        "expiryDate": "2026-12-31",
+        "newCustomersOnly": true,
+        "streamingIncluded": [
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.telmore.dk/abonnementer/telmore-play",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "telmore-100gb-tv2-netflix",
+        "name": "Fri tale + 100 GB",
+        "type": "fixed",
+        "dataAmount": "100 GB",
+        "dataEU": "59 GB i EU",
+        "mobileBasePrice": 299,
+        "introPriceMobile": 99,
+        "introMonths": 1,
+        "expiryDate": "2026-12-31",
+        "newCustomersOnly": true,
+        "streamingIncluded": [
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.telmore.dk/abonnementer/telmore-play",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "telmore-100gb-prime-netflix",
+        "name": "Fri tale + 100 GB",
+        "type": "fixed",
+        "dataAmount": "100 GB",
+        "dataEU": "59 GB i EU",
+        "mobileBasePrice": 299,
+        "introPriceMobile": 99,
+        "introMonths": 1,
+        "expiryDate": "2026-12-31",
+        "newCustomersOnly": true,
+        "streamingIncluded": [
+          {
+            "id": "prime",
+            "valgmuligheder": [
+              {
+                "label": "Amazon Prime Video",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.telmore.dk/abonnementer/telmore-play",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "telmore-100gb-max-netflix",
+        "name": "Fri tale + 100 GB",
+        "type": "fixed",
+        "dataAmount": "100 GB",
+        "dataEU": "59 GB i EU",
+        "mobileBasePrice": 299,
+        "introPriceMobile": 99,
+        "introMonths": 1,
+        "expiryDate": "2026-12-31",
+        "newCustomersOnly": true,
+        "streamingIncluded": [
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "Max Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
+        ],
+        "link": "https://www.telmore.dk/abonnementer/telmore-play",
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      }
+    ]
   }
 ]
