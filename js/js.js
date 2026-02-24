@@ -50,9 +50,8 @@ const categories = {
   ${isSelected ? `<div class="check">✓</div>` : ""}
             <img src="${service.logo}" alt="${service.name} logo">
           `;
-  function handleCardToggle(e) {
+  card.addEventListener("click", (e) => {
   if (e.target.closest(".plan-pill") || e.target.closest(".plan-menu")) return;
-  if (e.type === 'touchstart') e.preventDefault();
   if (!selected[service.id]) {
   selected[service.id] = service.plans[0];
             } else {
@@ -60,9 +59,7 @@ const categories = {
             }
   render();
   calculate();
-          }
-  card.addEventListener("click", handleCardToggle);
-  card.addEventListener("touchstart", handleCardToggle, { passive: false });
+          });
   if (isSelected) {
   const hasMultiplePlans = service.plans.length > 1;
   const pill = document.createElement("div");
