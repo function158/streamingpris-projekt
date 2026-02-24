@@ -114,7 +114,7 @@ function calculateSavings(bundle, coveredEntries, selectedServices, currentMobil
             if (entry.id === 'mofibo'  && label.includes('100 timer'))            upgradeSum += 60;
             else if (entry.id === 'mofibo' && label.includes('50 timer'))         upgradeSum += 30;
         });
-        const basisNormal    = 160 + (Math.max(0, num - 2) * 50);
+        const basisNormal    = 180 + (Math.max(0, num - 2) * 50);
         const basisIntro     = Math.round(basisNormal * 0.5);
         streamingNormalPrice = basisNormal + upgradeSum;
         streamingIntroPrice  = basisIntro + upgradeSum;
