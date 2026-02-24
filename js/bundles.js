@@ -137,7 +137,7 @@ function calculateSavings(bundle, coveredEntries, selectedServices, currentMobil
     const hasIntro         = hasAnyStreamingIntro || bundle.introPriceMobile !== undefined;
     const normalPriceTotal = mobileNormal + streamingNormalPrice;
     const introPriceTotal  = hasIntro ? (mobileIntro + streamingIntroPrice) : null;
-    const monthlySavings   = (currentCostForCovered + currentMobile) - normalPriceTotal;
+    const monthlySavings   = (separateCost + currentMobile) - normalPriceTotal;
 
     const separateMonthly = separateCost + currentMobile;
     const extraIfSeparate = separateMonthly - normalPriceTotal;
@@ -188,7 +188,15 @@ async function renderBundles(selectedServices) {
     providersData.forEach(provider => {
         provider.bundles.forEach(bundle => {
             const normalized     = normalizeIncluded(bundle.streamingIncluded);
-            const coveredEntries = normalized.filter(entry => selectedIds.includes(entry.id));
+            let coveredEntries   = normalized.filter(entry => selectedIds.includes(entry.id));
+
+            // Telmore Play-bundles: brugeren vælger præcis streamingChoiceCount tjenester.
+            // Vis kun bundlen hvis brugeren har valgt MINDST streamingChoiceCount tjenester
+            // der er tilgængelige i bundlen, og begræns visningen til streamingChoiceCount.
+            if (bundle.streamingChoiceCount) {
+                if (coveredEntries.length < bundle.streamingChoiceCount) return; // ikke nok matches
+                coveredEntries = coveredEntries.slice(0, bundle.streamingChoiceCount);
+            }
 
             if (coveredEntries.length > 0) {
                 const savings = calculateSavings(bundle, coveredEntries, selectedServices, currentMobile);
@@ -295,6 +303,7 @@ function createBundleCard(item) {
         const planName  = plan ? plan.name : '';
         const hasValg   = !!entry.valgmuligheder;
 
+        const listPrice = plan ? plan.price : 0;
         let priceHtml;
         if (p.hasIntro) {
             priceHtml = `
@@ -302,6 +311,8 @@ function createBundleCard(item) {
                 ${p.introPrice === 0 ? 'Gratis' : p.introPrice + ' kr.'} i ${p.introMonths} mdr.
               </span>
               <span style="font-size:11px;color:#9ca3af;white-space:nowrap;">→ ${p.normalPrice} kr./md</span>`;
+        } else if (p.normalPrice === 0 && listPrice > 0) {
+            priceHtml = `<span style="font-size:11px;color:#15803d;font-weight:700;white-space:nowrap;">Inkluderet</span> <span style="font-size:11px;color:#9ca3af;text-decoration:line-through;white-space:nowrap;">${listPrice} kr./md</span>`;
         } else {
             priceHtml = `<span style="font-size:12px;color:#9ca3af;white-space:nowrap;">${p.normalPrice} kr./md</span>`;
         }
