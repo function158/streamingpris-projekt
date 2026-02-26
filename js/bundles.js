@@ -126,6 +126,60 @@ function calculateSavings(bundle, coveredEntries, selectedServices, currentMobil
     let hasAnyStreamingIntro = false;
     let streamingIntroMonths = null;
 
+
+    if (bundle.type === "norlys-pick-one") {
+        const freeMonths = bundle.freeStreamingMonths || 6;
+        const pickOneIds = (bundle.freeStreamingPickOne || []).map(e => e.id);
+        const pickOneEntry = coveredEntries.find(e => pickOneIds.includes(e.id));
+        const addonEntries = coveredEntries.filter(e => e !== pickOneEntry);
+        let pickOneNormalPrice = 0;
+        if (pickOneEntry) {
+            const resolved = resolveEntry(pickOneEntry);
+            const plan = getServicePlan(pickOneEntry.id, resolved.planIndex ?? 0);
+            // Brug priceAfter hvis det findes (prisen efter gratis-perioden), ellers partnerNormalPrice eller listpris
+            pickOneNormalPrice = resolved.priceAfter ?? resolved.partnerNormalPrice ?? (plan ? plan.price : 0);
+        }
+        let addonNormalPrice = 0;
+        let addonIntroPrice = 0;
+        let addonHasIntro = false;
+        let addonIntroMonths = null;
+        addonEntries.forEach(entry => {
+            const p = getServiceBundlePrice(entry);
+            addonNormalPrice += p.normalPrice;
+            if (p.hasIntro && p.introMonths > 0) {
+                addonIntroPrice += p.introPrice;
+                addonHasIntro = true;
+                if (addonIntroMonths === null || p.introMonths < addonIntroMonths) addonIntroMonths = p.introMonths;
+            } else { addonIntroPrice += p.normalPrice; }
+        });
+        streamingNormalPrice = pickOneNormalPrice + addonNormalPrice;
+        const mobileNormal = bundle.mobileBasePrice || 0;
+        let realYearlyCost = 0;
+        for (let m = 1; m <= 12; m++) {
+            const pickPrice = m <= freeMonths ? 0 : pickOneNormalPrice;
+            let addPrice = addonNormalPrice;
+            if (addonHasIntro && addonIntroMonths && m <= addonIntroMonths) addPrice = addonIntroPrice;
+            realYearlyCost += mobileNormal + pickPrice + addPrice;
+        }
+        const normalPriceTotal = mobileNormal + streamingNormalPrice;
+        const separateYearlyCost = (separateCost + currentMobile) * 12;
+        const realYearlySavings = separateYearlyCost - realYearlyCost;
+        const monthlySavings = (separateCost + currentMobile) - normalPriceTotal;
+        const phases = [];
+        if (addonHasIntro && addonIntroMonths) {
+            const phase1End = Math.min(addonIntroMonths, freeMonths);
+            phases.push({ from: 1, to: phase1End, total: mobileNormal + 0 + addonIntroPrice });
+            if (addonIntroMonths < freeMonths) phases.push({ from: addonIntroMonths + 1, to: freeMonths, total: mobileNormal + 0 + addonNormalPrice });
+        } else {
+            phases.push({ from: 1, to: freeMonths, total: mobileNormal + 0 + addonNormalPrice });
+        }
+        phases.push({ from: freeMonths + 1, to: null, total: mobileNormal + pickOneNormalPrice + addonNormalPrice });
+        const priceTiers = [];
+        phases.forEach(ph => { const prev = priceTiers[priceTiers.length-1]; if (!prev || prev.total !== ph.total) priceTiers.push(ph); });
+        const currentCostForCovered = coveredEntries.reduce((s,e) => s + (selectedServices[e.id] ? selectedServices[e.id].price : 0), 0);
+        return { totalSavings: Math.round(realYearlySavings / 12), yearlySavings: realYearlySavings, finalPrice: normalPriceTotal, streamingNormalPrice, streamingIntroPrice: 0, streamingIntroMonths: freeMonths, introPriceTotal: priceTiers[0]?.total ?? normalPriceTotal, introMonths: null, priceTiers, currentCostForCovered, separateCost, separateMonthly: separateCost + currentMobile, extraIfSeparate: (separateCost + currentMobile) - normalPriceTotal, extraIfSeparateYearly: separateYearlyCost - realYearlyCost };
+    }
+
     if (bundle.type === "cbb-mix") {
         const num = coveredEntries.length;
         if (num < 2) return null;
@@ -208,8 +262,10 @@ function calculateSavings(bundle, coveredEntries, selectedServices, currentMobil
     const realYearlySavings  = separateYearlyCost - realYearlyCost;
     const monthlySavings     = (separateCost + currentMobile) - normalPriceTotal;
 
-    const separateMonthly = separateCost + currentMobile;
-    const extraIfSeparate = separateMonthly - normalPriceTotal;
+    const separateMonthly  = separateCost + currentMobile;
+    const extraIfSeparate  = separateMonthly - normalPriceTotal;
+    // Vil-mode: også beregn år-for-år så intro-rabatter tæller med (samme metode som har-mode)
+    const extraIfSeparateYearly = separateYearlyCost - realYearlyCost;
 
     return {
         totalSavings:         monthlySavings,
@@ -225,6 +281,7 @@ function calculateSavings(bundle, coveredEntries, selectedServices, currentMobil
         separateCost,
         separateMonthly,
         extraIfSeparate,
+        extraIfSeparateYearly,
     };
 }
 
@@ -258,8 +315,34 @@ async function renderBundles(selectedServices) {
     let results = [];
     providersData.forEach(provider => {
         provider.bundles.forEach(bundle => {
-            const normalized     = normalizeIncluded(bundle.streamingIncluded);
-            let coveredEntries   = normalized.filter(entry => selectedIds.includes(entry.id));
+            // For Norlys pick-one: find hvilken af de valgte tjenester der er pick-one (første match),
+            // og byg coveredEntries så pick-one får pris 0 og resten bruger addon-priser fra streamingIncluded.
+            let coveredEntries;
+            if (bundle.type === "norlys-pick-one" && bundle.freeStreamingPickOne) {
+                const pickOneIds = bundle.freeStreamingPickOne.map(e => e.id);
+                // Brug bundle._activePickOneId hvis sat (bruger har skiftet), ellers første match
+                if (!bundle._activePickOneId || !pickOneIds.includes(bundle._activePickOneId) || !selectedIds.includes(bundle._activePickOneId)) {
+                    bundle._activePickOneId = selectedIds.find(id => pickOneIds.includes(id)) || null;
+                }
+                const pickedId = bundle._activePickOneId;
+                const entries = [];
+                if (pickedId) {
+                    // Pick-one entry: hent fra freeStreamingPickOne (partnerNormalPrice: 0)
+                    const pickEntry = normalizeEntry(bundle.freeStreamingPickOne.find(e => e.id === pickedId));
+                    entries.push(pickEntry);
+                }
+                // Alle andre valgte tjenester: hent fra streamingIncluded (med korrekte addon-priser)
+                const normalizedAll = normalizeIncluded(bundle.streamingIncluded);
+                normalizedAll.forEach(entry => {
+                    if (!selectedIds.includes(entry.id)) return;
+                    if (entry.id === pickedId) return; // spring pick-one over — allerede tilføjet
+                    entries.push(entry);
+                });
+                coveredEntries = entries;
+            } else {
+                const normalized = normalizeIncluded(bundle.streamingIncluded);
+                coveredEntries   = normalized.filter(entry => selectedIds.includes(entry.id));
+            }
 
             // Telmore Play-bundles: brugeren vælger præcis streamingChoiceCount tjenester.
             // Vis kun bundlen hvis brugeren har valgt MINDST streamingChoiceCount tjenester
@@ -415,7 +498,7 @@ function createBundleCard(item) {
 
         const listPrice = plan ? plan.price : 0;
         let priceHtml;
-        if (p.hasIntro) {
+        if (p.hasIntro && p.introMonths > 0) {
             priceHtml = `
               <span style="font-size:11px;color:#15803d;font-weight:700;white-space:nowrap;">
                 ${p.introPrice === 0 ? 'Gratis' : p.introPrice + ' kr.'} i ${p.introMonths} mdr.
@@ -523,7 +606,7 @@ function createBundleCard(item) {
           <strong class="detail-intro-total">${bundle.introPriceMobile} kr./md</strong>
         </div>` : ''}
         <div style="display:flex;justify-content:space-between;">
-          <span>Oprettelse:</span><strong>0 kr.</strong>
+          <span>Oprettelse:</span><strong>${bundle.setupFee ? bundle.setupFee + ' kr.' : (bundle.details?.oprettelse || '0 kr.')}</strong>
         </div>
       </div>
     `;
@@ -559,7 +642,7 @@ function buildHarSavingsBox(savings) {
 
 function buildVilSavingsBox(savings) {
     const extraMonthly = Math.round(savings.extraIfSeparate);
-    const extraYearly  = Math.round(savings.extraIfSeparate * 12);
+    const extraYearly  = Math.round(savings.extraIfSeparateYearly);
     if (extraMonthly <= 0) {
         return `
           <div style="background:#f3f4f6;border-radius:16px;padding:16px;text-align:center;margin-bottom:15px;border:1px solid #e5e7eb;">

@@ -1468,18 +1468,102 @@
         "newCustomersOnly": true,
         "streamingChoiceCount": 3,
         "streamingIncluded": [
-          { "id": "disney",        "valgmuligheder": [{ "label": "Disney+ Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "netflix",       "valgmuligheder": [{ "label": "Netflix Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "amazon-prime",  "valgmuligheder": [{ "label": "Amazon Prime Video",      "planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "max",           "valgmuligheder": [{ "label": "HBO Max Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "viaplay",       "valgmuligheder": [{ "label": "Viaplay Film & Serier",   "planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "tv2play",       "valgmuligheder": [{ "label": "TV 2 Play Basis Partner", "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "skyshowtime",   "valgmuligheder": [{ "label": "SkyShowtime Standard Plus","planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "saxo",          "valgmuligheder": [{ "label": "Saxo Streaming",          "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "telmore-musik", "valgmuligheder": [{ "label": "Telmore Musik",           "planIndex": 0, "partnerNormalPrice": 0 }] }
+          {
+            "id": "disney",
+            "valgmuligheder": [
+              {
+                "label": "Disney+ Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "amazon-prime",
+            "valgmuligheder": [
+              {
+                "label": "Amazon Prime Video",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "HBO Max Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "skyshowtime",
+            "valgmuligheder": [
+              {
+                "label": "SkyShowtime Standard Plus",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "saxo",
+            "valgmuligheder": [
+              {
+                "label": "Saxo Streaming",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "telmore-musik",
+            "valgmuligheder": [
+              {
+                "label": "Telmore Musik",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
         ],
         "link": "https://www.telmore.dk/abonnementer/telmore-play",
-        "details": { "oprettelse": "0 kr.", "opsigelse": "Ingen binding" }
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
       },
       {
         "id": "telmore-play-4",
@@ -1494,18 +1578,102 @@
         "newCustomersOnly": true,
         "streamingChoiceCount": 4,
         "streamingIncluded": [
-          { "id": "disney",        "valgmuligheder": [{ "label": "Disney+ Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "netflix",       "valgmuligheder": [{ "label": "Netflix Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "amazon-prime",  "valgmuligheder": [{ "label": "Amazon Prime Video",      "planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "max",           "valgmuligheder": [{ "label": "HBO Max Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "viaplay",       "valgmuligheder": [{ "label": "Viaplay Film & Serier",   "planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "tv2play",       "valgmuligheder": [{ "label": "TV 2 Play Basis Partner", "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "skyshowtime",   "valgmuligheder": [{ "label": "SkyShowtime Standard Plus","planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "saxo",          "valgmuligheder": [{ "label": "Saxo Streaming",          "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "telmore-musik", "valgmuligheder": [{ "label": "Telmore Musik",           "planIndex": 0, "partnerNormalPrice": 0 }] }
+          {
+            "id": "disney",
+            "valgmuligheder": [
+              {
+                "label": "Disney+ Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "amazon-prime",
+            "valgmuligheder": [
+              {
+                "label": "Amazon Prime Video",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "HBO Max Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "skyshowtime",
+            "valgmuligheder": [
+              {
+                "label": "SkyShowtime Standard Plus",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "saxo",
+            "valgmuligheder": [
+              {
+                "label": "Saxo Streaming",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "telmore-musik",
+            "valgmuligheder": [
+              {
+                "label": "Telmore Musik",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
         ],
         "link": "https://www.telmore.dk/abonnementer/telmore-play",
-        "details": { "oprettelse": "0 kr.", "opsigelse": "Ingen binding" }
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
       },
       {
         "id": "telmore-play-5",
@@ -1520,18 +1688,102 @@
         "newCustomersOnly": true,
         "streamingChoiceCount": 5,
         "streamingIncluded": [
-          { "id": "disney",        "valgmuligheder": [{ "label": "Disney+ Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "netflix",       "valgmuligheder": [{ "label": "Netflix Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "amazon-prime",  "valgmuligheder": [{ "label": "Amazon Prime Video",      "planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "max",           "valgmuligheder": [{ "label": "HBO Max Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "viaplay",       "valgmuligheder": [{ "label": "Viaplay Film & Serier",   "planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "tv2play",       "valgmuligheder": [{ "label": "TV 2 Play Basis Partner", "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "skyshowtime",   "valgmuligheder": [{ "label": "SkyShowtime Standard Plus","planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "saxo",          "valgmuligheder": [{ "label": "Saxo Streaming",          "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "telmore-musik", "valgmuligheder": [{ "label": "Telmore Musik",           "planIndex": 0, "partnerNormalPrice": 0 }] }
+          {
+            "id": "disney",
+            "valgmuligheder": [
+              {
+                "label": "Disney+ Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "amazon-prime",
+            "valgmuligheder": [
+              {
+                "label": "Amazon Prime Video",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "HBO Max Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "skyshowtime",
+            "valgmuligheder": [
+              {
+                "label": "SkyShowtime Standard Plus",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "saxo",
+            "valgmuligheder": [
+              {
+                "label": "Saxo Streaming",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "telmore-musik",
+            "valgmuligheder": [
+              {
+                "label": "Telmore Musik",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
         ],
         "link": "https://www.telmore.dk/abonnementer/telmore-play",
-        "details": { "oprettelse": "0 kr.", "opsigelse": "Ingen binding" }
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
       },
       {
         "id": "telmore-play-alle",
@@ -1546,18 +1798,102 @@
         "newCustomersOnly": true,
         "streamingChoiceCount": 9,
         "streamingIncluded": [
-          { "id": "disney",        "valgmuligheder": [{ "label": "Disney+ Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "netflix",       "valgmuligheder": [{ "label": "Netflix Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "amazon-prime",  "valgmuligheder": [{ "label": "Amazon Prime Video",      "planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "max",           "valgmuligheder": [{ "label": "HBO Max Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "viaplay",       "valgmuligheder": [{ "label": "Viaplay Film & Serier",   "planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "tv2play",       "valgmuligheder": [{ "label": "TV 2 Play Basis Partner", "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "skyshowtime",   "valgmuligheder": [{ "label": "SkyShowtime Standard Plus","planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "saxo",          "valgmuligheder": [{ "label": "Saxo Streaming",          "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "telmore-musik", "valgmuligheder": [{ "label": "Telmore Musik",           "planIndex": 0, "partnerNormalPrice": 0 }] }
+          {
+            "id": "disney",
+            "valgmuligheder": [
+              {
+                "label": "Disney+ Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "amazon-prime",
+            "valgmuligheder": [
+              {
+                "label": "Amazon Prime Video",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "HBO Max Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "skyshowtime",
+            "valgmuligheder": [
+              {
+                "label": "SkyShowtime Standard Plus",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "saxo",
+            "valgmuligheder": [
+              {
+                "label": "Saxo Streaming",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "telmore-musik",
+            "valgmuligheder": [
+              {
+                "label": "Telmore Musik",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
         ],
         "link": "https://www.telmore.dk/abonnementer/telmore-play",
-        "details": { "oprettelse": "0 kr.", "opsigelse": "Ingen binding" }
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
       },
       {
         "id": "telmore-100gb-netflix-viaplay",
@@ -1571,11 +1907,32 @@
         "expiryDate": "2026-12-31",
         "newCustomersOnly": true,
         "streamingIncluded": [
-          { "id": "netflix", "valgmuligheder": [{ "label": "Netflix Standard", "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "viaplay", "valgmuligheder": [{ "label": "Viaplay Film & Serier", "planIndex": 0, "partnerNormalPrice": 0 }] }
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
         ],
         "link": "https://www.telmore.dk/abonnementer/telmore-play",
-        "details": { "oprettelse": "0 kr.", "opsigelse": "Ingen binding" }
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
       },
       {
         "id": "telmore-100gb-tv2-netflix",
@@ -1589,11 +1946,32 @@
         "expiryDate": "2026-12-31",
         "newCustomersOnly": true,
         "streamingIncluded": [
-          { "id": "tv2play", "valgmuligheder": [{ "label": "TV 2 Play Basis Partner", "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "netflix", "valgmuligheder": [{ "label": "Netflix Standard", "planIndex": 1, "partnerNormalPrice": 0 }] }
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
         ],
         "link": "https://www.telmore.dk/abonnementer/telmore-play",
-        "details": { "oprettelse": "0 kr.", "opsigelse": "Ingen binding" }
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
       },
       {
         "id": "telmore-100gb-prime-netflix",
@@ -1607,11 +1985,32 @@
         "expiryDate": "2026-12-31",
         "newCustomersOnly": true,
         "streamingIncluded": [
-          { "id": "amazon-prime", "valgmuligheder": [{ "label": "Amazon Prime Video", "planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "netflix",      "valgmuligheder": [{ "label": "Netflix Standard",   "planIndex": 1, "partnerNormalPrice": 0 }] }
+          {
+            "id": "amazon-prime",
+            "valgmuligheder": [
+              {
+                "label": "Amazon Prime Video",
+                "planIndex": 0,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
         ],
         "link": "https://www.telmore.dk/abonnementer/telmore-play",
-        "details": { "oprettelse": "0 kr.", "opsigelse": "Ingen binding" }
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
       },
       {
         "id": "telmore-100gb-max-netflix",
@@ -1625,11 +2024,696 @@
         "expiryDate": "2026-12-31",
         "newCustomersOnly": true,
         "streamingIncluded": [
-          { "id": "max",     "valgmuligheder": [{ "label": "HBO Max Standard", "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "netflix", "valgmuligheder": [{ "label": "Netflix Standard", "planIndex": 1, "partnerNormalPrice": 0 }] }
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "HBO Max Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0
+              }
+            ]
+          }
         ],
         "link": "https://www.telmore.dk/abonnementer/telmore-play",
-        "details": { "oprettelse": "0 kr.", "opsigelse": "Ingen binding" }
+        "details": {
+          "oprettelse": "0 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      }
+    ]
+  },
+  {
+    "name": "Norlys",
+    "logo": "./images/norlys-logo.svg",
+    "network": "Norlys (5G)",
+    "bundles": [
+      {
+        "id": "norlys-one",
+        "name": "ONE",
+        "type": "norlys-pick-one",
+        "dataAmount": "Fri data",
+        "dataEU": "55 GB i 64 lande",
+        "mobileBasePrice": 279,
+        "introMonths": null,
+        "setupFee": 99,
+        "adminFee": 15,
+        "minPriceFirstMonth": 393,
+        "familyPlan": true,
+        "familyExtraPrice": 129,
+        "freeStreamingMonths": 12,
+        "freeStreamingPickOne": [
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerNormalPrice": 0,
+                "priceAfter": 89
+              },
+              {
+                "label": "TV 2 Play Basis Partner (fast rabat)",
+                "planIndex": 1,
+                "partnerNormalPrice": 0,
+                "priceAfter": 159
+              },
+              {
+                "label": "TV 2 Play Basis + Sport Partner",
+                "planIndex": 4,
+                "partnerNormalPrice": 0,
+                "priceAfter": 229
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0,
+                "priceAfter": 139
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0,
+                "priceAfter": 129
+              }
+            ]
+          }
+        ],
+        "streamingIncluded": [
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 89
+              },
+              {
+                "label": "TV 2 Play Basis Partner (fast rabat)",
+                "planIndex": 1,
+                "partnerNormalPrice": 159
+              },
+              {
+                "label": "TV 2 Play Basis + Sport Partner",
+                "planIndex": 4,
+                "partnerNormalPrice": 229
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 139
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerIntroPrice": 129,
+                "partnerIntroMonths": 0,
+                "partnerNormalPrice": 129
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "MAX Standard",
+                "planIndex": 1,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 109
+              },
+              {
+                "label": "MAX Standard + Sport",
+                "planIndex": 2,
+                "partnerIntroPrice": 40,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 149
+              }
+            ]
+          },
+          {
+            "id": "deezer",
+            "valgmuligheder": [
+              {
+                "label": "Deezer Premium",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 89
+              },
+              {
+                "label": "Deezer Family",
+                "planIndex": 2,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 159
+              }
+            ]
+          },
+          {
+            "id": "podimo",
+            "valgmuligheder": [
+              {
+                "label": "Podimo Podcast",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 69
+              }
+            ]
+          }
+        ],
+        "link": "https://www.norlys.dk/mobil/one/",
+        "details": {
+          "oprettelse": "99 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "norlys-smart200",
+        "name": "Smart200",
+        "type": "norlys-pick-one",
+        "dataAmount": "200 GB",
+        "dataEU": "45 GB i 48 lande",
+        "mobileBasePrice": 229,
+        "introMonths": null,
+        "setupFee": 99,
+        "adminFee": 15,
+        "minPriceFirstMonth": 328,
+        "familyPlan": false,
+        "freeStreamingMonths": 6,
+        "freeStreamingPickOne": [
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerNormalPrice": 0,
+                "priceAfter": 89
+              },
+              {
+                "label": "TV 2 Play Basis Partner (fast rabat)",
+                "planIndex": 1,
+                "partnerNormalPrice": 0,
+                "priceAfter": 159
+              },
+              {
+                "label": "TV 2 Play Basis + Sport Partner",
+                "planIndex": 4,
+                "partnerNormalPrice": 0,
+                "priceAfter": 229
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0,
+                "priceAfter": 139
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0,
+                "priceAfter": 129
+              }
+            ]
+          }
+        ],
+        "streamingIncluded": [
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 89
+              },
+              {
+                "label": "TV 2 Play Basis Partner (fast rabat)",
+                "planIndex": 1,
+                "partnerNormalPrice": 159
+              },
+              {
+                "label": "TV 2 Play Basis + Sport Partner",
+                "planIndex": 4,
+                "partnerNormalPrice": 229
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 139
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerIntroPrice": 129,
+                "partnerIntroMonths": 0,
+                "partnerNormalPrice": 129
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "MAX Standard",
+                "planIndex": 1,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 109
+              },
+              {
+                "label": "MAX Standard + Sport",
+                "planIndex": 2,
+                "partnerIntroPrice": 40,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 149
+              }
+            ]
+          },
+          {
+            "id": "deezer",
+            "valgmuligheder": [
+              {
+                "label": "Deezer Premium",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 89
+              },
+              {
+                "label": "Deezer Family",
+                "planIndex": 2,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 159
+              }
+            ]
+          },
+          {
+            "id": "podimo",
+            "valgmuligheder": [
+              {
+                "label": "Podimo Podcast",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 69
+              }
+            ]
+          }
+        ],
+        "link": "https://www.norlys.dk/mobil/smart200/",
+        "details": {
+          "oprettelse": "99 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "norlys-smart60",
+        "name": "Smart60",
+        "type": "norlys-pick-one",
+        "dataAmount": "60 GB",
+        "dataEU": "39 GB i 48 lande",
+        "mobileBasePrice": 199,
+        "introMonths": null,
+        "setupFee": 99,
+        "adminFee": 15,
+        "minPriceFirstMonth": 298,
+        "familyPlan": false,
+        "freeStreamingMonths": 6,
+        "freeStreamingPickOne": [
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerNormalPrice": 0,
+                "priceAfter": 89
+              },
+              {
+                "label": "TV 2 Play Basis Partner (fast rabat)",
+                "planIndex": 1,
+                "partnerNormalPrice": 0,
+                "priceAfter": 159
+              },
+              {
+                "label": "TV 2 Play Basis + Sport Partner",
+                "planIndex": 4,
+                "partnerNormalPrice": 0,
+                "priceAfter": 229
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0,
+                "priceAfter": 139
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0,
+                "priceAfter": 129
+              }
+            ]
+          }
+        ],
+        "streamingIncluded": [
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 89
+              },
+              {
+                "label": "TV 2 Play Basis Partner (fast rabat)",
+                "planIndex": 1,
+                "partnerNormalPrice": 159
+              },
+              {
+                "label": "TV 2 Play Basis + Sport Partner",
+                "planIndex": 4,
+                "partnerNormalPrice": 229
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 139
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerIntroPrice": 129,
+                "partnerIntroMonths": 0,
+                "partnerNormalPrice": 129
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "MAX Standard",
+                "planIndex": 1,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 109
+              },
+              {
+                "label": "MAX Standard + Sport",
+                "planIndex": 2,
+                "partnerIntroPrice": 40,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 149
+              }
+            ]
+          },
+          {
+            "id": "deezer",
+            "valgmuligheder": [
+              {
+                "label": "Deezer Premium",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 89
+              },
+              {
+                "label": "Deezer Family",
+                "planIndex": 2,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 159
+              }
+            ]
+          },
+          {
+            "id": "podimo",
+            "valgmuligheder": [
+              {
+                "label": "Podimo Podcast",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 69
+              }
+            ]
+          }
+        ],
+        "link": "https://www.norlys.dk/mobil/smart60/",
+        "details": {
+          "oprettelse": "99 kr.",
+          "opsigelse": "Ingen binding"
+        }
+      },
+      {
+        "id": "norlys-smart20",
+        "name": "Smart20",
+        "type": "norlys-pick-one",
+        "dataAmount": "20 GB",
+        "dataEU": "20 GB i 48 lande",
+        "mobileBasePrice": 159,
+        "introMonths": null,
+        "setupFee": 99,
+        "adminFee": 15,
+        "minPriceFirstMonth": 258,
+        "familyPlan": false,
+        "freeStreamingMonths": 6,
+        "freeStreamingPickOne": [
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerNormalPrice": 0,
+                "priceAfter": 89
+              },
+              {
+                "label": "TV 2 Play Basis Partner (fast rabat)",
+                "planIndex": 1,
+                "partnerNormalPrice": 0,
+                "priceAfter": 159
+              },
+              {
+                "label": "TV 2 Play Basis + Sport Partner",
+                "planIndex": 4,
+                "partnerNormalPrice": 0,
+                "priceAfter": 229
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerNormalPrice": 0,
+                "priceAfter": 139
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerNormalPrice": 0,
+                "priceAfter": 129
+              }
+            ]
+          }
+        ],
+        "streamingIncluded": [
+          {
+            "id": "tv2play",
+            "valgmuligheder": [
+              {
+                "label": "TV 2 Play Basis Partner",
+                "planIndex": 1,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 89
+              },
+              {
+                "label": "TV 2 Play Basis Partner (fast rabat)",
+                "planIndex": 1,
+                "partnerNormalPrice": 159
+              },
+              {
+                "label": "TV 2 Play Basis + Sport Partner",
+                "planIndex": 4,
+                "partnerNormalPrice": 229
+              }
+            ]
+          },
+          {
+            "id": "viaplay",
+            "valgmuligheder": [
+              {
+                "label": "Viaplay Film & Serier",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 139
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "partnerIntroPrice": 129,
+                "partnerIntroMonths": 0,
+                "partnerNormalPrice": 129
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "MAX Standard",
+                "planIndex": 1,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 109
+              },
+              {
+                "label": "MAX Standard + Sport",
+                "planIndex": 2,
+                "partnerIntroPrice": 40,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 149
+              }
+            ]
+          },
+          {
+            "id": "deezer",
+            "valgmuligheder": [
+              {
+                "label": "Deezer Premium",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 89
+              },
+              {
+                "label": "Deezer Family",
+                "planIndex": 2,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 159
+              }
+            ]
+          },
+          {
+            "id": "podimo",
+            "valgmuligheder": [
+              {
+                "label": "Podimo Podcast",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 69
+              }
+            ]
+          }
+        ],
+        "link": "https://www.norlys.dk/mobil/smart20/",
+        "details": {
+          "oprettelse": "99 kr.",
+          "opsigelse": "Ingen binding"
+        }
       }
     ]
   }
