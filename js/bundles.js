@@ -1,3 +1,23 @@
+const SERVICE_ICONS = {
+  'netflix':        './images/netflix-icon.svg',
+  'disney':         './images/disney-plus-icon.svg',
+  'amazon-prime':   './images/amazon-prime-video-icon.svg',
+  'max':            './images/hbo-max-logo.svg',
+  'tv2play':        './images/tv2play-icon.svg',
+  'viaplay':        './images/viaplay-icon.svg',
+  'deezer':         './images/deezer-icon.svg',
+  'podimo':         './images/podimo-icon.svg',
+  'mofibo':         './images/mofibo-icon.svg',
+  'nordiskfilmplus':'./images/nordisk-film-plus-icon.svg',
+  'saxo':           './images/saxo-icon.svg',
+  'skyshowtime':    './images/skyshowtime.svg',
+  'telmore-musik':  './images/telmore-logo.svg',
+};
+
+function getServiceIcon(id) {
+  return SERVICE_ICONS[id] || getServiceLogo(id);
+}
+
 let providersData = [];
 
 async function fetchProviders() {
@@ -91,14 +111,20 @@ function calculateSavings(bundle, coveredEntries, selectedServices, currentMobil
 
     let separateCost = 0;
     coveredEntries.forEach(entry => {
-        const resolved  = resolveEntry(entry);
-        const plan      = getServicePlan(entry.id, resolved.planIndex ?? 0);
-        separateCost   += plan ? plan.price : 0;
+        const id = entry.id;
+        if (selectedServices[id]) {
+            separateCost += selectedServices[id].price;
+        } else {
+            const resolved = resolveEntry(entry);
+            const plan     = getServicePlan(id, resolved.planIndex ?? 0);
+            separateCost  += plan ? plan.price : 0;
+        }
     });
 
     let streamingNormalPrice = 0;
     let streamingIntroPrice  = 0;
     let hasAnyStreamingIntro = false;
+    let streamingIntroMonths = null;
 
     if (bundle.type === "cbb-mix") {
         const num = coveredEntries.length;
@@ -126,30 +152,75 @@ function calculateSavings(bundle, coveredEntries, selectedServices, currentMobil
             if (p.hasIntro) {
                 streamingIntroPrice += p.introPrice;
                 hasAnyStreamingIntro = true;
+                // Gem streaming-introperiode (tager den første/laveste der findes)
+                if (p.introMonths && (streamingIntroMonths === null || p.introMonths < streamingIntroMonths)) {
+                    streamingIntroMonths = p.introMonths;
+                }
             } else {
                 streamingIntroPrice += p.normalPrice;
             }
         });
     }
 
-    const mobileNormal     = bundle.mobileBasePrice || bundle.normalPrice || 0;
-    const mobileIntro      = bundle.introPriceMobile ?? mobileNormal;
-    const hasIntro         = hasAnyStreamingIntro || bundle.introPriceMobile !== undefined;
-    const normalPriceTotal = mobileNormal + streamingNormalPrice;
-    const introPriceTotal  = hasIntro ? (mobileIntro + streamingIntroPrice) : null;
-    const monthlySavings   = (separateCost + currentMobile) - normalPriceTotal;
+    const mobileNormal      = bundle.mobileBasePrice || bundle.normalPrice || 0;
+    const mobileIntro       = bundle.introPriceMobile ?? mobileNormal;
+    const mobileIntroMonths = bundle.introMonths ?? 0;
+    const hasIntro          = hasAnyStreamingIntro || bundle.introPriceMobile !== undefined;
+    const normalPriceTotal  = mobileNormal + streamingNormalPrice;
+    const introPriceTotal   = hasIntro ? (mobileIntro + streamingIntroPrice) : null;
+
+    // ── Kronologiske prisfaser ───────────────────────────────────────────────
+    // Find alle unikke tidspunkter hvor prisen skifter (måned 0, mobileIntroEnd, streamingIntroEnd)
+    const priceTiers = [];
+    if (hasIntro) {
+        const breakpoints = [...new Set([0, mobileIntroMonths, (hasAnyStreamingIntro && streamingIntroMonths) ? streamingIntroMonths : 0].filter(x => x >= 0))].sort((a, b) => a - b);
+
+        breakpoints.forEach((bp, i) => {
+            const nextBp   = breakpoints[i + 1] ?? Infinity;
+            const mobPrice = (mobileIntroMonths > 0 && bp < mobileIntroMonths) ? mobileIntro : mobileNormal;
+            const strPrice = (hasAnyStreamingIntro && streamingIntroMonths && bp < streamingIntroMonths)
+                ? streamingIntroPrice : streamingNormalPrice;
+            const total    = mobPrice + strPrice;
+            const prev     = priceTiers[priceTiers.length - 1];
+            // Spring over hvis prisen er identisk med forrige trin
+            if (!prev || prev.total !== total) {
+                priceTiers.push({
+                    from:  bp + 1,
+                    to:    nextBp === Infinity ? null : nextBp,
+                    total, mobPrice, strPrice
+                });
+            }
+        });
+    } else {
+        priceTiers.push({ from: 1, to: null, total: normalPriceTotal });
+    }
+
+    // Beregn reel årlig besparelse måned for måned
+    let realYearlyCost = 0;
+    for (let m = 1; m <= 12; m++) {
+        const mob       = (mobileIntroMonths > 0 && m <= mobileIntroMonths) ? mobileIntro : mobileNormal;
+        const streaming = (hasAnyStreamingIntro && streamingIntroMonths && m <= streamingIntroMonths)
+            ? streamingIntroPrice
+            : streamingNormalPrice;
+        realYearlyCost += mob + streaming;
+    }
+    const separateYearlyCost = (separateCost + currentMobile) * 12;
+    const realYearlySavings  = separateYearlyCost - realYearlyCost;
+    const monthlySavings     = (separateCost + currentMobile) - normalPriceTotal;
 
     const separateMonthly = separateCost + currentMobile;
     const extraIfSeparate = separateMonthly - normalPriceTotal;
 
     return {
         totalSavings:         monthlySavings,
-        yearlySavings:        monthlySavings * 12,
+        yearlySavings:        realYearlySavings,
         finalPrice:           normalPriceTotal,
         streamingNormalPrice,
         streamingIntroPrice:  hasAnyStreamingIntro ? streamingIntroPrice : null,
+        streamingIntroMonths,
         introPriceTotal,
         introMonths:          bundle.introMonths ?? null,
+        priceTiers,
         currentCostForCovered,
         separateCost,
         separateMonthly,
@@ -285,6 +356,45 @@ async function renderBundles(selectedServices) {
     }
 }
 
+// ─── PRIS-FASER RENDERER ─────────────────────────────────────────────────────
+// Viser kronologiske prisfaser korrekt, fx:
+//   64 kr./md de første 2 mdr.
+//   401 kr./md i mdr. 3
+//   Herefter 466 kr./md
+function buildPriceTiersHtml(savings) {
+    const tiers = savings.priceTiers;
+
+    // Kun ét trin = ingen intro
+    if (!tiers || tiers.length <= 1) {
+        const price = (tiers && tiers[0]) ? tiers[0].total : savings.finalPrice;
+        return `<strong class="price-normal" style="font-size:22px;font-weight:800;color:#111;">
+                  ${price} kr<span style="font-size:14px;font-weight:400;color:#6b7280;">/md</span>
+                </strong>`;
+    }
+
+    // Flere trin: intro-rækker + normalpris til sidst
+    const introTiers = tiers.slice(0, -1);
+    const finalTier  = tiers[tiers.length - 1];
+
+    const introRows = introTiers.map((tier, i) => {
+        const months  = tier.to ? (tier.to - tier.from + 1) : '?';
+        const label   = i === 0
+            ? `de første ${months} mdr.`
+            : `mdr. ${tier.from}–${tier.to}`;
+        return `<div style="color:#15803d;font-weight:800;font-size:15px;margin-bottom:3px;">
+                  KUN ${tier.total} kr./md ${label}
+                </div>`;
+    }).join('');
+
+    return `${introRows}
+        <div style="display:flex;align-items:baseline;justify-content:center;gap:5px;margin-top:2px;">
+          <span style="font-size:13px;color:#6b7280;font-weight:500;">Herefter</span>
+          <strong class="price-normal" style="font-size:22px;font-weight:800;color:#111;">
+            ${finalTier.total} kr<span style="font-size:14px;font-weight:400;color:#6b7280;">/md</span>
+          </strong>
+        </div>`;
+}
+
 // ─── BUNDLE CARD ──────────────────────────────────────────────────────────────
 
 function createBundleCard(item) {
@@ -297,7 +407,7 @@ function createBundleCard(item) {
 
     const buildServicesHtml = (entries) => entries.map(entry => {
         const resolved  = resolveEntry(entry);
-        const src       = getServiceLogo(entry.id);
+        const src       = getServiceIcon(entry.id);
         const plan      = getServicePlan(entry.id, resolved.planIndex ?? 0);
         const p         = getServiceBundlePrice(entry);
         const planName  = plan ? plan.name : '';
@@ -332,7 +442,7 @@ function createBundleCard(item) {
         return `
           <div class="service-row valg-wrap" data-service-id="${entry.id}" style="margin-bottom:8px;position:relative;">
             <div style="display:grid;grid-template-columns:52px 1fr 90px;align-items:center;gap:8px;">
-              <img src="${src}" alt="${entry.id}" style="height:28px;width:auto;max-width:48px;object-fit:contain;">
+              <img src="${src}" alt="${entry.id}" style="height:32px;width:32px;object-fit:contain;border-radius:8px;">
               <div style="min-width:0;">${labelHtml}</div>
               <div style="text-align:right;">${priceHtml}</div>
             </div>
@@ -375,24 +485,13 @@ function createBundleCard(item) {
       <div class="bundle-savings-wrap">${savingsBoxHtml}</div>
 
       <div class="bundle-price">
-        <div style="font-size:14px;color:#6b7280;margin-bottom:4px;">${isVilMode ? 'Samlet pris med dette bundt' : 'Ny samlet pris'}</div>
+        <div style="font-size:14px;color:#6b7280;margin-bottom:6px;">${isVilMode ? 'Samlet pris med dette bundt' : 'Ny samlet pris'}</div>
         <div class="price-intro-wrap">
-          ${hasIntro ? `
-            <div class="price-intro" style="color:#15803d;font-weight:800;font-size:15px;margin-bottom:4px;">
-              KUN ${introPriceTotal} kr. i ${savings.introMonths} mdr.
-            </div>
-            <strong class="price-normal" style="font-size:22px;font-weight:800;color:#111;">
-              derefter ${savings.finalPrice} kr<span style="font-size:14px;font-weight:400;color:#6b7280;">/md</span>
-            </strong>
-          ` : `
-            <strong class="price-normal" style="font-size:22px;font-weight:800;color:#111;">
-              ${savings.finalPrice} kr<span style="font-size:14px;font-weight:400;color:#6b7280;">/md</span>
-            </strong>
-          `}
+          ${buildPriceTiersHtml(savings)}
         </div>
       </div>
 
-      <a href="${bundle.link}" class="bundle-btn" target="_blank" style="margin-top:15px;width:100%;text-align:center;display:block;text-decoration:none;">Hent tilbud</a>
+     <a href="${applyTracking(bundle.link)}" class="bundle-btn" target="_blank" style="margin-top:15px;width:100%;text-align:center;display:block;text-decoration:none;">Hent tilbud</a>
 
       <div style="text-align:center;margin-top:10px;font-size:12px;">${expiryLabel || ''}</div>
 
@@ -411,7 +510,7 @@ function createBundleCard(item) {
         </div>
         ${savings.streamingIntroPrice !== null ? `
         <div style="display:flex;justify-content:space-between;margin-bottom:6px;color:#15803d;">
-          <span>Streaming i bundlen (intro):</span>
+          <span>Streaming i bundlen (gratis i ${savings.streamingIntroMonths || savings.introMonths || ''} mdr.):</span>
           <strong class="detail-streaming-intro">${savings.streamingIntroPrice} kr./md</strong>
         </div>` : ''}
         <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
@@ -420,8 +519,8 @@ function createBundleCard(item) {
         </div>
         ${hasIntro ? `
         <div style="display:flex;justify-content:space-between;margin-bottom:6px;color:#15803d;">
-          <span>Intro-pris (${savings.introMonths} mdr.):</span>
-          <strong class="detail-intro-total">${introPriceTotal} kr./md</strong>
+          <span>Mobilabonnement intro (${savings.introMonths} mdr.):</span>
+          <strong class="detail-intro-total">${bundle.introPriceMobile} kr./md</strong>
         </div>` : ''}
         <div style="display:flex;justify-content:space-between;">
           <span>Oprettelse:</span><strong>0 kr.</strong>
@@ -519,17 +618,7 @@ function attachValgListeners(card, coveredEntries, bundle, buildServicesHtml) {
                 }
 
                 const priceWrap = card.querySelector('.price-intro-wrap');
-                const ni        = newSavings.introPriceTotal !== null;
-                priceWrap.innerHTML = ni ? `
-                    <div style="color:#15803d;font-weight:800;font-size:15px;margin-bottom:4px;">
-                      KUN ${newSavings.introPriceTotal} kr. i ${newSavings.introMonths} mdr.
-                    </div>
-                    <strong style="font-size:22px;font-weight:800;color:#111;">
-                      derefter ${newSavings.finalPrice} kr<span style="font-size:14px;font-weight:400;color:#6b7280;">/md</span>
-                    </strong>` : `
-                    <strong style="font-size:22px;font-weight:800;color:#111;">
-                      ${newSavings.finalPrice} kr<span style="font-size:14px;font-weight:400;color:#6b7280;">/md</span>
-                    </strong>`;
+                if (priceWrap) priceWrap.innerHTML = buildPriceTiersHtml(newSavings);
             }
 
             attachValgListeners(card, coveredEntries, bundle, buildServicesHtml);

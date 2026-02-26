@@ -252,26 +252,3 @@ if (document.readyState === 'loading') {
 } else {
   initMobilePicker();
 }
-
-/**
- * ACCORDION – Kun én FAQ åben ad gangen
- */
-function initAccordion() {
-  document.querySelectorAll('.extra-info details').forEach(detail => {
-    detail.addEventListener('toggle', () => {
-      if (detail.open) {
-        document.querySelectorAll('.extra-info details').forEach(other => {
-          if (other !== detail && other.open) {
-            other.open = false;
-          }
-        });
-      }
-    });
-  });
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initAccordion);
-} else {
-  initAccordion();
-}

@@ -1,64 +1,374 @@
-  /* =========================
-   TOP MENU – STATISK
+/* =========================
+   TOP MENU
    ========================= */
 
-.top-nav {
+   .top-nav {
     background: #fff;
     box-shadow: 0 2px 8px rgba(0,0,0,.06);
     border-radius: 20px;
+    position: relative;
+    z-index: 100;
   }
   
-  
-  
-  /* indhold matcher resten af siden */
   .top-nav .nav-inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 16px 23px;
+    padding: 14px 20px;
+    gap: 16px;
   }
   
+  /* --- LOGO --- */
+  .nav-logo a {
+    display: flex;
+    align-items: center;
+  }
+  .nav-logo img {
+    height: 28px;
+    width: auto;
+  }
   
+  /* --- NAV LINKS (desktop) --- */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    justify-content: center;
+  }
   
-  /* logo/tekst */
-  .top-nav {
+  .nav-links > li {
+    position: relative;
+  }
+  
+  .nav-links > li > a,
+  .nav-links > li > button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 8px 13px;
     font-size: 14px;
     font-weight: 600;
-    letter-spacing: .5px;
-    color: #111;
-    text-transform: uppercase;
+    color: #333;
+    text-decoration: none;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+    font-family: inherit;
+    letter-spacing: 0.2px;
   }
   
-  /* feedback-knap */
-  .top-nav .nav-feedback {
+  .nav-links > li > a:hover,
+  .nav-links > li > button:hover,
+  .nav-links > li.open > button {
+    background: #f3f4f8;
+    color: #111;
+  }
+  
+  .nav-links > li > a:focus,
+  .nav-links > li > button:focus {
+    outline: none;
+  }
+  
+  /* Chevron icon */
+  .nav-links > li > button .chevron {
+    width: 14px;
+    height: 14px;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+    opacity: 0.55;
+  }
+  
+  .nav-links > li.open > button .chevron {
+    transform: rotate(180deg);
+    opacity: 0.8;
+  }
+  
+  /* Usynlig bro mellem knap og dropdown så musen kan passere ned */
+  .nav-links > li > button {
+    position: relative;
+  }
+  .nav-links > li > button::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+  }
+  
+  /* --- DROPDOWN --- */
+  .dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-6px);
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 8px 30px rgba(0,0,0,.12), 0 2px 8px rgba(0,0,0,.06);
+    min-width: 200px;
+    padding: 8px;
+    list-style: none;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 200;
+  }
+  
+  .nav-links > li.open .dropdown {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateX(-50%) translateY(0);
+  }
+  
+  .nav-links > li.open > button .chevron {
+    transform: rotate(180deg);
+    opacity: 0.8;
+  }
+  
+  .dropdown li a {
+    display: block;
+    padding: 9px 14px;
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+  }
+  
+  .dropdown li a:hover {
+    background: #f3f4f8;
+    color: #111;
+  }
+  
+  .dropdown li a .dd-desc {
+    display: block;
+    font-size: 11.5px;
+    font-weight: 400;
+    color: #888;
+    margin-top: 1px;
+  }
+  
+  /* --- CTA BUTTON --- */
+  .cta-primary {
     background: #2B3EFF;
-    color: #fff;
+    color: #fff !important;
     font-size: 13px;
     font-weight: 600;
     padding: 8px 14px;
     border-radius: 999px;
     text-decoration: none;
     white-space: nowrap;
-    transition:
-    background-color .30s ease,
-    transform .30s ease,
-    box-shadow .30s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: background-color .30s ease, transform .30s ease, box-shadow .30s ease;
+    flex-shrink: 0;
+    outline: none;
+    border: none;
   }
   
-  .top-nav .nav-feedback:active {
+  .cta-primary .arrow {
+    transition: transform 0.25s ease;
+  }
+  
+  .cta-primary:hover {
+    background-color: #1620cc;
+    box-shadow: 0 6px 16px rgba(31, 43, 255, .25);
+    transform: translateY(-1px);
+  }
+  
+  .cta-primary:hover .arrow {
+    transform: translateX(3px);
+  }
+  
+  .cta-primary:active {
     transform: scale(.97);
   }
   
+  /* --- BURGER BUTTON --- */
+  .burger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 10px;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
   
+  .burger-btn:hover {
+    background: #f3f4f8;
+  }
+  
+  .burger-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #111;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+    transform-origin: center;
+  }
+  
+  .burger-btn.active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .burger-btn.active span:nth-child(2) {
+    opacity: 0;
+    width: 0;
+  }
+  .burger-btn.active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+  
+  /* --- MOBILE MENU --- */
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    padding: 8px 12px 14px;
+    border-top: 1px solid #f0f0f0;
+    animation: slideDown 0.25s ease;
+  }
+  
+  .mobile-menu.active {
+    display: flex;
+  }
+  
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  
+  .mobile-menu a,
+  .mobile-menu button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 11px 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    width: 100%;
+    text-align: left;
+    font-family: inherit;
+    transition: background 0.15s;
+  }
+  
+  .mobile-menu a:hover,
+  .mobile-menu button:hover {
+    background: #f3f4f8;
+  }
+  
+  .mobile-menu .mobile-dd-toggle .chevron {
+    margin-left: auto;
+    width: 14px;
+    height: 14px;
+    opacity: 0.5;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+  }
+  
+  .mobile-menu .mobile-dd-toggle.open .chevron {
+    transform: rotate(180deg);
+  }
+  
+  /* Mobile sub-items */
+  .mobile-sub {
+    display: none;
+    flex-direction: column;
+    padding-left: 16px;
+    border-left: 2px solid #f0f0f0;
+    margin: 2px 10px 4px;
+  }
+  
+  .mobile-sub.open {
+    display: flex;
+  }
+  
+  .mobile-sub a {
+    font-size: 13.5px;
+    font-weight: 500;
+    color: #555;
+    padding: 8px 10px;
+  }
+  
+  .mobile-sub a:hover {
+    color: #111;
+    background: #f3f4f8;
+  }
+  
+  .mobile-cta {
+    margin-top: 8px;
+  }
+  
+  .mobile-cta a {
+    background: #2B3EFF !important;
+    color: #fff !important;
+    justify-content: center;
+    border-radius: 999px !important;
+    padding: 11px 16px !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    display: flex !important;
+    align-items: center;
+    gap: 6px;
+    transition: background-color .25s ease, transform .25s ease, box-shadow .25s ease;
+  }
+  
+  .mobile-cta a:hover {
+    background: #1620cc !important;
+    box-shadow: 0 6px 16px rgba(31, 43, 255, .25);
+    transform: translateY(-1px);
+  }
+  
+  .mobile-cta a:active {
+    transform: scale(.97);
+  }
+  
+  /* Divider */
+  .mobile-divider {
+    height: 1px;
+    background: #f0f0f0;
+    margin: 6px 10px;
+  }
+  
+  /* --- HIDDEN ON SCROLL --- */
   .top-nav.hidden {
     transform: translateY(-100%);
   }
   
-  .nav-feedback:hover {
-    background-color: #1620cc; /* lidt mørkere blå */
-    box-shadow: 0 6px 16px rgba(31, 43, 255, .25);
-    transform: translateY(-1px);
+  /* --- RESPONSIVE --- */
+  @media (max-width: 768px) {
+    .nav-links {
+      display: none;
+    }
+    .cta-primary {
+      display: none;
+    }
+    .burger-btn {
+      display: flex;
+    }
   }
-
-  
-  

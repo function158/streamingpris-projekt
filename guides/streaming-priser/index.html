@@ -21,19 +21,95 @@
 
 <body>
 
-<header class="top-nav">
-  <div class="nav-inner">
-    <div class="nav-logo">
-      <a href="/">
-        <img src="/images/mineudgifter-logo.svg" alt="mineudgifter logo">
+  <header class="top-nav">
+    <div class="nav-inner">
+      <div class="nav-logo">
+        <a href="/index.html">
+          <img src="/images/mineudgifter-logo.svg" alt="Mine Udgifter logo">
+        </a>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Tjenester
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <ul class="dropdown">
+            <li>
+              <a href="/netflix">
+                Netflix i Danmark
+                <span class="dd-desc">Priser og pakker</span>
+              </a>
+            </li>
+            <li>
+              <a href="/amazon-prime">
+                Amazon Prime
+                <span class="dd-desc">Priser og pakker</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Guides
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <ul class="dropdown">
+            <li>
+              <a href="/guides/streaming-priser/">
+                Streaming priser i Danmark
+                <span class="dd-desc">Oversigt over alle priser</span>
+              </a>
+            </li>
+            <li>
+              <a href="/guides/hvorfor-stiger-streaming-priser/">
+                Hvorfor stiger streaming priser?
+                <span class="dd-desc">Forklaring og baggrund</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <a href="/" class="cta-primary">
+        Tjek din pris <span class="arrow">→</span>
       </a>
+      <button class="burger-btn" id="burgerBtn" aria-label="Åbn menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
-
-    <a href="/" class="cta-primary">
-      Tjek din pris <span class="arrow">→</span>
-    </a>
-  </div>
-</header>
+    <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <button class="mobile-dd-toggle" data-target="mobileTjenester">
+        Tjenester
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="mobile-sub" id="mobileTjenester">
+        <a href="/netflix">Netflix i Danmark</a>
+        <a href="/amazon-prime">Amazon Prime</a>
+      </div>
+      <button class="mobile-dd-toggle" data-target="mobileGuides">
+        Guides
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="mobile-sub" id="mobileGuides">
+        <a href="/guides/streaming-priser/">Streaming priser i Danmark</a>
+        <a href="/guides/hvorfor-stiger-streaming-priser/">Hvorfor stiger streaming priser?</a>
+      </div>
+      <div class="mobile-divider"></div>
+      <div class="mobile-cta">
+        <a href="/index.html">Tjek din pris</a>
+      </div>
+    </nav>
+  </header>
 
 <h1 class="title">Priser på streamingtjenester i Danmark</h1>
 
@@ -388,11 +464,20 @@
         </ul>
   </details>
   <p><time class="page-timestamp" datetime="2026-02-23">Senest opdateret: 23. februar 2026</time></p>
-</section>
-<section class="cta-wrap">
-  <a href="/" class="cta-primary">
-    Tjek din pris <span class="arrow">→</span>
-  </a>
+  <section class="cta-wrap">
+    <div class="cta-wrap-inner">
+      <p class="cta-eyebrow">Gratis · Ingen login · 30 sekunder</p>
+      <h2 class="cta-heading">
+        Få streaming billigere med mobilabonnement
+      </h2>
+      <p class="cta-sub">
+        Sammenlign dine tjenester og se om du kan få dem inkluderet.
+      </p>
+      <a href="/" class="cta-primary cta-large">
+        Beregn din samlede pris <span class="arrow">→</span>
+      </a>
+    </div>
+  </section>
 </section>
 
 <footer class="site-footer">
@@ -463,5 +548,6 @@
     </p>
   </div>
 </footer>
+<script src="/js/menu.js"></script>
 </body>
 </html>

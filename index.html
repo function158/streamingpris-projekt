@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hvad koster streaming i Danmark? Se den samlede pris (2026)</title>
-  <meta name="description" content="Netflix, TV 2 Play, Viaplay m.fl. – se din samlede streamingpris pr. måned og pr. år. Mange betaler 400–700 kr. uden at vide det. Tjek din pris her." />
+  <title>Spar penge på Streaming & Mobil | Beregn din besparelse nu</title>
+<meta name="description" content="Betaler du for meget? Beregn din samlede pris for streaming og find det billigste mobilabonnement med alt inkluderet. Start din besparelse her – gratis og uforpligtende!" />
   <link rel="stylesheet" href="./css/css.css">
   <link rel="stylesheet" href="./css/footer.css">
   <link rel="stylesheet" href="./css/menu.css">
@@ -43,14 +43,90 @@
     <div class="nav-inner">
       <div class="nav-logo">
         <a href="/index.html">
-        <img src="images/mineudgifter-logo.svg" alt="mine-udigfter-logo-sort">
-      </a>
+          <img src="/images/mineudgifter-logo.svg" alt="Mine Udgifter logo">
+        </a>
       </div>
-
+      <ul class="nav-links">
+        <li>
+          <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Tjenester
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <ul class="dropdown">
+            <li>
+              <a href="/netflix">
+                Netflix i Danmark
+                <span class="dd-desc">Priser og pakker</span>
+              </a>
+            </li>
+            <li>
+              <a href="/amazon-prime">
+                Amazon Prime
+                <span class="dd-desc">Priser og pakker</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Guides
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <ul class="dropdown">
+            <li>
+              <a href="/guides/streaming-priser/">
+                Streaming priser i Danmark
+                <span class="dd-desc">Oversigt over alle priser</span>
+              </a>
+            </li>
+            <li>
+              <a href="/guides/hvorfor-stiger-streaming-priser/">
+                Hvorfor stiger streaming priser?
+                <span class="dd-desc">Forklaring og baggrund</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
       <a href="/" class="cta-primary">
         Tjek din pris <span class="arrow">→</span>
       </a>
+      <button class="burger-btn" id="burgerBtn" aria-label="Åbn menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
     </div>
+    <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+      <button class="mobile-dd-toggle" data-target="mobileTjenester">
+        Tjenester
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="mobile-sub" id="mobileTjenester">
+        <a href="/netflix">Netflix i Danmark</a>
+        <a href="/amazon-prime">Amazon Prime</a>
+      </div>
+      <button class="mobile-dd-toggle" data-target="mobileGuides">
+        Guides
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="mobile-sub" id="mobileGuides">
+        <a href="/guides/streaming-priser/">Streaming priser i Danmark</a>
+        <a href="/guides/hvorfor-stiger-streaming-priser/">Hvorfor stiger streaming priser?</a>
+      </div>
+      <div class="mobile-divider"></div>
+      <div class="mobile-cta">
+        <a href="/index.html">Tjek din pris</a>
+      </div>
+    </nav>
   </header>
   <h1 class="title">
     Vælg dine streamingtjenester og se din samlede <span>pris & tilbud</span>
@@ -336,9 +412,10 @@
     </div>
   </footer>
 
-  <script src="./js/js.js"></script>
-  <script src="./js/menu.js"></script>
-  <script src="./js/bundles.js"></script>
-  <script src="./js/mode-switch.js"></script>
+  <script src="/js/js.js"></script>
+  <script src="/js/menu.js"></script>
+  <script src="/js/tracking.js"></script>
+  <script src="/js/bundles.js"></script>
+  <script src="/js/mode-switch.js"></script>
 </body>
 </html>

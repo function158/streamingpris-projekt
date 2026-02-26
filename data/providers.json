@@ -14,29 +14,31 @@
         "introPriceMobile": 49,
         "introMonths": 2,
         "expiryDate": "2026-03-31",
+        "streamingBasePrice": 180,
+        "introPriceStreaming": 90,
+        "streamingMinCount": 2,
+        "streamingExtraPrice": 50,
         "streamingIncluded": [
           {
-            "id": "netflix",
+            "id": "mofibo",
             "valgmuligheder": [
               {
-                "label": "Netflix Standard",
-                "planIndex": 1,
-                "partnerNormalPrice": 129
+                "label": "Mofibo 20 timer",
+                "planIndex": 3,
+                "upgradePrice": 0,
+                "partnerNormalPrice": 89
               },
               {
-                "label": "Netflix Premium",
-                "planIndex": 2,
-                "partnerNormalPrice": 169
-              }
-            ]
-          },
-          {
-            "id": "max",
-            "valgmuligheder": [
+                "label": "Mofibo 50 timer",
+                "planIndex": 0,
+                "upgradePrice": 30,
+                "partnerNormalPrice": 119
+              },
               {
-                "label": "Max Standard",
+                "label": "Mofibo Premium 100 timer",
                 "planIndex": 1,
-                "partnerNormalPrice": 129
+                "upgradePrice": 60,
+                "partnerNormalPrice": 149
               }
             ]
           },
@@ -46,17 +48,76 @@
               {
                 "label": "TV 2 Play Basis Partner",
                 "planIndex": 1,
+                "upgradePrice": 0,
                 "partnerNormalPrice": 99
               },
               {
                 "label": "TV 2 Play Favorit Partner",
                 "planIndex": 3,
+                "upgradePrice": 80,
                 "partnerNormalPrice": 179
               },
               {
                 "label": "TV 2 Play Favorit + Sport Partner",
                 "planIndex": 5,
+                "upgradePrice": 150,
                 "partnerNormalPrice": 249
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "upgradePrice": 0,
+                "partnerNormalPrice": 129
+              },
+              {
+                "label": "Netflix Premium",
+                "planIndex": 2,
+                "upgradePrice": 40,
+                "partnerNormalPrice": 169
+              }
+            ]
+          },
+          {
+            "id": "nordiskfilmplus",
+            "valgmuligheder": [
+              {
+                "label": "Nordisk Film+",
+                "planIndex": 0,
+                "upgradePrice": 0,
+                "partnerNormalPrice": 69
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "HBO Max Standard",
+                "planIndex": 1,
+                "upgradePrice": 0,
+                "partnerNormalPrice": 129
+              }
+            ]
+          },
+          {
+            "id": "deezer",
+            "valgmuligheder": [
+              {
+                "label": "Deezer Musik Premium",
+                "planIndex": 0,
+                "upgradePrice": 0,
+                "partnerNormalPrice": 119
+              },
+              {
+                "label": "Deezer Musik Family",
+                "planIndex": 2,
+                "upgradePrice": 70,
+                "partnerNormalPrice": 199
               }
             ]
           },
@@ -66,6 +127,7 @@
               {
                 "label": "Viaplay Film & Serier",
                 "planIndex": 0,
+                "upgradePrice": 0,
                 "partnerNormalPrice": 149
               }
             ]
@@ -76,52 +138,8 @@
               {
                 "label": "Podimo Premium",
                 "planIndex": 0,
+                "upgradePrice": 0,
                 "partnerNormalPrice": 99
-              }
-            ]
-          },
-          {
-            "id": "mofibo",
-            "valgmuligheder": [
-              {
-                "label": "Mofibo 20 timer",
-                "planIndex": 3,
-                "partnerNormalPrice": 89
-              },
-              {
-                "label": "Mofibo 50 timer",
-                "planIndex": 0,
-                "partnerNormalPrice": 119
-              },
-              {
-                "label": "Mofibo Premium 100 timer",
-                "planIndex": 1,
-                "partnerNormalPrice": 149
-              }
-            ]
-          },
-          {
-            "id": "deezer",
-            "valgmuligheder": [
-              {
-                "label": "Deezer Premium",
-                "planIndex": 0,
-                "partnerNormalPrice": 119
-              },
-              {
-                "label": "Deezer Family",
-                "planIndex": 2,
-                "partnerNormalPrice": 199
-              }
-            ]
-          },
-          {
-            "id": "nordiskfilmplus",
-            "valgmuligheder": [
-              {
-                "label": "Nordisk Film+",
-                "planIndex": 0,
-                "partnerNormalPrice": 69
               }
             ]
           }
@@ -142,29 +160,31 @@
         "introPriceMobile": 59,
         "introMonths": 2,
         "expiryDate": "2026-03-31",
+        "streamingBasePrice": 180,
+        "introPriceStreaming": 90,
+        "streamingMinCount": 2,
+        "streamingExtraPrice": 50,
         "streamingIncluded": [
           {
-            "id": "netflix",
+            "id": "mofibo",
             "valgmuligheder": [
               {
-                "label": "Netflix Standard",
-                "planIndex": 1,
-                "partnerNormalPrice": 129
+                "label": "Mofibo 20 timer",
+                "planIndex": 3,
+                "upgradePrice": 0,
+                "partnerNormalPrice": 89
               },
               {
-                "label": "Netflix Premium",
-                "planIndex": 2,
-                "partnerNormalPrice": 169
-              }
-            ]
-          },
-          {
-            "id": "max",
-            "valgmuligheder": [
+                "label": "Mofibo 50 timer",
+                "planIndex": 0,
+                "upgradePrice": 30,
+                "partnerNormalPrice": 119
+              },
               {
-                "label": "Max Standard",
+                "label": "Mofibo Premium 100 timer",
                 "planIndex": 1,
-                "partnerNormalPrice": 129
+                "upgradePrice": 60,
+                "partnerNormalPrice": 149
               }
             ]
           },
@@ -174,17 +194,76 @@
               {
                 "label": "TV 2 Play Basis Partner",
                 "planIndex": 1,
+                "upgradePrice": 0,
                 "partnerNormalPrice": 99
               },
               {
                 "label": "TV 2 Play Favorit Partner",
                 "planIndex": 3,
+                "upgradePrice": 80,
                 "partnerNormalPrice": 179
               },
               {
                 "label": "TV 2 Play Favorit + Sport Partner",
                 "planIndex": 5,
+                "upgradePrice": 150,
                 "partnerNormalPrice": 249
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "upgradePrice": 0,
+                "partnerNormalPrice": 129
+              },
+              {
+                "label": "Netflix Premium",
+                "planIndex": 2,
+                "upgradePrice": 40,
+                "partnerNormalPrice": 169
+              }
+            ]
+          },
+          {
+            "id": "nordiskfilmplus",
+            "valgmuligheder": [
+              {
+                "label": "Nordisk Film+",
+                "planIndex": 0,
+                "upgradePrice": 0,
+                "partnerNormalPrice": 69
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "HBO Max Standard",
+                "planIndex": 1,
+                "upgradePrice": 0,
+                "partnerNormalPrice": 129
+              }
+            ]
+          },
+          {
+            "id": "deezer",
+            "valgmuligheder": [
+              {
+                "label": "Deezer Musik Premium",
+                "planIndex": 0,
+                "upgradePrice": 0,
+                "partnerNormalPrice": 119
+              },
+              {
+                "label": "Deezer Musik Family",
+                "planIndex": 2,
+                "upgradePrice": 70,
+                "partnerNormalPrice": 199
               }
             ]
           },
@@ -194,6 +273,7 @@
               {
                 "label": "Viaplay Film & Serier",
                 "planIndex": 0,
+                "upgradePrice": 0,
                 "partnerNormalPrice": 149
               }
             ]
@@ -204,52 +284,8 @@
               {
                 "label": "Podimo Premium",
                 "planIndex": 0,
+                "upgradePrice": 0,
                 "partnerNormalPrice": 99
-              }
-            ]
-          },
-          {
-            "id": "mofibo",
-            "valgmuligheder": [
-              {
-                "label": "Mofibo 20 timer",
-                "planIndex": 3,
-                "partnerNormalPrice": 89
-              },
-              {
-                "label": "Mofibo 50 timer",
-                "planIndex": 0,
-                "partnerNormalPrice": 119
-              },
-              {
-                "label": "Mofibo Premium 100 timer",
-                "planIndex": 1,
-                "partnerNormalPrice": 149
-              }
-            ]
-          },
-          {
-            "id": "deezer",
-            "valgmuligheder": [
-              {
-                "label": "Deezer Premium",
-                "planIndex": 0,
-                "partnerNormalPrice": 119
-              },
-              {
-                "label": "Deezer Family",
-                "planIndex": 2,
-                "partnerNormalPrice": 199
-              }
-            ]
-          },
-          {
-            "id": "nordiskfilmplus",
-            "valgmuligheder": [
-              {
-                "label": "Nordisk Film+",
-                "planIndex": 0,
-                "partnerNormalPrice": 69
               }
             ]
           }
@@ -270,29 +306,31 @@
         "introPriceMobile": 74,
         "introMonths": 2,
         "expiryDate": "2026-03-31",
+        "streamingBasePrice": 180,
+        "introPriceStreaming": 90,
+        "streamingMinCount": 2,
+        "streamingExtraPrice": 50,
         "streamingIncluded": [
           {
-            "id": "netflix",
+            "id": "mofibo",
             "valgmuligheder": [
               {
-                "label": "Netflix Standard",
-                "planIndex": 1,
-                "partnerNormalPrice": 129
+                "label": "Mofibo 20 timer",
+                "planIndex": 3,
+                "upgradePrice": 0,
+                "partnerNormalPrice": 89
               },
               {
-                "label": "Netflix Premium",
-                "planIndex": 2,
-                "partnerNormalPrice": 169
-              }
-            ]
-          },
-          {
-            "id": "max",
-            "valgmuligheder": [
+                "label": "Mofibo 50 timer",
+                "planIndex": 0,
+                "upgradePrice": 30,
+                "partnerNormalPrice": 119
+              },
               {
-                "label": "Max Standard",
+                "label": "Mofibo Premium 100 timer",
                 "planIndex": 1,
-                "partnerNormalPrice": 129
+                "upgradePrice": 60,
+                "partnerNormalPrice": 149
               }
             ]
           },
@@ -302,17 +340,76 @@
               {
                 "label": "TV 2 Play Basis Partner",
                 "planIndex": 1,
+                "upgradePrice": 0,
                 "partnerNormalPrice": 99
               },
               {
                 "label": "TV 2 Play Favorit Partner",
                 "planIndex": 3,
+                "upgradePrice": 80,
                 "partnerNormalPrice": 179
               },
               {
                 "label": "TV 2 Play Favorit + Sport Partner",
                 "planIndex": 5,
+                "upgradePrice": 150,
                 "partnerNormalPrice": 249
+              }
+            ]
+          },
+          {
+            "id": "netflix",
+            "valgmuligheder": [
+              {
+                "label": "Netflix Standard",
+                "planIndex": 1,
+                "upgradePrice": 0,
+                "partnerNormalPrice": 129
+              },
+              {
+                "label": "Netflix Premium",
+                "planIndex": 2,
+                "upgradePrice": 40,
+                "partnerNormalPrice": 169
+              }
+            ]
+          },
+          {
+            "id": "nordiskfilmplus",
+            "valgmuligheder": [
+              {
+                "label": "Nordisk Film+",
+                "planIndex": 0,
+                "upgradePrice": 0,
+                "partnerNormalPrice": 69
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "HBO Max Standard",
+                "planIndex": 1,
+                "upgradePrice": 0,
+                "partnerNormalPrice": 129
+              }
+            ]
+          },
+          {
+            "id": "deezer",
+            "valgmuligheder": [
+              {
+                "label": "Deezer Musik Premium",
+                "planIndex": 0,
+                "upgradePrice": 0,
+                "partnerNormalPrice": 119
+              },
+              {
+                "label": "Deezer Musik Family",
+                "planIndex": 2,
+                "upgradePrice": 70,
+                "partnerNormalPrice": 199
               }
             ]
           },
@@ -322,6 +419,7 @@
               {
                 "label": "Viaplay Film & Serier",
                 "planIndex": 0,
+                "upgradePrice": 0,
                 "partnerNormalPrice": 149
               }
             ]
@@ -332,52 +430,8 @@
               {
                 "label": "Podimo Premium",
                 "planIndex": 0,
+                "upgradePrice": 0,
                 "partnerNormalPrice": 99
-              }
-            ]
-          },
-          {
-            "id": "mofibo",
-            "valgmuligheder": [
-              {
-                "label": "Mofibo 20 timer",
-                "planIndex": 3,
-                "partnerNormalPrice": 89
-              },
-              {
-                "label": "Mofibo 50 timer",
-                "planIndex": 0,
-                "partnerNormalPrice": 119
-              },
-              {
-                "label": "Mofibo Premium 100 timer",
-                "planIndex": 1,
-                "partnerNormalPrice": 149
-              }
-            ]
-          },
-          {
-            "id": "deezer",
-            "valgmuligheder": [
-              {
-                "label": "Deezer Premium",
-                "planIndex": 0,
-                "partnerNormalPrice": 119
-              },
-              {
-                "label": "Deezer Family",
-                "planIndex": 2,
-                "partnerNormalPrice": 199
-              }
-            ]
-          },
-          {
-            "id": "nordiskfilmplus",
-            "valgmuligheder": [
-              {
-                "label": "Nordisk Film+",
-                "planIndex": 0,
-                "partnerNormalPrice": 69
               }
             ]
           }
@@ -432,14 +486,14 @@
             "id": "max",
             "valgmuligheder": [
               {
-                "label": "Max Standard",
+                "label": "HBO Max Standard",
                 "planIndex": 1,
                 "partnerIntroPrice": 0,
                 "partnerIntroMonths": 2,
                 "partnerNormalPrice": 109
               },
               {
-                "label": "Max Standard + Sport",
+                "label": "HBO Max Standard + Sport",
                 "planIndex": 1,
                 "partnerIntroPrice": 40,
                 "partnerIntroMonths": 2,
@@ -486,6 +540,13 @@
                 "planIndex": 0,
                 "partnerIntroPrice": 0,
                 "partnerIntroMonths": 2,
+                "partnerNormalPrice": 69
+              },
+              {
+                "label": "Podimo Podcast (6 mdr. gratis)",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 6,
                 "partnerNormalPrice": 69
               }
             ]
@@ -533,14 +594,14 @@
             "id": "max",
             "valgmuligheder": [
               {
-                "label": "Max Standard",
+                "label": "HBO Max Standard",
                 "planIndex": 1,
                 "partnerIntroPrice": 0,
                 "partnerIntroMonths": 2,
                 "partnerNormalPrice": 109
               },
               {
-                "label": "Max Standard + Sport",
+                "label": "HBO Max Standard + Sport",
                 "planIndex": 1,
                 "partnerIntroPrice": 40,
                 "partnerIntroMonths": 2,
@@ -588,6 +649,13 @@
                 "partnerIntroPrice": 0,
                 "partnerIntroMonths": 2,
                 "partnerNormalPrice": 69
+              },
+              {
+                "label": "Podimo Podcast (6 mdr. gratis)",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 6,
+                "partnerNormalPrice": 69
               }
             ]
           }
@@ -634,14 +702,14 @@
             "id": "max",
             "valgmuligheder": [
               {
-                "label": "Max Standard",
+                "label": "HBO Max Standard",
                 "planIndex": 1,
                 "partnerIntroPrice": 0,
                 "partnerIntroMonths": 2,
                 "partnerNormalPrice": 109
               },
               {
-                "label": "Max Standard + Sport",
+                "label": "HBO Max Standard + Sport",
                 "planIndex": 1,
                 "partnerIntroPrice": 40,
                 "partnerIntroMonths": 2,
@@ -688,6 +756,13 @@
                 "planIndex": 0,
                 "partnerIntroPrice": 0,
                 "partnerIntroMonths": 2,
+                "partnerNormalPrice": 69
+              },
+              {
+                "label": "Podimo Podcast (6 mdr. gratis)",
+                "planIndex": 0,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 6,
                 "partnerNormalPrice": 69
               }
             ]
@@ -1378,7 +1453,7 @@
     "logo": "./images/telmore-logo.svg",
     "network": "TDC (5G)",
     "newCustomersOnly": true,
-    "newCustomersNote": "Tilbuddet gælder kun for nye Telmore Play-kunder og ikke ved samtidigt køb af telefon.",
+    "newCustomersNote": "Gælder kun for nye Telmore Play-kunder og ikke ved samtidigt køb af telefon.",
     "bundles": [
       {
         "id": "telmore-play-3",
@@ -1394,12 +1469,12 @@
         "streamingChoiceCount": 3,
         "streamingIncluded": [
           { "id": "disney",        "valgmuligheder": [{ "label": "Disney+ Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "netflix",       "valgmuligheder": [{ "label": "Netflix Standard (HD)",   "planIndex": 1, "partnerNormalPrice": 0 }] },
+          { "id": "netflix",       "valgmuligheder": [{ "label": "Netflix Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
           { "id": "amazon-prime",  "valgmuligheder": [{ "label": "Amazon Prime Video",      "planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "max",           "valgmuligheder": [{ "label": "Max Standard",            "planIndex": 1, "partnerNormalPrice": 0 }] },
+          { "id": "max",           "valgmuligheder": [{ "label": "HBO Max Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
           { "id": "viaplay",       "valgmuligheder": [{ "label": "Viaplay Film & Serier",   "planIndex": 0, "partnerNormalPrice": 0 }] },
           { "id": "tv2play",       "valgmuligheder": [{ "label": "TV 2 Play Basis Partner", "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "skyshowtime",   "valgmuligheder": [{ "label": "SkyShowtime Standard",    "planIndex": 0, "partnerNormalPrice": 0 }] },
+          { "id": "skyshowtime",   "valgmuligheder": [{ "label": "SkyShowtime Standard Plus","planIndex": 0, "partnerNormalPrice": 0 }] },
           { "id": "saxo",          "valgmuligheder": [{ "label": "Saxo Streaming",          "planIndex": 1, "partnerNormalPrice": 0 }] },
           { "id": "telmore-musik", "valgmuligheder": [{ "label": "Telmore Musik",           "planIndex": 0, "partnerNormalPrice": 0 }] }
         ],
@@ -1420,12 +1495,12 @@
         "streamingChoiceCount": 4,
         "streamingIncluded": [
           { "id": "disney",        "valgmuligheder": [{ "label": "Disney+ Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "netflix",       "valgmuligheder": [{ "label": "Netflix Standard (HD)",   "planIndex": 1, "partnerNormalPrice": 0 }] },
+          { "id": "netflix",       "valgmuligheder": [{ "label": "Netflix Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
           { "id": "amazon-prime",  "valgmuligheder": [{ "label": "Amazon Prime Video",      "planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "max",           "valgmuligheder": [{ "label": "Max Standard",            "planIndex": 1, "partnerNormalPrice": 0 }] },
+          { "id": "max",           "valgmuligheder": [{ "label": "HBO Max Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
           { "id": "viaplay",       "valgmuligheder": [{ "label": "Viaplay Film & Serier",   "planIndex": 0, "partnerNormalPrice": 0 }] },
           { "id": "tv2play",       "valgmuligheder": [{ "label": "TV 2 Play Basis Partner", "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "skyshowtime",   "valgmuligheder": [{ "label": "SkyShowtime Standard",    "planIndex": 0, "partnerNormalPrice": 0 }] },
+          { "id": "skyshowtime",   "valgmuligheder": [{ "label": "SkyShowtime Standard Plus","planIndex": 0, "partnerNormalPrice": 0 }] },
           { "id": "saxo",          "valgmuligheder": [{ "label": "Saxo Streaming",          "planIndex": 1, "partnerNormalPrice": 0 }] },
           { "id": "telmore-musik", "valgmuligheder": [{ "label": "Telmore Musik",           "planIndex": 0, "partnerNormalPrice": 0 }] }
         ],
@@ -1446,12 +1521,12 @@
         "streamingChoiceCount": 5,
         "streamingIncluded": [
           { "id": "disney",        "valgmuligheder": [{ "label": "Disney+ Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "netflix",       "valgmuligheder": [{ "label": "Netflix Standard (HD)",   "planIndex": 1, "partnerNormalPrice": 0 }] },
+          { "id": "netflix",       "valgmuligheder": [{ "label": "Netflix Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
           { "id": "amazon-prime",  "valgmuligheder": [{ "label": "Amazon Prime Video",      "planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "max",           "valgmuligheder": [{ "label": "Max Standard",            "planIndex": 1, "partnerNormalPrice": 0 }] },
+          { "id": "max",           "valgmuligheder": [{ "label": "HBO Max Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
           { "id": "viaplay",       "valgmuligheder": [{ "label": "Viaplay Film & Serier",   "planIndex": 0, "partnerNormalPrice": 0 }] },
           { "id": "tv2play",       "valgmuligheder": [{ "label": "TV 2 Play Basis Partner", "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "skyshowtime",   "valgmuligheder": [{ "label": "SkyShowtime Standard",    "planIndex": 0, "partnerNormalPrice": 0 }] },
+          { "id": "skyshowtime",   "valgmuligheder": [{ "label": "SkyShowtime Standard Plus","planIndex": 0, "partnerNormalPrice": 0 }] },
           { "id": "saxo",          "valgmuligheder": [{ "label": "Saxo Streaming",          "planIndex": 1, "partnerNormalPrice": 0 }] },
           { "id": "telmore-musik", "valgmuligheder": [{ "label": "Telmore Musik",           "planIndex": 0, "partnerNormalPrice": 0 }] }
         ],
@@ -1472,12 +1547,12 @@
         "streamingChoiceCount": 9,
         "streamingIncluded": [
           { "id": "disney",        "valgmuligheder": [{ "label": "Disney+ Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "netflix",       "valgmuligheder": [{ "label": "Netflix Standard (HD)",   "planIndex": 1, "partnerNormalPrice": 0 }] },
+          { "id": "netflix",       "valgmuligheder": [{ "label": "Netflix Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
           { "id": "amazon-prime",  "valgmuligheder": [{ "label": "Amazon Prime Video",      "planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "max",           "valgmuligheder": [{ "label": "Max Standard",            "planIndex": 1, "partnerNormalPrice": 0 }] },
+          { "id": "max",           "valgmuligheder": [{ "label": "HBO Max Standard",        "planIndex": 1, "partnerNormalPrice": 0 }] },
           { "id": "viaplay",       "valgmuligheder": [{ "label": "Viaplay Film & Serier",   "planIndex": 0, "partnerNormalPrice": 0 }] },
           { "id": "tv2play",       "valgmuligheder": [{ "label": "TV 2 Play Basis Partner", "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "skyshowtime",   "valgmuligheder": [{ "label": "SkyShowtime Standard",    "planIndex": 0, "partnerNormalPrice": 0 }] },
+          { "id": "skyshowtime",   "valgmuligheder": [{ "label": "SkyShowtime Standard Plus","planIndex": 0, "partnerNormalPrice": 0 }] },
           { "id": "saxo",          "valgmuligheder": [{ "label": "Saxo Streaming",          "planIndex": 1, "partnerNormalPrice": 0 }] },
           { "id": "telmore-musik", "valgmuligheder": [{ "label": "Telmore Musik",           "planIndex": 0, "partnerNormalPrice": 0 }] }
         ],
@@ -1496,8 +1571,8 @@
         "expiryDate": "2026-12-31",
         "newCustomersOnly": true,
         "streamingIncluded": [
-          { "id": "netflix", "valgmuligheder": [{ "label": "Netflix Standard (HD)",  "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "viaplay", "valgmuligheder": [{ "label": "Viaplay Film & Serier",  "planIndex": 0, "partnerNormalPrice": 0 }] }
+          { "id": "netflix", "valgmuligheder": [{ "label": "Netflix Standard", "planIndex": 1, "partnerNormalPrice": 0 }] },
+          { "id": "viaplay", "valgmuligheder": [{ "label": "Viaplay Film & Serier", "planIndex": 0, "partnerNormalPrice": 0 }] }
         ],
         "link": "https://www.telmore.dk/abonnementer/telmore-play",
         "details": { "oprettelse": "0 kr.", "opsigelse": "Ingen binding" }
@@ -1515,7 +1590,7 @@
         "newCustomersOnly": true,
         "streamingIncluded": [
           { "id": "tv2play", "valgmuligheder": [{ "label": "TV 2 Play Basis Partner", "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "netflix", "valgmuligheder": [{ "label": "Netflix Standard (HD)",   "planIndex": 1, "partnerNormalPrice": 0 }] }
+          { "id": "netflix", "valgmuligheder": [{ "label": "Netflix Standard", "planIndex": 1, "partnerNormalPrice": 0 }] }
         ],
         "link": "https://www.telmore.dk/abonnementer/telmore-play",
         "details": { "oprettelse": "0 kr.", "opsigelse": "Ingen binding" }
@@ -1532,8 +1607,8 @@
         "expiryDate": "2026-12-31",
         "newCustomersOnly": true,
         "streamingIncluded": [
-          { "id": "amazon-prime", "valgmuligheder": [{ "label": "Amazon Prime Video",   "planIndex": 0, "partnerNormalPrice": 0 }] },
-          { "id": "netflix",      "valgmuligheder": [{ "label": "Netflix Standard (HD)", "planIndex": 1, "partnerNormalPrice": 0 }] }
+          { "id": "amazon-prime", "valgmuligheder": [{ "label": "Amazon Prime Video", "planIndex": 0, "partnerNormalPrice": 0 }] },
+          { "id": "netflix",      "valgmuligheder": [{ "label": "Netflix Standard",   "planIndex": 1, "partnerNormalPrice": 0 }] }
         ],
         "link": "https://www.telmore.dk/abonnementer/telmore-play",
         "details": { "oprettelse": "0 kr.", "opsigelse": "Ingen binding" }
@@ -1550,8 +1625,8 @@
         "expiryDate": "2026-12-31",
         "newCustomersOnly": true,
         "streamingIncluded": [
-          { "id": "max",     "valgmuligheder": [{ "label": "Max Standard",           "planIndex": 1, "partnerNormalPrice": 0 }] },
-          { "id": "netflix", "valgmuligheder": [{ "label": "Netflix Standard (HD)",  "planIndex": 1, "partnerNormalPrice": 0 }] }
+          { "id": "max",     "valgmuligheder": [{ "label": "HBO Max Standard", "planIndex": 1, "partnerNormalPrice": 0 }] },
+          { "id": "netflix", "valgmuligheder": [{ "label": "Netflix Standard", "planIndex": 1, "partnerNormalPrice": 0 }] }
         ],
         "link": "https://www.telmore.dk/abonnementer/telmore-play",
         "details": { "oprettelse": "0 kr.", "opsigelse": "Ingen binding" }
