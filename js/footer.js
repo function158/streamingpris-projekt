@@ -24,6 +24,7 @@
             <li><a href="/netflix">Netflix i Danmark</a></li>
             <li><a href="/amazon-prime">Amazon Prime i Danmark</a></li>
             <li><a href="/deezer">Deezer i Danmark</a></li>
+            <li><a href="/viaplay">Viaplay</a></li>
           </ul>
         </div>
   

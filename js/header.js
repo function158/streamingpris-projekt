@@ -1,11 +1,6 @@
-/**
- * HEADER.JS – Dynamisk navigation til mineudgifter.dk
- * Placer denne fil i /js/header.js
- * Tilføj én linje i toppen af <body> på hver HTML-side:
- *   <script src="/js/header.js"></script>
- *
- * Vil du ændre menuen? Ret KUN her – alle sider opdateres automatisk.
- */
+var script = document.createElement('script');
+script.src = '/js/cookie-consent.js';
+document.head.appendChild(script);
 
 (function () {
   const headerHTML = `
@@ -40,6 +35,12 @@
              <li>
               <a href="/deezer">
                 Deezer
+                <span class="dd-desc">Priser og pakker</span>
+              </a>
+            </li>
+               <li>
+              <a href="/viaplay">
+                Viaplay
                 <span class="dd-desc">Priser og pakker</span>
               </a>
             </li>
@@ -88,6 +89,7 @@
         <a href="/netflix">Netflix i Danmark</a>
         <a href="/amazon-prime">Amazon Prime</a>
         <a href="/deezer">Deezer</a>
+        <a href="/viaplay">Viaplay</a>
       </div>
       <button class="mobile-dd-toggle" data-target="mobileGuides">
         Guides

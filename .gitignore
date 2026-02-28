@@ -10,7 +10,7 @@
   "*.log",
   "*.json.bak",
   ".env",
-  "*.sh"
+  "*.sh",3
   "*.zip",
 "*.code-workspace",
 ".gitattributes",
