@@ -1,13 +1,29 @@
-# Streaming Priser
+# mineudgifter.dk
 
-A lightweight, mobile-first web tool that lets you select your streaming services
-and instantly see what they cost you per month and per year.
+Letvægts prisberegner til streaming og mobilabonnementer – bygget til det danske marked.
 
-The goal of this project is simplicity:
-- No accounts
-- No tracking of personal data
-- No unnecessary features
+Vælg dine streamingtjenester og se hvad du betaler samlet om måneden og om året.
+Sammenlign med mobilabonnementer der inkluderer streaming, og find ud af om du kan spare.
 
-Just a quick overview of your streaming expenses.
+## Hvad det gør
 
-Prices are indicative for Denmark.
+- Beregner samlet måneds- og årspris for valgte streamingtjenester
+- Matcher dine tjenester med mobilbundter der dækker dem
+- Viser præcis hvad du kan spare ved at samle det ét sted
+- Skifter mellem "jeg har allerede" og "jeg vil gerne have"-tilstand
+
+## Tech
+
+Statiske filer — HTML, CSS, vanilla JS. Ingen framework, ingen build-step.
+Data ligger i `data/services.json` og `data/providers.json`.
+
+## Principper
+
+- Ingen login
+- Ingen persondata
+- Ingen unødvendige features
+- Hurtig på mobil
+
+## Priser
+
+Vejledende listepriser for Danmark. Opdateres manuelt — tjek altid hos udbyderen før du skifter.

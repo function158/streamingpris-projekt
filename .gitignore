@@ -1,1 +1,18 @@
 .vscode/sftp.json
+
+"ignore": [
+  ".git",
+  ".vscode",
+  ".gitignore",
+  "node_modules",
+  ".DS_Store",
+  "README.md",
+  "*.log",
+  "*.json.bak",
+  ".env",
+  "*.sh"
+  "*.zip",
+"*.code-workspace",
+".gitattributes",
+"__MACOSX"
+]
