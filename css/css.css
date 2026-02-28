@@ -410,195 +410,206 @@
      .seo-text p { font-size: 15px; }
      .seo-text ul li { font-size: 14px; }
    }
-   
    /* ============================================
-      EXTRA-INFO / ACCORDION (FAQ + SERVICE PRISER)
-      Alle details/summary på tværs af siden
-      ============================================ */
+   ACCORDION / FAQ – opdateret
+   ============================================ */
 
-   .extra-info {
-     border-bottom: none;
-     padding-top: 0;
-     padding-bottom: 0;
-   }
+.extra-info {
+  border-bottom: none;
+  padding-top: 0;
+  padding-bottom: 0;
+}
 
-   /* Kort-container */
-   .extra-info details {
-     background: white;
-     border-radius: 16px;
-     border: 1px solid var(--border);
-     overflow: hidden;
-     margin-bottom: 8px;
-     transition: box-shadow 0.25s ease;
-     outline: none;
-   }
+/* Kort-container */
+.extra-info details {
+  background: white;
+  border-radius: 16px;
+  border: 1.5px solid #e5e7eb;
+  overflow: hidden;
+  margin-bottom: 8px;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+  outline: none;
+}
 
-   .extra-info details[open] {
-     box-shadow: 0 8px 28px rgba(0,0,0,0.08);
-   }
+/* Hover på lukkede – ligesom related-cards */
+.extra-info details:not([open]):hover {
+  border-color: #2B3EFF;
+  box-shadow: 0 4px 16px rgba(43,62,255,0.08);
+  transform: translateY(-1px);
+}
 
-   /* Fjern alle browser-styling på summary */
-   .extra-info summary {
-     display: flex;
-     align-items: center;
-     list-style: none;
-     cursor: pointer;
-     user-select: none;
-     position: relative;
-     padding: 18px 52px 18px 20px;
-     font-size: 15px;
-     font-weight: 600;
-     color: var(--ink);
-     transition: color 0.15s;
-     outline: none;
-   }
+/* Åben */
+.extra-info details[open] {
+  border-color: #2B3EFF;
+  box-shadow: 0 8px 28px rgba(43,62,255,0.08);
+}
 
-   .extra-info summary::-webkit-details-marker { display: none; }
-   .extra-info summary::marker { display: none; }
+/* Fjern alle browser-styling på summary */
+.extra-info summary {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  padding: 18px 52px 18px 20px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  transition: color 0.15s;
+  outline: none;
+}
 
-   /* + / − ikon */
-   .extra-info summary::after {
-     content: "+";
-     position: absolute;
-     right: 20px;
-     top: 50%;
-     transform: translateY(-50%);
-     font-size: 22px;
-     font-weight: 300;
-     color: var(--accent);
-     line-height: 1;
-   }
+.extra-info summary::-webkit-details-marker { display: none; }
+.extra-info summary::marker { display: none; }
 
-   .extra-info details[open] > summary::after { content: "−"; }
+/* Chevron ikon – roterer ved åbning */
+.extra-info summary::after {
+  content: "";
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(0deg);
+  width: 18px;
+  height: 18px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232B3EFF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: contain;
+  transition: transform 0.25s ease;
+}
 
-   /* Hover kun på lukkede */
-   .extra-info details:not([open]) > summary:hover { color: var(--accent); }
+.extra-info details[open] > summary::after {
+  transform: translateY(-50%) rotate(180deg);
+}
 
-   /* ---- FAQ: plain summary (ingen ikon) ---- */
-   .extra-info details:not(:has(.service-summary)) > summary {
-     padding: 20px 52px 20px 22px;
-   }
+/* Hover på summary tekst */
+.extra-info details:not([open]) > summary:hover { color: var(--accent); }
 
-   /* Indhold fade-in */
-   .extra-info details > *:not(summary) {
-     opacity: 0;
-     transform: translateY(-4px);
-     transition: opacity 0.22s ease, transform 0.22s ease;
-   }
+/* ---- FAQ: plain summary (ingen ikon) ---- */
+.extra-info details:not(:has(.service-summary)) > summary {
+  padding: 20px 52px 20px 22px;
+}
 
-   .extra-info details[open] > *:not(summary) {
-     opacity: 1;
-     transform: translateY(0);
-     transition-delay: 0.04s;
-   }
+/* Indhold – slide + fade animation */
+.extra-info details > *:not(summary) {
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
 
-   /* FAQ tekst – direkte <p> og <ul> i details */
-   .extra-info details > p {
-     font-size: 14.5px;
-     line-height: 1.72;
-     color: #555;
-     margin: 0;
-     padding: 0 22px 20px;
-     border-top: 1px solid var(--border);
-   }
+.extra-info details[open] > *:not(summary) {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.05s;
+}
 
-   /* Linkliste i FAQ */
-   .extra-info details > ul {
-     list-style: none;
-     margin: 0;
-     padding: 8px 18px 16px 22px;
-     border-top: none;
-     display: flex;
-     flex-direction: column;
-     gap: 5px;
-   }
+/* FAQ tekst – ingen streg */
+.extra-info details > p {
+  font-size: 14.5px;
+  line-height: 1.72;
+  color: #555;
+  margin: 0;
+  padding: 0 22px 20px;
+  border-top: none;
+}
 
-   .extra-info details > ul li {
-     font-size: 14px;
-     color: #555;
-     padding: 9px 12px 9px 36px;
-     background: var(--bg);
-     border-radius: 8px;
-     position: relative;
-     line-height: 1.55;
-   }
+/* Linkliste i FAQ */
+.extra-info details > ul {
+  list-style: none;
+  margin: 0;
+  padding: 4px 18px 16px 22px;
+  border-top: none;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
 
-   .extra-info details > ul li::before {
-     content: "→";
-     position: absolute;
-     left: 14px;
-     top: 50%;
-     transform: translateY(-50%);
-     font-size: 11px;
-     color: var(--accent);
-     font-weight: 600;
-   }
+.extra-info details > ul li {
+  font-size: 14px;
+  color: #555;
+  padding: 9px 12px 9px 36px;
+  background: var(--bg);
+  border-radius: 8px;
+  position: relative;
+  line-height: 1.55;
+}
 
-   .extra-info details > ul li a {
-     color: var(--accent);
-     text-decoration: none;
-     font-weight: 500;
-   }
+.extra-info details > ul li::before {
+  content: "→";
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  color: var(--accent);
+  font-weight: 600;
+}
 
-   .extra-info details > ul li a:hover { text-decoration: underline; }
+.extra-info details > ul li a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
 
-   /* faq-body wrapper (hvis brugt) */
-   .extra-info details .faq-body {
-     border-top: 1px solid var(--border);
-     padding: 20px 22px 22px;
-   }
+.extra-info details > ul li a:hover { text-decoration: underline; }
 
-   .extra-info details .faq-body p {
-     font-size: 14.5px;
-     line-height: 1.72;
-     color: #555;
-     margin-bottom: 10px;
-   }
+/* faq-body wrapper – ingen streg */
+.extra-info details .faq-body {
+  border-top: none;
+  padding: 0 22px 22px;
+}
 
-   .extra-info details .faq-body p:last-child { margin-bottom: 0; }
+.extra-info details .faq-body p {
+  font-size: 14.5px;
+  line-height: 1.72;
+  color: #555;
+  margin-bottom: 10px;
+}
 
-   /* ---- SERVICE PRISER: summary med ikon ---- */
-   .service-summary {
-     gap: 14px;
-     padding: 16px 52px 16px 18px !important;
-   }
+.extra-info details .faq-body p:last-child { margin-bottom: 0; }
 
-   .service-summary::-webkit-details-marker { display: none; }
+/* ---- SERVICE PRISER: summary med ikon ---- */
+.service-summary {
+  gap: 14px;
+  padding: 16px 52px 16px 18px !important;
+}
 
-   .service-icon {
-     width: 30px;
-     height: 30px;
-     flex-shrink: 0;
-     object-fit: contain;
-     border-radius: 6px;
-   }
+.service-summary::-webkit-details-marker { display: none; }
 
-   .service-name {
-     font-size: 15px;
-     font-weight: 600;
-     color: var(--ink);
-     flex: 1;
-   }
+.service-icon {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  object-fit: contain;
+  border-radius: 6px;
+}
 
-   /* Prisliste i service-accordion */
-   .extra-info details:has(.service-summary) > ul {
-     padding: 4px 18px 16px 62px !important;
-     border-top: 1px solid var(--border);
-   }
+.service-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  flex: 1;
+}
 
-   .extra-info details:has(.service-summary) > ul li {
-     padding: 8px 12px !important;
-   }
+/* Prisliste i service-accordion – ingen streg */
+.extra-info details:has(.service-summary) > ul {
+  padding: 4px 18px 16px 62px !important;
+  border-top: none;
+}
 
-   .extra-info details:has(.service-summary) > ul li::before {
-     display: none !important;
-   }
+.extra-info details:has(.service-summary) > ul li {
+  padding: 8px 12px !important;
+}
 
-   @media (max-width: 480px) {
-     .service-icon { width: 24px; height: 24px; }
-     .service-summary { padding: 14px 48px 14px 14px !important; }
-     .extra-info details:has(.service-summary) > ul { padding-left: 14px !important; }
-   }
+.extra-info details:has(.service-summary) > ul li::before {
+  display: none !important;
+}
+
+@media (max-width: 480px) {
+  .service-icon { width: 24px; height: 24px; }
+  .service-summary { padding: 14px 48px 14px 14px !important; }
+  .extra-info details:has(.service-summary) > ul { padding-left: 14px !important; }
+}
    
    /* ============================================
       LAYOUT
