@@ -10,19 +10,14 @@
 (function () {
     const footerHTML = `
     <footer class="site-footer">
+  
       <div class="footer-grid">
   
-        <!-- OM OS -->
         <div class="footer-col">
           <h4>Om os</h4>
-          <p>
-            Mine Udgifter hjælper dig med at få overblik over dine
-            streaming- og digitale abonnementer, så du nemt kan se,
-            hvad du samlet betaler.
-          </p>
+          <p>Mine Udgifter hjælper dig med at få overblik over dine streaming og digitale abonnementer og viser, om du kan spare penge ved at samle det med mobilabonnementer.</p>
         </div>
   
-        <!-- TJENESTER -->
         <div class="footer-col">
           <h4>Tjenester</h4>
           <ul>
@@ -32,7 +27,6 @@
           </ul>
         </div>
   
-        <!-- HURTIGE LINKS -->
         <div class="footer-col">
           <h4>Hurtige links</h4>
           <ul>
@@ -43,7 +37,6 @@
           </ul>
         </div>
   
-        <!-- INFORMATION -->
         <div class="footer-col">
           <h4>Information</h4>
           <ul>
@@ -57,7 +50,7 @@
       <div class="footer-bottom">
   
         <div class="footer-logo">
-          <a href="/index.html">
+          <a href="/">
             <img src="/images/mineudgifter-logo.svg" alt="Mine Udgifter logo">
           </a>
         </div>
@@ -70,22 +63,31 @@
           <li><a href="mailto:info@mineudgifter.dk">Kontakt</a></li>
         </ul>
   
+        <a class="footer-instagram" href="https://www.instagram.com/mineudgifter" target="_blank" rel="noopener noreferrer" aria-label="Følg os på Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5.5" ry="5.5"/>
+            <circle cx="12" cy="12" r="4.5"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+          Følg os på Instagram
+        </a>
+  
         <p class="footer-disclaimer">
           Priser er vejledende og kan ændre sig. Beregningen er udelukkende informativ.
         </p>
   
-        <p class="footer-meta">
-          © 2026 · Lavet i Danmark 🇩🇰
+        <p class="footer-disclaimer footer-legal">
+          Mine Udgifter er ikke tilknyttet, samarbejder ikke med og er ikke sponsoreret af de streamingtjenester, der omtales på siden. Alle logoer og varemærker tilhører de respektive ejere og anvendes udelukkende til identifikationsformål.
         </p>
+  
+        <p class="footer-meta">© 2026 Mine Udgifter · Alle rettigheder forbeholdes · Lavet i Danmark 🇩🇰</p>
+  
       </div>
     </footer>
     `;
   
     function injectFooter() {
-      // Undgå dobbelt-injektion
       if (document.querySelector('.site-footer')) return;
-  
-      // Indsæt footer sidst i <body>
       document.body.insertAdjacentHTML('beforeend', footerHTML);
     }
   

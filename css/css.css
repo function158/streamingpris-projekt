@@ -1,9 +1,6 @@
 /* ============================================
    MINEUDGIFTER.DK – FULL STYLESHEET
    ============================================ */
-
-   @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-
    :root {
      --serif: 'Plus Jakarta Sans', system-ui, sans-serif;
      --sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
@@ -620,6 +617,9 @@
      gap: 16px; overflow: visible;
      max-width: 420px; margin: 0 auto;
    }
+
+   /* Mobil: alene i sidste række (ulige antal) → fyld hele bredden */
+   .card-grid > .sub-card:last-child:nth-child(odd) { grid-column: span 2; }
    
    #cards { display: block; }
    
@@ -715,7 +715,16 @@
    
    /* DESKTOP */
    @media (min-width: 601px) {
-     .card-grid { grid-template-columns: repeat(3, 1fr); max-width: 640px; }
+     .card-grid { grid-template-columns: repeat(6, 1fr); max-width: 640px; }
+     .card-grid > .sub-card { grid-column: span 2; }
+     /* Alene i række: fyld hele bredden */
+     .card-grid > .sub-card:last-child:nth-child(3n - 2) { grid-column: span 6; }
+     /* 2 kort i sidstre række: begge span 3 */
+     .card-grid > .sub-card:last-child:nth-child(3n - 1) { grid-column: span 3; }
+     .card-grid > .sub-card:nth-last-child(2):nth-child(3n + 1) { grid-column: span 3; }
+     /* Præcis 2 kort i hele grid */
+     .card-grid > .sub-card:first-child:nth-last-child(2),
+     .card-grid > .sub-card:first-child:nth-last-child(2) ~ .sub-card { grid-column: span 3; }
      .top-bar, .summary, .mobile-picker-wrap, .category-title, .seo-text, .extra-info { max-width: 640px; }
      .bundle-section { max-width: 900px; }
      .bundle-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; }
@@ -801,3 +810,32 @@
     font-size: 15px;
   }
 }
+
+/* Skjul Spotify-kort midlertidigt */
+.sub-card:has(img[src*="spotify"]) {
+  display: none;
+}
+
+.ph-logo-sm   { height:16px; filter:brightness(0) invert(1); opacity:.45; }
+
+.ph-badge     { font-size:11px; font-weight:600; color:rgba(255,255,255,.35);
+                letter-spacing:.5px; text-transform:uppercase;
+                background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.1);
+                padding:4px 10px; border-radius:999px; }
+
+.ph-price-block { margin-bottom:22px; }
+
+.ph-price-row { display:flex; align-items:baseline; gap:10px; line-height:1; }
+
+.ph-number    { font-size:clamp(72px,16vw,100px); font-weight:900; color:#fff;
+                letter-spacing:-4px; line-height:1; font-family:var(--serif); }
+
+.ph-unit      { font-size:15px; font-weight:500; color:rgba(255,255,255,.4);
+                line-height:1.5; }
+
+.ph-year      { font-size:13px; color:rgba(255,255,255,.28); margin:8px 0 0;
+                font-weight:500; }
+
+.ph-pill      { padding:7px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.18);
+                background:rgba(255,255,255,.08); color:rgba(255,255,255,.65);
+                font-size:12px; font-weight:600; cursor:default; }

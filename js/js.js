@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     cardsEl.innerHTML = "";
 
     Object.entries(categories).forEach(([categoryKey, categoryLabel]) => {
-      const servicesInCategory = services.filter(s => s.category === categoryKey);
+      const servicesInCategory = services.filter(s => s.category === categoryKey && s.id !== 'spotify');
       if (servicesInCategory.length === 0) return;
 
       const section = document.createElement("section");
@@ -108,6 +108,8 @@ document.addEventListener("DOMContentLoaded", async () => {
             menu.className = "plan-menu";
 
             service.plans.forEach(plan => {
+              // Skjul den allerede valgte plan
+              if (plan.name === selected[service.id]?.name) return;
               const option = document.createElement("div");
               option.className = "plan-option";
               option.textContent = `${plan.name} – ${plan.price} kr`;
