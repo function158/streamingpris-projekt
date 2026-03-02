@@ -1,42 +1,42 @@
 const TRACKING_CONFIG = {
   oister: {
     match: "oister.dk",
-    base: "https://go.adt284.net/t/t?a=1666103641&as=2050148986&t=2&tk=1",
-    build: (base, url) => `${base}&url=${encodeURIComponent(url)}`,
+    direct: "https://go.adt284.net/t/t?a=1666103641&as=2050148986&t=2&tk=1",
+    build: (url) => `https://go.adt284.net/t/t?a=1666103641&as=2050148986&t=2&tk=1&url=${encodeURIComponent(url)}`,
   },
   callme: {
     match: "callme.dk",
-    base: "https://ion.callme.dk/t/t?a=1694478781&as=2050148986&t=2&tk=1",
-    build: (base, url) => `${base}&url=${encodeURIComponent(url)}`,
+    direct: "https://ion.callme.dk/t/t?a=1694478781&as=2050148986&t=2&tk=1",
+    build: (url) => `https://ion.callme.dk/t/t?a=1694478781&as=2050148986&t=2&tk=1&url=${encodeURIComponent(url)}`,
   },
 };
 
 window.applyTracking = function(url) {
-  for (const config of Object.values(TRACKING_CONFIG)) {
-    if (url.includes(config.match)) {
-      return config.build(config.base, url);
-    }
+  if (!url) return url;
+
+  for (const [key, config] of Object.entries(TRACKING_CONFIG)) {
+    if (!url.includes(config.match)) continue;
+
+    // Undgå dobbelt-wrapping
+    if (url.includes("adt284.net") || url.includes("ion.callme.dk")) return url;
+
+    // Forsiden / root = brug direkte link uden &url=
+    try {
+      const parsed = new URL(url);
+      const isRoot = parsed.pathname === "/" || parsed.pathname === "";
+      if (isRoot && !parsed.search) {
+        return config.direct;
+      }
+    } catch(e) {}
+
+    // Specifik underside = deeplink med &url=
+    return config.build(url);
   }
+
   return url;
 };
 
-function initTracking() {
-  document.querySelectorAll("a[href]").forEach(a => {
-    const tracked = window.applyTracking(a.href);
-    if (tracked !== a.href) {
-      a.href = tracked;
-      a.setAttribute("rel", "sponsored noopener");
-      a.setAttribute("target", "_blank");
-    }
-  });
-}
-
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", initTracking);
-} else {
-  initTracking();
-}
-
+// Fanger klik på dynamisk oprettede links (bundle-kort m.m.)
 document.addEventListener("click", function (e) {
   const a = e.target.closest("a[href]");
   if (!a) return;
