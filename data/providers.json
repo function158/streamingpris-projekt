@@ -2059,165 +2059,7 @@
     "network": "Norlys (5G)",
     "bundles": [
       {
-        "id": "norlys-one",
-        "name": "ONE",
-        "type": "norlys-pick-one",
-        "dataAmount": "Fri data",
-        "dataEU": "55 GB i 64 lande",
-        "mobileBasePrice": 279,
-        "introMonths": null,
-        "setupFee": 99,
-        "adminFee": 15,
-        "minPriceFirstMonth": 393,
-        "familyPlan": true,
-        "familyExtraPrice": 129,
-        "freeStreamingMonths": 12,
-        "freeStreamingPickOne": [
-          {
-            "id": "tv2play",
-            "valgmuligheder": [
-              {
-                "label": "TV 2 Play Basis Partner",
-                "planIndex": 1,
-                "partnerNormalPrice": 0,
-                "priceAfter": 89
-              },
-              {
-                "label": "TV 2 Play Basis Partner (fast rabat)",
-                "planIndex": 1,
-                "partnerNormalPrice": 0,
-                "priceAfter": 159
-              },
-              {
-                "label": "TV 2 Play Basis + Sport Partner",
-                "planIndex": 4,
-                "partnerNormalPrice": 0,
-                "priceAfter": 229
-              }
-            ]
-          },
-          {
-            "id": "viaplay",
-            "valgmuligheder": [
-              {
-                "label": "Viaplay Film & Serier",
-                "planIndex": 0,
-                "partnerNormalPrice": 0,
-                "priceAfter": 139
-              }
-            ]
-          },
-          {
-            "id": "netflix",
-            "valgmuligheder": [
-              {
-                "label": "Netflix Standard",
-                "planIndex": 1,
-                "partnerNormalPrice": 0,
-                "priceAfter": 129
-              }
-            ]
-          }
-        ],
-        "streamingIncluded": [
-          {
-            "id": "tv2play",
-            "valgmuligheder": [
-              {
-                "label": "TV 2 Play Basis Partner",
-                "planIndex": 1,
-                "partnerIntroPrice": 0,
-                "partnerIntroMonths": 2,
-                "partnerNormalPrice": 89
-              },
-              {
-                "label": "TV 2 Play Basis Partner (fast rabat)",
-                "planIndex": 1,
-                "partnerNormalPrice": 159
-              },
-              {
-                "label": "TV 2 Play Basis + Sport Partner",
-                "planIndex": 4,
-                "partnerNormalPrice": 229
-              }
-            ]
-          },
-          {
-            "id": "viaplay",
-            "valgmuligheder": [
-              {
-                "label": "Viaplay Film & Serier",
-                "planIndex": 0,
-                "partnerIntroPrice": 0,
-                "partnerIntroMonths": 2,
-                "partnerNormalPrice": 139
-              }
-            ]
-          },
-          {
-            "id": "netflix",
-            "valgmuligheder": [
-              {
-                "label": "Netflix Standard",
-                "planIndex": 1,
-                "partnerIntroPrice": 129,
-                "partnerIntroMonths": 0,
-                "partnerNormalPrice": 129
-              }
-            ]
-          },
-          {
-            "id": "max",
-            "valgmuligheder": [
-              {
-                "label": "MAX Standard",
-                "planIndex": 1,
-                "partnerIntroPrice": 0,
-                "partnerIntroMonths": 2,
-                "partnerNormalPrice": 109
-              },
-              {
-                "label": "MAX Standard + Sport",
-                "planIndex": 2,
-                "partnerIntroPrice": 40,
-                "partnerIntroMonths": 2,
-                "partnerNormalPrice": 149
-              }
-            ]
-          },
-          {
-            "id": "deezer",
-            "valgmuligheder": [
-              {
-                "label": "Deezer Premium",
-                "planIndex": 0,
-                "partnerIntroPrice": 0,
-                "partnerIntroMonths": 2,
-                "partnerNormalPrice": 89
-              },
-              {
-                "label": "Deezer Family",
-                "planIndex": 2,
-                "partnerIntroPrice": 0,
-                "partnerIntroMonths": 2,
-                "partnerNormalPrice": 159
-              }
-            ]
-          },
-          {
-            "id": "podimo",
-            "valgmuligheder": [
-              {
-                "label": "Podimo Podcast",
-                "planIndex": 0,
-                "partnerIntroPrice": 0,
-                "partnerIntroMonths": 2,
-                "partnerNormalPrice": 69
-              }
-            ]
-          }
-        ],
-        "link": "https://www.norlys.dk/mobil/one/",
+        "link": "https://shop.norlys.dk/mobil/abonnementer/one/#/1",
         "details": {
           "oprettelse": "99 kr.",
           "opsigelse": "Ingen binding"
@@ -2228,7 +2070,7 @@
         "name": "Smart200",
         "type": "norlys-pick-one",
         "dataAmount": "200 GB",
-        "dataEU": "45 GB i 48 lande",
+        "dataEU": "45 GB i 80 lande",
         "mobileBasePrice": 229,
         "introMonths": null,
         "setupFee": 99,
@@ -2381,7 +2223,7 @@
             ]
           }
         ],
-        "link": "https://www.norlys.dk/mobil/smart200/",
+        "link": "https://shop.norlys.dk/mobil/abonnementer/smart-200/",
         "details": {
           "oprettelse": "99 kr.",
           "opsigelse": "Ingen binding"
@@ -2392,7 +2234,7 @@
         "name": "Smart60",
         "type": "norlys-pick-one",
         "dataAmount": "60 GB",
-        "dataEU": "39 GB i 48 lande",
+        "dataEU": "39 GB i 80 lande",
         "mobileBasePrice": 199,
         "introMonths": null,
         "setupFee": 99,
@@ -2556,7 +2398,7 @@
         "name": "Smart20",
         "type": "norlys-pick-one",
         "dataAmount": "20 GB",
-        "dataEU": "20 GB i 48 lande",
+        "dataEU": "20 GB i 80 lande",
         "mobileBasePrice": 159,
         "introMonths": null,
         "setupFee": 99,
@@ -2709,7 +2551,7 @@
             ]
           }
         ],
-        "link": "https://www.norlys.dk/mobil/smart20/",
+        "link": "https://shop.norlys.dk/mobil/abonnementer/smart-20/",
         "details": {
           "oprettelse": "99 kr.",
           "opsigelse": "Ingen binding"

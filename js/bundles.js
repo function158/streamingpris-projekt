@@ -864,3 +864,7 @@ window.renderBundles = renderBundles;
     `;
     document.head.appendChild(style);
 })();
+
+function applyTracking(url) {
+    return window.applyTracking ? window.applyTracking(url) : url;
+  }
