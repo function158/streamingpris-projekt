@@ -18,11 +18,6 @@ function getServiceIcon(id) {
   return SERVICE_ICONS[id] || getServiceLogo(id);
 }
 
-function applyTracking(url) {
-  if (!url) return '#';
-  return url;
-}
-
 let providersData = [];
 
 async function fetchProviders() {

@@ -22,28 +22,9 @@ const TRACKING_CONFIG = {
     //   build: (base, url) => `${base}&url=${encodeURIComponent(url)}`,
     // },
   };
-  
-  /**
-   * Returnerer tracked URL hvis udbyderen er konfigureret – ellers original URL.
-   * Eksponeret globalt så bundles.js kan kalde den direkte ved rendering.
-   */
-  function applyTracking(url) {
-    if (!url) return url;
-    for (const provider of Object.values(TRACKING_CONFIG)) {
-      if (url.includes(provider.match)) {
-        return provider.build(provider.base, url);
-      }
-    }
-    return url;
-  }
-  
-  // Gør tilgængelig globalt så bundles.js kan bruge den
+
   window.applyTracking = applyTracking;
   
-  /**
-   * Kør automatisk på alle <a> tags der matcher en udbyder.
-   * Fanger statiske links i HTML – dynamiske links håndteres af bundles.js.
-   */
   function initTracking() {
     document.querySelectorAll("a[href]").forEach(a => {
       const tracked = applyTracking(a.href);
@@ -60,3 +41,19 @@ const TRACKING_CONFIG = {
   } else {
     initTracking();
   }
+
+  /**
+ * Click-time tracking – fanger dynamiske links uanset hvornår de renderes.
+ * Virker som fallback for links der ikke var i DOM da initTracking() kørte.
+ */
+document.addEventListener("click", function (e) {
+  const a = e.target.closest("a[href]");
+  if (!a) return;
+
+  const tracked = applyTracking(a.href);
+  if (tracked !== a.href) {
+    e.preventDefault();
+    a.setAttribute("rel", "sponsored noopener");
+    window.open(tracked, "_blank");
+  }
+});
