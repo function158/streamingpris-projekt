@@ -1,12 +1,3 @@
-/**
- * FOOTER.JS – Dynamisk footer til mineudgifter.dk
- * Placer denne fil i /js/footer.js
- * Tilføj én linje i bunden af hver HTML-side (før </body>):
- *   <script src="/js/footer.js"></script>
- *
- * Vil du ændre footeren? Ret KUN her – alle sider opdateres automatisk.
- */
-
 (function () {
     const footerHTML = `
     <footer class="site-footer">
@@ -21,10 +12,12 @@
         <div class="footer-col">
           <h4>Tjenester</h4>
           <ul>
-            <li><a href="/netflix">Netflix i Danmark</a></li>
-            <li><a href="/amazon-prime">Amazon Prime i Danmark</a></li>
-            <li><a href="/deezer">Deezer i Danmark</a></li>
+            <li><a href="/netflix">Netflix</a></li>
+            <li><a href="/amazon-prime">Amazon Prime</a></li>
+            <li><a href="/deezer">Deezer</a></li>
             <li><a href="/viaplay">Viaplay</a></li>
+            <li><a href="/skyshowtime">Skyshowtime</a></li>
+            <li><a href="/tv2play">TV2 Play</a></li>
           </ul>
         </div>
   
@@ -73,10 +66,12 @@
           Følg os på Instagram
         </a>
   
-        <p class="footer-disclaimer">
-          Priser er vejledende og kan ændre sig. Beregningen er udelukkende informativ.
-        </p>
-  
+     <p class="footer-disclaimer">
+  Priser er vejledende og kan ændre sig. Beregningen er udelukkende informativ.
+  <br>
+  Siden indeholder affiliate-links. Vi kan modtage provision ved køb via vores links.
+  Dette påvirker ikke din pris eller sorteringen af tilbud.
+</p>
         <p class="footer-disclaimer footer-legal">
           Mine Udgifter er ikke tilknyttet, samarbejder ikke med og er ikke sponsoreret af de streamingtjenester, der omtales på siden. Alle logoer og varemærker tilhører de respektive ejere og anvendes udelukkende til identifikationsformål.
         </p>

@@ -450,54 +450,23 @@
     "network": "Telia/Telenor (5G)",
     "bundles": [
       {
-        "id": "callme-50gb",
-        "name": "Mobil 50 GB",
+        "id": "callme-30gb",
+        "name": "Mobil 30 GB",
         "type": "fixed",
-        "dataAmount": "50 GB",
+        "dataAmount": "30 GB",
         "dataEU": "30 GB i EU",
         "mobileBasePrice": 129,
-        "introPriceMobile": 64,
-        "introMonths": 3,
-        "expiryDate": "2026-03-02",
+        "expiryDate": "2026-03-30",
         "streamingIncluded": [
           {
             "id": "tv2play",
             "valgmuligheder": [
               {
-                "label": "TV 2 Play Basis Partner",
+                "label": "TV 2 Play Basis",
                 "planIndex": 1,
                 "partnerIntroPrice": 0,
                 "partnerIntroMonths": 2,
                 "partnerNormalPrice": 89
-              },
-              {
-                "label": "TV 2 Play Basis Partner (fast rabat)",
-                "planIndex": 1,
-                "partnerNormalPrice": 169
-              },
-              {
-                "label": "TV 2 Play Favorit + Sport Partner",
-                "planIndex": 4,
-                "partnerNormalPrice": 239
-              }
-            ]
-          },
-          {
-            "id": "max",
-            "valgmuligheder": [
-              {
-                "label": "HBO Max Standard",
-                "planIndex": 1,
-                "partnerIntroPrice": 0,
-                "partnerIntroMonths": 2,
-                "partnerNormalPrice": 109
-              },
-              {
-                "label": "HBO Max Standard + Sport",
-                "planIndex": 1,
-                "partnerIntroPrice": 40,
-                "partnerIntroMonths": 2,
-                "partnerNormalPrice": 149
               }
             ]
           },
@@ -510,6 +479,25 @@
                 "partnerIntroPrice": 0,
                 "partnerIntroMonths": 2,
                 "partnerNormalPrice": 139
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "Max Standard",
+                "planIndex": 1,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 109
+              },
+              {
+                "label": "Max Standard + Sport",
+                "planIndex": 2,
+                "partnerIntroPrice": 40,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 149
               }
             ]
           },
@@ -541,21 +529,14 @@
                 "partnerIntroPrice": 0,
                 "partnerIntroMonths": 2,
                 "partnerNormalPrice": 69
-              },
-              {
-                "label": "Podimo Podcast (6 mdr. gratis)",
-                "planIndex": 0,
-                "partnerIntroPrice": 0,
-                "partnerIntroMonths": 6,
-                "partnerNormalPrice": 69
               }
             ]
           }
         ],
-        "link": "https://www.callme.dk/abonnementer/mobil/mobilabonnement-med-fri-tale-og-50gb/",
+        "link": "https://www.callme.dk/mobilabonnement",
         "details": {
           "oprettelse": "0 kr.",
-          "opsigelse": "Ingen binding"
+          "opsigelse": "30 dages opsigelse"
         }
       },
       {
@@ -565,47 +546,19 @@
         "dataAmount": "80 GB",
         "dataEU": "30 GB i EU",
         "mobileBasePrice": 139,
-        "introMonths": null,
-        "expiryDate": "2026-03-02",
+        "introPriceMobile": 69,
+        "introMonths": 3,
+        "expiryDate": "2026-03-30",
         "streamingIncluded": [
           {
             "id": "tv2play",
             "valgmuligheder": [
               {
-                "label": "TV 2 Play Basis Partner",
+                "label": "TV 2 Play Basis",
                 "planIndex": 1,
                 "partnerIntroPrice": 0,
                 "partnerIntroMonths": 2,
                 "partnerNormalPrice": 89
-              },
-              {
-                "label": "TV 2 Play Basis Partner (fast rabat)",
-                "planIndex": 1,
-                "partnerNormalPrice": 169
-              },
-              {
-                "label": "TV 2 Play Favorit + Sport Partner",
-                "planIndex": 4,
-                "partnerNormalPrice": 239
-              }
-            ]
-          },
-          {
-            "id": "max",
-            "valgmuligheder": [
-              {
-                "label": "HBO Max Standard",
-                "planIndex": 1,
-                "partnerIntroPrice": 0,
-                "partnerIntroMonths": 2,
-                "partnerNormalPrice": 109
-              },
-              {
-                "label": "HBO Max Standard + Sport",
-                "planIndex": 1,
-                "partnerIntroPrice": 40,
-                "partnerIntroMonths": 2,
-                "partnerNormalPrice": 149
               }
             ]
           },
@@ -618,6 +571,25 @@
                 "partnerIntroPrice": 0,
                 "partnerIntroMonths": 2,
                 "partnerNormalPrice": 139
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "Max Standard",
+                "planIndex": 1,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 109
+              },
+              {
+                "label": "Max Standard + Sport",
+                "planIndex": 2,
+                "partnerIntroPrice": 40,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 149
               }
             ]
           },
@@ -649,71 +621,34 @@
                 "partnerIntroPrice": 0,
                 "partnerIntroMonths": 2,
                 "partnerNormalPrice": 69
-              },
-              {
-                "label": "Podimo Podcast (6 mdr. gratis)",
-                "planIndex": 0,
-                "partnerIntroPrice": 0,
-                "partnerIntroMonths": 6,
-                "partnerNormalPrice": 69
               }
             ]
           }
         ],
-        "link": "https://www.callme.dk/abonnementer/mobil/mobilabonnement-med-fri-tale-og-80-gb-data/#/1",
+        "link": "https://www.callme.dk/mobilabonnement",
         "details": {
           "oprettelse": "0 kr.",
-          "opsigelse": "Ingen binding"
+          "opsigelse": "30 dages opsigelse"
         }
       },
       {
-        "id": "callme-fri",
+        "id": "callme-fridata",
         "name": "Mobil Fri Data",
         "type": "fixed",
-        "dataAmount": "Fri Data",
+        "dataAmount": "Fri data",
         "dataEU": "45 GB i EU",
         "mobileBasePrice": 219,
-        "introMonths": null,
-        "expiryDate": "2026-03-02",
+        "expiryDate": "2026-03-30",
         "streamingIncluded": [
           {
             "id": "tv2play",
             "valgmuligheder": [
               {
-                "label": "TV 2 Play Basis Partner",
+                "label": "TV 2 Play Basis",
                 "planIndex": 1,
                 "partnerIntroPrice": 0,
                 "partnerIntroMonths": 2,
                 "partnerNormalPrice": 89
-              },
-              {
-                "label": "TV 2 Play Basis Partner (fast rabat)",
-                "planIndex": 1,
-                "partnerNormalPrice": 169
-              },
-              {
-                "label": "TV 2 Play Favorit + Sport Partner",
-                "planIndex": 4,
-                "partnerNormalPrice": 239
-              }
-            ]
-          },
-          {
-            "id": "max",
-            "valgmuligheder": [
-              {
-                "label": "HBO Max Standard",
-                "planIndex": 1,
-                "partnerIntroPrice": 0,
-                "partnerIntroMonths": 2,
-                "partnerNormalPrice": 109
-              },
-              {
-                "label": "HBO Max Standard + Sport",
-                "planIndex": 1,
-                "partnerIntroPrice": 40,
-                "partnerIntroMonths": 2,
-                "partnerNormalPrice": 149
               }
             ]
           },
@@ -726,6 +661,25 @@
                 "partnerIntroPrice": 0,
                 "partnerIntroMonths": 2,
                 "partnerNormalPrice": 139
+              }
+            ]
+          },
+          {
+            "id": "max",
+            "valgmuligheder": [
+              {
+                "label": "Max Standard",
+                "planIndex": 1,
+                "partnerIntroPrice": 0,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 109
+              },
+              {
+                "label": "Max Standard + Sport",
+                "planIndex": 2,
+                "partnerIntroPrice": 40,
+                "partnerIntroMonths": 2,
+                "partnerNormalPrice": 149
               }
             ]
           },
@@ -757,21 +711,14 @@
                 "partnerIntroPrice": 0,
                 "partnerIntroMonths": 2,
                 "partnerNormalPrice": 69
-              },
-              {
-                "label": "Podimo Podcast (6 mdr. gratis)",
-                "planIndex": 0,
-                "partnerIntroPrice": 0,
-                "partnerIntroMonths": 6,
-                "partnerNormalPrice": 69
               }
             ]
           }
         ],
-        "link": "https://www.callme.dk/abonnementer/mobil/mobilabonnement-med-fri-tale-og-fri-data/#/1",
+        "link": "https://www.callme.dk/mobilabonnement",
         "details": {
           "oprettelse": "0 kr.",
-          "opsigelse": "Ingen binding"
+          "opsigelse": "30 dages opsigelse"
         }
       }
     ]
@@ -2058,13 +2005,6 @@
     "logo": "./images/norlys-logo.svg",
     "network": "Norlys (5G)",
     "bundles": [
-      {
-        "link": "https://shop.norlys.dk/mobil/abonnementer/one/#/1",
-        "details": {
-          "oprettelse": "99 kr.",
-          "opsigelse": "Ingen binding"
-        }
-      },
       {
         "id": "norlys-smart200",
         "name": "Smart200",

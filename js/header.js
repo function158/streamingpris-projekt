@@ -22,7 +22,7 @@ document.head.appendChild(script);
           <ul class="dropdown">
             <li>
               <a href="/netflix">
-                Netflix i Danmark
+                Netflix
                 <span class="dd-desc">Priser og pakker</span>
               </a>
             </li>
@@ -41,6 +41,18 @@ document.head.appendChild(script);
                <li>
               <a href="/viaplay">
                 Viaplay
+                <span class="dd-desc">Priser og pakker</span>
+              </a>
+            </li>
+               <li>
+              <a href="/skyshowtime">
+                Skyshowtime
+                <span class="dd-desc">Priser og pakker</span>
+              </a>
+            </li>
+                <li>
+              <a href="/tv2play">
+                TV2 Play
                 <span class="dd-desc">Priser og pakker</span>
               </a>
             </li>
