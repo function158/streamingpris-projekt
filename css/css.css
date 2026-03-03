@@ -718,6 +718,48 @@
    .mobile-custom-input input::placeholder { color: rgba(255,255,255,0.6); }
    .mobile-custom-input input:focus { outline: none; border-color: #fff; background: rgba(255,255,255,0.22); box-shadow: 0 0 0 3px rgba(255,255,255,0.15); }
    
+
+   /* DATA FILTER */
+   .data-filter-wrap { margin-top: 18px; }
+   .data-filter-divider { height: 1px; background: rgba(255,255,255,0.18); margin-bottom: 14px; }
+   .data-filter-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+   .data-filter-icon { font-size: 16px; }
+   .data-filter-label { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: .5px; }
+   .data-filter-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 18px; }
+
+   .data-chip {
+     padding: 8px 14px; border-radius: 999px;
+     border: 2px solid rgba(255,255,255,0.28);
+     background: rgba(255,255,255,0.09);
+     color: rgba(255,255,255,0.85); font-size: 13px; font-weight: 600;
+     cursor: pointer; transition: all 0.15s ease; white-space: nowrap;
+   }
+   .data-chip:hover { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.6); }
+   .data-chip.active { background: rgba(255,255,255,0.95); color: #2B3EFF; border-color: #fff; font-weight: 800; box-shadow: 0 3px 10px rgba(0,0,0,0.12); }
+
+   /* EU TOGGLE — fuld bredde chip-knap med ikon og chevron */
+   .data-filter-eu-row { margin-top: 4px; }
+
+   .data-eu-toggle {
+     display: flex; align-items: center; gap: 8px;
+     width: 100%; box-sizing: border-box;
+     padding: 13px 18px; border-radius: 14px;
+     border: 2px solid rgba(255,255,255,0.35);
+     background: rgba(255,255,255,0.12);
+     color: #fff; font-size: 14px; font-weight: 600;
+     cursor: pointer; transition: all 0.18s ease;
+     justify-content: space-between;
+   }
+   .data-eu-toggle:hover { background: rgba(255,255,255,0.22); border-color: rgba(255,255,255,0.65); }
+   .data-eu-toggle[data-active="true"] {
+     background: rgba(255,255,255,0.2);
+     border-color: rgba(255,255,255,0.75);
+   }
+   .eu-toggle-icon { flex-shrink: 0; opacity: 0.85; }
+   .eu-toggle-text { flex: 1; text-align: left; }
+   .eu-toggle-chevron { flex-shrink: 0; opacity: 0.75; transition: transform 0.2s ease; }
+   .data-eu-toggle[data-active="true"] .eu-toggle-chevron { transform: rotate(180deg); }
+
    @media (max-width: 480px) {
      .mobile-picker-card { padding: 22px 18px 20px; border-radius: 18px; }
      .mobile-picker-titles h3 { font-size: 17px; }

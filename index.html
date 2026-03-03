@@ -102,6 +102,35 @@
           min="0"
         />
       </div>
+      <!-- DATA FILTER -->
+      <div class="data-filter-wrap" id="dataFilterWrap">
+        <div class="data-filter-divider"></div>
+        <div class="data-filter-header">
+          <span class="data-filter-icon">📶</span>
+          <span class="data-filter-label">Minimum data i Danmark</span>
+        </div>
+        <div class="data-filter-chips" id="dataFilterChips">
+          <button class="data-chip active" data-min-gb="0" data-label="Ligegyldigt">Ligegyldigt</button>
+          <button class="data-chip" data-min-gb="8"   data-label="8 GB+">8 GB+</button>
+          <button class="data-chip" data-min-gb="20"  data-label="20 GB+">20 GB+</button>
+          <button class="data-chip" data-min-gb="50"  data-label="50 GB+">50 GB+</button>
+          <button class="data-chip" data-min-gb="100" data-label="100 GB+">100 GB+</button>
+          <button class="data-chip" data-min-gb="9999" data-label="Fri data">Fri data</button>
+        </div>
+        <div class="data-filter-eu-row">
+          <button class="data-eu-toggle" id="dataEuToggle" data-active="false">
+            <svg class="eu-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+            <span class="eu-toggle-text">Krav til EU-data</span>
+            <svg class="eu-toggle-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+          <div class="data-eu-chips" id="dataEuChips" style="display:none;">
+            <button class="data-chip data-eu-chip active" data-min-eu="0" data-label="Ligegyldigt">Ligegyldigt</button>
+            <button class="data-chip data-eu-chip" data-min-eu="10" data-label="10 GB EU+">10 GB EU+</button>
+            <button class="data-chip data-eu-chip" data-min-eu="30" data-label="30 GB EU+">30 GB EU+</button>
+            <button class="data-chip data-eu-chip" data-min-eu="45" data-label="45 GB EU+">45 GB EU+</button>
+          </div>
+        </div>
+      </div>
 
     </div>
 

@@ -438,6 +438,29 @@ async function renderBundles(selectedServices) {
 
     const isVilMode = window.activeMode === 'vil';
 
+    // DATA FILTER
+    const minDataGb = window.minDataGb ?? 0;
+    const minEuGb   = window.minEuGb   ?? 0;
+
+    function parseDataGb(str) {
+        if (!str) return 0;
+        const s = str.toLowerCase().replace(/\s/g, '');
+        if (s.includes('fridata') || s === 'fridata') return 99999;
+        const m = s.match(/^(\d+)/);
+        return m ? parseInt(m[1], 10) : 0;
+    }
+
+    function bundleMeetsDataReq(bundle) {
+        if (minDataGb === 0 && minEuGb === 0) return true;
+        const dk = parseDataGb(bundle.dataAmount);
+        if (minDataGb === 9999) { if (dk < 9999) return false; }
+        else if (dk < minDataGb) return false;
+        if (minEuGb > 0) {
+            const eu = parseDataGb(bundle.dataEU);
+            if (eu < minEuGb) return false;
+        }
+        return true;
+    }
     let results = [];
     providersData.forEach(provider => {
         provider.bundles.forEach(bundle => {
@@ -478,7 +501,8 @@ async function renderBundles(selectedServices) {
                 coveredEntries = coveredEntries.slice(0, bundle.streamingChoiceCount);
             }
 
-            if (coveredEntries.length > 0) {
+
+            if (coveredEntries.length > 0 && bundleMeetsDataReq(bundle)) {
                 const savings = calculateSavings(bundle, coveredEntries, selectedServices, currentMobile);
                 if (savings) {
                     if (isVilMode || savings.totalSavings > 0) {

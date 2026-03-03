@@ -248,9 +248,74 @@ function initMobilePicker() {
   }
 }
 
-// Kør når DOM er klar
+/**
+ * DATA FILTER
+ * Chip-baseret datakrav-filter — filtrerer bundle-resultater i bundles.js
+ */
+function initDataFilter() {
+  const chips       = document.querySelectorAll('.data-chip:not(.data-eu-chip)');
+  const euToggle    = document.getElementById('dataEuToggle');
+  const euChipsWrap = document.getElementById('dataEuChips');
+  const euChips     = document.querySelectorAll('.data-eu-chip');
+
+  if (!chips.length) return;
+
+  // Sæt defaults — 0 betyder "ingen krav"
+  window.minDataGb = 0;
+  window.minEuGb   = 0;
+
+  function triggerRebuild() {
+    if (typeof renderBundles === 'function') {
+      renderBundles(window.selected || {});
+    }
+  }
+
+  // DK data chips
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      window.minDataGb = Number(chip.dataset.minGb);
+      triggerRebuild();
+    });
+  });
+
+  // EU toggle — folder EU-chips ud/ind
+  if (euToggle) {
+    euToggle.addEventListener('click', () => {
+      const isActive = euToggle.dataset.active === 'true';
+      const nowActive = !isActive;
+      euToggle.dataset.active = nowActive.toString();
+      if (euChipsWrap) euChipsWrap.style.display = nowActive ? 'flex' : 'none';
+      if (!nowActive) {
+        // Nulstil EU-krav og sæt 'Ligegyldigt' aktiv igen
+        window.minEuGb = 0;
+        euChips.forEach(c => c.classList.remove('active'));
+        const firstEu = document.querySelector('.data-eu-chip[data-min-eu="0"]');
+        if (firstEu) firstEu.classList.add('active');
+        triggerRebuild();
+      }
+    });
+  }
+
+  // EU chips
+  euChips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      euChips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      window.minEuGb = Number(chip.dataset.minEu);
+      triggerRebuild();
+    });
+  });
+}
+
+// Kør begge pickers når DOM er klar
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initMobilePicker);
+  document.addEventListener('DOMContentLoaded', () => {
+    initMobilePicker();
+    initDataFilter();
+  });
 } else {
   initMobilePicker();
+  initDataFilter();
 }
