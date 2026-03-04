@@ -1,0 +1,439 @@
+.bundle-section {
+  max-width: 960px; /* Udvid max-width så der er plads til 2 kolonner */
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.bundle-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 28px;
+  color: #111;
+}
+
+/* =========================
+   BUNDLE CARD
+   ========================= */
+
+.bundle-card {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.08);
+  margin-bottom: 24px;
+  border: 1px solid #e5e7eb;
+  transition: all .25s ease;
+}
+
+.bundle-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0,0,0,.12);
+}
+
+.bundle-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 520px) {
+  .bundle-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* =========================
+   TOP ROW
+   ========================= */
+
+.bundle-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.bundle-logo {
+  height: 34px;
+  max-width: 120px;
+  object-fit: contain;
+}
+
+.bundle-network {
+  font-size: 11px;
+  font-weight: 700;
+  color: #fff;
+  background: #2B3EFF;
+  padding: 4px 10px;
+  border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* =========================
+   NAME + DATA
+   ========================= */
+
+
+.bundle-data {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+/* =========================
+   STREAMING INCLUDED
+   ========================= */
+
+.bundle-streaming-list {
+  margin-bottom: 18px;
+  background: #f9fafb;
+  padding: 14px;
+  border-radius: 12px;
+}
+
+.bundle-streaming-list strong {
+  font-size: 12px;
+  display: block;
+  margin-bottom: 8px;
+  color: #374151;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: .4px;
+}
+
+.bundle-streaming-list ul,
+.bundle-missing ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.covered {
+  color: #15803d;
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.covered::before {
+  content: "✓";
+  font-weight: 700;
+}
+
+.missing {
+  color: #9ca3af;
+  font-size: 13px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.missing::before {
+  content: "○";
+}
+
+/* =========================
+   MISSING SECTION (optional)
+   ========================= */
+
+.bundle-missing {
+  background: #fef2f2;
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 18px;
+  border: 1px solid #fee2e2;
+}
+
+.bundle-missing strong {
+  font-size: 12px;
+  display: block;
+  margin-bottom: 8px;
+  color: #991b1b;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: .4px;
+}
+
+/* =========================
+   SAVINGS (PRIMARY FOCUS)
+   ========================= */
+
+.bundle-savings {
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-radius: 16px;
+  padding: 18px;
+  margin-bottom: 18px;
+  border: 1px solid #bbf7d0;
+  text-align: center;
+}
+
+.bundle-savings-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #15803d;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+.bundle-savings strong {
+  font-size: 30px;
+  color: #16a34a;
+  display: block;
+  font-weight: 900;
+}
+
+.bundle-yearly {
+  font-size: 14px;
+  color: #15803d;
+  margin-top: 6px;
+  font-weight: 600;
+}
+
+.bundle-comparison {
+  font-size: 12px;
+  color: #15803d;
+  margin-top: 4px;
+  opacity: 0.8;
+}
+
+.bundle-savings.neutral {
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
+  color: #6b7280;
+  padding: 14px;
+  text-align: center;
+}
+
+.bundle-savings.expensive {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  border: none;
+}
+
+.bundle-savings.expensive strong,
+.bundle-savings.expensive .bundle-savings-label,
+.bundle-savings.expensive .bundle-yearly,
+.bundle-savings.expensive .bundle-comparison {
+  color: #fff;
+}
+
+/* =========================
+   PRICE SECTION
+   ========================= */
+
+.bundle-price {
+  font-size: 16px;
+  margin-bottom: 6px;
+  text-align: center !important;
+}
+
+.bundle-price > div {
+  margin-bottom: 4px;
+  color: #374151;
+}
+
+.bundle-price strong {
+  font-size: 24px;
+  color: #111;
+  font-weight: 800;
+}
+
+/* =========================
+   INFO BOX
+   ========================= */
+
+.bundle-info {
+  background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 18px;
+  border: 1px solid #bfdbfe;
+}
+
+.bundle-info strong {
+  font-size: 15px;
+  color: #1e40af;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.bundle-info p {
+  font-size: 13px;
+  color: #3b82f6;
+  margin: 0 0 12px 0;
+  line-height: 1.5;
+}
+
+/* =========================
+   CTA INFO STRIP
+   ========================= */
+
+.bundle-cta {
+  font-size: 13px;
+  color: #1e40af;
+  background: #dbeafe;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bundle-cta span {
+  flex: 1;
+}
+
+/* =========================
+   BINDING TEXT
+   ========================= */
+
+.bundle-binding {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* =========================
+   CTA BUTTON
+   ========================= */
+
+.bundle-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: linear-gradient(135deg, #2B3EFF 0%, #1f2cd9 100%);
+  color: white;
+  padding: 16px 0;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all .25s ease;
+  box-shadow: 0 8px 18px rgba(43, 62, 255, 0.3);
+}
+
+.bundle-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(43, 62, 255, 0.4);
+}
+
+/* =========================
+   MOBILE INPUT
+   ========================= */
+
+.mobile-input-wrap {
+  max-width: 480px;
+  margin: 28px auto;
+  padding: 0 20px;
+}
+
+.mobile-input-wrap label {
+  font-size: 15px;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 8px;
+  color: #374151;
+}
+
+.mobile-input-wrap input {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: 2px solid #e5e7eb;
+  font-size: 16px;
+  transition: all .2s ease;
+  background: white;
+}
+
+.mobile-input-wrap input:focus {
+  outline: none;
+  border-color: #2B3EFF;
+  box-shadow: 0 0 0 3px rgba(43, 62, 255, 0.1);
+}
+
+.mobile-input-wrap input::placeholder {
+  color: #9ca3af;
+}
+
+/* Tilføj dette øverst i bundles.css eller find #bundleGrid */
+
+
+.bundle-details-toggle {
+background: none;
+border: none;
+color: #6b7280;
+font-size: 13px;
+font-weight: 600;
+width: 100%;
+margin-top: 15px;
+cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 5px;
+}
+
+.price-intro strong {
+color: #111;
+font-size: 24px;
+font-weight: 800;
+}
+
+.price-normal {
+font-size: 13px;
+color: #6b7280;
+margin-top: 2px;
+}
+
+.bundle-details-content strong {
+color: #111;
+}
+
+.details-toggle {
+background: none;
+border: none;
+color: #6b7280;
+font-size: 13px;
+font-weight: 600;
+width: 100%;
+margin-top: 16px;
+padding: 8px 0;
+cursor: pointer;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 4px;
+}
+
+.details-toggle:hover {
+color: #111;
+}
+
+.details-content {
+animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(-5px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================
+   MOBIL: Skjul tjenestepriser
+   ========================= */
+@media (max-width: 520px) {
+  .service-row [style*="text-align:right"],
+  .service-row [style*="text-align: right"] {
+    display: none;
+  }
+}
