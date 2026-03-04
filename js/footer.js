@@ -18,6 +18,7 @@
             <li><a href="/viaplay">Viaplay</a></li>
             <li><a href="/skyshowtime">Skyshowtime</a></li>
             <li><a href="/tv2play">TV2 Play</a></li>
+            <li><a href="/disneyplus">Disney Plus</a></li>
           </ul>
         </div>
   

@@ -56,6 +56,12 @@ document.head.appendChild(script);
                 <span class="dd-desc">Priser og pakker</span>
               </a>
             </li>
+               <li>
+              <a href="/disneyplus">
+                Disney Plus
+                <span class="dd-desc">Priser og pakker</span>
+              </a>
+            </li>
           </ul>
         </li>
         <li>
@@ -102,6 +108,9 @@ document.head.appendChild(script);
         <a href="/amazon-prime">Amazon Prime</a>
         <a href="/deezer">Deezer</a>
         <a href="/viaplay">Viaplay</a>
+        <a href="/skyshowtime">Skyshowtime</a>
+        <a href="/tv2play">TV2 Play</a>
+        <a href="/disneyplus">Disney Plus</a>
       </div>
       <button class="mobile-dd-toggle" data-target="mobileGuides">
         Guides
@@ -182,14 +191,28 @@ document.head.appendChild(script);
     }
 
     // ---- MOBIL SUB-MENUS ----
-    document.querySelectorAll(".mobile-dd-toggle").forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const targetId = btn.dataset.target;
-        const sub = document.getElementById(targetId);
-        btn.classList.toggle("open");
-        if (sub) sub.classList.toggle("open");
-      });
+   // ---- MOBIL SUB-MENUS ----
+document.querySelectorAll(".mobile-dd-toggle").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const targetId = btn.dataset.target;
+    const sub = document.getElementById(targetId);
+    const isOpen = btn.classList.contains("open");
+
+    // Luk alle andre først
+    document.querySelectorAll(".mobile-dd-toggle").forEach((other) => {
+      if (other !== btn) {
+        other.classList.remove("open");
+        const otherId = other.dataset.target;
+        const otherSub = document.getElementById(otherId);
+        if (otherSub) otherSub.classList.remove("open");
+      }
     });
+
+    // Toggle den klikkede
+    btn.classList.toggle("open", !isOpen);
+    if (sub) sub.classList.toggle("open", !isOpen);
+  });
+});
 
     // ---- ACCORDION ----
     document.querySelectorAll('.extra-info details').forEach(detail => {
