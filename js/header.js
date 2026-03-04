@@ -62,6 +62,12 @@ document.head.appendChild(script);
                 <span class="dd-desc">Priser og pakker</span>
               </a>
             </li>
+            <li>
+              <a href="/max">
+                Max
+                <span class="dd-desc">Priser og pakker</span>
+              </a>
+            </li>
           </ul>
         </li>
         <li>
@@ -111,6 +117,7 @@ document.head.appendChild(script);
         <a href="/skyshowtime">Skyshowtime</a>
         <a href="/tv2play">TV2 Play</a>
         <a href="/disneyplus">Disney Plus</a>
+        <a href="/max">Max</a>
       </div>
       <button class="mobile-dd-toggle" data-target="mobileGuides">
         Guides
