@@ -1,12 +1,3 @@
-/**
- * Cookie Consent – mineudgifter.dk
- * Håndterer: Google AdSense, Google Analytics (kun ved accept), Umami (altid aktiv)
- *
- * Indsæt i <head> via header.js – kører på alle sider automatisk.
- *
- * Tilpas ADSENSE_ID og GA_ID nedenfor.
- */
-
 (function () {
   // ─── KONFIGURATION ────────────────────────────────────────────────
   var ADSENSE_ID = 'ca-pub-2260388383616992';
