@@ -29,6 +29,7 @@
             <li><a href="/">Beregn dine streamingudgifter</a></li>
             <li><a href="/guides/hvorfor-stiger-streaming-priser/">Hvorfor stiger streaming priser?</a></li>
             <li><a href="/guides/streaming-priser/">Streaming priser i Danmark</a></li>
+            <li><a href="/guides/mobil-abonnement-med-streaming/">Mobil abonnement med streaming</a></li>
             <li><a href="mailto:info@mineudgifter.dk">Kontakt</a></li>
           </ul>
         </div>

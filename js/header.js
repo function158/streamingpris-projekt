@@ -90,6 +90,12 @@ document.head.appendChild(script);
                 <span class="dd-desc">Forklaring og baggrund</span>
               </a>
             </li>
+            <li>
+              <a href="/guides/mobil-abonnement-med-streaming/">
+                Mobil abonnement med streaming
+                <span class="dd-desc">Pakker og priser</span>
+              </a>
+            </li>
           </ul>
         </li>
       </ul>
