@@ -171,14 +171,27 @@
      ============================================================ */
   
   .nav-logo img { width: 50%; height: auto; }
+
+  
   
   .top-nav {
     background: #fff;
     box-shadow: 0 2px 8px rgba(0,0,0,.06);
     border-radius: 20px;
-    position: relative;
+    position: sticky;
+    top: 12px;
     z-index: 100;
+    touch-action: manipulation;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+    will-change: transform;
   }
+  
+  .top-nav.hidden {
+    transform: translateY(calc(-200%));
+    opacity: 0;
+    pointer-events: none;
+  }
+
   
   .top-nav .nav-inner {
     display: flex;
@@ -357,10 +370,6 @@
   /* Fjern nederste hjørner på header når menu er åben */
   .top-nav:has(.mobile-menu.active) {
     border-radius: 20px 20px 0 0;
-  }
-
-  .top-nav {
-    touch-action: manipulation;
   }
   
   .mobile-menu a,

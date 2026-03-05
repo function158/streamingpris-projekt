@@ -153,6 +153,31 @@ document.head.appendChild(script);
     // Kør menu-logik efter header er injektet
     initMenu();
 
+    // Scroll op = vis menu, scroll ned = skjul menu
+    var lastScrollY = window.scrollY;
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          var nav = document.querySelector('.top-nav');
+          if (nav) {
+            var currentScrollY = window.scrollY;
+            var diff = currentScrollY - lastScrollY;
+            if (diff < -3) {
+              // Scroller op → vis menu
+              nav.classList.remove('hidden');
+            } else if (diff > 3 && currentScrollY > 60) {
+              // Scroller ned → skjul menu
+              nav.classList.add('hidden');
+            }
+            lastScrollY = currentScrollY;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
     // Kør læseprogress-bar efter header er injektet
     initReadingProgress();
   }
