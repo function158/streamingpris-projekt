@@ -644,7 +644,7 @@ function createBundleCard(item) {
         const plan      = getServicePlan(entry.id, resolved.planIndex ?? 0);
         const p         = getServiceBundlePrice(entry);
         const planName  = plan ? plan.name : '';
-        const hasValg   = !!entry.valgmuligheder;
+        const hasValg   = !!(entry.valgmuligheder && entry.valgmuligheder.length > 1);
 
         const listPrice = plan ? plan.price : 0;
         let priceHtml;
@@ -670,7 +670,7 @@ function createBundleCard(item) {
                      return `<div class="valg-option ${active ? 'valg-option-active' : ''}" data-valg-index="${i}">${v.label}</div>`;
                  }).join('')}
                </div>`
-            : `<span style="font-size:12px;color:#374151;">${planName}</span>`;
+               : `<span style="background:#f3f4f6;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:600;color:#374151;display:inline-flex;align-items:center;white-space:nowrap;">${planName}</span>`;
 
         return `
           <div class="service-row valg-wrap" data-service-id="${entry.id}" style="margin-bottom:8px;position:relative;">

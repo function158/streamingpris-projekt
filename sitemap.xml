@@ -14,22 +14,17 @@
   </url>
 
   <url>
+    <loc>https://mineudgifter.dk/guides/hvorfor-stiger-streaming-priser/</loc>
+    <lastmod>2026-03-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
     <loc>https://mineudgifter.dk/guides/mobil-abonnement-med-streaming/</loc>
     <lastmod>2026-03-04</lastmod>
     <priority>0.7</priority>
   </url>
 
-   <url>  
-    <loc>https://mineudgifter.dk/max/</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.7</priority>
-  </url>
-
-   <url>  
-    <loc>https://mineudgifter.dk/max/</loc>
-    <lastmod>2026-03-03</lastmod>
-    <priority>0.7</priority>
-  </url>
 
   <url>
     <loc>https://mineudgifter.dk/netflix/</loc>
@@ -75,6 +70,12 @@
 
   <url>  
     <loc>https://mineudgifter.dk/max/</loc>
+    <lastmod>2026-03-04</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>  
+    <loc>https://mineudgifter.dk/podimo/</loc>
     <lastmod>2026-03-04</lastmod>
     <priority>0.7</priority>
   </url>
