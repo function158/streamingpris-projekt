@@ -8,19 +8,19 @@
 
     const MODES = {
       har: {
-        title:        'Vælg dine streamingtjenester og se din samlede <span>pris & tilbud</span>',
-        intro:        'Sammensæt dine streamingtjenester, få din samlede pris og se om du kan spare med mobilabonnementer med inkluderet streaming.',
+        title:        'Vælg dine streamingtjenester og se dine <span>mulige besparelser</span>',
+        intro:        'Opdag om dine streamingtjenester kan blive billigere gennem mobilabonnementer med inkluderet streaming.',
         bundleTitle:  'Du kan måske spare penge',
         summaryLabel: 'Din samlede pris for valgte tjenester',
-        mobileH3:     'Hvad betaler du for mobil?',
+        mobileH3: 'Hvad betaler du for mobil? <span style="font-size:12px;font-weight:600;opacity:0.7;white-space:nowrap;">⏱ ~1 min</span>',
         mobileP:      'Vi finder bundter, der kan spare dig penge på både streaming og mobil.',
       },
       vil: {
-        title:        'Sammensæt det du gerne vil have og find den <span>billigste vej derhen</span>',
-        intro:        'Vælg de streamingtjenester du ønsker – vi finder de billigste mobilabonnementer der inkluderer dem.',
+        title: 'Sammensæt dine streamingtjenester og find den <span>billigste måde</span>',
+        intro: 'Vælg dine streamingtjenester. Vi finder mobilabonnementer hvor de allerede er inkluderet.',
         bundleTitle:  'Sådan får du det billigst',
         summaryLabel: 'Samlet listepris, hvis du køber separat',
-        mobileH3:     'Har du et mobilabonnement i dag?',
+        mobileH3: 'Har du et mobilabonnement i dag?',
         mobileP:      'Vi bruger det til at sammenligne med bundter, der måske er billigere.',
       },
     };

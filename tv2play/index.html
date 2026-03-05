@@ -112,6 +112,40 @@
     ]
   }
   </script>
+  <style>
+    .seo-text h2 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-left: none;
+      padding-left: 0;
+    }
+    .seo-text h2::before {
+      content: '';
+      display: block;
+      width: 5px;
+      min-height: 1.3em;
+      align-self: stretch;
+      background: #2B3EFF;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .h2-icon {
+      display: inline-flex;
+      flex-shrink: 0;
+    }
+    .h2-icon img {
+      width: 36px;
+      height: 36px;
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .h2-icon img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -149,7 +183,7 @@
     </span>
   </div>
 
-  <h2>Hvad er TV 2 Play?</h2>
+  <h2><span class="h2-icon"><img src="/icons/tv.svg" alt="" width="36" height="36"></span>Hvad er TV 2 Play?</h2>
 
   <p>
     TV 2 Play er TV 2s streamingtjeneste og giver adgang til mere end 20.000 timers
@@ -175,7 +209,7 @@
      PRISOVERSIGT
 ════════════════════════════════════════════ -->
 <section class="seo-text">
-  <h2>Hvad koster TV 2 Play i Danmark? (2026)</h2>
+  <h2><span class="h2-icon"><img src="/icons/valuta.svg" alt="" width="36" height="36"></span>Hvad koster TV 2 Play i Danmark? (2026)</h2>
 
   <p>
     TV 2 Play abonnementer i Danmark tilbyder tre pakker: Basis, Favorit og Favorit + Sport. Inden for hver
@@ -237,7 +271,7 @@
      PAKKESAMMENLIGNING
 ════════════════════════════════════════════ -->
 <section class="seo-text">
-  <h2>Hvad er forskellen på Basis, Favorit og Favorit + Sport?</h2>
+  <h2><span class="h2-icon"><img src="/icons/pakker.svg" alt="" width="36" height="36"></span>Hvad er forskellen på Basis, Favorit og Favorit + Sport?</h2>
 
   <div style="overflow-x:auto; margin-top:12px;">
     <table style="width:100%; border-collapse:collapse; font-size:14px;">
@@ -308,7 +342,7 @@
      (long-tail H3 headings med pris + "i Danmark")
 ════════════════════════════════════════════ -->
 <section class="seo-text">
-  <h2>TV 2 Play abonnementer og priser i Danmark</h2>
+  <h2><span class="h2-icon"><img src="/icons/clipboard.svg" alt="" width="36" height="36"></span>TV 2 Play abonnementer og priser i Danmark</h2>
 
   <p>
     Her gennemgår vi hver enkelt TV 2 Play-pakke i detaljer, så du hurtigt kan finde
@@ -370,7 +404,7 @@
      SPORT
 ════════════════════════════════════════════ -->
 <section class="seo-text">
-  <h2>Sport på TV 2 Play i Danmark</h2>
+  <h2><span class="h2-icon"><img src="/icons/sport.svg" alt="" width="36" height="36"></span>Sport på TV 2 Play i Danmark</h2>
 
   <p>
     TV 2 Play Favorit + Sport er det eneste sted i Danmark, hvor du kan se 3F Superliga
@@ -433,7 +467,7 @@
      INDHOLD
 ════════════════════════════════════════════ -->
 <section class="seo-text">
-  <h2>Hvad kan man ellers se på TV 2 Play?</h2>
+  <h2><span class="h2-icon"><img src="/icons/play.svg" alt="" width="36" height="36"></span>Hvad kan man ellers se på TV 2 Play?</h2>
 
   <p>
     Udover sport har TV 2 Play et meget bredt indholdsudbud fordelt på ni kategorier:
@@ -459,7 +493,7 @@
      (keyword-cluster: mobilabonnement med streaming)
 ════════════════════════════════════════════ -->
 <section class="seo-text">
-  <h2>Spar på TV 2 Play via mobilabonnement med streaming i Danmark</h2>
+  <h2><span class="h2-icon"><img src="/icons/valuta.svg" alt="" width="36" height="36"></span>Spar på TV 2 Play via mobilabonnement med streaming i Danmark</h2>
 
   <p>
     Vidste du, at du måske kan få TV 2 Play inkluderet i dit mobilabonnement?
@@ -495,7 +529,7 @@
      ENHEDER
 ════════════════════════════════════════════ -->
 <section class="seo-text">
-  <h2>Hvilke enheder understøtter TV 2 Play?</h2>
+  <h2><span class="h2-icon"><img src="/icons/enheder.svg" alt="" width="36" height="36"></span>Hvilke enheder understøtter TV 2 Play?</h2>
 
   <p>
     TV 2 Play kan bruges på smart-tv, mobil, tablet og computer – de fleste populære
@@ -508,7 +542,7 @@
      ER DET PENGENE VÆRD?
 ════════════════════════════════════════════ -->
 <section class="seo-text">
-  <h2>Er TV 2 Play pengene værd i Danmark?</h2>
+  <h2><span class="h2-icon"><img src="/icons/check.svg" alt="" width="36" height="36"></span>Er TV 2 Play pengene værd i Danmark?</h2>
 
   <p>
     For danskere der primært vil have dansk indhold og sport samlet ét sted, er
@@ -536,7 +570,7 @@
 ════════════════════════════════════════════ -->
 <section class="seo-text extra-info">
 
-  <h2>Ofte stillede spørgsmål om TV 2 Play i Danmark</h2>
+  <h2><span class="h2-icon"><img src="/icons/question.svg" alt="" width="36" height="36"></span>Ofte stillede spørgsmål om TV 2 Play i Danmark</h2>
 
   <details>
     <summary>Er der en gratis prøveperiode på TV 2 Play?</summary>
@@ -604,8 +638,6 @@
       </li>
     </ul>
   </details>
-
-  <p><time class="page-timestamp" datetime="2026-03-03">Senest opdateret: 3. marts 2026</time></p>
 
   <section class="cta-wrap">
     <div class="cta-wrap-inner">

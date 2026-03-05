@@ -23,49 +23,49 @@ document.head.appendChild(script);
             <li>
               <a href="/netflix">
                 Netflix
-                <span class="dd-desc">Priser og pakker</span>
+                <span class="dd-desc">Streaming</span>
               </a>
             </li>
             <li>
               <a href="/amazon-prime">
                 Amazon Prime
-                <span class="dd-desc">Priser og pakker</span>
+                <span class="dd-desc">Streaming</span>
               </a>
             </li>
              <li>
               <a href="/deezer">
                 Deezer
-                <span class="dd-desc">Priser og pakker</span>
+                <span class="dd-desc">Musik</span>
               </a>
             </li>
                <li>
               <a href="/viaplay">
                 Viaplay
-                <span class="dd-desc">Priser og pakker</span>
+                <span class="dd-desc">Streaming</span>
               </a>
             </li>
                <li>
               <a href="/skyshowtime">
                 Skyshowtime
-                <span class="dd-desc">Priser og pakker</span>
+                <span class="dd-desc">Streaming</span>
               </a>
             </li>
                 <li>
               <a href="/tv2play">
                 TV2 Play
-                <span class="dd-desc">Priser og pakker</span>
+                <span class="dd-desc">Streaming</span>
               </a>
             </li>
                <li>
               <a href="/disneyplus">
                 Disney Plus
-                <span class="dd-desc">Priser og pakker</span>
+                <span class="dd-desc">Streaming</span>
               </a>
             </li>
             <li>
               <a href="/max">
                 Max
-                <span class="dd-desc">Priser og pakker</span>
+                <span class="dd-desc">Streaming</span>
               </a>
             </li>
           </ul>

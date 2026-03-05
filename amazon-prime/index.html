@@ -19,125 +19,62 @@
   <script defer src="/js/header.js"></script>
   <script defer src="/js/footer.js"></script>
 
-  <!-- Structured Data: FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Hvad koster Amazon Prime Video i Danmark?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Amazon Prime Video koster 59 kr. pr. måned i Danmark (pr. marts 2026). Du kan opsige abonnementet når som helst uden binding."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Hvad koster Prime Video om måneden i Danmark?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Prime Video koster 59 kr. om måneden i Danmark. Der er ingen binding, og du kan opsige når som helst."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Er der gratis prøveperiode på Amazon Prime Video i Danmark?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ja, Amazon Prime Video tilbyder en gratis prøveperiode på 30 dage, hvis du ikke har haft tjenesten før. Herefter koster det 59 kr./md."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Hvad kan man se på Prime Video i Danmark?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "På Prime Video i Danmark kan du se et stort udvalg af film, serier og Amazon Originals som The Boys, Reacher, Fallout og Jack Ryan. Indholdet er tilgængeligt i HD og op til 4K, og du kan downloade til offline visning."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Hvad er Amazon Prime Video?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Amazon Prime Video er Amazons streamingtjeneste med adgang til film, serier og egne Amazon Originals-produktioner. I Danmark koster det 59 kr./md. uden binding. Tjenesten er ikke det samme som et fuldt Amazon Prime-medlemskab, som i Danmark ikke inkluderer gratis fragt."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Er Prime Video og Amazon Prime det samme?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Nej, ikke i Danmark. Prime Video er Amazons streamingtjeneste til film og serier. Amazon Prime er et bredere medlemskab, der i andre lande også giver gratis fragt og andre fordele – men i Danmark inkluderer det danske Prime Video-abonnement typisk ikke gratis levering fra Amazon."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Har Amazon Prime Video sport i Danmark?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Amazon Prime Video har i øjeblikket ikke Premier League eller dansk sport i Danmark. I andre lande har Amazon rettighederne til bl.a. Premier League, men dette er ikke tilgængeligt i det danske katalog pr. 2026."
-        }
-      }
+      {"@type":"Question","name":"Hvad koster Amazon Prime Video i Danmark?","acceptedAnswer":{"@type":"Answer","text":"Amazon Prime Video koster 59 kr. pr. måned i Danmark (pr. marts 2026). Du kan opsige abonnementet når som helst uden binding."}},
+      {"@type":"Question","name":"Er der gratis prøveperiode på Amazon Prime Video i Danmark?","acceptedAnswer":{"@type":"Answer","text":"Ja, Amazon Prime Video tilbyder en gratis prøveperiode på 30 dage, hvis du ikke har haft tjenesten før. Herefter koster det 59 kr./md."}},
+      {"@type":"Question","name":"Hvad kan man se på Prime Video i Danmark?","acceptedAnswer":{"@type":"Answer","text":"På Prime Video i Danmark kan du se et stort udvalg af film, serier og Amazon Originals som The Boys, Reacher, Fallout og Jack Ryan."}},
+      {"@type":"Question","name":"Har Amazon Prime Video sport i Danmark?","acceptedAnswer":{"@type":"Answer","text":"Amazon Prime Video har i øjeblikket ikke Premier League eller dansk sport i Danmark pr. 2026."}}
     ]
   }
   </script>
 
-  <!-- Structured Data: BreadcrumbList -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Forside",
-        "item": "https://mineudgifter.dk"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Streaming",
-        "item": "https://mineudgifter.dk/streaming"
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "name": "Amazon Prime Video pris",
-        "item": "https://mineudgifter.dk/amazon-prime"
-      }
+      {"@type":"ListItem","position":1,"name":"Forside","item":"https://mineudgifter.dk"},
+      {"@type":"ListItem","position":2,"name":"Streaming","item":"https://mineudgifter.dk/streaming"},
+      {"@type":"ListItem","position":3,"name":"Amazon Prime Video pris","item":"https://mineudgifter.dk/amazon-prime"}
     ]
   }
   </script>
 
-  <!-- Structured Data: Product / Offer -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "Amazon Prime Video",
-    "description": "Amazons streamingtjeneste med film, serier og Amazon Originals tilgængeligt i Danmark.",
-    "brand": {
-      "@type": "Brand",
-      "name": "Amazon"
-    },
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "DKK",
-      "price": "59",
-      "priceValidUntil": "2026-12-31",
-      "availability": "https://schema.org/InStock",
-      "url": "https://www.primevideo.com",
-      "areaServed": {
-        "@type": "Country",
-        "name": "Denmark"
-      }
+  <style>
+    .seo-text h2 {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      border-left: none;
+      padding-left: 0;
     }
-  }
-  </script>
+    .seo-text h2::before {
+      content: '';
+      display: block;
+      width: 5px;
+      min-height: 1.3em;
+      align-self: stretch;
+      background: #2B3EFF;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .h2-icon {
+      display: inline-flex;
+      flex-shrink: 0;
+    }
+    .h2-icon img {
+      width: 36px;
+      height: 36px;
+      display: block;
+    }
+    @media (max-width: 600px) {
+      .h2-icon img { width: 30px; height: 30px; }
+    }
+  </style>
 </head>
 
 <body>
@@ -155,28 +92,18 @@
 
 <section class="seo-text">
 
-  <!-- Meta badges -->
   <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:20px;">
-    <span style="display:inline-flex; align-items:center; gap:8px; padding:8px 18px; background:#fff; border:1.5px solid #e2e6ea; border-radius:999px; font-family:sans-serif; font-size:14px; color:#444; box-shadow:0 1px 3px rgba(0,0,0,0.06);">
-      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4B4FE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/>
-        <polyline points="9 12 11 14 15 10" stroke-width="2.2"/>
-      </svg>
+    <span style="display:inline-flex; align-items:center; gap:8px; padding:8px 18px; background:#fff; border:1.5px solid #e2e6ea; border-radius:999px; font-size:14px; color:#444; box-shadow:0 1px 3px rgba(0,0,0,0.06);">
+      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4B4FE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><polyline points="9 12 11 14 15 10" stroke-width="2.2"/></svg>
       Priser og oplysninger opdateret 4. marts 2026
     </span>
-    <span style="display:inline-flex; align-items:center; gap:8px; padding:8px 18px; background:#fff; border:1.5px solid #e2e6ea; border-radius:999px; font-family:sans-serif; font-size:14px; color:#444; box-shadow:0 1px 3px rgba(0,0,0,0.06);">
-      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4B4FE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="13" r="8"/>
-        <line x1="12" y1="9" x2="12" y2="13"/>
-        <line x1="12" y1="13" x2="14.5" y2="14.5"/>
-        <line x1="9.5" y1="2.5" x2="14.5" y2="2.5"/>
-        <line x1="12" y1="2.5" x2="12" y2="5"/>
-      </svg>
+    <span style="display:inline-flex; align-items:center; gap:8px; padding:8px 18px; background:#fff; border:1.5px solid #e2e6ea; border-radius:999px; font-size:14px; color:#444; box-shadow:0 1px 3px rgba(0,0,0,0.06);">
+      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#4B4FE8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="8"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="13" x2="14.5" y2="14.5"/><line x1="9.5" y1="2.5" x2="14.5" y2="2.5"/><line x1="12" y1="2.5" x2="12" y2="5"/></svg>
       5 min læsning
     </span>
   </div>
 
-  <h2>Hvad er Amazon Prime Video?</h2>
+  <h2><span class="h2-icon"><img src="/icons/tv.svg" alt="" width="36" height="36"></span>Hvad er Amazon Prime Video?</h2>
 
   <p>
     Amazon Prime Video er Amazons globale streamingtjeneste og giver adgang til et stort katalog
@@ -191,7 +118,6 @@
     og op til tre enheder kan streame samtidigt.
   </p>
 
-  <!-- AI Overview-svar: "Hvad er Prime Video og hvad er Amazon Prime?" -->
   <h3 style="font-size:16px; font-weight:700; margin:24px 0 10px;">Er Prime Video og Amazon Prime det samme?</h3>
   <p>
     Nej – og det er vigtigt at forstå forskellen, særligt i Danmark. <strong>Prime Video</strong> er
@@ -207,13 +133,9 @@
 
 </section>
 
-<!-- ═══════════════════════════════════════════
-     PRIS
-════════════════════════════════════════════ -->
 <section class="seo-text">
-  <h2>Hvad koster Amazon Prime Video i Danmark? (2026)</h2>
+  <h2><span class="h2-icon"><img src="/icons/valuta.svg" alt="" width="36" height="36"></span>Hvad koster Amazon Prime Video i Danmark? (2026)</h2>
 
-  <!-- AI Overview direkte svar: "amazon prime pris" og "hvad koster prime video" -->
   <p>
     <strong>Amazon Prime Video koster 59 kr. om måneden i Danmark</strong> (pr. marts 2026).
     Abonnementet er uden binding og kan opsiges når som helst. Der er ingen årsabonnementspris
@@ -268,17 +190,12 @@
   </p>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     INDHOLD
-════════════════════════════════════════════ -->
 <section class="seo-text">
-  <h2>Hvad kan man se på Prime Video i Danmark?</h2>
+  <h2><span class="h2-icon"><img src="/icons/play.svg" alt="" width="36" height="36"></span>Hvad kan man se på Prime Video i Danmark?</h2>
 
-  <!-- AI Overview direkte svar: "hvad kan man se på prime video" -->
   <p>
     Prime Video i Danmark giver adgang til et bredt katalog af internationale film, serier og
-    Amazon Originals. Indholdet inkluderer tusindvis af titler, der løbende opdateres. Her er
-    de vigtigste kategorier:
+    Amazon Originals. Indholdet inkluderer tusindvis af titler, der løbende opdateres.
   </p>
 
   <div style="overflow-x:auto; margin-top:12px;">
@@ -324,13 +241,9 @@
   </p>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     SPORT – AI Overview svar
-════════════════════════════════════════════ -->
 <section class="seo-text">
-  <h2>Har Amazon Prime Video sport i Danmark?</h2>
+  <h2><span class="h2-icon"><img src="/icons/sport.svg" alt="" width="36" height="36"></span>Har Amazon Prime Video sport i Danmark?</h2>
 
-  <!-- AI Overview direkte svar: "amazon prime sport", "amazon prime premier league", "prime video fodbold" -->
   <p>
     Amazon Prime Video er i udlandet – særligt i UK – kendt for at sende <strong>Premier League</strong>
     og andre sportsudsendelser. I Danmark er dette dog <em>ikke</em> tilfældet pr. 2026.
@@ -338,27 +251,16 @@
 
   <p>
     Det danske Prime Video-katalog indeholder ikke live-sport, Premier League, Superliga eller
-    andre sportsrettigheder. Hvis du søger efter <strong>amazon prime sport Danmark</strong> eller
-    <strong>prime video fodbold</strong>, er svaret altså, at sportsdelen ikke er tilgængelig i det
-    danske marked på nuværende tidspunkt.
-  </p>
-
-  <p>
-    Ønsker du sport i din streaming-pakke i Danmark, er TV 2 Play Favorit + Sport
+    andre sportsrettigheder. Ønsker du sport i din streaming-pakke i Danmark, er TV 2 Play Favorit + Sport
     (249 kr./md.) det eneste sted, der sender 3F Superliga direkte i streaming.
     Se vores sammenligning af <a href="/streaming">alle streamingpakker med sport i Danmark</a>.
   </p>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     ABONNEMENT DETALJER
-════════════════════════════════════════════ -->
 <section class="seo-text">
-  <h2>Amazon Prime Video abonnement i Danmark – hvad er inkluderet?</h2>
+  <h2><span class="h2-icon"><img src="/icons/clipboard.svg" alt="" width="36" height="36"></span>Amazon Prime Video abonnement i Danmark – hvad er inkluderet?</h2>
 
-  <p>
-    Her er en samlet oversigt over, hvad du får med et Amazon Prime Video-abonnement i Danmark:
-  </p>
+  <p>Her er en samlet oversigt over, hvad du får med et Amazon Prime Video-abonnement i Danmark:</p>
 
   <ul style="line-height:1.9; padding-left:20px; font-size:15px;">
     <li><strong>Pris:</strong> 59 kr. om måneden, ingen binding</li>
@@ -374,11 +276,8 @@
   </ul>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     MOBILABONNEMENT MED STREAMING
-════════════════════════════════════════════ -->
 <section class="seo-text">
-  <h2>Amazon Prime Video via mobilabonnement med streaming i Danmark</h2>
+  <h2><span class="h2-icon"><img src="/icons/valuta.svg" alt="" width="36" height="36"></span>Amazon Prime Video via mobilabonnement med streaming i Danmark</h2>
 
   <p>
     Visse danske teleselskaber tilbyder <strong>mobilabonnement med streaming</strong> inkluderet –
@@ -388,11 +287,9 @@
 
   <p>
     Hvis du allerede betaler for et mobilabonnement, kan det betale sig at tjekke, om Prime Video
-    er inkluderet eller kan tilkøbes billigere end direkte hos Amazon. Det kan spare dig
-    59 kr./md. eller mere, afhængigt af din mobilpakke.
+    er inkluderet eller kan tilkøbes billigere end direkte hos Amazon.
   </p>
 
-  <!-- Intern CTA -->
   <div style="background:#f0f4ff; border-radius:12px; padding:20px 24px; margin-top:20px;">
     <p style="font-weight:600; margin:0 0 8px;">Beregn din samlede streamingpris →</p>
     <p style="font-size:14px; color:#555; margin:0 0 14px;">
@@ -405,27 +302,19 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     ER DET PENGENE VÆRD?
-════════════════════════════════════════════ -->
 <section class="seo-text">
-  <h2>Er Amazon Prime Video pengene værd i Danmark?</h2>
+  <h2><span class="h2-icon"><img src="/icons/check.svg" alt="" width="36" height="36"></span>Er Amazon Prime Video pengene værd i Danmark?</h2>
 
   <p>
     Til 59 kr./md. er Amazon Prime Video en af de billigste streamingtjenester på det danske marked.
     Styrken er Amazon Originals-kataloget, der løbende udkommer med store, populære produktioner.
-    Er du fan af serier som <em>The Boys</em>, <em>Reacher</em> eller <em>Fallout</em>, er prisen svær
-    at slå.
+    Er du fan af serier som <em>The Boys</em>, <em>Reacher</em> eller <em>Fallout</em>, er prisen svær at slå.
   </p>
 
   <p>
     Til gengæld er det danske katalog af licenserede film og serier smallere end fx Netflix, og
     der er ingen sport, ingen danskproduceret indhold og ingen livekanaler. Prime Video er bedst
     som supplement til en anden primær streamingtjeneste – ikke som din eneste streaming-løsning.
-  </p>
-
-  <p>
-    Sammenlignet med andre tjenester på det danske marked:
   </p>
 
   <div style="overflow-x:auto; margin-top:12px;">
@@ -468,86 +357,54 @@
   </div>
 
   <p style="margin-top:12px; font-size:14px; color:#555;">
-    Se vores fulde <a href="/streaming">sammenligning af alle streamingpakker i Danmark</a> for at finde
-    den bedste kombination til dit budget.
+    Se vores fulde <a href="/streaming">sammenligning af alle streamingpakker i Danmark</a>.
   </p>
 </section>
 
-<!-- ═══════════════════════════════════════════
-     FAQ
-════════════════════════════════════════════ -->
 <section class="seo-text extra-info">
 
-  <h2>Ofte stillede spørgsmål om Amazon Prime Video i Danmark</h2>
+  <h2><span class="h2-icon"><img src="/icons/question.svg" alt="" width="36" height="36"></span>Ofte stillede spørgsmål om Amazon Prime Video i Danmark</h2>
 
   <details>
     <summary>Hvad koster Prime Video om måneden i Danmark?</summary>
-    <p>
-      Amazon Prime Video koster <strong>59 kr. om måneden</strong> i Danmark (pr. marts 2026).
-      Der er ingen binding, og du kan opsige abonnementet når som helst.
-    </p>
+    <p>Amazon Prime Video koster <strong>59 kr. om måneden</strong> i Danmark (pr. marts 2026). Der er ingen binding, og du kan opsige abonnementet når som helst.</p>
   </details>
 
   <details>
     <summary>Er der en gratis prøveperiode på Amazon Prime Video?</summary>
-    <p>
-      Ja. Amazon tilbyder en <strong>gratis prøveperiode på 30 dage</strong> til nye brugere i Danmark.
-      Du skal registrere en betalingsmetode, men bliver ikke opkrævet noget, hvis du opsiger inden
-      prøveperioden udløber.
-    </p>
+    <p>Ja. Amazon tilbyder en <strong>gratis prøveperiode på 30 dage</strong> til nye brugere i Danmark. Du skal registrere en betalingsmetode, men bliver ikke opkrævet noget, hvis du opsiger inden prøveperioden udløber.</p>
   </details>
 
   <details>
     <summary>Hvad er forskellen på Prime Video og Amazon Prime i Danmark?</summary>
-    <p>
-      Prime Video er Amazons streamingtjeneste til film og serier. Amazon Prime er i andre lande
-      et bredere medlemskab med bl.a. gratis fragt. I Danmark inkluderer det danske Prime Video-abonnement
-      typisk ikke fragtfordele fra Amazon.
-    </p>
+    <p>Prime Video er Amazons streamingtjeneste til film og serier. Amazon Prime er i andre lande et bredere medlemskab med bl.a. gratis fragt. I Danmark inkluderer det danske Prime Video-abonnement typisk ikke fragtfordele fra Amazon.</p>
   </details>
 
   <details>
     <summary>Har Amazon Prime Video Premier League eller sport i Danmark?</summary>
-    <p>
-      Nej. Amazon Prime Video har ikke Premier League eller live-sport i Danmark pr. 2026.
-      I UK har Amazon rettighederne til Premier League-kampe, men dette gælder ikke det
-      danske katalog.
-    </p>
+    <p>Nej. Amazon Prime Video har ikke Premier League eller live-sport i Danmark pr. 2026. I UK har Amazon rettighederne til Premier League-kampe, men dette gælder ikke det danske katalog.</p>
   </details>
 
   <details>
     <summary>Kan man se Prime Video i udlandet?</summary>
-    <p>
-      Ja, Prime Video kan bruges i hele EU. Uden for EU kan adgangen til visse titler være
-      begrænset af licensrettigheder.
-    </p>
+    <p>Ja, Prime Video kan bruges i hele EU. Uden for EU kan adgangen til visse titler være begrænset af licensrettigheder.</p>
   </details>
 
   <details>
     <summary>Kan man downloade film og serier på Prime Video?</summary>
-    <p>
-      Ja, Prime Video understøtter offline download til mobil og tablet, så du kan se indhold
-      uden internetforbindelse – fx på rejser.
-    </p>
+    <p>Ja, Prime Video understøtter offline download til mobil og tablet, så du kan se indhold uden internetforbindelse – fx på rejser.</p>
   </details>
 
   <details>
     <summary>Hvad er Amazon Prime Video "Go Ad Free"?</summary>
-    <p>
-      "Go Ad Free" er et tillæg til Prime Video-abonnementet, der fjerner reklamer fra afspilningen.
-      Det koster et månedligt tillæg oveni de 59 kr./md. Det præcise beløb fremgår på primevideo.com.
-    </p>
+    <p>"Go Ad Free" er et tillæg til Prime Video-abonnementet, der fjerner reklamer fra afspilningen. Det koster et månedligt tillæg oveni de 59 kr./md. Det præcise beløb fremgår på primevideo.com.</p>
   </details>
 
   <details>
     <summary>Hvor kommer priserne fra?</summary>
     <p>Priserne er baseret på Amazon Prime Videos officielle hjemmeside for Danmark.</p>
     <ul>
-      <li>
-        <a href="https://www.primevideo.com" target="_blank" rel="noopener">
-          Prime Video – officielle priser og abonnementer
-        </a>
-      </li>
+      <li><a href="https://www.primevideo.com" target="_blank" rel="noopener">Prime Video – officielle priser og abonnementer</a></li>
     </ul>
   </details>
 
@@ -556,16 +413,9 @@
   <section class="cta-wrap">
     <div class="cta-wrap-inner">
       <p class="cta-eyebrow">Gratis · Ingen login · 30 sekunder</p>
-      <h2 class="cta-heading">
-        Få Amazon Prime Video billigere med mobilabonnement
-      </h2>
-      <p class="cta-sub">
-        Sammenlign alle streaming-pakker og se om du kan spare på dit Prime Video-abonnement
-        via dit mobilabonnement med streaming.
-      </p>
-      <a href="/" class="cta-primary cta-large">
-        Beregn din samlede pris <span class="arrow">→</span>
-      </a>
+      <h2 class="cta-heading">Få Amazon Prime Video billigere med mobilabonnement</h2>
+      <p class="cta-sub">Sammenlign alle streaming-pakker og se om du kan spare på dit Prime Video-abonnement via dit mobilabonnement med streaming.</p>
+      <a href="/" class="cta-primary cta-large">Beregn din samlede pris <span class="arrow">→</span></a>
     </div>
   </section>
 
