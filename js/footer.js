@@ -38,6 +38,7 @@
         <div class="footer-col">
           <h4>Information</h4>
           <ul>
+          <li><a href="/om-os/">Om os</a></li>
             <li><a href="/legal/privatlivspolitik/">Privatlivspolitik</a></li>
             <li><a href="/legal/ansvarsfraskrivelse/">Ansvarsfraskrivelse</a></li>
           </ul>

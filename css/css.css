@@ -114,9 +114,12 @@
   
   body {
     margin: 0;
-    background: var(--bg);
-    padding: 20px;
-    color: var(--ink);
+    background:
+  radial-gradient(900px 400px at 50% -100px, rgba(43,62,255,0.06), transparent),
+  radial-gradient(600px 300px at 100% 0%, rgba(107,130,255,0.04), transparent),
+  #f5f5f7;
+  padding: 20px;
+  color: var(--ink);
     overflow-y: scroll;
   }
   
@@ -995,7 +998,7 @@
      ============================================================ */
   
   .mode-switch-wrap {
-    max-width: 420px;
+    max-width: 640px;
     margin: 32px auto;
     padding: 0 16px;
     display: flex;
@@ -1035,8 +1038,8 @@
       margin: 36px auto;
       padding: 0;
     }
-    .mode-switch { width: auto; }
-    .mode-btn { flex: none; padding: 11px 28px; font-size: 12px; word-break: normal; }
+    .mode-switch { width: 100%; }
+    .mode-btn { flex: 1; padding: 16px 28px; font-size: 15px; word-break: normal; }
   }
   
   
@@ -1118,18 +1121,61 @@
   
   /* Shared chip layout */
   .mobile-picker-chips,
-  .data-filter-chips,
-  .data-eu-chips {
-    display: flex; flex-wrap: wrap; gap: 10px;
+.data-filter-chips,
+.data-eu-chips {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+/* ============================================================
+   MOBILE PICKER & DATA FILTER — mobil grid
+   ============================================================ */
+/* EU-chips folder ud */
+.data-eu-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.3s ease, opacity 0.25s ease;
+}
+
+.data-eu-chips.visible {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.data-eu-chips .data-eu-chip {
+  flex: 1;
+  font-size: 13px;
+  padding: 8px 6px;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  /* Pris: 3 kolonner, "Andet beløb" fuld bredde */
+  .mobile-picker-chips {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
   }
-  
-  .data-eu-chips { margin-top: 10px; }
-  
-  @media (max-width: 600px) {
-    .mobile-picker-chips,
-    .data-filter-chips,
-    .data-eu-chips { justify-content: center; }
+  .mobile-picker-chips .mobile-chip[data-value="custom"] {
+    grid-column: 1 / -1;
   }
+
+  /* Data DK: 3 kolonner — 2 rækker × 3 */
+  .data-filter-chips {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  /* EU: "Ingen krav" fuld bredde */
+  .data-eu-chips .data-eu-chip[data-min-eu="0"] {
+    width: 100%;
+    flex: unset;
+  }
+}
   
   /* Primary chips */
   .mobile-chip {
@@ -1175,7 +1221,7 @@
   .data-filter-divider   { height: 1px; background: rgba(255,255,255,0.18); margin-bottom: 14px; }
   .data-filter-header    { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
   .data-filter-icon      { font-size: 16px; }
-  .data-filter-label     { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.85); text-transform: uppercase; letter-spacing: .5px; }
+  .data-filter-label     { font-size: 13px; font-weight: 700; color: rgba(255,255,255,0.85); letter-spacing: .5px; }
   
   /* Secondary chips */
   .data-chip {
@@ -1190,7 +1236,16 @@
   .data-chip.active { background: rgba(255,255,255,0.95); color: #2B3EFF; border-color: #fff; font-weight: 800; box-shadow: 0 3px 10px rgba(0,0,0,0.12); }
   
   /* EU toggle */
-  .data-filter-eu-row { margin-top: 4px; }
+  .data-filter-eu-row { margin-top: 8px; }
+
+/* EU-chips: 4 kolonner på mobil */
+@media (max-width: 600px) {
+  .data-eu-chips {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7px;
+  }
+}
   
   .data-eu-toggle {
     display: flex; align-items: center; gap: 8px;
@@ -1596,3 +1651,41 @@
     background: rgba(255,255,255,.08); color: rgba(255,255,255,.65);
     font-size: 12px; font-weight: 600; cursor: default;
   }
+
+  /* Desktop: plain nav-link uden dropdown-styling */
+.nav-plain-link {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  text-decoration: none;
+  padding: 6px 4px;
+  transition: color 0.15s;
+}
+.nav-plain-link:hover { color: var(--accent); }
+
+/* Mobil: plain link uden toggle-knap */
+.mobile-plain-link {
+  display: block;
+  padding: 13px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+.mobile-plain-link:hover { color: var(--accent); }
+
+.prices-updated-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #767676;
+  margin: 12px auto 0;
+  max-width: 900px;
+  text-align: center;
+}
+.prices-updated-note svg {
+  color: #4B4FE8;
+  flex-shrink: 0;
+}

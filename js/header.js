@@ -104,6 +104,9 @@ document.head.appendChild(script);
             </li>
           </ul>
         </li>
+        <li>
+          <a href="/om-os/" class="nav-plain-link">Om os</a>
+        </li>
       </ul>
       <a href="/" class="cta-primary">
         Tjek din pris <span class="arrow">→</span>
@@ -141,7 +144,10 @@ document.head.appendChild(script);
       <div class="mobile-sub" id="mobileGuides">
         <a href="/guides/streaming-priser/">Streaming priser i Danmark</a>
         <a href="/guides/hvorfor-stiger-streaming-priser/">Hvorfor stiger streaming priser?</a>
+        <a href="/guides/mobil-abonnement-med-streaming/">Mobil abonnement med streaming</a>
       </div>
+      <div class="mobile-divider"></div>
+      <a href="/om-os/" class="mobile-plain-link">Om os</a>
       <div class="mobile-divider"></div>
       <div class="mobile-cta">
         <a href="/index.html">Tjek din pris</a>
@@ -151,16 +157,10 @@ document.head.appendChild(script);
   `;
 
   function injectHeader() {
-    // Undgå dobbelt-injektion
     if (document.querySelector('.top-nav')) return;
-
-    // Indsæt header øverst i <body>
     document.body.insertAdjacentHTML('afterbegin', headerHTML);
-
-    // Kør menu-logik efter header er injektet
     initMenu();
 
-    // Scroll op = vis menu, scroll ned = skjul menu
     var lastScrollY = window.scrollY;
     var ticking = false;
     window.addEventListener('scroll', function() {
@@ -171,10 +171,8 @@ document.head.appendChild(script);
             var currentScrollY = window.scrollY;
             var diff = currentScrollY - lastScrollY;
             if (diff < -3) {
-              // Scroller op → vis menu
               nav.classList.remove('hidden');
             } else if (diff > 3 && currentScrollY > 60) {
-              // Scroller ned → skjul menu
               nav.classList.add('hidden');
             }
             lastScrollY = currentScrollY;
@@ -185,7 +183,6 @@ document.head.appendChild(script);
       }
     }, { passive: true });
 
-    // Kør læseprogress-bar efter header er injektet
     initReadingProgress();
   }
 
@@ -207,7 +204,6 @@ document.head.appendChild(script);
       });
     });
 
-    // Luk desktop dropdowns ved klik udenfor
     document.addEventListener("click", (e) => {
       if (!e.target.closest(".nav-links")) {
         document.querySelectorAll(".nav-links > li").forEach((li) =>
@@ -236,28 +232,25 @@ document.head.appendChild(script);
     }
 
     // ---- MOBIL SUB-MENUS ----
-   // ---- MOBIL SUB-MENUS ----
-document.querySelectorAll(".mobile-dd-toggle").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const targetId = btn.dataset.target;
-    const sub = document.getElementById(targetId);
-    const isOpen = btn.classList.contains("open");
+    document.querySelectorAll(".mobile-dd-toggle").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.dataset.target;
+        const sub = document.getElementById(targetId);
+        const isOpen = btn.classList.contains("open");
 
-    // Luk alle andre først
-    document.querySelectorAll(".mobile-dd-toggle").forEach((other) => {
-      if (other !== btn) {
-        other.classList.remove("open");
-        const otherId = other.dataset.target;
-        const otherSub = document.getElementById(otherId);
-        if (otherSub) otherSub.classList.remove("open");
-      }
+        document.querySelectorAll(".mobile-dd-toggle").forEach((other) => {
+          if (other !== btn) {
+            other.classList.remove("open");
+            const otherId = other.dataset.target;
+            const otherSub = document.getElementById(otherId);
+            if (otherSub) otherSub.classList.remove("open");
+          }
+        });
+
+        btn.classList.toggle("open", !isOpen);
+        if (sub) sub.classList.toggle("open", !isOpen);
+      });
     });
-
-    // Toggle den klikkede
-    btn.classList.toggle("open", !isOpen);
-    if (sub) sub.classList.toggle("open", !isOpen);
-  });
-});
 
     // ---- ACCORDION ----
     document.querySelectorAll('.extra-info details').forEach(detail => {
@@ -273,7 +266,6 @@ document.querySelectorAll(".mobile-dd-toggle").forEach((btn) => {
   }
 
   function initReadingProgress() {
-    // Sider uden progress bar
     const excluded = [
       '/',
       '/index.html',
@@ -288,17 +280,14 @@ document.querySelectorAll(".mobile-dd-toggle").forEach((btn) => {
     if (isExcluded) return;
     if (document.getElementById('reading-progress')) return;
 
-    // Indsæt style
     const style = document.createElement('style');
     style.textContent = '#reading-progress{position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,#2B3EFF,#6B7FFF);z-index:9999;transition:width 0.1s linear;border-radius:0 2px 2px 0;}';
     document.head.appendChild(style);
 
-    // Indsæt bar
     const bar = document.createElement('div');
     bar.id = 'reading-progress';
     document.body.insertAdjacentElement('afterbegin', bar);
 
-    // Scroll-lytter der virker på alle mobile browsere
     window.addEventListener('scroll', function () {
       const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
       const viewHeight = (window.visualViewport ? window.visualViewport.height : window.innerHeight) || window.innerHeight;
@@ -311,7 +300,6 @@ document.querySelectorAll(".mobile-dd-toggle").forEach((btn) => {
     }, { passive: true });
   }
 
-  // Kør når DOM er klar
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', injectHeader);
   } else {

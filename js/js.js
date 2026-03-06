@@ -146,6 +146,21 @@ document.addEventListener("DOMContentLoaded", async () => {
       section.appendChild(grid);
       cardsEl.appendChild(section);
     });
+
+    // Tidsstempel efter alle kategorier
+    const existingStamp = cardsEl.querySelector('.prices-updated-note');
+    if (existingStamp) existingStamp.remove();
+
+    const stamp = document.createElement("p");
+    stamp.className = "prices-updated-note";
+    stamp.innerHTML = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="9 12 11 14 15 10" stroke-width="2.2"/>
+      </svg>
+      Priser sidst opdateret: <time datetime="2026-03-06">6. marts 2026</time>
+    `;
+    cardsEl.appendChild(stamp);
   }
 
   // Hjælpefunktion til at toggle en tjeneste til/fra
@@ -227,14 +242,12 @@ function initMobilePicker() {
       chip.classList.add('active');
       const val = chip.dataset.value;
       if (val === 'custom') {
-        // Vis fritekst-felt
         if (customWrap) customWrap.style.display = 'block';
         if (customInput) customInput.focus();
-        // Brug hvad der allerede er i feltet, eller 0
         setMobileValue(customInput?.value || 0);
       } else {
-        // Skjul fritekst-felt
         if (customWrap) customWrap.style.display = 'none';
+        if (customInput) customInput.value = '';
         setMobileValue(Number(val));
       }
     });
@@ -245,8 +258,22 @@ function initMobilePicker() {
     customInput.addEventListener('input', () => {
       setMobileValue(Number(customInput.value) || 0);
     });
+
+    // Klik udenfor input → gå tilbage til "Ved ikke"
+  if (customInput) {
+    customInput.addEventListener('blur', () => {
+      if (!customInput.value) {
+        if (customWrap) customWrap.style.display = 'none';
+        chips.forEach(c => c.classList.remove('active'));
+        const defaultChip = document.querySelector('.mobile-chip[data-value="0"]');
+        if (defaultChip) defaultChip.classList.add('active');
+        setMobileValue(0);
+      }
+    });
+  }
   }
 }
+
 
 /**
  * DATA FILTER
@@ -286,7 +313,13 @@ function initDataFilter() {
       const isActive = euToggle.dataset.active === 'true';
       const nowActive = !isActive;
       euToggle.dataset.active = nowActive.toString();
-      if (euChipsWrap) euChipsWrap.style.display = nowActive ? 'flex' : 'none';
+      if (euChipsWrap) {
+        if (nowActive) {
+          euChipsWrap.classList.add('visible');
+        } else {
+          euChipsWrap.classList.remove('visible');
+        }
+      }
       if (!nowActive) {
         // Nulstil EU-krav og sæt 'Ligegyldigt' aktiv igen
         window.minEuGb = 0;
