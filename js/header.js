@@ -7,7 +7,7 @@ document.head.appendChild(script);
   <header class="top-nav">
     <div class="nav-inner">
       <div class="nav-logo">
-        <a href="/index.html">
+        <a href="/">
           <img src="/images/mineudgifter-logo.svg" alt="Mine Udgifter logo">
         </a>
       </div>

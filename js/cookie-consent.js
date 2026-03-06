@@ -186,7 +186,19 @@
       '</div>',
     ].join('');
 
-    document.body.appendChild(el);
+    // EFTER — sæt initial state og animer ind
+document.body.appendChild(el);
+// Sæt startposition (usynlig, forskudt)
+el.style.opacity = '0';
+el.style.transform = isMobile() ? 'translateY(100%)' : 'translateX(calc(100% + 20px))';
+// Animer ind efter næste frame
+requestAnimationFrame(function() {
+  requestAnimationFrame(function() {
+    el.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
+    el.style.opacity = '1';
+    el.style.transform = isMobile() ? 'translateY(0)' : 'translateX(0)';
+  });
+});
   }
 
   function init() {
