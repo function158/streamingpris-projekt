@@ -68,10 +68,28 @@ document.head.appendChild(script);
                 <span class="dd-desc">Streaming</span>
               </a>
             </li>
+            <li>
+              <a href="/nordisk-film-plus">
+                Nordisk Film Plus
+                <span class="dd-desc">Danske film & serier</span>
+              </a>
+            </li>
              <li>
               <a href="/podimo">
                 Podimo
                 <span class="dd-desc">Podcast & Lydbøger</span>
+              </a>
+            </li>
+            <li>
+              <a href="/mofibo">
+                Mofibo
+                <span class="dd-desc">Lydbøger & Podcasts</span>
+              </a>
+            </li>
+            <li>
+              <a href="/bookbeat">
+                Bookbeat
+                <span class="dd-desc">Lydbøger & Podcasts</span>
               </a>
             </li>
           </ul>
@@ -111,6 +129,12 @@ document.head.appendChild(script);
              <li>
               <a href="/udbydere/callme">
                 Call Me
+                <span class="dd-desc">Mobil, Internet & Streaming</span>
+              </a>
+            </li>
+             <li>
+              <a href="/udbydere/yousee">
+                Yousee
                 <span class="dd-desc">Mobil, Internet & Streaming</span>
               </a>
             </li>
@@ -173,7 +197,10 @@ document.head.appendChild(script);
         <a href="/tv2play">TV2 Play</a>
         <a href="/disneyplus">Disney Plus</a>
         <a href="/max">Max</a>
+        <a href="/nordisk-film-plus">Nordisk Film Plus</a>
         <a href="/podimo">Podimo</a>
+        <a href="/mofibo">Mofibo</a>
+        <a href="/bookbeat">Bookbeat</a>
       </div>
       <button class="mobile-dd-toggle" data-target="mobileUdbydere">
         Udbydere
@@ -187,6 +214,7 @@ document.head.appendChild(script);
         <a href="/udbydere/norlys">Norlys</a>
         <a href="/udbydere/oister">Oister</a>
         <a href="/udbydere/callme">Call Me</a>
+        <a href="/udbydere/yousee">Yousee</a>
       </div>
       <button class="mobile-dd-toggle" data-target="mobileGuides">
         Guides

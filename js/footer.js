@@ -20,7 +20,10 @@
           <li><a href="/tv2play">TV2 Play</a></li>
           <li><a href="/disneyplus">Disney Plus</a></li>
           <li><a href="/max">Max</a></li>
+          <li><a href="/nordisk-film">Nordisk Film Plus</a></li>
           <li><a href="/podimo">Podimo</a></li>
+          <li><a href="/mofibo">Mofibo</a></li>
+          <li><a href="/bookbeat">Bookfeat</a></li>
         </ul>
       </div>
 
@@ -32,6 +35,7 @@
           <li><a href="/udbydere/norlys">Norlys</a></li>
           <li><a href="/udbydere/oister">Oister</a></li>
           <li><a href="/udbydere/callme">Call Me</a></li>
+          <li><a href="/udbydere/yousee">Yousee</a></li>
         </ul>
       </div>
 
