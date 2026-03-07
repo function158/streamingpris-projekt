@@ -9,50 +9,43 @@
 
   <url>
     <loc>https://mineudgifter.dk/guides/streaming-priser/</loc>
-    <lastmod>2026-02-24</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://mineudgifter.dk/guides/hvorfor-stiger-streaming-priser/</loc>
-    <lastmod>2026-03-04</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://mineudgifter.dk/guides/mobil-abonnement-med-streaming/</loc>
-    <lastmod>2026-03-04</lastmod>
-    <priority>0.7</priority>
-  </url>
-
-
-  <url>
-    <loc>https://mineudgifter.dk/netflix/</loc>
-    <lastmod>2026-02-24</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>
     <loc>https://mineudgifter.dk/amazon-prime/</loc>
-    <lastmod>2026-02-24</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>  
     <loc>https://mineudgifter.dk/deezer/</loc>
-    <lastmod>2026-02-26</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>  
     <loc>https://mineudgifter.dk/viaplay/</loc>
-    <lastmod>2026-02-28</lastmod>
+    <lastmod>2026-03-05</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>  
     <loc>https://mineudgifter.dk/skyshowtime/</loc>
-    <lastmod>2026-03-03</lastmod>
+    <lastmod>2026-03-06</lastmod>
     <priority>0.7</priority>
   </url>
 
@@ -70,13 +63,43 @@
 
   <url>  
     <loc>https://mineudgifter.dk/max/</loc>
-    <lastmod>2026-03-04</lastmod>
+    <lastmod>2026-03-06</lastmod>
     <priority>0.7</priority>
   </url>
 
   <url>  
     <loc>https://mineudgifter.dk/podimo/</loc>
-    <lastmod>2026-03-04</lastmod>
+    <lastmod>2026-03-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>  
+    <loc>https://mineudgifter.dk/udbydere/cbb/</loc>
+    <lastmod>2026-03-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>  
+    <loc>https://mineudgifter.dk/udbydere/norlys/</loc>
+    <lastmod>2026-03-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>  
+    <loc>https://mineudgifter.dk/udbydere/telmore/</loc>
+    <lastmod>2026-03-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+    <url>  
+    <loc>https://mineudgifter.dk/udbydere/oister/</loc>
+    <lastmod>2026-03-06</lastmod>
+    <priority>0.7</priority>
+  </url>
+
+  <url>  
+    <loc>https://mineudgifter.dk/udbydere/callme/</loc>
+    <lastmod>2026-03-06</lastmod>
     <priority>0.7</priority>
   </url>
 

@@ -78,6 +78,46 @@ document.head.appendChild(script);
         </li>
         <li>
           <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Udbydere
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <ul class="dropdown">
+            <li>
+              <a href="/udbydere/telmore">
+                Telmore
+                <span class="dd-desc">Mobil & Internet</span>
+              </a>
+            </li>
+            <li>
+              <a href="/udbydere/cbb">
+                CBB
+                <span class="dd-desc">Mobil, Streaming & Internet</span>
+              </a>
+            </li>
+            <li>
+              <a href="/udbydere/norlys">
+                Norlys
+                <span class="dd-desc">Mobil, Internet, TV/Streaming & El</span>
+              </a>
+            </li>
+             <li>
+              <a href="/udbydere/oister">
+                Oister
+                <span class="dd-desc">Mobil & Internet</span>
+              </a>
+            </li>
+             <li>
+              <a href="/udbydere/callme">
+                Call Me
+                <span class="dd-desc">Mobil, Internet & Streaming</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li>
+          <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
             Guides
             <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <polyline points="6 9 12 15 18 9"/>
@@ -134,6 +174,19 @@ document.head.appendChild(script);
         <a href="/disneyplus">Disney Plus</a>
         <a href="/max">Max</a>
         <a href="/podimo">Podimo</a>
+      </div>
+      <button class="mobile-dd-toggle" data-target="mobileUdbydere">
+        Udbydere
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="mobile-sub" id="mobileUdbydere">
+        <a href="/udbydere/telmore">Telmore</a>
+        <a href="/udbydere/cbb">CBB</a>
+        <a href="/udbydere/norlys">Norlys</a>
+        <a href="/udbydere/oister">Oister</a>
+        <a href="/udbydere/callme">Call Me</a>
       </div>
       <button class="mobile-dd-toggle" data-target="mobileGuides">
         Guides
