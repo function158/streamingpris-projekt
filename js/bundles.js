@@ -758,14 +758,14 @@ const SERVICE_ICONS = {
           const isDowngrade  = userService && listPrice < userService.price;
           const isUpgrade    = userService && listPrice > userService.price;
           const planNoteHtml = isDowngrade
-              ? `<div style="margin-top:5px;font-size:11px;color:#6b7280;font-weight:500;">
-                   OBS. Bundlen inkluderer <em>${planName}</em> – ikke din nuværende pakke (${userService.name})
-                 </div>`
-              : isUpgrade
-              ? `<div style="margin-top:5px;font-size:11px;color:#15803d;font-weight:600;">
-                   ✓ Bedre end din nuværende pakke – inkluderer ${planName}
-                 </div>`
-              : '';
+    ? `<span style="font-size:10px;font-weight:600;color:#9ca3af;">
+         ↓ Lavere end dit valg
+       </span>`
+    : isUpgrade
+    ? `<span style="font-size:10px;font-weight:600;color:#16a34a;">
+         ↑ Bedre end dit valg
+       </span>`
+    : '';
   
           let priceHtml;
           if (p.hasIntro && p.introMonths > 0) {
@@ -795,13 +795,15 @@ const SERVICE_ICONS = {
                  : `<span style="background:#f3f4f6;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:600;color:#374151;display:inline-flex;align-items:center;white-space:nowrap;">${planName}</span>`;
   
           return `
-            <div class="service-row valg-wrap" data-service-id="${entry.id}" style="margin-bottom:8px;position:relative;">
+            <div class="service-row valg-wrap" data-service-id="${entry.id}" style="margin-bottom:14px;position:relative;">
               <div style="display:grid;grid-template-columns:52px 1fr 90px;align-items:center;gap:8px;">
                 <img src="${src}" alt="${entry.id}" style="height:32px;width:32px;object-fit:contain;border-radius:8px;">
-                <div style="min-width:0;">${labelHtml}</div>
-                <div style="text-align:right;">${priceHtml}</div>
-              </div>
-              ${planNoteHtml}
+                <div style="min-width:0;display:flex;flex-direction:column;gap:3px;">
+              ${labelHtml}
+             ${planNoteHtml}
+             </div>
+               <div style="text-align:right;">${priceHtml}</div>
+             </div>
             </div>`;
       }).join('');
   
