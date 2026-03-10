@@ -18,15 +18,109 @@ function getServiceIcon(id) {
   return SERVICE_ICONS[id] || getServiceLogo(id);
 }
 
+// ─── SUPABASE CONFIG ─────────────────────────────────────────────────────────
+const SUPABASE_URL  = 'https://jrjwronitlemdnctzkdj.supabase.co';
+const SUPABASE_ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impyandyb25pdGxlbWRuY3R6a2RqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwNDQyMzgsImV4cCI6MjA4ODYyMDIzOH0.rlvdsZZTPfVIsjzq4IzcsIoMqz7DwgcgZP_RkUiwWYc';
+const SB_HEADERS    = { apikey: SUPABASE_ANON, Authorization: `Bearer ${SUPABASE_ANON}` };
+
 let providersData = [];
 
 async function fetchProviders() {
     try {
-        const response = await fetch('./data/providers.json');
-        providersData = await response.json();
-    } catch (e) { console.error("Kunne ikke hente udbydere", e); }
-}
+        // Hent JSON og Supabase parallelt
+        const [jsonRes, sbRes] = await Promise.all([
+            fetch('./data/providers.json'),
+            fetch(
+                `${SUPABASE_URL}/rest/v1/plans` +
+                `?select=*,plan_streaming_options(*)` +
+                `&type=eq.fixed` +
+                `&status=eq.active`,
+                { headers: SB_HEADERS }
+            )
+        ]);
 
+        // Validér begge svar
+        if (!jsonRes.ok) throw new Error(`providers.json fejlede: ${jsonRes.status}`);
+        if (!sbRes.ok)   throw new Error(`Supabase fejlede: ${sbRes.status}`);
+
+        const jsonProviders = await jsonRes.json();
+        const sbPlans       = await sbRes.json();
+
+        // Gruppér Supabase-planer per provider_id
+        const providerMap = {};
+        sbPlans.forEach(plan => {
+            const pid = plan.provider_id;
+            if (!providerMap[pid]) providerMap[pid] = { bundles: [] };
+
+            // Konverter plan_streaming_options → streamingIncluded (samme format som JSON)
+            const streamingIncluded = (plan.plan_streaming_options || []).map(opt => ({
+                id: opt.service_id,
+                valgmuligheder: [{
+                    label:              opt.label,
+                    planIndex:          opt.plan_index,
+                    partnerNormalPrice: opt.partner_normal_price  ?? 0,
+                    ...(opt.partner_intro_price  != null && { partnerIntroPrice:  opt.partner_intro_price }),
+                    ...(opt.partner_intro_months != null && { partnerIntroMonths: opt.partner_intro_months }),
+                    ...(opt.upgrade_price        != null && { upgradePrice:       opt.upgrade_price }),
+                    ...(opt.price_after          != null && { priceAfter:         opt.price_after }),
+                }]
+            }));
+
+            providerMap[pid].bundles.push({
+                id:               plan.id,
+                name:             plan.name,
+                type:             'fixed',
+                dataAmount:       plan.data_amount,
+                dataEU:           plan.data_eu        || '',
+                mobileBasePrice:  plan.mobile_base_price,
+                ...(plan.intro_price_mobile != null && { introPriceMobile: plan.intro_price_mobile }),
+                ...(plan.intro_months       != null && { introMonths:      plan.intro_months }),
+                ...(plan.expiry_date        != null && { expiryDate:       plan.expiry_date }),
+                newCustomersOnly: plan.new_customers_only || false,
+                link:             plan.link || '',
+                streamingIncluded,
+                details: {
+                    oprettelse: plan.oprettelse || '0 kr.',
+                    opsigelse:  plan.opsigelse  || 'Ingen binding',
+                }
+            });
+        });
+
+        // Hent provider-metadata hvis der er Supabase-planer
+        let sbProviders = [];
+        const providerIds = Object.keys(providerMap);
+        if (providerIds.length > 0) {
+            const ids = providerIds.map(id => `"${id}"`).join(',');
+            const provRes = await fetch(
+                `${SUPABASE_URL}/rest/v1/providers?id=in.(${ids})`,
+                { headers: SB_HEADERS }
+            );
+            if (provRes.ok) {
+                const provMeta = await provRes.json();
+                sbProviders = provMeta.map(p => ({
+                    name:    p.name    || p.id,
+                    logo:    p.logo_url || '',
+                    network: p.network  || '',
+                    bundles: providerMap[p.id]?.bundles || []
+                })).filter(p => p.bundles.length > 0);
+            }
+        }
+
+        // Kombiner: JSON-udbydere (CBB, CallMe, Telmore Play, Norlys) + Supabase (Oister, Telmore fixed, ...)
+        providersData = [...jsonProviders, ...sbProviders];
+
+    } catch (e) {
+        console.error('fetchProviders fejl:', e);
+        // Fallback: kun JSON hvis noget fejler
+        try {
+            const res = await fetch('./data/providers.json');
+            if (res.ok) providersData = await res.json();
+        } catch (e2) {
+            console.error('JSON fallback fejlede også:', e2);
+            providersData = [];
+        }
+    }
+}
 // ─── SERVICE HELPERS ─────────────────────────────────────────────────────────
 
 function getService(id) {
@@ -220,7 +314,7 @@ function calculateCbbMix(bundle, coveredEntries, selectedServices, currentMobile
     coveredEntries.forEach(entry => {
         const resolved = resolveEntry(entry);
         const label    = resolved.label || '';
-        if (entry.id === 'netflix' && resolved.planIndex === 2)               upgradeSum += 40;
+        if (entry.id === 'netflix' && resolved.label?.includes('Premium')) upgradeSum += 40;
         if (entry.id === 'tv2play' && label.includes('Favorit + Sport'))      upgradeSum += 150;
         else if (entry.id === 'tv2play' && label.includes('Favorit'))         upgradeSum += 80;
         if (entry.id === 'deezer'  && label.includes('Family'))               upgradeSum += 70;
@@ -585,7 +679,17 @@ async function renderBundles(selectedServices) {
             grid.parentNode.insertBefore(loadMoreBtn, grid.nextSibling);
         }
     } else {
-        if (bundleSection) bundleSection.hidden = true;
+        if (bundleSection) {
+            bundleSection.hidden = false;
+            grid.innerHTML = `
+              <div style="grid-column:1/-1;text-align:center;padding:40px 24px;background:#f6f6f4;border-radius:22px;border:1px dashed #d1d5db;max-width:480px;margin:0 auto;">
+                <div style="font-size:36px;margin-bottom:16px;">🔍</div>
+                <h3 style="font-size:18px;font-weight:800;color:#111;margin:0 0 10px;">Ingen tilbud matcher din kombination</h3>
+                <p style="font-size:15px;line-height:1.65;color:#6b7280;margin:0 0 24px;">Vi fandt ingen mobilbundter der dækker præcis de tjenester og det datakrav du har valgt. Prøv at justere dine filtre.</p>
+                <button onclick="window.scrollTo({top:0,behavior:'smooth'})" style="padding:12px 28px;background:#2B3EFF;color:#fff;border:none;border-radius:999px;font-size:15px;font-weight:700;cursor:pointer;">Ændre valgte tjenester</button>
+              </div>
+            `;
+        }
     }
 }
 
@@ -654,11 +758,13 @@ function createBundleCard(item) {
                 ${p.introPrice === 0 ? 'Gratis' : p.introPrice + ' kr.'} i ${p.introMonths} mdr.
               </span>
               <span style="font-size:11px;color:#9ca3af;white-space:nowrap;">→ ${p.normalPrice} kr./md</span>`;
-        } else if (p.normalPrice === 0 && listPrice > 0) {
-            priceHtml = `<span style="font-size:11px;color:#15803d;font-weight:700;white-space:nowrap;">Inkluderet</span> <span style="font-size:11px;color:#9ca3af;text-decoration:line-through;white-space:nowrap;">${listPrice} kr./md</span>`;
-        } else {
-            priceHtml = `<span style="font-size:12px;color:#9ca3af;white-space:nowrap;">${p.normalPrice} kr./md</span>`;
-        }
+            } else if (p.normalPrice === 0 && listPrice > 0) {
+                priceHtml = `<span style="font-size:11px;color:#15803d;font-weight:700;white-space:nowrap;">Inkluderet</span> <span style="font-size:11px;color:#9ca3af;text-decoration:line-through;white-space:nowrap;">${listPrice} kr./md</span>`;
+            } else if (p.normalPrice == null) {
+                priceHtml = `<span style="font-size:11px;color:#15803d;font-weight:700;white-space:nowrap;">Inkluderet</span> <span style="font-size:11px;color:#9ca3af;text-decoration:line-through;white-space:nowrap;">${listPrice} kr./md</span>`;
+            } else {
+                priceHtml = `<span style="font-size:12px;color:#9ca3af;white-space:nowrap;">${p.normalPrice} kr./md</span>`;
+            }
 
         const labelHtml = hasValg
             ? `<button class="valg-trigger" style="background:#f3f4f6;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:600;color:#374151;cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap;">

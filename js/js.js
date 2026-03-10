@@ -353,5 +353,54 @@ if (document.readyState === 'loading') {
   initDataFilter();
 }
 
+(function () {
+  const bar    = document.getElementById('sticky-reminder');
+  const btn    = document.getElementById('sticky-reminder-btn');
+  const target = document.querySelector('.mobile-picker-wrap');
 
+  if (!bar || !btn || !target) return;
 
+  function update() {
+    const hasSelected   = window.selected && Object.keys(window.selected).length >= 2;
+    const targetRect    = target.getBoundingClientRect();
+    const pickerVisible = targetRect.top < window.innerHeight - 60;
+
+    if (hasSelected && !pickerVisible) {
+      bar.classList.add('visible');
+    } else {
+      bar.classList.remove('visible');
+    }
+  }
+
+  // Lyt på scroll
+  window.addEventListener('scroll', update, { passive: true });
+
+  // Hook ind i toggleService — kør update hver gang selected ændres
+  // ved at wrappe window.selected i en Proxy
+  const handler = {
+    set(obj, prop, value) {
+      obj[prop] = value;
+      update();
+      return true;
+    },
+    deleteProperty(obj, prop) {
+      delete obj[prop];
+      update();
+      return true;
+    }
+  };
+
+  // Vent til js.js har sat window.selected, og wrap det derefter
+  function tryProxy() {
+    if (window.selected) {
+      window.selected = new Proxy(window.selected, handler);
+      clearInterval(interval);
+    }
+  }
+  const interval = setInterval(tryProxy, 50);
+
+  btn.addEventListener('click', () => {
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+})();

@@ -12,7 +12,7 @@
         intro:        'Opdag om dine streamingtjenester kan blive billigere gennem mobilabonnementer med inkluderet streaming.',
         bundleTitle:  'Du kan måske spare penge',
         summaryLabel: 'Din samlede pris for valgte tjenester',
-        mobileH3: 'Hvad betaler du for mobil? <span style="font-size:12px;font-weight:600;opacity:0.7;white-space:nowrap;">⏱ ~1 min</span>',
+        mobileH3: 'Hvad betaler du for dit mobilabonnement?',
         mobileP:      'Vi finder bundter, der kan spare dig penge på både streaming og mobil.',
       },
       vil: {
@@ -62,7 +62,7 @@
   
       // Mobile picker tekster
       const mobileH3 = document.querySelector('.mobile-picker-titles h3');
-      if (mobileH3) mobileH3.textContent = m.mobileH3;
+      if (mobileH3) mobileH3.innerHTML = m.mobileH3;
       const mobileP = document.querySelector('.mobile-picker-titles p');
       if (mobileP) mobileP.textContent = m.mobileP;
   

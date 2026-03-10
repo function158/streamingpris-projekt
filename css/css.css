@@ -1744,3 +1744,48 @@
 .seo-text h3 {
   scroll-margin-top: 100px;
 }
+
+#sticky-reminder {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  padding: 0 16px calc(16px + env(safe-area-inset-bottom)) 16px;
+}
+
+#sticky-reminder.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#sticky-reminder-btn {
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 15px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+  max-width: 360px;
+  width: 100%;
+  justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.15s ease;
+}
+
+#sticky-reminder-btn:active {
+  transform: scale(0.97);
+}
