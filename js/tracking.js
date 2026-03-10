@@ -9,11 +9,18 @@ const TRACKING_CONFIG = {
     base: "https://ion.callme.dk/t/t?a=1694478781&as=2050148986&t=2&tk=1",
     build: (base, url) => `${base}&url=${encodeURIComponent(url)}`,
   },
+  telmore: {
+    match: "telmore.dk",
+    base: "https://on.telmore.dk/t/t?a=1721073357&as=2050148986&t=2&tk=1",
+    // Telmore bruger statisk Adtraction-link — ingen dynamisk &url= parameter
+    build: (base, _url) => base,
+  },
 };
 
 window.applyTracking = function(url) {
+  if (!url) return url;
   // Allerede tracket? Gør ingenting.
-  if (url.includes("adt284.net") || url.includes("ion.callme.dk")) return url;
+  if (url.includes("adt284.net") || url.includes("ion.callme.dk") || url.includes("on.telmore.dk")) return url;
 
   for (const config of Object.values(TRACKING_CONFIG)) {
     if (url.includes(config.match)) {
