@@ -360,20 +360,28 @@ if (document.readyState === 'loading') {
 
   if (!bar || !btn || !target) return;
 
-  function update() {
-    const hasSelected   = window.selected && Object.keys(window.selected).length >= 2;
-    const targetRect    = target.getBoundingClientRect();
-    const pickerVisible = targetRect.top < window.innerHeight - 60;
+  let pickerVisible = true;
 
+  const observer = new IntersectionObserver((entries) => {
+    pickerVisible = entries[0].isIntersecting;
+    const hasSelected = window.selected && Object.keys(window.selected).length >= 2;
+    if (hasSelected && !pickerVisible) {
+      bar.classList.add('visible');
+    } else {
+      bar.classList.remove('visible');
+    }
+  }, { rootMargin: '0px 0px -60px 0px' });
+
+  observer.observe(target);
+
+  function update() {
+    const hasSelected = window.selected && Object.keys(window.selected).length >= 2;
     if (hasSelected && !pickerVisible) {
       bar.classList.add('visible');
     } else {
       bar.classList.remove('visible');
     }
   }
-
-  // Lyt på scroll
-  window.addEventListener('scroll', update, { passive: true });
 
   // Hook ind i toggleService — kør update hver gang selected ændres
   // ved at wrappe window.selected i en Proxy

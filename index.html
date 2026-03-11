@@ -1,17 +1,52 @@
-
 <!DOCTYPE html>
 <html lang="da">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Spar penge på Streaming & Mobil | Beregn din besparelse nu</title>
-  <meta name="description" content="Se hvad Netflix, TV 2 Play, Viaplay og Disney+ koster dig om måneden. Sammenlign med mobilabonnementer med streaming inkluderet og find den billigste løsning." />
+  <meta name="description"
+    content="Se hvad Netflix, TV 2 Play, Viaplay og Disney+ koster dig om måneden. Sammenlign med mobilabonnementer med streaming inkluderet og find den billigste løsning." />
   <style>
-    body{margin:0;font-family:'Inter',sans-serif;background:#fff;color:#1a1a1a}
-    .title{font-size:clamp(1.5rem,4vw,2.5rem);text-align:center;padding:1.5rem 1rem 0.5rem;max-width:800px;margin:0 auto}
-    .intro{text-align:center;max-width:600px;margin:0 auto;padding:0 1rem 1rem;color:#555}
-    .card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem;max-width:900px;margin:0 auto}
-    .summary{background:#f5f5f5;border-radius:12px;padding:1.25rem;max-width:900px;margin:1rem auto;text-align:center}
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: #1a1a1a
+    }
+
+    .title {
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      text-align: center;
+      padding: 1.5rem 1rem 0.5rem;
+      max-width: 800px;
+      margin: 0 auto
+    }
+
+    .intro {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 1rem 1rem;
+      color: #555
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1rem;
+      max-width: 900px;
+      margin: 0 auto
+    }
+
+    .summary {
+      background: #f5f5f5;
+      border-radius: 12px;
+      padding: 1.25rem;
+      max-width: 900px;
+      margin: 1rem auto;
+      text-align: center
+    }
   </style>
   <link rel="stylesheet" href="./css/css.css">
   <link rel="canonical" href="https://mineudgifter.dk/" />
@@ -39,22 +74,24 @@
       }
     }
     </script>
-    
+
 </head>
+
 <body>
   <div id="sticky-reminder">
     <button id="sticky-reminder-btn">
-      Godt valgt! Angiv din mobilpris og se besparelsen  &nbsp;↓
+      Godt valgt! Angiv din mobilpris og se besparelsen &nbsp;↓
     </button>
   </div>
-  
+
   <h1 class="title">
     Vælg dine streamingtjenester og se dine <span>mulige besparelser</span>
   </h1>
   <p class="intro">
-    Vælg dine streamingtjenester og se, om du kan spare penge med mobilabonnementer, hvor streaming allerede er inkluderet.
+    Vælg dine streamingtjenester og se, om du kan spare penge med mobilabonnementer, hvor streaming allerede er
+    inkluderet.
   </p>
-  
+
   <div class="top-bar">
     <button id="resetBtn" class="btn">
       Nulstil
@@ -93,16 +130,12 @@
         <button class="mobile-chip" data-value="129">129 kr</button>
         <button class="mobile-chip" data-value="149">149 kr</button>
         <button class="mobile-chip" data-value="199">199 kr</button>
-        <button class="mobile-chip" data-value="custom" style="width:100%;opacity:0.7;font-weight:500">Indtast andet beløb</button>
+        <button class="mobile-chip" data-value="custom" style="width:100%;opacity:0.7;font-weight:500">Indtast andet
+          beløb</button>
       </div>
 
       <div class="mobile-custom-input" id="mobileCustomInput" style="display:none;">
-        <input
-          type="number"
-          id="currentMobile"
-          placeholder="Fx 169 kr/md."
-          min="0"
-        />
+        <input type="number" id="currentMobile" placeholder="Fx 169 kr/md." min="0" />
       </div>
       <!-- DATA FILTER -->
       <div class="data-filter-wrap" id="dataFilterWrap">
@@ -113,17 +146,25 @@
         </div>
         <div class="data-filter-chips" id="dataFilterChips">
           <button class="data-chip active" data-min-gb="0" data-label="Ligegyldigt">Ingen krav</button>
-          <button class="data-chip" data-min-gb="8"   data-label="8 GB+">8 GB+</button>
-          <button class="data-chip" data-min-gb="20"  data-label="20 GB+">20 GB+</button>
-          <button class="data-chip" data-min-gb="50"  data-label="50 GB+">50 GB+</button>
+          <button class="data-chip" data-min-gb="8" data-label="8 GB+">8 GB+</button>
+          <button class="data-chip" data-min-gb="20" data-label="20 GB+">20 GB+</button>
+          <button class="data-chip" data-min-gb="50" data-label="50 GB+">50 GB+</button>
           <button class="data-chip" data-min-gb="100" data-label="100 GB+">100 GB+</button>
           <button class="data-chip" data-min-gb="9999" data-label="Fri data">Fri data</button>
         </div>
         <div class="data-filter-eu-row">
           <button class="data-eu-toggle" id="dataEuToggle" data-active="false">
-            <svg class="eu-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"/></svg>
+            <svg class="eu-toggle-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="2" y1="12" x2="22" y2="12" />
+              <path d="M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20" />
+            </svg>
             <span class="eu-toggle-text">Hvor meget data skal du bruge i EU?</span>
-            <svg class="eu-toggle-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            <svg class="eu-toggle-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9" />
+            </svg>
           </button>
           <div class="data-eu-chips" id="dataEuChips">
             <button class="data-chip data-eu-chip active" data-min-eu="0">Ingen krav</button>
@@ -146,133 +187,142 @@
   <section class="seo-text">
     <h2>Streaming i Danmark – hvad koster det?</h2>
     <p>
-      Mange danskere har flere streamingtjenester som Netflix, TV 2 Play og Viaplay. Tit kombineret med musik og lydbogstjenester som Spotify, Podimo og BookBeat,
+      Mange danskere har flere streamingtjenester som Netflix, TV 2 Play og Viaplay. Tit kombineret med musik og
+      lydbogstjenester som Spotify, Podimo og BookBeat,
       uden at kende den samlede pris.
       <br>
       <br>
       Vil du have et samlet overblik, kan du læse mere om
       <a href="/guides/streaming-priser/index.html">streaming priser i Danmark</a>.
-    </p>    
+    </p>
   </section>
   <section class="seo-text extra-info">
 
     <details>
       <summary>Hvorfor findes denne side?</summary>
       <div class="faq-body">
-        <p>Streaming er blevet en fast månedlig udgift for rigtig mange, men de færreste har et klart overblik over hvad det faktisk løber op i.</p>
-        <p>Denne side er lavet så du nemt kan se din samlede streamingudgift, og opdage om du kan spare penge ved at kombinere dine tjenester med et mobilabonnement der inkluderer dem.</p>
+        <p>Streaming er blevet en fast månedlig udgift for rigtig mange, men de færreste har et klart overblik over hvad
+          det faktisk løber op i.</p>
+        <p>Denne side er lavet så du nemt kan se din samlede streamingudgift, og opdage om du kan spare penge ved at
+          kombinere dine tjenester med et mobilabonnement der inkluderer dem.</p>
       </div>
     </details>
-  
+
     <details>
       <summary>Hvordan beregnes besparelsen?</summary>
       <div class="faq-body">
-        <p>Vi tager listeprisen på de streamingtjenester du har valgt, lægger dem sammen og sammenligner med mobilabonnementer der inkluderer de samme tjenester.</p>
-        <p>Besparelsen er forskellen på hvad du ville betale for streaming + mobil hver for sig, versus hvad du betaler i én samlet pakke. Jo flere tjenester du har valgt, jo større er besparelsen typisk.</p>
+        <p>Vi tager listeprisen på de streamingtjenester du har valgt, lægger dem sammen og sammenligner med
+          mobilabonnementer der inkluderer de samme tjenester.</p>
+        <p>Besparelsen er forskellen på hvad du ville betale for streaming + mobil hver for sig, versus hvad du betaler
+          i én samlet pakke. Jo flere tjenester du har valgt, jo større er besparelsen typisk.</p>
       </div>
     </details>
-  
+
     <details>
       <summary>Er priserne opdaterede?</summary>
       <div class="faq-body">
-        <p>Vi bestræber os på at holde priserne aktuelle, men streamingtjenester og mobiludbydere justerer løbende deres priser og tilbud. Vi anbefaler altid at dobbelttjekke den endelige pris hos udbyderen inden du skifter.</p>
+        <p>Vi bestræber os på at holde priserne aktuelle, men streamingtjenester og mobiludbydere justerer løbende deres
+          priser og tilbud. Vi anbefaler altid at dobbelttjekke den endelige pris hos udbyderen inden du skifter.</p>
         <p>Ser du en pris der ikke stemmer? Skriv gerne til os.</p>
       </div>
     </details>
-  
+
     <details>
       <summary>Hvad er forskellen på "Jeg har" og "Jeg vil have"?</summary>
       <div class="faq-body">
-        <p><strong>Jeg har allerede streaming</strong> — Vælg de tjenester du allerede betaler for. Vi finder mobilbundter der dækker dem, og viser hvor meget du kan spare hver måned.</p>
-        <p><strong>Jeg vil gerne have streaming</strong> — Vælg de tjenester du ønsker dig. Vi finder den billigste måde at få dem på via et mobilabonnement der inkluderer dem.</p>
+        <p><strong>Jeg har allerede streaming</strong> — Vælg de tjenester du allerede betaler for. Vi finder
+          mobilbundter der dækker dem, og viser hvor meget du kan spare hver måned.</p>
+        <p><strong>Jeg vil gerne have streaming</strong> — Vælg de tjenester du ønsker dig. Vi finder den billigste måde
+          at få dem på via et mobilabonnement der inkluderer dem.</p>
       </div>
     </details>
-  
+
     <details>
       <summary>Tjener siden penge på anbefalingerne?</summary>
       <div class="faq-body">
-        <p>Siden kan modtage affiliate-provision fra nogle af de mobiludbydere der vises. Det påvirker ikke hvilke tilbud der vises eller i hvilken rækkefølge — vi sorterer udelukkende efter bedste besparelse for dig.</p>
+        <p>Siden kan modtage affiliate-provision fra nogle af de mobiludbydere der vises. Det påvirker ikke hvilke
+          tilbud der vises eller i hvilken rækkefølge — vi sorterer udelukkende efter bedste besparelse for dig.</p>
       </div>
     </details>
 
     <section class="seo-text">
       <h2>Gratis og uden login - beregn og sammenlign på sekunder</h2>
-    
+
       <p>
         Du skal ikke oprette en konto eller opgive personlige oplysninger.
         Vælg dine streamingtjenester, angiv hvad du betaler for mobil,
         og se med det samme om du kan spare ved at samle det i ét mobilabonnement.
       </p>
-    
+
       <p>
         Ingen spam. Ingen skjulte funktioner.
         Bare et simpelt overblik over dine streamingudgifter og de bedste bundter på markedet.
       </p>
     </section>
-    
+
     <section class="seo-text">
       <h2>Spar penge på streaming og mobil – se hvad du betaler i dag</h2>
-    
+
       <p>
         Mange danskere betaler for Netflix, TV 2 Play, Viaplay og Disney+ hver for sig –
         uden at vide at de samme tjenester kan være inkluderet i et mobilabonnement
         fra udbydere som CBB, Oister, Telmore eller Call me.
       </p>
-    
+
       <p>
         99 kr. her. 149 kr. der.
         Betaler du 550 kr. om måneden for streaming alene,
         svarer det til <strong>6.600 kr. om året</strong>.
         Et mobilabonnement med streaming inkluderet kan reducere den udgift markant.
       </p>
-    
+
       <p>
         Værktøjet sammenligner din nuværende samlede pris med de bundter
         hvor dine valgte tjenester er inkluderet –
         og viser dig præcist hvad du kan spare.
       </p>
     </section>
-    
+
     <section class="seo-text">
       <h2>Sådan finder du det bedste mobilabonnement med streaming inkluderet</h2>
-    
+
       <ol>
         <li>Vælg de streamingtjenester du allerede betaler for</li>
         <li>Angiv hvad du betaler for mobil i dag</li>
         <li>Se hvilke mobilabonnementer der dækker dine tjenester – og hvad du sparer</li>
       </ol>
-    
+
       <p>
         Mange opdager at de kan få streaming inkluderet i et mobilabonnement
         til samme eller lavere pris end de betaler i dag –
         og slipper for at holde styr på flere separate betalinger.
       </p>
     </section>
-    
+
     <section class="seo-text">
       <h2>Mobilabonnementer med streaming i Danmark 2026</h2>
-    
+
       <p>
         Flere danske mobiludbydere tilbyder abonnementer hvor populære
         streamingtjenester er inkluderet i prisen:
       </p>
-    
+
       <ul>
         <li><strong>CBB MIX</strong> – vælg selv blandt Netflix, Max, TV 2 Play, Viaplay, Podimo og flere</li>
         <li><strong>Telmore Play</strong> – vælg 3–9 tjenester inkl. Netflix, Disney+, Amazon Prime og TV 2 Play</li>
         <li><strong>Oister</strong> – bundter med Disney+, Viaplay, TV 2 Play og Deezer</li>
         <li><strong>Call me</strong> – bundter med TV 2 Play, Max, Viaplay og Podimo</li>
       </ul>
-    
+
       <p>
         Værktøjet matcher automatisk dine valgte tjenester med de bundter
         der giver dig den største besparelse.
       </p>
     </section>
-    
+
     <section class="seo-text">
       <h2>Klar til at se hvad du kan spare?</h2>
-    
+
       <p>
         Vælg dine tjenester øverst på siden og angiv dit nuværende mobilforbrug –
         så finder vi de bedste bundter til dig med det samme.
@@ -290,4 +340,5 @@
   <script defer src="/js/footer.js"></script>
   <script defer src="/js/mode-switch.js"></script>
 </body>
+
 </html>
