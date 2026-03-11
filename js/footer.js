@@ -23,7 +23,7 @@
           <li><a href="/nordisk-film">Nordisk Film Plus</a></li>
           <li><a href="/podimo">Podimo</a></li>
           <li><a href="/mofibo">Mofibo</a></li>
-          <li><a href="/bookbeat">Bookfeat</a></li>
+          <li><a href="/bookbeat">Bookbeat</a></li>
         </ul>
       </div>
 

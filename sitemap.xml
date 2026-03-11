@@ -1,142 +1,128 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
     <loc>https://mineudgifter.dk/</loc>
     <lastmod>2026-02-24</lastmod>
     <priority>1.0</priority>
   </url>
-
   <url>
     <loc>https://mineudgifter.dk/guides/streaming-priser/</loc>
     <lastmod>2026-03-05</lastmod>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://mineudgifter.dk/guides/hvorfor-stiger-streaming-priser/</loc>
     <lastmod>2026-03-05</lastmod>
     <priority>0.7</priority>
   </url>
-
   <url>
     <loc>https://mineudgifter.dk/guides/mobil-abonnement-med-streaming/</loc>
     <lastmod>2026-03-05</lastmod>
     <priority>0.7</priority>
   </url>
-
+  <url>
+    <loc>https://mineudgifter.dk/netflix/</loc>
+    <lastmod>2026-03-11</lastmod>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://mineudgifter.dk/amazon-prime/</loc>
     <lastmod>2026-03-05</lastmod>
     <priority>0.7</priority>
   </url>
-
-  <url>  
+  <url>
     <loc>https://mineudgifter.dk/deezer/</loc>
     <lastmod>2026-03-05</lastmod>
     <priority>0.7</priority>
   </url>
-
-  <url>  
+  <url>
     <loc>https://mineudgifter.dk/viaplay/</loc>
     <lastmod>2026-03-05</lastmod>
     <priority>0.7</priority>
   </url>
-
-  <url>  
+  <url>
     <loc>https://mineudgifter.dk/skyshowtime/</loc>
     <lastmod>2026-03-06</lastmod>
     <priority>0.7</priority>
   </url>
-
-  <url>  
+  <url>
     <loc>https://mineudgifter.dk/tv2play/</loc>
     <lastmod>2026-03-03</lastmod>
     <priority>0.7</priority>
   </url>
-
-<url>  
+  <url>
     <loc>https://mineudgifter.dk/disneyplus/</loc>
-    <lastmod>2026-03-03</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <priority>0.7</priority>
   </url>
-
-  <url>  
+  <url>
     <loc>https://mineudgifter.dk/max/</loc>
     <lastmod>2026-03-06</lastmod>
     <priority>0.7</priority>
   </url>
-
-  <url>  
+  <url>
     <loc>https://mineudgifter.dk/podimo/</loc>
     <lastmod>2026-03-06</lastmod>
     <priority>0.7</priority>
   </url>
-
-  <url>  
+  <url>
     <loc>https://mineudgifter.dk/nordisk-film-plus/</loc>
     <lastmod>2026-03-06</lastmod>
     <priority>0.7</priority>
   </url>
-
-  <url>  
+  <url>
     <loc>https://mineudgifter.dk/mofibo/</loc>
     <lastmod>2026-03-06</lastmod>
     <priority>0.7</priority>
   </url>
-  
-   <url>  
+  <url>
     <loc>https://mineudgifter.dk/bookbeat/</loc>
     <lastmod>2026-03-06</lastmod>
     <priority>0.7</priority>
   </url>
-
-  <url>  
+  <url>
     <loc>https://mineudgifter.dk/udbydere/cbb/</loc>
     <lastmod>2026-03-06</lastmod>
     <priority>0.7</priority>
   </url>
-
-  <url>  
+  <url>
     <loc>https://mineudgifter.dk/udbydere/norlys/</loc>
     <lastmod>2026-03-06</lastmod>
     <priority>0.7</priority>
   </url>
-
-  <url>  
+  <url>
     <loc>https://mineudgifter.dk/udbydere/telmore/</loc>
     <lastmod>2026-03-06</lastmod>
     <priority>0.7</priority>
   </url>
-
-    <url>  
+  <url>
     <loc>https://mineudgifter.dk/udbydere/oister/</loc>
     <lastmod>2026-03-06</lastmod>
     <priority>0.7</priority>
   </url>
-
-  <url>  
+  <url>
     <loc>https://mineudgifter.dk/udbydere/callme/</loc>
     <lastmod>2026-03-06</lastmod>
     <priority>0.7</priority>
   </url>
-
-  <url>  
+  <url>
     <loc>https://mineudgifter.dk/udbydere/yousee/</loc>
     <lastmod>2026-03-06</lastmod>
     <priority>0.7</priority>
   </url>
-
+  <url>
+    <loc>https://mineudgifter.dk/om-os/</loc>
+    <lastmod>2026-03-11</lastmod>
+    <priority>0.4</priority>
+  </url>
   <url>
     <loc>https://mineudgifter.dk/legal/privatlivspolitik/</loc>
-    <lastmod>2026-02-24</lastmod>
+    <lastmod>2026-03-11</lastmod>
     <priority>0.3</priority>
   </url>
-
   <url>
     <loc>https://mineudgifter.dk/legal/ansvarsfraskrivelse/</loc>
     <lastmod>2026-02-24</lastmod>
     <priority>0.3</priority>
   </url>
-
 </urlset>
