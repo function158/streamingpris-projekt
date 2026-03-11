@@ -65,7 +65,7 @@
 
       <div class="footer-logo">
         <a href="/">
-          <img src="/images/mineudgifter-logo.svg" alt="Mine Udgifter logo">
+          <img src="/images/mineudgifter-logo.svg" alt="Mine Udgifter logo" width="120" height="28">
         </a>
       </div>
 

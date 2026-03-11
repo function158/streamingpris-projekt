@@ -1,81 +1,44 @@
-/* ============================================================
-   MINEUDGIFTER.DK – SAMLET STYLESHEET
-   ============================================================
+/* Inter font */
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-v13-latin-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: optional;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-v13-latin-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: optional;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-v13-latin-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: optional;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-v13-latin-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: optional;
+}
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-v13-latin-800.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: optional;
+}
 
-   INDHOLDSFORTEGNELSE:
-   1.  CSS CUSTOM PROPERTIES (tokens)
-   2.  RESET & BASE
-   3.  PAGE TITLE & INTRO
-   4.  NAVIGATION (menu.css)
-   5.  CARD
-   6.  PLAN DROPDOWN
-   7.  SUMMARY
-   8.  TOP BAR
-   9.  BUTTONS
-   10. CTA – PRIMARY BUTTON
-   11. CTA WRAP SECTION
-   12. INSIGHT
-   13. SEO / EDITORIAL TEXT
-   14. ACCORDION / FAQ
-   15. MODE SWITCH (mode-switch.css)
-   16. LAYOUT & CARD GRID
-   17. STICKY SUMMARY
-   18. MOBILE PICKER
-   19. DATA FILTER
-   20. BUNDLES (bundles.css)
-   21. FOOTER (footer.css)
-   22. DESKTOP OVERRIDES
-   23. ANIMATIONS & UTILITIES
-   ============================================================ */
+:root {
+  --serif: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
-
-/* ============================================================
-   1. CSS CUSTOM PROPERTIES
-   ============================================================ */
-
-   :root {
-    /* Typografi */
-    --serif: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-
-    /* Inter font */
-
-    @font-face {
-      font-family: 'Inter';
-      src: url('/fonts/inter-v13-latin-regular.woff2') format('woff2');
-      font-weight: 400;
-      font-style: normal;
-      font-display: optional;
-    }
-    @font-face {
-      font-family: 'Inter';
-      src: url('/fonts/inter-v13-latin-500.woff2') format('woff2');
-      font-weight: 500;
-      font-style: normal;
-      font-display: optional;
-    }
-    @font-face {
-      font-family: 'Inter';
-      src: url('/fonts/inter-v13-latin-600.woff2') format('woff2');
-      font-weight: 600;
-      font-style: normal;
-      font-display: optional;
-    }
-    @font-face {
-      font-family: 'Inter';
-      src: url('/fonts/inter-v13-latin-700.woff2') format('woff2');
-      font-weight: 700;
-      font-style: normal;
-      font-display: optional;
-    }
-    @font-face {
-      font-family: 'Inter';
-      src: url('/fonts/inter-v13-latin-800.woff2') format('woff2');
-      font-weight: 800;
-      font-style: normal;
-      font-display: optional;
-    }
-  
     /* Farver */
     --accent:      #2B3EFF;
     --accent-dark: #1a2bcc;
@@ -577,12 +540,13 @@
     border-radius: 16px;
     padding: 16px 20px;
     box-shadow: 0 8px 20px rgba(0,0,0,.12);
+    color: #6b7280;
   }
   
   .summary-label {
     margin: 0 0 12px;
     font-size: 12px; font-weight: 600;
-    color: #9ca3af;
+    color: #6b7280;
     text-transform: uppercase; letter-spacing: 0.5px;
   }
   
@@ -1497,7 +1461,6 @@
   .footer-col h4 {
     font-size: 11px; font-weight: 700;
     letter-spacing: .08em; text-transform: uppercase;
-    color: #9ca3af; margin: 0 0 14px;
   }
   
   .footer-col p  { font-size: 14px; line-height: 1.7; color: #6b7280; margin: 0; }
@@ -1505,6 +1468,7 @@
   .footer-col ul {
     list-style: none; padding: 0; margin: 0;
     display: flex; flex-direction: column; gap: 8px;
+    color: #6b7280;
   }
   
   .footer-col a {
@@ -1538,9 +1502,10 @@
     display: flex; flex-wrap: wrap;
     justify-content: center; gap: 4px 18px;
     list-style: none; padding: 0; margin: 0;
+    color: #6b7280;
   }
   
-  .footer-bottom-links a { font-size: 13px; color: #9ca3af; text-decoration: none; transition: color 0.15s ease; }
+  .footer-bottom-links a { font-size: 13px; color: #6b7280; text-decoration: none; transition: color 0.15s ease; }
   .footer-bottom-links a:hover { color: var(--accent); }
   
   /* Instagram */
@@ -1558,9 +1523,9 @@
   .footer-instagram:hover { color: #E1306C; border-color: #E1306C; background: #fff0f4; }
   
   /* Text */
-  .footer-disclaimer { font-size: 12.5px; color: #9ca3af; margin: 0; line-height: 1.65; max-width: 620px; }
-  .footer-legal      { font-size: 12px; color: #b4b4a8; max-width: 600px; }
-  .footer-meta       { font-size: 12px; color: #c4c4b8; margin: 0; }
+  .footer-disclaimer { font-size: 12.5px; color: #6b7280; margin: 0; line-height: 1.65; max-width: 620px; }
+  .footer-legal      { font-size: 12px; color: #6b7280; max-width: 600px; }
+  .footer-meta       { font-size: 12px; color: #6b7280; margin: 0; }
   
   @media (max-width: 600px) {
     .site-footer {

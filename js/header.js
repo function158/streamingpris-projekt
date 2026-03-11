@@ -8,7 +8,7 @@ document.head.appendChild(script);
     <div class="nav-inner">
       <div class="nav-logo">
         <a href="/">
-          <img src="/images/mineudgifter-logo.svg" alt="Mine Udgifter logo">
+          <img src="/images/mineudgifter-logo.svg" alt="Mine Udgifter logo" width="120" height="28">
         </a>
       </div>
       <ul class="nav-links">
