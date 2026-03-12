@@ -27,7 +27,6 @@ const SERVICE_ICONS = {
   
   async function fetchProviders() {
       try {
-          // Hent JSON og Supabase parallelt
           const [jsonRes, sbRes] = await Promise.all([
               fetch('./data/providers.json'),
               fetch(
@@ -39,20 +38,17 @@ const SERVICE_ICONS = {
               )
           ]);
   
-          // Validér begge svar
           if (!jsonRes.ok) throw new Error(`providers.json fejlede: ${jsonRes.status}`);
           if (!sbRes.ok)   throw new Error(`Supabase fejlede: ${sbRes.status}`);
   
           const jsonProviders = await jsonRes.json();
           const sbPlans       = await sbRes.json();
   
-          // Gruppér Supabase-planer per provider_id
           const providerMap = {};
           sbPlans.forEach(plan => {
               const pid = plan.provider_id;
               if (!providerMap[pid]) providerMap[pid] = { bundles: [] };
   
-              // Konverter plan_streaming_options → streamingIncluded (samme format som JSON)
               const streamingIncluded = (plan.plan_streaming_options || []).map(opt => ({
                   id: opt.service_id,
                   valgmuligheder: [{
@@ -86,7 +82,6 @@ const SERVICE_ICONS = {
               });
           });
   
-          // Hent provider-metadata hvis der er Supabase-planer
           let sbProviders = [];
           const providerIds = Object.keys(providerMap);
           if (providerIds.length > 0) {
@@ -106,12 +101,10 @@ const SERVICE_ICONS = {
               }
           }
   
-          // Kombiner: JSON-udbydere (CBB, CallMe, Telmore Play, Norlys) + Supabase (Oister, Telmore fixed, ...)
           providersData = [...jsonProviders, ...sbProviders];
   
       } catch (e) {
           console.error('fetchProviders fejl:', e);
-          // Fallback: kun JSON hvis noget fejler
           try {
               const res = await fetch('./data/providers.json');
               if (res.ok) providersData = await res.json();
@@ -121,6 +114,7 @@ const SERVICE_ICONS = {
           }
       }
   }
+
   // ─── SERVICE HELPERS ─────────────────────────────────────────────────────────
   
   function getService(id) {
@@ -139,7 +133,6 @@ const SERVICE_ICONS = {
       return s.plans[planIndex] || s.plans[0];
   }
   
-  // Normaliser entry — streng → objekt, og sæt default valgmulighed hvis valgmuligheder findes
   function normalizeEntry(entry) {
       if (typeof entry === 'string') return { id: entry, planIndex: 0 };
       if (entry.valgmuligheder && entry.valgmuligheder.length > 0) {
@@ -152,7 +145,6 @@ const SERVICE_ICONS = {
       return streamingIncluded.map(normalizeEntry);
   }
   
-  // Hent den aktive entry (løser valgmuligheder til én flad entry)
   function resolveEntry(entry) {
       if (entry.valgmuligheder) {
           const valg = entry.valgmuligheder[entry._aktivtValg ?? 0];
@@ -161,7 +153,6 @@ const SERVICE_ICONS = {
       return entry;
   }
   
-  // Hent pris-objekt for én tjeneste
   function getServiceBundlePrice(entry) {
       const resolved  = resolveEntry(entry);
       const plan      = getServicePlan(resolved.id, resolved.planIndex ?? 0);
@@ -195,20 +186,41 @@ const SERVICE_ICONS = {
   }
   
   // ─── BEREGNING ────────────────────────────────────────────────────────────────
-  
-  // ─── FÆLLES HJÆLPER: beregn currentCostForCovered og separateCost ────────────
+  //
+  // VIGTIG DESIGNBESLUTNING — to savings-baselines:
+  //
+  //   "har"-mode  → sammenlign mod currentCostForCovered (hvad brugeren betaler I DAG
+  //                 for de tjenester bundlen dækker, aflæst fra window.selected).
+  //                 Bruges til: totalSavings, yearlySavings, filter og sortering.
+  //                 Effekt: besparelsen ændrer sig KORREKT når brugeren skifter pakke
+  //                 i dropdown'en inde i kortet — fordi bundlens pris stiger/falder
+  //                 mens baseline forbliver stabil (brugerens nuværende udgift).
+  //
+  //   "vil"-mode  → sammenlign mod separateCost (markedsprisen for præcis den pakke
+  //                 bundlen aktuelt viser i dropdown'en).
+  //                 Bruges til: extraIfSeparate, extraIfSeparateYearly, vil-sortering.
+  //                 Effekt: viser hvad det ville koste at købe den valgte pakke separat.
+  //
+  // Alle tre beregnere returnerer begge sæt, så buildHarSavingsBox og buildVilSavingsBox
+  // bruger det rette tal automatisk.
+  // ─────────────────────────────────────────────────────────────────────────────
+
+  // ─── FÆLLES HJÆLPER ──────────────────────────────────────────────────────────
   
   function calcBaseCosts(coveredEntries, selectedServices) {
       let currentCostForCovered = 0;
       let separateCost = 0;
       coveredEntries.forEach(entry => {
-          const id      = entry.id;
+          const id       = entry.id;
           const resolved = resolveEntry(entry);
-          // separateCost bruger ALTID listprisen for præcis den pakke bundlen inkluderer.
-          // Det er den eneste reelle sammenligning — uanset hvad brugeren tilfældigvis har valgt.
+          // separateCost: markedsprisen for den pakke bundlen aktuelt viser (bruges til vil-mode).
+          // Brug partnerNormalPrice hvis det er sat og > 0, ellers listpris fra services.json.
           const bundlePlan = getServicePlan(id, resolved.planIndex ?? 0);
-          separateCost += bundlePlan ? bundlePlan.price : 0;
-          // currentCostForCovered: hvad brugeren betaler i dag (bruges til "din nuværende pris")
+          const listPrice  = bundlePlan ? bundlePlan.price : 0;
+          separateCost += (resolved.partnerNormalPrice !== undefined && resolved.partnerNormalPrice > 0)
+              ? resolved.partnerNormalPrice
+              : listPrice;
+          // currentCostForCovered: hvad brugeren betaler I DAG (stable baseline til har-mode).
           if (selectedServices[id]) {
               currentCostForCovered += selectedServices[id].price;
           }
@@ -217,8 +229,6 @@ const SERVICE_ICONS = {
   }
   
   // ─── BEREGNER: Norlys Pick-One ────────────────────────────────────────────────
-  // Prisstruktur: én tjeneste gratis i N måneder (pick-one),
-  // resten er individuelle addon-priser med egne intro-perioder.
   
   function calculateNorlysPickOne(bundle, coveredEntries, selectedServices, currentMobile) {
       const { currentCostForCovered, separateCost } = calcBaseCosts(coveredEntries, selectedServices);
@@ -232,7 +242,6 @@ const SERVICE_ICONS = {
       if (pickOneEntry) {
           const resolved = resolveEntry(pickOneEntry);
           const plan     = getServicePlan(pickOneEntry.id, resolved.planIndex ?? 0);
-          // Brug priceAfter hvis det findes (prisen efter gratis-perioden), ellers partnerNormalPrice eller listpris
           pickOneNormalPrice = resolved.priceAfter ?? resolved.partnerNormalPrice ?? (plan ? plan.price : 0);
       }
   
@@ -255,7 +264,6 @@ const SERVICE_ICONS = {
       const streamingNormalPrice = pickOneNormalPrice + addonNormalPrice;
       const mobileNormal         = bundle.mobileBasePrice || 0;
       const normalPriceTotal     = mobileNormal + streamingNormalPrice;
-      const separateYearlyCost   = (separateCost + currentMobile) * 12;
   
       let realYearlyCost = 0;
       for (let m = 1; m <= 12; m++) {
@@ -264,8 +272,6 @@ const SERVICE_ICONS = {
           if (addonHasIntro && addonIntroMonths && m <= addonIntroMonths) addPrice = addonIntroPrice;
           realYearlyCost += mobileNormal + pickPrice + addPrice;
       }
-  
-      const realYearlySavings = separateYearlyCost - realYearlyCost;
   
       const phases = [];
       if (addonHasIntro && addonIntroMonths) {
@@ -282,10 +288,21 @@ const SERVICE_ICONS = {
           const prev = priceTiers[priceTiers.length - 1];
           if (!prev || prev.total !== ph.total) priceTiers.push(ph);
       });
+
+      // ── HAR-mode: baseline = hvad brugeren betaler I DAG ─────────────────────
+      const harMonthly        = currentCostForCovered + currentMobile;
+      const harYearlySavings  = (harMonthly * 12) - realYearlyCost;
+      const harMonthlySavings = harMonthly - normalPriceTotal;
+
+      // ── VIL-mode: baseline = markedsprisen for bundlens valgte pakker ─────────
+      const separateMonthly       = separateCost + currentMobile;
+      const separateYearlyCost    = separateMonthly * 12;
+      const extraIfSeparate       = separateMonthly - normalPriceTotal;
+      const extraIfSeparateYearly = separateYearlyCost - realYearlyCost;
   
       return {
-          totalSavings:          Math.round(realYearlySavings / 12),
-          yearlySavings:         realYearlySavings,
+          totalSavings:          harMonthlySavings,
+          yearlySavings:         harYearlySavings,
           finalPrice:            normalPriceTotal,
           streamingNormalPrice,
           streamingIntroPrice:   0,
@@ -295,15 +312,13 @@ const SERVICE_ICONS = {
           priceTiers,
           currentCostForCovered,
           separateCost,
-          separateMonthly:       separateCost + currentMobile,
-          extraIfSeparate:       (separateCost + currentMobile) - normalPriceTotal,
-          extraIfSeparateYearly: separateYearlyCost - realYearlyCost,
+          separateMonthly,
+          extraIfSeparate,
+          extraIfSeparateYearly,
       };
   }
   
   // ─── BEREGNER: CBB Mix ────────────────────────────────────────────────────────
-  // Prisstruktur: streaming prissættes som en pulje — basispris for 2 tjenester,
-  // +50 kr. pr. ekstra. Upgrade-tillæg per tjeneste. Intro = 50% rabat på basispuljen.
   
   function calculateCbbMix(bundle, coveredEntries, selectedServices, currentMobile) {
       const { currentCostForCovered, separateCost } = calcBaseCosts(coveredEntries, selectedServices);
@@ -323,8 +338,8 @@ const SERVICE_ICONS = {
           else if (entry.id === 'mofibo' && label.includes('50 timer'))         upgradeSum += 30;
       });
   
-      const basisNormal        = 180 + (Math.max(0, num - 2) * 50);
-      const basisIntro         = Math.round(basisNormal * 0.5);
+      const basisNormal          = 180 + (Math.max(0, num - 2) * 50);
+      const basisIntro           = Math.round(basisNormal * 0.5);
       const streamingNormalPrice = basisNormal + upgradeSum;
       const streamingIntroPrice  = basisIntro  + upgradeSum;
   
@@ -334,7 +349,6 @@ const SERVICE_ICONS = {
       const normalPriceTotal  = mobileNormal + streamingNormalPrice;
       const introPriceTotal   = mobileIntro  + streamingIntroPrice;
   
-      // CBB har altid streaming-intro (ingen separat streamingIntroMonths — kun mobilintro styrer faser)
       const streamingIntroMonths = null;
       const priceTiers = [];
       if (mobileIntroMonths > 0) {
@@ -347,26 +361,33 @@ const SERVICE_ICONS = {
       let realYearlyCost = 0;
       for (let m = 1; m <= 12; m++) {
           const mob       = (mobileIntroMonths > 0 && m <= mobileIntroMonths) ? mobileIntro : mobileNormal;
-          const streaming = streamingNormalPrice; // streaming-intro følger mobilintro-perioden hos CBB
+          const streaming = streamingNormalPrice;
           realYearlyCost += mob + streaming;
       }
-  
-      const separateYearlyCost    = (separateCost + currentMobile) * 12;
-      const realYearlySavings     = separateYearlyCost - realYearlyCost;
-      const monthlySavings        = (separateCost + currentMobile) - normalPriceTotal;
+
+      // ── HAR-mode: baseline = hvad brugeren betaler I DAG ─────────────────────
+      // currentCostForCovered er stabil (fra window.selected) og ændres IKKE når
+      // brugeren skifter pakke i dropdown'en. Bundlens pris stiger/falder derimod
+      // via upgradeSum → besparelsen ændrer sig korrekt.
+      const harMonthly        = currentCostForCovered + currentMobile;
+      const harYearlySavings  = (harMonthly * 12) - realYearlyCost;
+      const harMonthlySavings = harMonthly - normalPriceTotal;
+
+      // ── VIL-mode: baseline = markedsprisen for bundlens valgte pakker ─────────
       const separateMonthly       = separateCost + currentMobile;
+      const separateYearlyCost    = separateMonthly * 12;
       const extraIfSeparate       = separateMonthly - normalPriceTotal;
       const extraIfSeparateYearly = separateYearlyCost - realYearlyCost;
   
       return {
-          totalSavings: monthlySavings,
-          yearlySavings: realYearlySavings,
-          finalPrice: normalPriceTotal,
+          totalSavings:      harMonthlySavings,
+          yearlySavings:     harYearlySavings,
+          finalPrice:        normalPriceTotal,
           streamingNormalPrice,
           streamingIntroPrice,
           streamingIntroMonths,
           introPriceTotal,
-          introMonths: bundle.introMonths ?? null,
+          introMonths:       bundle.introMonths ?? null,
           priceTiers,
           currentCostForCovered,
           separateCost,
@@ -377,9 +398,6 @@ const SERVICE_ICONS = {
   }
   
   // ─── BEREGNER: Standard ───────────────────────────────────────────────────────
-  // Prisstruktur: mobilpris + individuelle partnerpriser per tjeneste,
-  // eventuelt med partnerIntroPrice/partnerIntroMonths.
-  // Dækker: CallMe, Telmore og øvrige udbydere uden særlig pulje-logik.
   
   function calculateStandard(bundle, coveredEntries, selectedServices, currentMobile) {
       const { currentCostForCovered, separateCost } = calcBaseCosts(coveredEntries, selectedServices);
@@ -395,7 +413,6 @@ const SERVICE_ICONS = {
           if (p.hasIntro) {
               streamingIntroPrice  += p.introPrice;
               hasAnyStreamingIntro  = true;
-              // Gem streaming-introperiode (tager den første/laveste der findes)
               if (p.introMonths && (streamingIntroMonths === null || p.introMonths < streamingIntroMonths)) {
                   streamingIntroMonths = p.introMonths;
               }
@@ -411,7 +428,6 @@ const SERVICE_ICONS = {
       const normalPriceTotal  = mobileNormal + streamingNormalPrice;
       const introPriceTotal   = hasIntro ? (mobileIntro + streamingIntroPrice) : null;
   
-      // ── Kronologiske prisfaser ───────────────────────────────────────────────
       const priceTiers = [];
       if (hasIntro) {
           const breakpoints = [...new Set([0, mobileIntroMonths, (hasAnyStreamingIntro && streamingIntroMonths) ? streamingIntroMonths : 0].filter(x => x >= 0))].sort((a, b) => a - b);
@@ -435,7 +451,6 @@ const SERVICE_ICONS = {
           priceTiers.push({ from: 1, to: null, total: normalPriceTotal });
       }
   
-      // Beregn reel årlig besparelse måned for måned
       let realYearlyCost = 0;
       for (let m = 1; m <= 12; m++) {
           const mob       = (mobileIntroMonths > 0 && m <= mobileIntroMonths) ? mobileIntro : mobileNormal;
@@ -444,17 +459,21 @@ const SERVICE_ICONS = {
               : streamingNormalPrice;
           realYearlyCost += mob + streaming;
       }
-  
-      const separateYearlyCost    = (separateCost + currentMobile) * 12;
-      const realYearlySavings     = separateYearlyCost - realYearlyCost;
-      const monthlySavings        = (separateCost + currentMobile) - normalPriceTotal;
+
+      // ── HAR-mode: baseline = hvad brugeren betaler I DAG ─────────────────────
+      const harMonthly        = currentCostForCovered + currentMobile;
+      const harYearlySavings  = (harMonthly * 12) - realYearlyCost;
+      const harMonthlySavings = harMonthly - normalPriceTotal;
+
+      // ── VIL-mode: baseline = markedsprisen for bundlens valgte pakker ─────────
       const separateMonthly       = separateCost + currentMobile;
+      const separateYearlyCost    = separateMonthly * 12;
       const extraIfSeparate       = separateMonthly - normalPriceTotal;
       const extraIfSeparateYearly = separateYearlyCost - realYearlyCost;
   
       return {
-          totalSavings:         monthlySavings,
-          yearlySavings:        realYearlySavings,
+          totalSavings:         harMonthlySavings,
+          yearlySavings:        harYearlySavings,
           finalPrice:           normalPriceTotal,
           streamingNormalPrice,
           streamingIntroPrice:  hasAnyStreamingIntro ? streamingIntroPrice : null,
@@ -471,29 +490,6 @@ const SERVICE_ICONS = {
   }
   
   // ─── DISPATCHER ───────────────────────────────────────────────────────────────
-  // Alt andet i koden kalder stadig calculateSavings — dispatcher'en sender
-  // videre til den rigtige beregner baseret på bundle.type.
-  //
-  // Oversigt over bundle-typer og hvilken beregner de bruger:
-  //
-  //   "norlys-pick-one" → calculateNorlysPickOne
-  //      Én tjeneste gratis i N måneder (pick-one), resten individuelle addon-priser.
-  //      Bruges af: Norlys (norlys-one, norlys-smart20, norlys-smart60, norlys-smart200)
-  //
-  //   "cbb-mix"         → calculateCbbMix
-  //      Streaming som pulje: basispris for 2 tjenester + 50 kr./ekstra. Intro = 50% rabat på basis.
-  //      Bruges af: CBB (cbb-mix-100gb, cbb-mix-200gb, cbb-mix-fri)
-  //
-  //   "fixed"           → calculateStandard
-  //      Streaming fast inkluderet i mobilprisen (partnerNormalPrice: 0), eller med partnerpriser.
-  //      Bruges af: Oister (alle bundter), CallMe (alle), Telmore fixed-bundter
-  //
-  //   "telmore-play"    → calculateStandard
-  //      Brugeren vælger N tjenester frit (streamingChoiceCount). Alle med partnerNormalPrice: 0.
-  //      Bruges af: Telmore (telmore-play-3, -4, -5, -alle)
-  //
-  // Ny udbyder med samme struktur som fixed/telmore-play? Ingen kodeændring nødvendig.
-  // Ny udbyder med anderledes prisstruktur? Lav en ny beregner og tilføj en if-blok herunder.
   
   function calculateSavings(bundle, coveredEntries, selectedServices, currentMobile) {
       if (bundle.type === "norlys-pick-one") {
@@ -502,14 +498,13 @@ const SERVICE_ICONS = {
       if (bundle.type === "cbb-mix") {
           return calculateCbbMix(bundle, coveredEntries, selectedServices, currentMobile);
       }
-      // Håndterer: "fixed" (Oister, CallMe, Telmore fixed) og "telmore-play"
       return calculateStandard(bundle, coveredEntries, selectedServices, currentMobile);
   }
   
   // ─── RENDER ───────────────────────────────────────────────────────────────────
   
   const INITIAL_SHOW  = 4;
-  const LOAD_MORE_STEP = 4; // ← antal ekstra tilbud per klik
+  const LOAD_MORE_STEP = 4;
   
   async function renderBundles(selectedServices) {
       const grid          = document.getElementById("bundleGrid");
@@ -517,8 +512,6 @@ const SERVICE_ICONS = {
       if (!grid) return;
   
       if (providersData.length === 0) await fetchProviders();
-  
-      // Ryd op: fjern evt. gammel "Vis flere"-knap fra forrige render
       document.getElementById('loadMoreBundles')?.remove();
   
       grid.innerHTML      = "";
@@ -533,7 +526,6 @@ const SERVICE_ICONS = {
   
       const isVilMode = window.activeMode === 'vil';
   
-      // DATA FILTER
       const minDataGb = window.minDataGb ?? 0;
       const minEuGb   = window.minEuGb   ?? 0;
   
@@ -556,30 +548,26 @@ const SERVICE_ICONS = {
           }
           return true;
       }
+
       let results = [];
       providersData.forEach(provider => {
           provider.bundles.forEach(bundle => {
-              // For Norlys pick-one: find hvilken af de valgte tjenester der er pick-one (første match),
-              // og byg coveredEntries så pick-one får pris 0 og resten bruger addon-priser fra streamingIncluded.
               let coveredEntries;
               if (bundle.type === "norlys-pick-one" && bundle.freeStreamingPickOne) {
                   const pickOneIds = bundle.freeStreamingPickOne.map(e => e.id);
-                  // Brug bundle._activePickOneId hvis sat (bruger har skiftet), ellers første match
                   if (!bundle._activePickOneId || !pickOneIds.includes(bundle._activePickOneId) || !selectedIds.includes(bundle._activePickOneId)) {
                       bundle._activePickOneId = selectedIds.find(id => pickOneIds.includes(id)) || null;
                   }
                   const pickedId = bundle._activePickOneId;
                   const entries = [];
                   if (pickedId) {
-                      // Pick-one entry: hent fra freeStreamingPickOne (partnerNormalPrice: 0)
                       const pickEntry = normalizeEntry(bundle.freeStreamingPickOne.find(e => e.id === pickedId));
                       entries.push(pickEntry);
                   }
-                  // Alle andre valgte tjenester: hent fra streamingIncluded (med korrekte addon-priser)
                   const normalizedAll = normalizeIncluded(bundle.streamingIncluded);
                   normalizedAll.forEach(entry => {
                       if (!selectedIds.includes(entry.id)) return;
-                      if (entry.id === pickedId) return; // spring pick-one over — allerede tilføjet
+                      if (entry.id === pickedId) return;
                       entries.push(entry);
                   });
                   coveredEntries = entries;
@@ -587,15 +575,10 @@ const SERVICE_ICONS = {
                   const normalized = normalizeIncluded(bundle.streamingIncluded);
                   coveredEntries   = normalized.filter(entry => selectedIds.includes(entry.id));
               }
-  
-              // Telmore Play-bundles: brugeren vælger præcis streamingChoiceCount tjenester.
-              // Vis kun bundlen hvis brugeren har valgt MINDST streamingChoiceCount tjenester
-              // der er tilgængelige i bundlen, og begræns visningen til streamingChoiceCount.
               if (bundle.streamingChoiceCount) {
-                  if (coveredEntries.length < bundle.streamingChoiceCount) return; // ikke nok matches
+                  if (coveredEntries.length < bundle.streamingChoiceCount) return;
                   coveredEntries = coveredEntries.slice(0, bundle.streamingChoiceCount);
               }
-  
   
               if (coveredEntries.length > 0 && bundleMeetsDataReq(bundle)) {
                   const savings = calculateSavings(bundle, coveredEntries, selectedServices, currentMobile);
@@ -608,7 +591,6 @@ const SERVICE_ICONS = {
           });
       });
   
-      // ── SORTERING ───────────────────────���────────────────────────────────────
       if (isVilMode) {
           results.sort((a, b) => {
               const coverageDiff = b.coveredEntries.length - a.coveredEntries.length;
@@ -626,10 +608,8 @@ const SERVICE_ICONS = {
       if (results.length > 0) {
           if (bundleSection) bundleSection.hidden = false;
   
-          // Vis de første INITIAL_SHOW tilbud
           results.slice(0, INITIAL_SHOW).forEach(item => grid.appendChild(createBundleCard(item)));
   
-          // Hvis der er flere: vis "Indlæs flere tilbud"-knap (loader LOAD_MORE_STEP ad gangen)
           if (results.length > INITIAL_SHOW) {
               let shownCount = INITIAL_SHOW;
   
@@ -658,25 +638,18 @@ const SERVICE_ICONS = {
                   cursor: pointer;
                   transition: all .2s ease;
               `;
-              loadMoreBtn.onmouseenter = () => {
-                  loadMoreBtn.style.background = '#eff6ff';
-              };
-              loadMoreBtn.onmouseleave = () => {
-                  loadMoreBtn.style.background = 'white';
-              };
+              loadMoreBtn.onmouseenter = () => { loadMoreBtn.style.background = '#eff6ff'; };
+              loadMoreBtn.onmouseleave = () => { loadMoreBtn.style.background = 'white'; };
               loadMoreBtn.onclick = () => {
                   const nextBatch = results.slice(shownCount, shownCount + LOAD_MORE_STEP);
                   nextBatch.forEach(item => grid.appendChild(createBundleCard(item)));
                   shownCount += nextBatch.length;
-  
                   if (shownCount >= results.length) {
                       loadMoreBtn.remove();
                   } else {
                       updateBtn();
                   }
               };
-  
-              // Indsæt knappen EFTER grid (ikke inde i grid)
               grid.parentNode.insertBefore(loadMoreBtn, grid.nextSibling);
           }
       } else {
@@ -693,16 +666,12 @@ const SERVICE_ICONS = {
           }
       }
   }
-  
-  // ─── PRIS-FASER RENDERER ─────────────────────────────────────────────────────
-  // Viser kronologiske prisfaser korrekt, fx:
-  //   64 kr./md de første 2 mdr.
-  //   401 kr./md i mdr. 3
-  //   Herefter 466 kr./md
+
+  // ─── PRICE TIERS HTML ────────────────────────────────────────────────────────
+
   function buildPriceTiersHtml(savings) {
       const tiers = savings.priceTiers;
   
-      // Kun ét trin = ingen intro
       if (!tiers || tiers.length <= 1) {
           const price = (tiers && tiers[0]) ? tiers[0].total : savings.finalPrice;
           return `<strong class="price-normal" style="font-size:22px;font-weight:800;color:#111;">
@@ -710,7 +679,6 @@ const SERVICE_ICONS = {
                   </strong>`;
       }
   
-      // Flere trin: intro-rækker + normalpris til sidst
       const introTiers = tiers.slice(0, -1);
       const finalTier  = tiers[tiers.length - 1];
   
@@ -750,22 +718,16 @@ const SERVICE_ICONS = {
           const p         = getServiceBundlePrice(entry);
           const planName  = plan ? plan.name : '';
           const hasValg   = !!(entry.valgmuligheder && entry.valgmuligheder.length > 1);
-  
           const listPrice = plan ? plan.price : 0;
   
-          // Sammenlign bundle-pakken med hvad brugeren betaler i dag
           const userService  = (window.selected || {})[entry.id];
           const isDowngrade  = userService && listPrice < userService.price;
           const isUpgrade    = userService && listPrice > userService.price;
           const planNoteHtml = isDowngrade
-    ? `<span style="font-size:10px;font-weight:600;color:#9ca3af;">
-         ↓ Lavere end dit valg
-       </span>`
-    : isUpgrade
-    ? `<span style="font-size:10px;font-weight:600;color:#16a34a;">
-         ↑ Bedre end dit valg
-       </span>`
-    : '';
+              ? `<span style="font-size:10px;font-weight:600;color:#9ca3af;white-space:nowrap;">↓ Lavere end dit valg</span>`
+              : isUpgrade
+              ? `<span style="font-size:10px;font-weight:600;color:#16a34a;white-space:nowrap;">↑ Bedre end dit valg</span>`
+              : '';
   
           let priceHtml;
           if (p.hasIntro && p.introMonths > 0) {
@@ -774,13 +736,13 @@ const SERVICE_ICONS = {
                   ${p.introPrice === 0 ? 'Gratis' : p.introPrice + ' kr.'} i ${p.introMonths} mdr.
                 </span>
                 <span style="font-size:11px;color:#9ca3af;white-space:nowrap;">→ ${p.normalPrice} kr./md</span>`;
-              } else if (p.normalPrice === 0 && listPrice > 0) {
-                  priceHtml = `<span style="font-size:11px;color:#15803d;font-weight:700;white-space:nowrap;">Inkluderet</span> <span style="font-size:11px;color:#9ca3af;text-decoration:line-through;white-space:nowrap;">${listPrice} kr./md</span>`;
-              } else if (p.normalPrice == null) {
-                  priceHtml = `<span style="font-size:11px;color:#15803d;font-weight:700;white-space:nowrap;">Inkluderet</span> <span style="font-size:11px;color:#9ca3af;text-decoration:line-through;white-space:nowrap;">${listPrice} kr./md</span>`;
-              } else {
-                  priceHtml = `<span style="font-size:12px;color:#9ca3af;white-space:nowrap;">${p.normalPrice} kr./md</span>`;
-              }
+          } else if (p.normalPrice === 0 && listPrice > 0) {
+              priceHtml = `<span style="font-size:11px;color:#15803d;font-weight:700;white-space:nowrap;">Inkluderet</span> <span style="font-size:11px;color:#9ca3af;text-decoration:line-through;white-space:nowrap;">${listPrice} kr./md</span>`;
+          } else if (p.normalPrice == null) {
+              priceHtml = `<span style="font-size:11px;color:#15803d;font-weight:700;white-space:nowrap;">Inkluderet</span> <span style="font-size:11px;color:#9ca3af;text-decoration:line-through;white-space:nowrap;">${listPrice} kr./md</span>`;
+          } else {
+              priceHtml = `<span style="font-size:12px;color:#9ca3af;white-space:nowrap;">${p.normalPrice} kr./md</span>`;
+          }
   
           const labelHtml = hasValg
               ? `<button class="valg-trigger" style="background:#f3f4f6;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:600;color:#374151;cursor:pointer;display:flex;align-items:center;gap:4px;white-space:nowrap;">
@@ -792,24 +754,23 @@ const SERVICE_ICONS = {
                        return `<div class="valg-option ${active ? 'valg-option-active' : ''}" data-valg-index="${i}">${v.label}</div>`;
                    }).join('')}
                  </div>`
-                 : `<span style="background:#f3f4f6;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:600;color:#374151;display:inline-flex;align-items:center;white-space:nowrap;">${planName}</span>`;
+              : `<span style="background:#f3f4f6;border:1px solid #e5e7eb;border-radius:999px;padding:4px 10px;font-size:12px;font-weight:600;color:#374151;display:inline-block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%;">${planName}</span>`;
   
           return `
             <div class="service-row valg-wrap" data-service-id="${entry.id}" style="margin-bottom:14px;position:relative;">
-              <div style="display:grid;grid-template-columns:52px 1fr 90px;align-items:center;gap:8px;">
-                <img src="${src}" alt="${entry.id}" style="height:32px;width:32px;object-fit:contain;border-radius:8px;">
-                <div style="min-width:0;display:flex;flex-direction:column;gap:3px;">
-              ${labelHtml}
-             ${planNoteHtml}
-             </div>
-               <div style="text-align:right;">${priceHtml}</div>
-             </div>
+              <div style="display:grid;grid-template-columns:40px 1fr auto;align-items:start;gap:8px;">
+                <img src="${src}" alt="${entry.id}" style="height:32px;width:32px;object-fit:contain;border-radius:8px;margin-top:2px;">
+                <div style="min-width:0;overflow:hidden;display:flex;flex-direction:column;gap:3px;">
+                  ${labelHtml}
+                  ${planNoteHtml}
+                </div>
+                <div style="text-align:right;white-space:nowrap;">${priceHtml}</div>
+              </div>
             </div>`;
       }).join('');
   
-      const hasIntro        = savings.introPriceTotal !== null;
-      const introPriceTotal = savings.introPriceTotal;
-      const expiryLabel     = getExpiryLabel(bundle.expiryDate);
+      const hasIntro    = savings.introPriceTotal !== null;
+      const expiryLabel = getExpiryLabel(bundle.expiryDate);
   
       const savingsBoxHtml = isVilMode
           ? buildVilSavingsBox(savings)
@@ -849,7 +810,7 @@ const SERVICE_ICONS = {
           </div>
         </div>
   
-       <a href="${applyTracking(bundle.link)}" class="bundle-btn" target="_blank" style="margin-top:15px;width:100%;text-align:center;display:block;text-decoration:none;">Hent tilbud</a>
+        <a href="${applyTracking(bundle.link)}" class="bundle-btn" target="_blank" style="margin-top:15px;width:100%;text-align:center;display:block;text-decoration:none;">Hent tilbud</a>
   
         <div style="text-align:center;margin-top:10px;font-size:12px;">${expiryLabel || ''}</div>
   
@@ -868,7 +829,7 @@ const SERVICE_ICONS = {
           </div>
           ${savings.streamingIntroPrice !== null ? `
           <div style="display:flex;justify-content:space-between;margin-bottom:6px;color:#15803d;">
-            <span>Streaming i bundlen (gratis i ${savings.streamingIntroMonths || savings.introMonths || ''} mdr.):</span>
+            <span>Streaming i bundlen (intro i ${savings.streamingIntroMonths || savings.introMonths || ''} mdr.):</span>
             <strong class="detail-streaming-intro">${savings.streamingIntroPrice} kr./md</strong>
           </div>` : ''}
           <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
@@ -986,7 +947,6 @@ const SERVICE_ICONS = {
   
   window.renderBundles = renderBundles;
   
-  /* CSS injiceres dynamisk */
   (function injectValgCSS() {
       if (document.getElementById('valg-styles')) return;
       const style = document.createElement('style');

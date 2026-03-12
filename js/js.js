@@ -196,6 +196,10 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (typeof renderBundles === "function") {
       renderBundles(selected);
     }
+    // Opdater sticky reminder
+    if (typeof window.updateStickyReminder === 'function') {
+      window.updateStickyReminder();
+    }
   }
 
   // EVENT LISTENERS
@@ -354,61 +358,53 @@ if (document.readyState === 'loading') {
 }
 
 (function () {
-  const bar    = document.getElementById('sticky-reminder');
-  const btn    = document.getElementById('sticky-reminder-btn');
-  const target = document.querySelector('.mobile-picker-wrap');
+  const bar = document.getElementById('sticky-reminder');
+  const btn = document.getElementById('sticky-reminder-btn');
 
-  if (!bar || !btn || !target) return;
-
-  let pickerVisible = true;
-
-  const observer = new IntersectionObserver((entries) => {
-    pickerVisible = entries[0].isIntersecting;
-    const hasSelected = window.selected && Object.keys(window.selected).length >= 2;
-    if (hasSelected && !pickerVisible) {
-      bar.classList.add('visible');
-    } else {
-      bar.classList.remove('visible');
-    }
-  }, { rootMargin: '0px 0px -60px 0px' });
-
-  observer.observe(target);
+  if (!bar || !btn) return;
 
   function update() {
-    const hasSelected = window.selected && Object.keys(window.selected).length >= 2;
-    if (hasSelected && !pickerVisible) {
-      bar.classList.add('visible');
-    } else {
+    const count = window.selected ? Object.keys(window.selected).length : 0;
+
+    // Skjul altid hvis under 2 valgte
+    if (count < 2) {
       bar.classList.remove('visible');
+      return;
     }
+
+    // Skjul hvis mobile-picker-wrap er synlig på skærmen
+    const picker = document.querySelector('.mobile-picker-wrap');
+    const pickerOnScreen = picker
+      && picker.getBoundingClientRect().top < window.innerHeight - 60;
+
+    if (pickerOnScreen) {
+      bar.classList.remove('visible');
+      return;
+    }
+
+    // Skjul hvis bundleSection er synlig på skærmen
+    const bundleSection = document.getElementById('bundleSection');
+    const bundleOnScreen = bundleSection
+      && !bundleSection.hidden
+      && bundleSection.getBoundingClientRect().top < window.innerHeight - 80;
+
+    if (bundleOnScreen) {
+      bar.classList.remove('visible');
+      return;
+    }
+
+    // Vis når 2+ er valgt, picker er scrollet væk, og bundle IKKE er synlig
+    bar.classList.add('visible');
   }
 
-  // Hook ind i toggleService — kør update hver gang selected ændres
-  // ved at wrappe window.selected i en Proxy
-  const handler = {
-    set(obj, prop, value) {
-      obj[prop] = value;
-      update();
-      return true;
-    },
-    deleteProperty(obj, prop) {
-      delete obj[prop];
-      update();
-      return true;
-    }
-  };
+  // Gør update tilgængelig globalt så calculate() kan kalde den
+  window.updateStickyReminder = update;
 
-  // Vent til js.js har sat window.selected, og wrap det derefter
-  function tryProxy() {
-    if (window.selected) {
-      window.selected = new Proxy(window.selected, handler);
-      clearInterval(interval);
-    }
-  }
-  const interval = setInterval(tryProxy, 50);
+  window.addEventListener('scroll', update, { passive: true });
 
   btn.addEventListener('click', () => {
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const target = document.querySelector('.mobile-picker-wrap');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
 })();

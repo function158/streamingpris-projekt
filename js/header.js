@@ -12,6 +12,38 @@ document.head.appendChild(script);
         </a>
       </div>
       <ul class="nav-links">
+
+        <!-- SAMMENLIGN -->
+        <li>
+          <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Sammenlign
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <ul class="dropdown">
+            <li>
+              <a href="/">
+                Mobil + Streaming
+                <span class="dd-desc">Find det billigste bundle</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="dd-coming-soon" aria-disabled="true">
+                Mobilabonnement
+                <span class="dd-desc">Kommer snart</span>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="dd-coming-soon" aria-disabled="true">
+                Internet
+                <span class="dd-desc">Kommer snart</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- TJENESTER -->
         <li>
           <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
             Tjenester
@@ -20,80 +52,22 @@ document.head.appendChild(script);
             </svg>
           </button>
           <ul class="dropdown">
-            <li>
-              <a href="/netflix">
-                Netflix
-                <span class="dd-desc">Streaming</span>
-              </a>
-            </li>
-            <li>
-              <a href="/amazon-prime">
-                Amazon Prime
-                <span class="dd-desc">Streaming</span>
-              </a>
-            </li>
-             <li>
-              <a href="/deezer">
-                Deezer
-                <span class="dd-desc">Musik</span>
-              </a>
-            </li>
-               <li>
-              <a href="/viaplay">
-                Viaplay
-                <span class="dd-desc">Streaming</span>
-              </a>
-            </li>
-               <li>
-              <a href="/skyshowtime">
-                Skyshowtime
-                <span class="dd-desc">Streaming</span>
-              </a>
-            </li>
-                <li>
-              <a href="/tv2play">
-                TV2 Play
-                <span class="dd-desc">Streaming</span>
-              </a>
-            </li>
-               <li>
-              <a href="/disneyplus">
-                Disney Plus
-                <span class="dd-desc">Streaming</span>
-              </a>
-            </li>
-            <li>
-              <a href="/max">
-                Max
-                <span class="dd-desc">Streaming</span>
-              </a>
-            </li>
-            <li>
-              <a href="/nordisk-film-plus">
-                Nordisk Film Plus
-                <span class="dd-desc">Danske film & serier</span>
-              </a>
-            </li>
-             <li>
-              <a href="/podimo">
-                Podimo
-                <span class="dd-desc">Podcast & Lydbøger</span>
-              </a>
-            </li>
-            <li>
-              <a href="/mofibo">
-                Mofibo
-                <span class="dd-desc">Lydbøger & Podcasts</span>
-              </a>
-            </li>
-            <li>
-              <a href="/bookbeat">
-                Bookbeat
-                <span class="dd-desc">Lydbøger & Podcasts</span>
-              </a>
-            </li>
+            <li><a href="/netflix">Netflix<span class="dd-desc">Streaming</span></a></li>
+            <li><a href="/amazon-prime">Amazon Prime<span class="dd-desc">Streaming</span></a></li>
+            <li><a href="/viaplay">Viaplay<span class="dd-desc">Streaming</span></a></li>
+            <li><a href="/skyshowtime">Skyshowtime<span class="dd-desc">Streaming</span></a></li>
+            <li><a href="/tv2play">TV2 Play<span class="dd-desc">Streaming</span></a></li>
+            <li><a href="/disneyplus">Disney Plus<span class="dd-desc">Streaming</span></a></li>
+            <li><a href="/max">Max<span class="dd-desc">Streaming</span></a></li>
+            <li><a href="/nordisk-film-plus">Nordisk Film Plus<span class="dd-desc">Danske film & serier</span></a></li>
+            <li><a href="/deezer">Deezer<span class="dd-desc">Musikstreaming</span></a></li>
+            <li><a href="/podimo">Podimo<span class="dd-desc">Podcast & Lydbøger</span></a></li>
+            <li><a href="/mofibo">Mofibo<span class="dd-desc">Lydbøger & Podcasts</span></a></li>
+            <li><a href="/bookbeat">Bookbeat<span class="dd-desc">Lydbøger & Podcasts</span></a></li>
           </ul>
         </li>
+
+        <!-- UDBYDERE -->
         <li>
           <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
             Udbydere
@@ -105,7 +79,7 @@ document.head.appendChild(script);
             <li>
               <a href="/udbydere/telmore">
                 Telmore
-                <span class="dd-desc">Mobil & Internet</span>
+                <span class="dd-desc">Mobil & Streaming</span>
               </a>
             </li>
             <li>
@@ -120,19 +94,19 @@ document.head.appendChild(script);
                 <span class="dd-desc">Mobil, Internet, TV/Streaming & El</span>
               </a>
             </li>
-             <li>
+            <li>
               <a href="/udbydere/oister">
                 Oister
                 <span class="dd-desc">Mobil & Internet</span>
               </a>
             </li>
-             <li>
+            <li>
               <a href="/udbydere/callme">
                 Call Me
                 <span class="dd-desc">Mobil, Internet & Streaming</span>
               </a>
             </li>
-             <li>
+            <li>
               <a href="/udbydere/yousee">
                 Yousee
                 <span class="dd-desc">Mobil, Internet & Streaming</span>
@@ -146,6 +120,8 @@ document.head.appendChild(script);
             </li>
           </ul>
         </li>
+
+        <!-- GUIDES -->
         <li>
           <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
             Guides
@@ -174,11 +150,14 @@ document.head.appendChild(script);
             </li>
           </ul>
         </li>
+
+        <!-- OM OS -->
         <li>
           <a href="/om-os/" class="nav-plain-link">Om os</a>
         </li>
+
       </ul>
-      <a href="/" class="cta-primary">
+      <a href="/" class="cta-primary nav-cta">
         Tjek din pris <span class="arrow">→</span>
       </a>
       <button class="burger-btn" id="burgerBtn" aria-label="Åbn menu" aria-expanded="false">
@@ -187,7 +166,24 @@ document.head.appendChild(script);
         <span></span>
       </button>
     </div>
+
+    <!-- MOBILMENU -->
     <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
+
+      <!-- Sammenlign -->
+      <button class="mobile-dd-toggle" data-target="mobileSammenlign">
+        Sammenlign
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="mobile-sub" id="mobileSammenlign">
+        <a href="/">Mobil + Streaming</a>
+        <a href="#" class="mobile-coming-soon">Mobilabonnement <span>· Snart</span></a>
+        <a href="#" class="mobile-coming-soon">Internet <span>· Snart</span></a>
+      </div>
+
+      <!-- Tjenester -->
       <button class="mobile-dd-toggle" data-target="mobileTjenester">
         Tjenester
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -195,19 +191,21 @@ document.head.appendChild(script);
         </svg>
       </button>
       <div class="mobile-sub" id="mobileTjenester">
-        <a href="/netflix">Netflix i Danmark</a>
+        <a href="/netflix">Netflix</a>
         <a href="/amazon-prime">Amazon Prime</a>
-        <a href="/deezer">Deezer</a>
         <a href="/viaplay">Viaplay</a>
         <a href="/skyshowtime">Skyshowtime</a>
         <a href="/tv2play">TV2 Play</a>
         <a href="/disneyplus">Disney Plus</a>
         <a href="/max">Max</a>
         <a href="/nordisk-film-plus">Nordisk Film Plus</a>
+        <a href="/deezer">Deezer</a>
         <a href="/podimo">Podimo</a>
         <a href="/mofibo">Mofibo</a>
         <a href="/bookbeat">Bookbeat</a>
       </div>
+
+      <!-- Udbydere -->
       <button class="mobile-dd-toggle" data-target="mobileUdbydere">
         Udbydere
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -221,7 +219,10 @@ document.head.appendChild(script);
         <a href="/udbydere/oister">Oister</a>
         <a href="/udbydere/callme">Call Me</a>
         <a href="/udbydere/yousee">Yousee</a>
+        <a href="/udbydere/telenor">Telenor</a>
       </div>
+
+      <!-- Guides -->
       <button class="mobile-dd-toggle" data-target="mobileGuides">
         Guides
         <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
@@ -233,45 +234,17 @@ document.head.appendChild(script);
         <a href="/guides/hvorfor-stiger-streaming-priser/">Hvorfor stiger streaming priser?</a>
         <a href="/guides/mobil-abonnement-med-streaming/">Mobil abonnement med streaming</a>
       </div>
+
       <div class="mobile-divider"></div>
       <a href="/om-os/" class="mobile-plain-link">Om os</a>
       <div class="mobile-divider"></div>
       <div class="mobile-cta">
-        <a href="/index.html">Tjek din pris</a>
+        <a href="/">Tjek din pris</a>
       </div>
+
     </nav>
   </header>
   `;
-
-  function injectHeader() {
-    if (document.querySelector('.top-nav')) return;
-    document.body.insertAdjacentHTML('afterbegin', headerHTML);
-    initMenu();
-
-    var lastScrollY = window.scrollY;
-    var ticking = false;
-    window.addEventListener('scroll', function() {
-      if (!ticking) {
-        window.requestAnimationFrame(function() {
-          var nav = document.querySelector('.top-nav');
-          if (nav) {
-            var currentScrollY = window.scrollY;
-            var diff = currentScrollY - lastScrollY;
-            if (diff < -3) {
-              nav.classList.remove('hidden');
-            } else if (diff > 3 && currentScrollY > 60) {
-              nav.classList.add('hidden');
-            }
-            lastScrollY = currentScrollY;
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
-
-    initReadingProgress();
-  }
 
   function initMenu() {
     // ---- DESKTOP DROPDOWNS ----
@@ -325,6 +298,7 @@ document.head.appendChild(script);
         const sub = document.getElementById(targetId);
         const isOpen = btn.classList.contains("open");
 
+        // Luk alle andre
         document.querySelectorAll(".mobile-dd-toggle").forEach((other) => {
           if (other !== btn) {
             other.classList.remove("open");
@@ -338,53 +312,48 @@ document.head.appendChild(script);
         if (sub) sub.classList.toggle("open", !isOpen);
       });
     });
-
-    // ---- ACCORDION ----
-    document.querySelectorAll('.extra-info details').forEach(detail => {
-      detail.addEventListener('click', () => {
-        if (detail.open) return;
-        const parent = detail.closest('.extra-info');
-        if (!parent) return;
-        parent.querySelectorAll('details').forEach(other => {
-          if (other !== detail) other.open = false;
-        });
-      });
-    });
   }
 
   function initReadingProgress() {
-    const excluded = [
-      '/',
-      '/index.html',
-      '/legal/privatlivspolitik',
-      '/legal/privatlivspolitik/',
-      '/legal/ansvarsfraskrivelse',
-      '/legal/ansvarsfraskrivelse/'
-    ];
-
-    const path = window.location.pathname.replace(/\/$/, '') || '/';
-    const isExcluded = excluded.some(p => (p.replace(/\/$/, '') || '/') === path);
-    if (isExcluded) return;
-    if (document.getElementById('reading-progress')) return;
-
-    const style = document.createElement('style');
-    style.textContent = '#reading-progress{position:fixed;top:0;left:0;width:0%;height:3px;background:linear-gradient(90deg,#2B3EFF,#6B7FFF);z-index:9999;transition:width 0.1s linear;border-radius:0 2px 2px 0;}';
-    document.head.appendChild(style);
-
-    const bar = document.createElement('div');
-    bar.id = 'reading-progress';
-    document.body.insertAdjacentElement('afterbegin', bar);
-
-    window.addEventListener('scroll', function () {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-      const viewHeight = (window.visualViewport ? window.visualViewport.height : window.innerHeight) || window.innerHeight;
-      const docHeight = Math.max(
-        document.documentElement.scrollHeight,
-        document.body.scrollHeight
-      ) - viewHeight;
-      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      bar.style.width = Math.min(pct, 100) + '%';
+    const bar = document.getElementById('readingProgressBar');
+    if (!bar) return;
+    window.addEventListener('scroll', () => {
+      const doc = document.documentElement;
+      const scrollTop = doc.scrollTop || document.body.scrollTop;
+      const scrollHeight = doc.scrollHeight - doc.clientHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+      bar.style.width = progress + '%';
     }, { passive: true });
+  }
+
+  function injectHeader() {
+    if (document.querySelector('.top-nav')) return;
+    document.body.insertAdjacentHTML('afterbegin', headerHTML);
+    initMenu();
+
+    var lastScrollY = window.scrollY;
+    var ticking = false;
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          var nav = document.querySelector('.top-nav');
+          if (nav) {
+            var currentScrollY = window.scrollY;
+            var diff = currentScrollY - lastScrollY;
+            if (diff < -3) {
+              nav.classList.remove('hidden');
+            } else if (diff > 3 && currentScrollY > 60) {
+              nav.classList.add('hidden');
+            }
+            lastScrollY = currentScrollY;
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    initReadingProgress();
   }
 
   if (document.readyState === 'loading') {
@@ -392,5 +361,4 @@ document.head.appendChild(script);
   } else {
     injectHeader();
   }
-
 })();

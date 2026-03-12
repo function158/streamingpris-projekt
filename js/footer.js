@@ -10,17 +10,26 @@
       </div>
 
       <div class="footer-col">
+        <h4>Sammenlign</h4>
+        <ul>
+          <li><a href="/">Mobil + Streaming</a></li>
+          <li><a href="#" style="opacity:0.4;pointer-events:none;">Mobilabonnement <em>· snart</em></a></li>
+          <li><a href="#" style="opacity:0.4;pointer-events:none;">Internet <em>· snart</em></a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
         <h4>Tjenester</h4>
         <ul>
           <li><a href="/netflix">Netflix</a></li>
           <li><a href="/amazon-prime">Amazon Prime</a></li>
-          <li><a href="/deezer">Deezer</a></li>
           <li><a href="/viaplay">Viaplay</a></li>
           <li><a href="/skyshowtime">Skyshowtime</a></li>
           <li><a href="/tv2play">TV2 Play</a></li>
           <li><a href="/disneyplus">Disney Plus</a></li>
           <li><a href="/max">Max</a></li>
-          <li><a href="/nordisk-film">Nordisk Film Plus</a></li>
+          <li><a href="/nordisk-film-plus">Nordisk Film Plus</a></li>
+          <li><a href="/deezer">Deezer</a></li>
           <li><a href="/podimo">Podimo</a></li>
           <li><a href="/mofibo">Mofibo</a></li>
           <li><a href="/bookbeat">Bookbeat</a></li>
@@ -36,27 +45,26 @@
           <li><a href="/udbydere/oister">Oister</a></li>
           <li><a href="/udbydere/callme">Call Me</a></li>
           <li><a href="/udbydere/yousee">Yousee</a></li>
-          <li><a href="/udbydere/telenor">Yousee</a></li>
+          <li><a href="/udbydere/telenor">Telenor</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
-        <h4>Hurtige links</h4>
+        <h4>Guides</h4>
         <ul>
-          <li><a href="/">Beregn dine streamingudgifter</a></li>
-          <li><a href="/guides/hvorfor-stiger-streaming-priser/">Hvorfor stiger streaming priser?</a></li>
           <li><a href="/guides/streaming-priser/">Streaming priser i Danmark</a></li>
+          <li><a href="/guides/hvorfor-stiger-streaming-priser/">Hvorfor stiger streaming priser?</a></li>
           <li><a href="/guides/mobil-abonnement-med-streaming/">Mobil abonnement med streaming</a></li>
-          <li><a href="mailto:info@mineudgifter.dk">Kontakt</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4>Information</h4>
         <ul>
-        <li><a href="/om-os/">Om os</a></li>
+          <li><a href="/om-os/">Om os</a></li>
           <li><a href="/legal/privatlivspolitik/">Privatlivspolitik</a></li>
           <li><a href="/legal/ansvarsfraskrivelse/">Ansvarsfraskrivelse</a></li>
+          <li><a href="mailto:info@mineudgifter.dk">Kontakt</a></li>
         </ul>
       </div>
 
@@ -87,12 +95,12 @@
         Følg os på Instagram
       </a>
 
-   <p class="footer-disclaimer">
-Priser er vejledende og kan ændre sig. Beregningen er udelukkende informativ.
-<br>
-Siden indeholder affiliate-links. Vi kan modtage provision ved køb via vores links.
-Dette påvirker ikke din pris eller sorteringen af tilbud.
-</p>
+      <p class="footer-disclaimer">
+        Priser er vejledende og kan ændre sig. Beregningen er udelukkende informativ.
+        <br>
+        Siden indeholder affiliate-links. Vi kan modtage provision ved køb via vores links.
+        Dette påvirker ikke din pris eller sorteringen af tilbud.
+      </p>
       <p class="footer-disclaimer footer-legal">
         Mine Udgifter er ikke tilknyttet, samarbejder ikke med og er ikke sponsoreret af de streamingtjenester, der omtales på siden. Alle logoer og varemærker tilhører de respektive ejere og anvendes udelukkende til identifikationsformål.
       </p>
