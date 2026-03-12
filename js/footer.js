@@ -36,6 +36,7 @@
           <li><a href="/udbydere/oister">Oister</a></li>
           <li><a href="/udbydere/callme">Call Me</a></li>
           <li><a href="/udbydere/yousee">Yousee</a></li>
+          <li><a href="/udbydere/telenor">Yousee</a></li>
         </ul>
       </div>
 

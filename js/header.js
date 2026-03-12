@@ -138,6 +138,12 @@ document.head.appendChild(script);
                 <span class="dd-desc">Mobil, Internet & Streaming</span>
               </a>
             </li>
+            <li>
+              <a href="/udbydere/telenor">
+                Telenor
+                <span class="dd-desc">Mobil, Internet & tilbehør</span>
+              </a>
+            </li>
           </ul>
         </li>
         <li>

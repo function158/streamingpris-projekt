@@ -15,12 +15,24 @@ const TRACKING_CONFIG = {
     // Telmore bruger statisk Adtraction-link — ingen dynamisk &url= parameter
     build: (base, _url) => base,
   },
+  cbb: {
+    match: "cbb.dk",
+    base: "https://on.cbb.dk/t/t?a=1700024858&as=2050148986&t=2&tk=1",
+    // CBB bruger statisk Adtraction-link — ingen dynamisk &url= parameter
+    build: (base, _url) => base,
+  },
+  norlys: {
+    match: "norlys.dk",
+    base: "https://to.norlys.dk/t/t?a=1666136303&as=2050148986&t=2&tk=1",
+    // Norlys bruger statisk Adtraction-link — ingen dynamisk &url= parameter
+    build: (base, _url) => base,
+  },
 };
 
 window.applyTracking = function(url) {
   if (!url) return url;
   // Allerede tracket? Gør ingenting.
-  if (url.includes("adt284.net") || url.includes("ion.callme.dk") || url.includes("on.telmore.dk")) return url;
+  if (url.includes("adt284.net") || url.includes("ion.callme.dk") || url.includes("on.telmore.dk") || url.includes("on.cbb.dk") || url.includes("to.norlys.dk")) return url;
 
   for (const config of Object.values(TRACKING_CONFIG)) {
     if (url.includes(config.match)) {
