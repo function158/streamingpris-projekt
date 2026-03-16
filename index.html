@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spar penge på Streaming & Mobil | Beregn din besparelse nu</title>
+  <title>Spar penge på streaming – saml det med dit mobilabonnement</title>
   <meta name="description"
     content="Se hvad Netflix, TV 2 Play, Viaplay og Disney+ koster dig om måneden. Sammenlign med mobilabonnementer med streaming inkluderet og find den billigste løsning." />
   <style>
@@ -78,20 +78,22 @@
 </head>
 
 <body>
+  <main>
   <div id="sticky-reminder">
     <button id="sticky-reminder-btn">
       Godt valgt! Angiv din mobilpris og se besparelsen &nbsp;↓
     </button>
   </div>
-
   <h1 class="title">
     Vælg dine streamingtjenester og se dine <span>mulige besparelser</span>
   </h1>
   <p class="intro">
     Vælg dine streamingtjenester og se, om du kan spare penge med mobilabonnementer, hvor streaming allerede er
-    inkluderet.
+    inkluderet
   </p>
-
+  <section class="seo-text">
+    <div id="partners-carousel"></div>
+  </section>
   <div class="top-bar">
     <button id="resetBtn" class="btn">
       Nulstil
@@ -115,7 +117,6 @@
 
   <div class="mobile-picker-wrap">
     <div class="mobile-picker-card">
-
       <div class="mobile-picker-header">
         <div class="mobile-picker-icon">📱</div>
         <div class="mobile-picker-titles">
@@ -123,6 +124,7 @@
           <p>Vi finder bundter der kan spare dig penge på <strong>både streaming og mobil</strong></p>
         </div>
       </div>
+      
       <div class="mobile-picker-chips" id="mobileChips">
         <button class="mobile-chip" data-value="0">Ved ikke</button>
         <button class="mobile-chip" data-value="79">79 kr</button>
@@ -334,11 +336,13 @@
       Tjek din pris <span class="arrow">→</span>
     </a>
   </section>
+  <script defer src="/js/partners-carousel.js"></script>
   <script defer src="/js/tracking.js"></script>
   <script defer src="/js/bundles.js"></script>
   <script defer src="/js/js.js"></script>
   <script defer src="/js/footer.js"></script>
   <script defer src="/js/mode-switch.js"></script>
+</main>
 </body>
 
 </html>

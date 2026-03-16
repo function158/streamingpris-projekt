@@ -658,8 +658,8 @@ const SERVICE_ICONS = {
               grid.innerHTML = `
                 <div style="grid-column:1/-1;text-align:center;padding:40px 24px;background:#f6f6f4;border-radius:22px;border:1px dashed #d1d5db;max-width:480px;margin:0 auto;">
                   <div style="font-size:36px;margin-bottom:16px;">🔍</div>
-                  <h3 style="font-size:18px;font-weight:800;color:#111;margin:0 0 10px;">Ingen tilbud matcher din kombination</h3>
-                  <p style="font-size:15px;line-height:1.65;color:#6b7280;margin:0 0 24px;">Vi fandt ingen mobilbundter der dækker præcis de tjenester og det datakrav du har valgt. Prøv at justere dine filtre.</p>
+                  <h3 style="font-size:18px;font-weight:800;color:#111;margin:0 0 10px;">Desværre ingen tilbud matcher din kombination...</h3>
+                  <p style="font-size:15px;line-height:1.65;color:#6b7280;margin:0 0 24px;">Vi fandt ingen mobilpakker der dækker præcis din kombination — prøv at vælge andre tjenester</p>
                   <button onclick="window.scrollTo({top:0,behavior:'smooth'})" style="padding:12px 28px;background:#2B3EFF;color:#fff;border:none;border-radius:999px;font-size:15px;font-weight:700;cursor:pointer;">Ændre valgte tjenester</button>
                 </div>
               `;

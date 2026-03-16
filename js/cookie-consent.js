@@ -3,11 +3,22 @@
 
   const style = document.createElement('style');
   style.textContent = `
+    #cb-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 999998;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    #cb-overlay.cb-visible {
+      opacity: 1;
+    }
     #cb-wrapper {
       position: fixed;
-      bottom: 24px;
+      top: 50%;
       left: 50%;
-      transform: translateX(-50%) translateY(20px);
+      transform: translate(-50%, -48%) scale(0.97);
       opacity: 0;
       z-index: 999999;
       width: calc(100% - 48px);
@@ -17,13 +28,13 @@
     }
     #cb-wrapper.cb-visible {
       opacity: 1;
-      transform: translateX(-50%) translateY(0);
+      transform: translate(-50%, -50%) scale(1);
     }
     #cb-banner {
       background: #fff;
       border-radius: 16px;
       padding: 20px 22px 18px;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.18);
     }
     #cb-top {
       display: flex;
@@ -81,6 +92,12 @@
   `;
   document.head.appendChild(style);
 
+  // Overlay
+  const overlay = document.createElement('div');
+  overlay.id = 'cb-overlay';
+  document.body.appendChild(overlay);
+
+  // Banner
   const wrapper = document.createElement('div');
   wrapper.id = 'cb-wrapper';
   wrapper.innerHTML = `
@@ -91,7 +108,8 @@
       </div>
       <p id="cb-body">
         Vi bruger cookies til annoncering (Google AdSense) og statistik (Google Analytics) –
-        det er det der gør siden gratis at bruge. <a href="/cookiepolitik">Læs mere</a>
+        det er det der gør siden gratis at bruge.
+        <a href="/cookiepolitik">Læs mere</a>
       </p>
       <div id="cb-buttons">
         <button id="cb-accept">Acceptér</button>
@@ -102,14 +120,21 @@
   document.body.appendChild(wrapper);
 
   requestAnimationFrame(() => {
-    setTimeout(() => wrapper.classList.add('cb-visible'), 80);
+    setTimeout(() => {
+      overlay.classList.add('cb-visible');
+      wrapper.classList.add('cb-visible');
+    }, 80);
   });
 
   function dismiss(consent) {
     localStorage.setItem('cookie_consent', consent);
+    overlay.style.opacity = '0';
     wrapper.style.opacity = '0';
-    wrapper.style.transform = 'translateX(-50%) translateY(10px)';
-    setTimeout(() => wrapper.remove(), 350);
+    wrapper.style.transform = 'translate(-50%, -50%) scale(0.97)';
+    setTimeout(() => {
+      overlay.remove();
+      wrapper.remove();
+    }, 350);
 
     if (consent === 'all') {
       // gtag('consent', 'update', { ad_storage: 'granted', analytics_storage: 'granted' });

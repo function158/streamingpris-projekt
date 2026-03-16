@@ -78,9 +78,10 @@
   body {
     margin: 0;
     background:
-  radial-gradient(900px 400px at 50% -100px, rgba(43,62,255,0.06), transparent),
-  radial-gradient(600px 300px at 100% 0%, rgba(107,130,255,0.04), transparent),
-  #f5f5f7;
+    radial-gradient(ellipse 900px 500px at 30% -80px, rgba(43,62,255,0.07), transparent),
+    radial-gradient(ellipse 600px 400px at 100% 20%, rgba(107,130,255,0.05), transparent),
+    radial-gradient(ellipse 500px 300px at 0% 80%, rgba(43,62,255,0.04), transparent),
+    #f4f4f6;
   padding: 20px;
   color: var(--ink);
     overflow-y: scroll;
@@ -141,7 +142,10 @@
   
   
   .top-nav {
-    background: #fff;
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255,255,255,0.6);
     box-shadow: 0 2px 8px rgba(0,0,0,.06);
     border-radius: 20px;
     position: sticky;
@@ -150,6 +154,7 @@
     touch-action: manipulation;
     transition: transform 0.35s ease, opacity 0.35s ease;
     will-change: transform;
+    
   }
   
   .top-nav.hidden {
@@ -181,8 +186,7 @@
     flex: 1;
     justify-content: center;
   }
-  
-  .nav-links > li { position: relative; }
+  .nav-links > li { position: relative; cursor: pointer; }
   
   .nav-links > li > a,
   .nav-links > li > button {
@@ -1080,9 +1084,18 @@
   .mobile-picker-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
   .mobile-picker-icon   { font-size: 32px; line-height: 1; flex-shrink: 0; margin-top: 2px; }
   
-  .mobile-picker-titles h3 { font-size: 19px; font-weight: 800; color: #fff; margin: 0 0 4px; line-height: 1.25; }
+  .mobile-picker-titles h3 { font-size: 24px; font-weight: 800; color: #fff; margin: 0 0 6px; line-height: 1.2; }
+
   .mobile-picker-titles p  { font-size: 14px; color: rgba(255,255,255,0.82); margin: 0; line-height: 1.4; }
   .mobile-picker-titles p strong { color: #fff; font-weight: 700; }
+
+  @media (max-width: 480px) {
+    .mobile-picker-titles h3 { font-size: 17px; }
+  }
+
+  @media (max-width: 480px) {
+    .mobile-picker-titles h3 { font-size: 21px; }
+  }
   
   /* Shared chip layout */
   .mobile-picker-chips,
@@ -1798,3 +1811,4 @@
   font-weight: 400;
   color: #999;
 }
+

@@ -46,6 +46,9 @@
           <li><a href="/udbydere/callme">Call Me</a></li>
           <li><a href="/udbydere/yousee">Yousee</a></li>
           <li><a href="/udbydere/telenor">Telenor</a></li>
+          <li><a href="/udbydere/3">3</a></li>
+          <li><a href="/udbydere/3">eesy</a></li>
+          <li><a href="/udbydere/flexii">Flexii</a></li>
         </ul>
       </div>
 

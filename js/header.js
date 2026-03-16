@@ -118,6 +118,24 @@ document.head.appendChild(script);
                 <span class="dd-desc">Mobil, Internet & tilbehør</span>
               </a>
             </li>
+            <li>
+              <a href="/udbydere/3">
+                3
+                <span class="dd-desc">Mobil, Internet & tilbehør</span>
+              </a>
+            </li>
+             <li>
+              <a href="/udbydere/eesy">
+                eesy
+                <span class="dd-desc">Mobil & Internet</span>
+              </a>
+            </li>
+             <li>
+              <a href="/udbydere/flexii">
+                Flexii
+                <span class="dd-desc">Mobil</span>
+              </a>
+            </li>
           </ul>
         </li>
 
@@ -220,6 +238,9 @@ document.head.appendChild(script);
         <a href="/udbydere/callme">Call Me</a>
         <a href="/udbydere/yousee">Yousee</a>
         <a href="/udbydere/telenor">Telenor</a>
+        <a href="/udbydere/3">3</a>
+        <a href="/udbydere/eesy">eesy</a>
+        <a href="/udbydere/flexii">Flexii</a>
       </div>
 
       <!-- Guides -->
