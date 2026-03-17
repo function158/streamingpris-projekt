@@ -11,13 +11,11 @@
   <script defer src="/js/header.js"></script>
   <script defer src="/js/footer.js"></script>
   <style>
-    /* ── PAGE SPECIFIK ── */
-    .mob-hero { text-align:center; padding: 2rem 1rem 0.5rem; }
-    .mob-hero h1 { font-size: clamp(1.5rem,4vw,2.4rem); font-weight:800; color:var(--ink); margin:0 0 .5rem; max-width:700px; margin-inline:auto; }
-    .mob-hero h1 span { color:var(--accent); }
-    .mob-hero p { font-size:15px; color:var(--ink-muted); max-width:520px; margin:.4rem auto 0; line-height:1.6; }
+    .mob-hero { text-align:center; padding:2rem 1rem 0.5rem; }
+    .mob-hero h1 { font-size:clamp(1.5rem,4vw,2.4rem); font-weight:800; color:var(--ink,#111); margin:0 0 .5rem; max-width:700px; margin-inline:auto; }
+    .mob-hero h1 span { color:#2B3EFF; }
+    .mob-hero p { font-size:15px; color:#6b7280; max-width:520px; margin:.4rem auto 0; line-height:1.6; }
 
-    /* ── FILTER PANEL ── */
     .filter-panel {
       max-width:480px; margin:1.5rem auto 0;
       background:linear-gradient(135deg,#1a2bcc 0%,#2B3EFF 60%,#4f5fff 100%);
@@ -26,148 +24,61 @@
     }
     .filter-section { margin-bottom:18px; }
     .filter-section:last-child { margin-bottom:0; }
-    .filter-label {
-      font-size:12px; font-weight:700; color:rgba(255,255,255,.75);
-      text-transform:uppercase; letter-spacing:.6px; margin-bottom:9px; display:flex; align-items:center; gap:6px;
-    }
+    .filter-label { font-size:12px; font-weight:700; color:rgba(255,255,255,.75); text-transform:uppercase; letter-spacing:.6px; margin-bottom:9px; display:flex; align-items:center; gap:6px; }
     .filter-chips { display:flex; flex-wrap:wrap; gap:7px; }
-    .fchip {
-      padding:7px 13px; border-radius:var(--radius-pill);
-      border:2px solid rgba(255,255,255,.28);
-      background:rgba(255,255,255,.09);
-      color:rgba(255,255,255,.85); font-size:13px; font-weight:600;
-      cursor:pointer; transition:all .15s ease; white-space:nowrap;
-      font-family:var(--sans);
-    }
-    .fchip:hover  { background:rgba(255,255,255,.2); border-color:rgba(255,255,255,.6); }
+    .fchip { padding:7px 13px; border-radius:99px; border:2px solid rgba(255,255,255,.28); background:rgba(255,255,255,.09); color:rgba(255,255,255,.85); font-size:13px; font-weight:600; cursor:pointer; transition:all .15s ease; white-space:nowrap; font-family:inherit; }
+    .fchip:hover { background:rgba(255,255,255,.2); border-color:rgba(255,255,255,.6); }
     .fchip.active { background:rgba(255,255,255,.95); color:#2B3EFF; border-color:#fff; font-weight:800; box-shadow:0 3px 10px rgba(0,0,0,.12); }
-
     .filter-divider { height:1px; background:rgba(255,255,255,.15); margin:14px 0; }
-
-    /* pris slider */
     .price-slider-row { display:flex; align-items:center; gap:12px; }
     .price-slider-row input[type=range] { flex:1; accent-color:#fff; cursor:pointer; }
     .price-val { font-size:15px; font-weight:800; color:#fff; min-width:68px; text-align:right; white-space:nowrap; }
-
-    /* 5G toggle */
     .toggle-row { display:flex; align-items:center; justify-content:space-between; }
     .toggle-row label { font-size:14px; font-weight:600; color:rgba(255,255,255,.9); cursor:pointer; }
     .tog { position:relative; width:44px; height:24px; flex-shrink:0; }
     .tog input { opacity:0; width:0; height:0; }
-    .tog-track {
-      position:absolute; inset:0; background:rgba(255,255,255,.2);
-      border-radius:99px; transition:background .2s; cursor:pointer;
-      border:2px solid rgba(255,255,255,.35);
-    }
+    .tog-track { position:absolute; inset:0; background:rgba(255,255,255,.2); border-radius:99px; transition:background .2s; cursor:pointer; border:2px solid rgba(255,255,255,.35); }
     .tog input:checked + .tog-track { background:#fff; }
-    .tog-track::after {
-      content:''; position:absolute; top:2px; left:2px;
-      width:16px; height:16px; border-radius:50%;
-      background:rgba(255,255,255,.7); transition:transform .2s;
-    }
+    .tog-track::after { content:''; position:absolute; top:2px; left:2px; width:16px; height:16px; border-radius:50%; background:rgba(255,255,255,.7); transition:transform .2s; }
     .tog input:checked + .tog-track::after { transform:translateX(20px); background:#2B3EFF; }
 
-    /* ── RESULTS ── */
-    .results-header {
-      max-width:480px; margin:1.5rem auto .75rem;
-      display:flex; align-items:center; justify-content:space-between;
-    }
-    .results-count { font-size:14px; color:var(--ink-muted); font-weight:500; }
-    .sort-select {
-      font-size:13px; font-weight:600; color:var(--ink);
-      border:1px solid var(--border); border-radius:var(--radius-pill);
-      background:#fff; padding:6px 12px; cursor:pointer;
-      font-family:var(--sans); outline:none;
-    }
+    .results-header { max-width:480px; margin:1.5rem auto .75rem; display:flex; align-items:center; justify-content:space-between; }
+    .results-count { font-size:14px; color:#6b7280; font-weight:500; }
+    .sort-select { font-size:13px; font-weight:600; color:#111; border:1px solid #e5e7eb; border-radius:99px; background:#fff; padding:6px 12px; cursor:pointer; font-family:inherit; outline:none; }
 
-    /* ── PLAN CARDS ── */
-    .plans-list { max-width:480px; margin:0 auto; display:flex; flex-direction:column; gap:14px; }
-
-    .plan-card {
-      background:#fff; border-radius:18px; padding:18px 16px 16px;
-      box-shadow:var(--shadow-card); border:1.5px solid #f0f0ee;
-      transition:all .22s ease; position:relative; overflow:hidden;
-    }
-    .plan-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-card-hover); }
-    .plan-card.featured { border-color:var(--accent); }
-    .plan-card.featured::before {
-      content:'Bedste tilbud'; position:absolute; top:0; right:0;
-      background:var(--accent); color:#fff;
-      font-size:11px; font-weight:700; padding:4px 12px;
-      border-bottom-left-radius:10px; letter-spacing:.3px;
-    }
-
-    /* intro badge */
-    .intro-badge {
-      display:inline-block; background:#eff6ff; color:#1d4ed8;
-      font-size:12px; font-weight:700; padding:4px 10px;
-      border-radius:var(--radius-pill); margin-bottom:12px; border:1px solid #bfdbfe;
-    }
-
+    .plans-list { max-width:480px; margin:0 auto; display:flex; flex-direction:column; gap:14px; padding-bottom:2rem; }
+    .plan-card { background:#fff; border-radius:18px; padding:18px 16px 16px; box-shadow:0 2px 12px rgba(0,0,0,.07); border:1.5px solid #f0f0ee; transition:all .22s ease; position:relative; overflow:hidden; }
+    .plan-card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.11); }
+    .plan-card.featured { border-color:#2B3EFF; }
+    .plan-card.featured::before { content:'Bedste tilbud'; position:absolute; top:0; right:0; background:#2B3EFF; color:#fff; font-size:11px; font-weight:700; padding:4px 12px; border-bottom-left-radius:10px; }
+    .intro-badge { display:inline-block; background:#eff6ff; color:#1d4ed8; font-size:12px; font-weight:700; padding:4px 10px; border-radius:99px; margin-bottom:12px; border:1px solid #bfdbfe; }
     .plan-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
-    .plan-logo { height:30px; max-width:100px; object-fit:contain; }
-    .plan-network-badge {
-      font-size:11px; font-weight:700; color:#fff;
-      background:var(--accent); padding:3px 9px;
-      border-radius:var(--radius-pill); text-transform:uppercase; letter-spacing:.4px;
-    }
-    .plan-5g-badge {
-      font-size:11px; font-weight:700; color:#059669;
-      background:#d1fae5; padding:3px 9px;
-      border-radius:var(--radius-pill); margin-left:6px;
-    }
-
-    /* specs row */
-    .plan-specs {
-      display:grid; grid-template-columns:repeat(3,1fr);
-      gap:6px; margin-bottom:14px;
-    }
-    .spec-box {
-      background:#f9fafb; border-radius:10px; padding:8px 6px;
-      text-align:center;
-    }
-    .spec-box .spec-label { font-size:10px; color:#9ca3af; font-weight:600; text-transform:uppercase; letter-spacing:.3px; display:block; margin-bottom:3px; }
-    .spec-box .spec-val   { font-size:13px; font-weight:700; color:var(--ink); }
-
-    /* price */
-    .plan-price-row { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:12px; }
+    .plan-logo { height:36px; max-width:110px; object-fit:contain; display:block; }
+    .plan-logo-fallback { display:inline-flex; align-items:center; justify-content:center; height:36px; padding:0 12px; background:#f3f4f6; border-radius:8px; font-size:13px; font-weight:700; color:#374151; letter-spacing:.3px; }
+    .plan-name-text { font-size:14px; font-weight:700; color:#111; }
+    .plan-network-badge { font-size:11px; font-weight:700; color:#fff; background:#2B3EFF; padding:3px 9px; border-radius:99px; text-transform:uppercase; }
+    .plan-5g-badge { font-size:11px; font-weight:700; color:#059669; background:#d1fae5; padding:3px 9px; border-radius:99px; margin-left:6px; }
+    .plan-specs { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-bottom:14px; }
+    .spec-box { background:#f9fafb; border-radius:10px; padding:8px 6px; text-align:center; }
+    .spec-label { font-size:10px; color:#9ca3af; font-weight:600; text-transform:uppercase; letter-spacing:.3px; display:block; margin-bottom:3px; }
+    .spec-val { font-size:13px; font-weight:700; color:#111; }
+    .plan-price-row { display:flex; align-items:flex-end; margin-bottom:12px; }
     .plan-price-left { display:flex; flex-direction:column; }
-    .plan-price-intro { font-size:28px; font-weight:900; color:var(--accent); line-height:1; font-family:var(--sans); }
-    .plan-price-intro span { font-size:14px; font-weight:500; color:var(--ink-muted); }
-    .plan-price-after { font-size:12px; color:var(--ink-muted); margin-top:3px; }
-    .plan-price-normal { font-size:28px; font-weight:900; color:var(--ink); line-height:1; }
-    .plan-price-normal span { font-size:14px; font-weight:500; color:var(--ink-muted); }
-
+    .price-intro-num { font-size:28px; font-weight:900; color:#2B3EFF; line-height:1; }
+    .price-intro-num span { font-size:14px; font-weight:500; color:#6b7280; }
+    .price-after { font-size:12px; color:#6b7280; margin-top:3px; }
+    .price-normal-num { font-size:28px; font-weight:900; color:#111; line-height:1; }
+    .price-normal-num span { font-size:14px; font-weight:500; color:#6b7280; }
     .plan-meta { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:14px; }
-    .meta-pill {
-      font-size:11px; font-weight:600; color:#4b5563;
-      background:#f3f4f6; padding:4px 9px; border-radius:var(--radius-pill);
-      display:flex; align-items:center; gap:4px;
-    }
-
-    .plan-btn {
-      display:block; width:100%; text-align:center;
-      background:var(--accent); color:#fff;
-      font-size:15px; font-weight:700;
-      padding:13px; border-radius:var(--radius-md);
-      text-decoration:none; transition:background .15s ease, transform .1s ease;
-      font-family:var(--sans);
-    }
-    .plan-btn:hover { background:var(--accent-dark); transform:scale(.99); }
-    .plan-oprettelse { text-align:center; font-size:12px; color:var(--ink-muted); margin-top:8px; }
-
-    /* empty state */
-    .empty-state { text-align:center; padding:3rem 1rem; color:var(--ink-muted); }
-    .empty-state p { font-size:15px; margin:.5rem 0; }
-
-    /* loading */
+    .meta-pill { font-size:11px; font-weight:600; color:#4b5563; background:#f3f4f6; padding:4px 9px; border-radius:99px; }
+    .plan-btn { display:block; width:100%; text-align:center; background:#2B3EFF; color:#fff; font-size:15px; font-weight:700; padding:13px; border-radius:12px; text-decoration:none; transition:background .15s; font-family:inherit; box-sizing:border-box; }
+    .plan-btn:hover { background:#1a2bcc; }
+    .plan-opsigelse { text-align:center; font-size:12px; color:#6b7280; margin-top:8px; }
+    .empty-state { text-align:center; padding:3rem 1rem; color:#6b7280; }
     .skeleton { background:linear-gradient(90deg,#f0f0f0 25%,#e8e8e8 50%,#f0f0f0 75%); background-size:200%; animation:shimmer 1.3s infinite; border-radius:18px; height:200px; }
     @keyframes shimmer { from{background-position:200%} to{background-position:-200%} }
 
-    /* desktop */
-    @media(min-width:601px) {
-      .filter-panel,.results-header,.plans-list { max-width:640px; }
-    }
+    @media(min-width:601px) { .filter-panel,.results-header,.plans-list { max-width:640px; } }
     @media(min-width:900px) {
       .plans-list { max-width:900px; display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
       .results-header { max-width:900px; }
@@ -176,16 +87,12 @@
 </head>
 <body>
 <main>
-
   <div class="mob-hero">
     <h1>Sammenlign <span>mobilabonnementer</span> og find det bedste tilbud</h1>
-    <p>Altid opdaterede priser fra de bedste udbydere. Filtrer og find præcis hvad du har brug for.</p>
+    <p>Altid opdaterede priser fra alle udbydere. Filtrer og find præcis hvad du har brug for.</p>
   </div>
 
-  <!-- FILTER PANEL -->
   <div class="filter-panel">
-
-    <!-- DATA -->
     <div class="filter-section">
       <div class="filter-label">📶 Data i Danmark</div>
       <div class="filter-chips" id="dataChips">
@@ -197,10 +104,7 @@
         <button class="fchip" data-gb="9999">Fri data</button>
       </div>
     </div>
-
     <div class="filter-divider"></div>
-
-    <!-- PRIS -->
     <div class="filter-section">
       <div class="filter-label">💰 Maks. pris</div>
       <div class="price-slider-row">
@@ -208,10 +112,7 @@
         <span class="price-val" id="priceVal">Alle priser</span>
       </div>
     </div>
-
     <div class="filter-divider"></div>
-
-    <!-- NETVÆRK -->
     <div class="filter-section">
       <div class="filter-label">🗼 Netværk</div>
       <div class="filter-chips" id="netChips">
@@ -222,10 +123,7 @@
         <button class="fchip" data-net="telia">Telia</button>
       </div>
     </div>
-
     <div class="filter-divider"></div>
-
-    <!-- 5G -->
     <div class="filter-section">
       <div class="toggle-row">
         <label for="tog5g">Kun 5G abonnementer</label>
@@ -235,10 +133,8 @@
         </label>
       </div>
     </div>
-
   </div>
 
-  <!-- RESULTS HEADER -->
   <div class="results-header">
     <span class="results-count" id="resultsCount">Henter tilbud…</span>
     <select class="sort-select" id="sortSelect">
@@ -248,214 +144,227 @@
     </select>
   </div>
 
-  <!-- PLAN CARDS -->
   <div class="plans-list" id="plansList">
     <div class="skeleton"></div>
     <div class="skeleton"></div>
     <div class="skeleton"></div>
   </div>
 
-  <section class="seo-text" style="max-width:640px;margin:3rem auto;padding:0 1rem;">
+  <section style="max-width:640px;margin:3rem auto;padding:0 1rem;">
     <h2>Mobilabonnementer i Danmark 2026</h2>
-    <p>Vi samler og opdaterer løbende de bedste mobilabonnementer fra udbydere som Flexii, Oister, Duka, eesy og Greentel. Alle priser hentes direkte fra udbyderne, så du altid ser de nyeste tilbud.</p>
+    <p>Vi samler og opdaterer løbende de bedste mobilabonnementer fra alle udbydere. Priser hentes automatisk og opdateres dagligt.</p>
   </section>
-
-  <script defer src="/js/footer.js"></script>
-
 </main>
 
 <script>
-const SUPABASE_URL  = "https://jrjwronitlemdnctzkdj.supabase.co";
-const SUPABASE_ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impyandyb25pdGxlbWRuY3R6a2RqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwNDQyMzgsImV4cCI6MjA4ODYyMDIzOH0.rlvdsZZTPfVIsjzq4IzcsIoMqz7DwgcgZP_RkUiwWYc";
+// ─── CONFIG ────────────────────────────────────────────────────────────────
+var SB_URL  = "https://jrjwronitlemdnctzkdj.supabase.co";
+var SB_KEY  = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impyandyb25pdGxlbWRuY3R6a2RqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzMwNDQyMzgsImV4cCI6MjA4ODYyMDIzOH0.rlvdsZZTPfVIsjzq4IzcsIoMqz7DwgcgZP_RkUiwWYc";
 
-const PROVIDER_LOGOS = {
-  flexii:   "/images/flexii.png",
-  oister:   "/images/oister.png",
-  duka:     "/images/duka.png",
-  eesy:     "/images/eesy.png",
-  greentel: "/images/greentel.png",
+var LOGOS = {
+  flexii:    "/images/flexii-logo.svg",
+  oister:    "/images/oister.svg",
+  duka:      "/images/duka-logo.svg",
+  eesy:      "/images/eesy-logo.svg",
+  greentel:  "/images/greentel-logo.png",
+  callme:    "/images/call-me.svg",
+  "call-me": "/images/call-me.svg",
+  telmore:   "/images/telmore-logo.svg",
+  cbb:       "/images/cbb-mobil.png",
+  "cbb-mobil":"/images/cbb-mobil.png",
+  norlys:    "/images/norlys-logo.svg",
+  hiper:     "/images/hiper-logo.png",
+  ewii:      "/images/ewii-logo.svg"
 };
 
-// Hent alle aktive auto-udbyder planer fra Supabase
-async function fetchPlans() {
-  const AUTO = ["flexii","oister","duka","eesy","greentel"];
-  const url  = `${SUPABASE_URL}/rest/v1/mobile_plans?status=eq.active&provider_id=in.(${AUTO.join(",")})&order=mobile_base_price.asc&select=*`;
-  const res  = await fetch(url, { headers:{ apikey: SUPABASE_ANON, Authorization:`Bearer ${SUPABASE_ANON}` }});
-  if (!res.ok) throw new Error("Kunne ikke hente tilbud");
-  return res.json();
+// ─── STATE ─────────────────────────────────────────────────────────────────
+var allPlans = [];
+var filters  = { gb:0, maxPrice:300, net:"alle", only5g:false };
+var sortBy   = "intro";
+
+// ─── HELPERS ───────────────────────────────────────────────────────────────
+function toNum(v) { return parseFloat(v) || 0; }
+
+function parseGb(s) {
+  if (!s) return 0;
+  if (/fri.?data/i.test(String(s))) return 99999;
+  var m = String(s).match(/[\d.]+/);
+  return m ? parseFloat(m[0]) : 0;
 }
 
-// State
-let allPlans = [];
-let filters  = { gb: 0, maxPrice: 300, net: "alle", only5g: false };
-let sortBy   = "intro";
-
-function parseGb(str) {
-  if (!str) return 0;
-  if (/fri\s*data/i.test(str)) return 99999;
-  const m = str.match(/(\d+)/);
-  return m ? parseInt(m[1]) : 0;
+function parseNet(n) {
+  if (!n) return "";
+  var l = String(n).toLowerCase();
+  if (l.indexOf("telenor") !== -1) return "telenor";
+  if (l.indexOf("tdc")     !== -1) return "tdc";
+  if (l.indexOf("telia")   !== -1) return "telia";
+  if (l.indexOf("3")       === 0)  return "3";
+  return "";
 }
 
-function parseNet(network) {
-  if (!network) return "";
-  const n = network.toLowerCase();
-  if (n.includes("3"))       return "3";
-  if (n.includes("telenor")) return "telenor";
-  if (n.includes("tdc"))     return "tdc";
-  if (n.includes("telia"))   return "telia";
-  return n;
-}
-
+// ─── FILTER + SORT ─────────────────────────────────────────────────────────
 function applyFilters() {
-  return allPlans.filter(p => {
-    const gb       = parseGb(p.data_amount);
-    const price    = parseInt(p.intro_price_mobile || p.mobile_base_price || 9999);
-    const net      = parseNet(p.network);
-    const is5g     = p.network && p.network.includes("5G");
-    const gbFilter = filters.gb === 9999 ? gb >= 9999 : gb >= filters.gb;
-    return gbFilter
+  return allPlans.filter(function(p) {
+    var gb    = parseGb(p.data_amount);
+    var price = toNum(p.intro_price_mobile != null ? p.intro_price_mobile : p.mobile_base_price);
+    var is5g  = p.network && p.network.indexOf("5G") !== -1;
+    var gbOk  = filters.gb === 9999 ? gb >= 9999 : gb >= filters.gb;
+    return gbOk
       && price <= filters.maxPrice
-      && (filters.net === "alle" || net === filters.net)
+      && (filters.net === "alle" || parseNet(p.network) === filters.net)
       && (!filters.only5g || is5g);
   });
 }
 
-function sortPlans(plans) {
-  return [...plans].sort((a, b) => {
-    if (sortBy === "intro") {
-      const ap = parseInt(a.intro_price_mobile || a.mobile_base_price);
-      const bp = parseInt(b.intro_price_mobile || b.mobile_base_price);
-      return ap - bp;
-    }
-    if (sortBy === "data") {
-      return parseGb(b.data_amount) - parseGb(a.data_amount);
-    }
-    if (sortBy === "normal") {
-      return parseInt(a.mobile_base_price) - parseInt(b.mobile_base_price);
-    }
+function sortPlans(arr) {
+  return arr.slice().sort(function(a, b) {
+    if (sortBy === "intro")  return toNum(a.intro_price_mobile != null ? a.intro_price_mobile : a.mobile_base_price) - toNum(b.intro_price_mobile != null ? b.intro_price_mobile : b.mobile_base_price);
+    if (sortBy === "data")   return parseGb(b.data_amount) - parseGb(a.data_amount);
+    if (sortBy === "normal") return toNum(a.mobile_base_price) - toNum(b.mobile_base_price);
     return 0;
   });
 }
 
-function buildCard(plan, index) {
-  const logo       = PROVIDER_LOGOS[plan.provider_id] || "";
-  const hasIntro   = plan.intro_price_mobile && parseInt(plan.intro_price_mobile) < parseInt(plan.mobile_base_price);
-  const is5g       = plan.network && plan.network.includes("5G");
-  const featured   = index === 0 ? "featured" : "";
+// ─── CARD ──────────────────────────────────────────────────────────────────
+function buildCard(p, i) {
+  var logo     = LOGOS[p.provider_id] || "";
+  var baseP    = toNum(p.mobile_base_price);
+  var introP   = p.intro_price_mobile != null ? toNum(p.intro_price_mobile) : null;
+  var hasIntro = introP !== null && introP < baseP;
+  var is5g     = p.network && p.network.indexOf("5G") !== -1;
+  var netLabel = (p.network || "").replace(/\s*\(.*\)/, "").trim();
+  var planName = p.name || p.data_amount || "";
+  var featured = i === 0 ? " featured" : "";
+  var providerLabel = p.provider_id.charAt(0).toUpperCase() + p.provider_id.slice(1).replace(/-/g, " ");
 
-  const introBadge = hasIntro
-    ? `<div class="intro-badge">${plan.intro_price_mobile} kr/md de første ${plan.intro_months} mdr.</div>`
-    : "";
-
-  const priceHtml = hasIntro
-    ? `<div class="plan-price-left">
-         <div class="plan-price-intro">${plan.intro_price_mobile} <span>kr/md</span></div>
-         <div class="plan-price-after">Herefter ${plan.mobile_base_price} kr/md</div>
-       </div>`
-    : `<div class="plan-price-left">
-         <div class="plan-price-normal">${plan.mobile_base_price} <span>kr/md</span></div>
-       </div>`;
-
-  const netLabel = (plan.network || "").replace(" (5G)","").replace(" (4G)","");
-  const g5badge  = is5g ? `<span class="plan-5g-badge">5G</span>` : "";
-
-  const dataLabel = plan.data_amount || "–";
-  const euLabel   = plan.data_eu ? plan.data_eu.replace(" i EU","") : "–";
-
-  return `
-    <div class="plan-card ${featured}">
-      ${introBadge}
-      <div class="plan-top">
-        <img src="${logo}" alt="${plan.provider_id}" class="plan-logo" onerror="this.style.display='none'">
-        <div>
-          <span class="plan-network-badge">${netLabel}</span>${g5badge}
-        </div>
-      </div>
-
-      <div class="plan-specs">
-        <div class="spec-box"><span class="spec-label">Data DK</span><span class="spec-val">${dataLabel}</span></div>
-        <div class="spec-box"><span class="spec-label">EU data</span><span class="spec-val">${euLabel}</span></div>
-        <div class="spec-box"><span class="spec-label">Binding</span><span class="spec-val">${plan.binding_months ? plan.binding_months+" mdr" : "Ingen"}</span></div>
-      </div>
-
-      <div class="plan-price-row">
-        ${priceHtml}
-      </div>
-
-      <div class="plan-meta">
-        <span class="meta-pill">📞 Fri tale</span>
-        <span class="meta-pill">✉️ Fri SMS</span>
-        <span class="meta-pill">🔧 ${plan.oprettelse || "0 kr."}</span>
-      </div>
-
-      <a href="${plan.link || "#"}" class="plan-btn" target="_blank" rel="nofollow noopener">Gå til tilbud →</a>
-      <div class="plan-oprettelse">${plan.opsigelse || "Ingen binding"}</div>
-    </div>
-  `;
-}
-
-function render() {
-  const filtered = applyFilters();
-  const sorted   = sortPlans(filtered);
-  const list     = document.getElementById("plansList");
-  const count    = document.getElementById("resultsCount");
-
-  count.textContent = `${sorted.length} tilbud`;
-
-  if (sorted.length === 0) {
-    list.innerHTML = `<div class="empty-state"><p>😕 Ingen tilbud matcher dine filtre</p><p>Prøv at justere data- eller priskravet</p></div>`;
-    return;
+  var logoHtml;
+  if (logo) {
+    var img = new Image();
+    img.src = logo;
+    logoHtml = '<div style="display:flex;flex-direction:column;gap:2px;">'
+      + '<img src="' + logo + '" alt="' + p.provider_id + '" class="plan-logo" loading="lazy">'
+      + '<span style="font-size:11px;color:#6b7280;font-weight:600;">' + planName + '</span>'
+      + '</div>';
+  } else {
+    logoHtml = '<div style="display:flex;flex-direction:column;gap:2px;">'
+      + '<span class="plan-logo-fallback">' + providerLabel + '</span>'
+      + '<span style="font-size:11px;color:#6b7280;font-weight:600;">' + planName + '</span>'
+      + '</div>';
   }
 
-  list.innerHTML = sorted.map((p, i) => buildCard(p, i)).join("");
+  var introBadgeHtml = hasIntro
+    ? '<div class="intro-badge">\uD83D\uDD25 ' + introP + ' kr/md de f\u00F8rste ' + (p.intro_months || "?") + ' mdr.</div>'
+    : "";
+
+  var priceHtml = hasIntro
+    ? '<div class="plan-price-left"><div class="price-intro-num">' + introP + ' <span>kr/md</span></div><div class="price-after">Herefter ' + baseP + ' kr/md</div></div>'
+    : '<div class="plan-price-left"><div class="price-normal-num">' + baseP + ' <span>kr/md</span></div></div>';
+
+  var netBadge = netLabel ? '<span class="plan-network-badge">' + netLabel + '</span>' : "";
+  var g5badge  = is5g     ? '<span class="plan-5g-badge">5G</span>' : "";
+  var bindLabel = p.binding_months ? p.binding_months + " mdr" : "Ingen";
+
+  return '<div class="plan-card' + featured + '">'
+    + introBadgeHtml
+    + '<div class="plan-top">'
+    +   logoHtml
+    +   '<div>' + netBadge + g5badge + '</div>'
+    + '</div>'
+    + '<div class="plan-specs">'
+    +   '<div class="spec-box"><span class="spec-label">Data DK</span><span class="spec-val">' + (p.data_amount || "\u2013") + '</span></div>'
+    +   '<div class="spec-box"><span class="spec-label">Data EU</span><span class="spec-val">' + (p.data_eu || "\u2013") + '</span></div>'
+    +   '<div class="spec-box"><span class="spec-label">Binding</span><span class="spec-val">' + bindLabel + '</span></div>'
+    + '</div>'
+    + '<div class="plan-price-row">' + priceHtml + '</div>'
+    + '<div class="plan-meta">'
+    +   '<span class="meta-pill">\uD83D\uDCDE Fri tale</span>'
+    +   '<span class="meta-pill">\u2709\uFE0F Fri SMS</span>'
+    +   '<span class="meta-pill">\uD83D\uDD27 ' + (p.oprettelse || "0 kr.") + '</span>'
+    + '</div>'
+    + '<a href="' + (p.link || "#") + '" class="plan-btn" target="_blank" rel="sponsored noopener nofollow">G\u00E5 til tilbud \u2192</a>'
+    + '<div class="plan-opsigelse">' + (p.opsigelse || "Ingen binding") + '</div>'
+    + '</div>';
 }
 
-// Init
-fetchPlans().then(plans => {
-  allPlans = plans;
-  filters.maxPrice = 300;
+
+// ─── RENDER ────────────────────────────────────────────────────────────────
+function render() {
+  var sorted = sortPlans(applyFilters());
+  document.getElementById("resultsCount").textContent = sorted.length + " tilbud";
+  var html = "";
+  for (var i = 0; i < sorted.length; i++) html += buildCard(sorted[i], i);
+  document.getElementById("plansList").innerHTML = html || '<div class="empty-state"><p>😕 Ingen tilbud matcher dine filtre</p></div>';
+}
+
+// ─── FETCH fra mobile_plans ────────────────────────────────────────────────
+function showError(msg) {
+  document.getElementById("plansList").innerHTML = '<div class="empty-state"><p>' + msg + '</p></div>';
+  document.getElementById("resultsCount").textContent = "Fejl";
+}
+
+// Timeout safety: vis fejl efter 8 sekunder hvis intet sker
+var fetchTimeout = setTimeout(function() {
+  showError("⚠️ Timeout — ingen svar fra Supabase. Tjek RLS policies.");
+}, 8000);
+
+fetch(SB_URL + "/rest/v1/mobile_plans?status=eq.active&select=*", {
+  headers: { "apikey": SB_KEY, "Authorization": "Bearer " + SB_KEY }
+})
+.then(function(res) {
+  clearTimeout(fetchTimeout);
+  if (!res.ok) return res.text().then(function(t) { throw new Error("HTTP " + res.status + ": " + t); });
+  return res.json();
+})
+.then(function(data) {
+  allPlans = data;
+  console.log("Hentet " + allPlans.length + " planer fra mobile_plans");
+  if (allPlans.length === 0) {
+    showError("⚠️ 0 planer hentet — tjek at RLS policy er gemt, og at der er rækker med status=active");
+    return;
+  }
   render();
-}).catch(err => {
-  document.getElementById("plansList").innerHTML = `<div class="empty-state"><p>Kunne ikke hente tilbud</p><p>${err.message}</p></div>`;
-  document.getElementById("resultsCount").textContent = "0 tilbud";
+})
+.catch(function(err) {
+  clearTimeout(fetchTimeout);
+  console.error(err);
+  showError("⚠️ " + err.message);
 });
 
-// ── Filter events ──
-document.getElementById("dataChips").addEventListener("click", e => {
-  const chip = e.target.closest(".fchip");
-  if (!chip) return;
-  document.querySelectorAll("#dataChips .fchip").forEach(c => c.classList.remove("active"));
-  chip.classList.add("active");
-  filters.gb = parseInt(chip.dataset.gb);
+// ─── EVENTS ────────────────────────────────────────────────────────────────
+document.getElementById("dataChips").addEventListener("click", function(e) {
+  var c = e.target.closest("[data-gb]");
+  if (!c) return;
+  var chips = document.querySelectorAll("#dataChips .fchip");
+  for (var i=0; i<chips.length; i++) chips[i].classList.remove("active");
+  c.classList.add("active");
+  filters.gb = parseInt(c.getAttribute("data-gb"), 10);
   render();
 });
 
-document.getElementById("netChips").addEventListener("click", e => {
-  const chip = e.target.closest(".fchip");
-  if (!chip) return;
-  document.querySelectorAll("#netChips .fchip").forEach(c => c.classList.remove("active"));
-  chip.classList.add("active");
-  filters.net = chip.dataset.net;
+document.getElementById("netChips").addEventListener("click", function(e) {
+  var c = e.target.closest("[data-net]");
+  if (!c) return;
+  var chips = document.querySelectorAll("#netChips .fchip");
+  for (var i=0; i<chips.length; i++) chips[i].classList.remove("active");
+  c.classList.add("active");
+  filters.net = c.getAttribute("data-net");
   render();
 });
 
-const slider = document.getElementById("priceSlider");
-const priceVal = document.getElementById("priceVal");
-slider.addEventListener("input", () => {
-  const v = parseInt(slider.value);
+document.getElementById("priceSlider").addEventListener("input", function() {
+  var v = parseInt(this.value, 10);
   filters.maxPrice = v;
-  priceVal.textContent = v >= 300 ? "Alle priser" : `Op til ${v} kr`;
+  document.getElementById("priceVal").textContent = v >= 300 ? "Alle priser" : "Op til " + v + " kr";
   render();
 });
 
-document.getElementById("tog5g").addEventListener("change", e => {
-  filters.only5g = e.target.checked;
+document.getElementById("tog5g").addEventListener("change", function() {
+  filters.only5g = this.checked;
   render();
 });
 
-document.getElementById("sortSelect").addEventListener("change", e => {
-  sortBy = e.target.value;
+document.getElementById("sortSelect").addEventListener("change", function() {
+  sortBy = this.value;
   render();
 });
 </script>
