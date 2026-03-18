@@ -142,57 +142,69 @@
       <span id="lastUpdatedText">Henter priser…</span>
     </div>
   </div>
+  <div class="filter-panel" id="filterPanel">
 
-  <div class="filter-panel">
     <div class="filter-section">
-      <div class="filter-label">📶 Data i Danmark</div>
+      <div class="filter-label">Data i Danmark</div>
       <div class="filter-chips" id="dataChips">
         <button class="fchip active" data-gb="0">Alle</button>
         <button class="fchip" data-gb="10">10 GB+</button>
         <button class="fchip" data-gb="20">20 GB+</button>
         <button class="fchip" data-gb="50">50 GB+</button>
-        <button class="fchip" data-gb="100">100 GB+</button>
         <button class="fchip" data-gb="9999">Fri data</button>
       </div>
     </div>
+  
     <div class="filter-divider"></div>
+  
     <div class="filter-section">
-      <div class="filter-label">💰 Maks. pris</div>
-      <div class="price-slider-row">
-        <input type="range" id="priceSlider" min="30" max="300" value="300" step="10"/>
-        <span class="price-val" id="priceVal">Alle priser</span>
+      <div class="filter-label">Maks. pris</div>
+      <div class="filter-chips" id="priceChips">
+        <button class="fchip active" data-price="300">Alle</button>
+        <button class="fchip" data-price="50">50 kr</button>
+        <button class="fchip" data-price="100">100 kr</button>
+        <button class="fchip" data-price="150">150 kr</button>
+        <button class="fchip" data-price="200">200 kr</button>
       </div>
     </div>
+  
     <div class="filter-divider"></div>
-    <div class="filter-section">
-      <div class="filter-label">🗼 Netværk</div>
-      <div class="filter-chips" id="netChips">
-        <button class="fchip active" data-net="alle">Alle</button>
-        <button class="fchip" data-net="3">3</button>
-        <button class="fchip" data-net="telenor">Telenor</button>
-        <button class="fchip" data-net="tdc">TDC</button>
-        <button class="fchip" data-net="telia">Telia</button>
+  
+    <div class="filter-grid-two">
+      <div class="filter-section">
+        <div class="filter-label">Netværk</div>
+        <div class="filter-chips" id="netChips">
+          <button class="fchip active" data-net="alle">Alle</button>
+          <button class="fchip" data-net="3">3</button>
+          <button class="fchip" data-net="telenor">Telenor</button>
+          <button class="fchip" data-net="tdc">TDC</button>
+          <button class="fchip" data-net="telia">Telia</button>
+        </div>
+      </div>
+  
+      <div class="filter-section">
+        <div class="filter-label">Binding</div>
+        <div class="filter-chips" id="bindingChips">
+          <button class="fchip active" data-binding="alle">Alle</button>
+          <button class="fchip" data-binding="ingen">Ingen</button>
+        </div>
       </div>
     </div>
+  
     <div class="filter-divider"></div>
-    <div class="filter-section">
-      <div class="toggle-row">
-        <label for="tog5g">Kun 5G abonnementer</label>
-        <label class="tog">
-          <input type="checkbox" id="tog5g"/>
-          <span class="tog-track"></span>
-        </label>
-      </div>
-    </div>
+  
+    <button id="resetFilters" style="width:100%;padding:9px 0;background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.3);border-radius:99px;color:rgba(255,255,255,0.85);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">
+      Nulstil filtre
+    </button>
+  
   </div>
 
   <div class="results-header">
     <span class="results-count" id="resultsCount">Henter tilbud…</span>
-    <select class="sort-select" id="sortSelect">
-      <option value="intro">Laveste pris</option>
-      <option value="data">Mest data</option>
-      <option value="normal">Normalpris</option>
-    </select>
+    <div class="sort-chips" id="sortChips">
+      <button class="sort-chip active" data-sort="intro">Laveste pris</button>
+      <button class="sort-chip" data-sort="data">Mest data</button>
+    </div>
   </div>
 
   <div class="plans-list" id="plansList">

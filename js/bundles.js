@@ -184,28 +184,7 @@ const SERVICE_ICONS = {
       if (diffDays <= 7) return `<span style="color:#d97706;font-weight:700;">⏳ Udløber snart (${formatted})</span>`;
       return `<span style="color:#6b7280;">Tilbuddet gælder til ${formatted}</span>`;
   }
-  
-  // ─── BEREGNING ────────────────────────────────────────────────────────────────
-  //
-  // VIGTIG DESIGNBESLUTNING — to savings-baselines:
-  //
-  //   "har"-mode  → sammenlign mod currentCostForCovered (hvad brugeren betaler I DAG
-  //                 for de tjenester bundlen dækker, aflæst fra window.selected).
-  //                 Bruges til: totalSavings, yearlySavings, filter og sortering.
-  //                 Effekt: besparelsen ændrer sig KORREKT når brugeren skifter pakke
-  //                 i dropdown'en inde i kortet — fordi bundlens pris stiger/falder
-  //                 mens baseline forbliver stabil (brugerens nuværende udgift).
-  //
-  //   "vil"-mode  → sammenlign mod separateCost (markedsprisen for præcis den pakke
-  //                 bundlen aktuelt viser i dropdown'en).
-  //                 Bruges til: extraIfSeparate, extraIfSeparateYearly, vil-sortering.
-  //                 Effekt: viser hvad det ville koste at købe den valgte pakke separat.
-  //
-  // Alle tre beregnere returnerer begge sæt, så buildHarSavingsBox og buildVilSavingsBox
-  // bruger det rette tal automatisk.
-  // ─────────────────────────────────────────────────────────────────────────────
 
-  // ─── FÆLLES HJÆLPER ──────────────────────────────────────────────────────────
   
   function calcBaseCosts(coveredEntries, selectedServices) {
       let currentCostForCovered = 0;
@@ -800,7 +779,28 @@ const SERVICE_ICONS = {
           <div style="font-size:11px;font-weight:700;color:#9ca3af;text-transform:uppercase;margin-bottom:10px;letter-spacing:.4px;">Inkluderede tjenester:</div>
           <div class="services-list">${buildServicesHtml(coveredEntries)}</div>
         </div>
-  
+        ${(function() {
+            const coveredIds = coveredEntries.map(e => e.id);
+            const missingIds = Object.keys(window.selected || {}).filter(id => !coveredIds.includes(id));
+            if (!missingIds.length) return '';
+            return `<div class="missing-check-wrap" style="margin:0 0 14px;">
+              <button class="missing-check-btn" type="button">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Resten købes separat (${missingIds.length})
+              </button>
+              <div class="missing-check-panel" style="display:none;">
+                ${missingIds.map(id => {
+                  const svc = (window.services || []).find(s => s.id === id);
+                  const name = svc ? svc.name : id;
+                  const icon = getServiceIcon(id);
+                  return `<div class="missing-check-row">
+                    ${icon ? `<img src="${icon}" alt="${name}" style="width:18px;height:18px;object-fit:contain;border-radius:4px;">` : ''}
+                    <span>${name} er <strong>ikke inkluderet</strong> i dette abonnement</span>
+                  </div>`;
+                }).join('')}
+              </div>
+            </div>`;
+          })()}
         <div class="bundle-savings-wrap">${savingsBoxHtml}</div>
   
         <div class="bundle-price">
@@ -857,14 +857,27 @@ const SERVICE_ICONS = {
       };
   
       attachValgListeners(card, coveredEntries, bundle, buildServicesHtml);
-  
+
       document.addEventListener('click', () => {
           card.querySelectorAll('.valg-menu').forEach(m => m.style.display = 'none');
       });
-  
+
+      // Missing-check toggle
+      const missingBtn = card.querySelector('.missing-check-btn');
+      const missingPanel = card.querySelector('.missing-check-panel');
+      if (missingBtn && missingPanel) {
+          missingBtn.onclick = (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              const open = missingPanel.style.display === 'block';
+              missingPanel.style.display = open ? 'none' : 'block';
+              missingBtn.classList.toggle('open', !open);
+          };
+      }
+
       return card;
   }
-  
+
   // ─── SAVINGS BOX BUILDERS ─────────────────────────────────────────────────────
   
   function buildHarSavingsBox(savings) {

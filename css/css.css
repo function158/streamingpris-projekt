@@ -1812,3 +1812,115 @@
   color: #999;
 }
 
+.missing-check-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff7ed;
+  border: 1.5px solid #fed7aa;
+  color: #c2410c;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 99px;
+  cursor: pointer;
+  width: 100%;
+  justify-content: center;
+  transition: background .15s;
+}
+.missing-check-btn:hover,
+.missing-check-btn.open {
+  background: #ffedd5;
+}
+.missing-check-panel {
+  margin-top: 8px;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.missing-check-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #92400e;
+}
+
+.pc-note {
+  text-align: center;
+  font-size: 12px;
+  color: #9ca3af;
+  margin: 8px 0 0;
+}
+
+.sort-chips { display: flex; gap: 6px; flex-wrap: wrap; }
+.sort-chip {
+  padding: 7px 14px; border-radius: 99px; border: 1.5px solid #e5e7eb;
+  background: #fff; font-size: 13px; font-weight: 600; color: #374151;
+  cursor: pointer; transition: all .15s ease; white-space: nowrap;
+}
+.sort-chip.active {
+  background: #2B3EFF; color: #fff; border-color: #2B3EFF;
+}
+@media (max-width: 600px) {
+  .sort-chip { padding: 9px 16px; font-size: 14px; }
+}
+
+.intro-badge-placeholder {
+  height: 28px;
+  display: block;
+}
+
+.plan-price-row {
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+}
+
+.plan-meta {
+  min-height: 36px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+/* ── FILTER GRID: 2 kolonner ── */
+.filter-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 20px;
+}
+
+.filter-grid .filter-section {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Hvert filter-section fylder 1 kolonne */
+/* Data DK og EU: fuld bredde da de har mange chips */
+.filter-grid .filter-section:nth-child(1),
+.filter-grid .filter-section:nth-child(2) {
+  grid-column: 1 / -1;
+}
+
+/* På meget smal skærm: 1 kolonne */
+@media (max-width: 380px) {
+  .filter-grid {
+    grid-template-columns: 1fr;
+  }
+  .filter-grid .filter-section:nth-child(1),
+  .filter-grid .filter-section:nth-child(2) {
+    grid-column: 1;
+  }
+}
+
+/* Nulstil hover */
+#resetFilters:hover {
+  background: rgba(255,255,255,0.22) !important;
+  border-color: rgba(255,255,255,0.6) !important;
+}

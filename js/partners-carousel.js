@@ -36,13 +36,13 @@ const PARTNERS_FORSIDE = [
       .pc { padding: 36px 0; font-family: inherit; width: 100vw; position: relative; left: 50%; transform: translateX(-50%); }
       .pc-label { text-align: center; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: #888; margin-bottom: 24px; }
       .pc-wrap { overflow: hidden; -webkit-mask: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); mask: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); }
-      .pc-track { display: flex; align-items: center; width: max-content; animation: pc-scroll var(--pc-speed) linear infinite; }
+      .pc-track { display: flex; align-items: center; width: max-content; animation: pc-scroll var(--pc-speed) linear infinite; will-change: transform; backface-visibility: hidden; }
       .pc-wrap:hover .pc-track { animation-play-state: paused; }
       @keyframes pc-scroll { from { transform: translateX(0); } to { transform: translateX(-25%); } }
       .pc-item { display: flex; align-items: center; justify-content: center; padding: 0 40px; height: 56px; text-decoration: none; flex-shrink: 0; }
       .pc-item img { height: 28px; width: auto; max-width: 120px; object-fit: contain; filter: grayscale(100%) opacity(55%); transform: scale(1) translateY(0); transition: filter .35s ease, transform .35s ease; }
       .pc-item:hover img { filter: grayscale(0%) opacity(100%); transform: scale(1.08) translateY(-3px); }
-      .pc-note { text-align: center; font-size: 11px; color: #888; margin-top: 16px; letter-spacing: .03em; }
+      .pc-note { text-align: center !important; font-size: 12px !important; color: #9ca3af !important; margin-top: 8px !important; max-width: none !important; padding: 0 !important; line-height: 1.4 !important; }
       @media (max-width: 600px) {
         .pc-item { padding: 0 24px; height: 44px; }
         .pc-item img { height: 22px; max-width: 90px; }
@@ -80,7 +80,7 @@ const PARTNERS_FORSIDE = [
       section.className = 'pc';
       section.insertAdjacentHTML('afterbegin', '<p class="pc-label">Vi sammenligner tilbud fra</p>');
       section.appendChild(wrap);
-      section.insertAdjacentHTML('beforeend', '<p class="pc-note">ℹ️ Indeholder reklamelinks – vi får kommission ved køb via dem, uden ekstra pris for dig 💙</p>');
+      section.insertAdjacentHTML('beforeend', '<p class="pc-note">Siden indeholder reklamelinks. Vi modtager kommission ved køb – uden ekstra pris for dig.</p>');
   
       // Indsæt i #partners-carousel hvis den findes — ellers efter .cta-wrap
       const placeholder = document.getElementById('partners-carousel');

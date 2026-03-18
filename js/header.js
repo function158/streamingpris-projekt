@@ -196,10 +196,10 @@ document.head.appendChild(script);
         </svg>
       </button>
       <div class="mobile-sub" id="mobileSammenlign">
-        <a href="/">Mobil + Streaming</a>
-        <a href="#" class="mobile-coming-soon">Mobilabonnement <span>· Snart</span></a>
-        <a href="#" class="mobile-coming-soon">Internet <span>· Snart</span></a>
-      </div>
+  <a href="/">Mobil + Streaming</a>
+  <a href="/mobilabonnement">Mobilabonnement</a>
+  <a href="#" class="mobile-coming-soon">Internet <span>· Snart</span></a>
+</div>
 
       <!-- Tjenester -->
       <button class="mobile-dd-toggle" data-target="mobileTjenester">
