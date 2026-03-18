@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         <circle cx="12" cy="12" r="10"/>
         <polyline points="9 12 11 14 15 10" stroke-width="2.2"/>
       </svg>
-      Priser sidst opdateret: <time datetime="2026-03-06">6. marts 2026</time>
+      Priser sidst opdateret: <time datetime="2026-03-17">17. marts 2026</time>
     `;
     cardsEl.appendChild(stamp);
   }

@@ -29,9 +29,9 @@ document.head.appendChild(script);
               </a>
             </li>
             <li>
-              <a href="#" class="dd-coming-soon" aria-disabled="true">
+              <a href="/mobilabonnement">
                 Mobilabonnement
-                <span class="dd-desc">Kommer snart</span>
+                <span class="dd-desc">Find det billigste abonnement</span>
               </a>
             </li>
             <li>

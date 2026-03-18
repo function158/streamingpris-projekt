@@ -78,9 +78,9 @@ const PARTNERS_FORSIDE = [
   
       const section = document.createElement('section');
       section.className = 'pc';
-      section.insertAdjacentHTML('afterbegin', '<p class="pc-label">Vores samarbejdspartnere</p>');
+      section.insertAdjacentHTML('afterbegin', '<p class="pc-label">Vi sammenligner tilbud fra</p>');
       section.appendChild(wrap);
-      section.insertAdjacentHTML('beforeend', '<p class="pc-note">Indeholder reklamelinks – vi modtager kommission ved køb via disse links.</p>');
+      section.insertAdjacentHTML('beforeend', '<p class="pc-note">ℹ️ Indeholder reklamelinks – vi får kommission ved køb via dem, uden ekstra pris for dig 💙</p>');
   
       // Indsæt i #partners-carousel hvis den findes — ellers efter .cta-wrap
       const placeholder = document.getElementById('partners-carousel');
