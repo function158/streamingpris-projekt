@@ -13,6 +13,7 @@ const PARTNERS_FORSIDE = [
     { name: "Oister",   logo: "/images/oister.svg",        url: "https://go.adt284.net/t/t?a=1666103641&as=2050148986&t=2&tk=1" },
     { name: "CallMe",   logo: "/images/call-me.svg",        url: "https://ion.callme.dk/t/t?a=1694478781&as=2050148986&t=2&tk=1" },
     { name: "Viaplay",  logo: "/images/viaplay-logo.svg",  url: "https://go.adt242.com/t/t?a=1531118376&as=2050148986&t=2&tk=1" },
+    { name: "Mofibo",  logo: "/images/mofibo.svg",  url: "https://go.adt212.net/t/t?a=1400643923&as=2050148986&t=2&tk=1" },
     { name: "Hiper",    logo: "/images/hiper-logo.png",    url: "https://go.adt242.com/t/t?a=1697235826&as=2050148986&t=2&tk=1" },
     { name: "EWII",     logo: "/images/ewii-logo.svg",     url: "https://go.ewii.dk/t/t?a=1693093225&as=2050148986&t=2&tk=1" },
     { name: "Flexii",   logo: "/images/flexii-logo.svg",   url: "https://go.adt256.com/t/t?a=1751759538&as=2050148986&t=2&tk=1" },
@@ -22,6 +23,7 @@ const PARTNERS_FORSIDE = [
     { name: "Allente",  logo: "/images/allente-logo.svg",  url: "https://dot.allente.dk/t/t?a=1661367060&as=2050148986&t=2&tk=1" },
     { name: "YouSee",   logo: "/images/yousee-logo.svg",   url: "https://at.yousee.dk/t/t?a=1697234454&as=2050148986&t=2&tk=1" },
     { name: "3",        logo: "/images/3-logo.svg",        url: "https://go.adt291.com/t/t?a=1888318380&as=2050148986&t=2&tk=1" },
+    { name: "Nextory",  logo: "/images/nextory-logo.png",  url: "https://pin.nextory.dk/t/t?a=1412083419&as=2050148986&t=2&tk=1" },
   ];
   
   // =====================================================

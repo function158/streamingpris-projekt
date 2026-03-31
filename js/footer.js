@@ -33,6 +33,8 @@
           <li><a href="/podimo">Podimo</a></li>
           <li><a href="/mofibo">Mofibo</a></li>
           <li><a href="/bookbeat">Bookbeat</a></li>
+          <li><a href="/nextory">Nextory</a></li>
+          <li><a href="/saxo">Saxo</a></li>
         </ul>
       </div>
 

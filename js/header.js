@@ -1,7 +1,3 @@
-var script = document.createElement('script');
-script.src = '/js/cookie-consent.js';
-document.head.appendChild(script);
-
 (function () {
   const headerHTML = `
   <header class="top-nav">
@@ -64,6 +60,8 @@ document.head.appendChild(script);
             <li><a href="/podimo">Podimo<span class="dd-desc">Podcast & Lydbøger</span></a></li>
             <li><a href="/mofibo">Mofibo<span class="dd-desc">Lydbøger & Podcasts</span></a></li>
             <li><a href="/bookbeat">Bookbeat<span class="dd-desc">Lydbøger & Podcasts</span></a></li>
+            <li><a href="/nextory">Nextory<span class="dd-desc">Lydbøger & Podcasts</span></a></li>
+            <li><a href="/saxo">Saxo<span class="dd-desc">Lydbøger & Podcasts</span></a></li>
           </ul>
         </li>
 
@@ -221,6 +219,8 @@ document.head.appendChild(script);
         <a href="/podimo">Podimo</a>
         <a href="/mofibo">Mofibo</a>
         <a href="/bookbeat">Bookbeat</a>
+        <a href="/nextory">Nextory</a>
+        <a href="/saxo">Saxo</a>
       </div>
 
       <!-- Udbydere -->
