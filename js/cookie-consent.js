@@ -1,39 +1,88 @@
 (function () {
 
-  // ── GOOGLE ANALYTICS – loader altid, consent mode håndteres af banner ──
-  window.dataLayer = window.dataLayer || [];
-  function gtag() { dataLayer.push(arguments); }
-  window.gtag = gtag;
+  // ══════════════════════════════════════════════════════════════════════
+  // 1. UMAMI – cookieless, kører ALTID, uafhængigt af alt andet
+  // ══════════════════════════════════════════════════════════════════════
+  var um = document.createElement('script');
+  um.defer = true;
+  um.src = 'https://cloud.umami.is/script.js';
+  um.setAttribute('data-website-id', 'e51de17b-f27c-4606-9aa4-90699fd13555');
+  document.head.appendChild(um);
 
-  // Sæt consent default – GDPR korrekt
-  gtag('consent', 'default', {
-    ad_storage:        'denied',
-    analytics_storage: 'denied',
-    wait_for_update:   500
-  });
+  // ══════════════════════════════════════════════════════════════════════
+  // 2. SCROLL DEPTH TRACKING – sender ÉT event når bruger forlader siden
+  // ══════════════════════════════════════════════════════════════════════
+  (function () {
+    var maxScroll = 0;
 
-  // Load GA script
-  var ga = document.createElement('script');
-  ga.async = true;
-  ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-GG1981P35F';
-  ga.onload = function() {
-    gtag('js', new Date());
-    gtag('config', 'G-GG1981P35F', { send_page_view: true });
-  };
-  document.head.appendChild(ga);
+    function getScrollPercent() {
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight <= 0) return 100;
+      return Math.round((window.scrollY / docHeight) * 100);
+    }
 
-  // ── HVIS ALLEREDE ACCEPTERET ──────────────────────────────────────────
+    // Track højeste scroll løbende
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (!ticking) {
+        requestAnimationFrame(function () {
+          var pct = getScrollPercent();
+          if (pct > maxScroll) maxScroll = pct;
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
+
+    // Send ét samlet event når brugeren forlader siden
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden' && maxScroll > 0) {
+        if (typeof umami !== 'undefined' && umami.track) {
+          umami.track('scroll-depth', {
+            depth: maxScroll + '%',
+            page: window.location.pathname
+          });
+        }
+      }
+    });
+  })();
+
+  // ══════════════════════════════════════════════════════════════════════
+  // 3. GOOGLE ANALYTICS – loades KUN hvis bruger accepterer cookies
+  // ══════════════════════════════════════════════════════════════════════
+  function loadGA() {
+    if (window._gaLoaded) return;
+    window._gaLoaded = true;
+
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    window.gtag = gtag;
+
+    var ga = document.createElement('script');
+    ga.async = true;
+    ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-GG1981P35F';
+    ga.onload = function () {
+      gtag('js', new Date());
+      gtag('consent', 'default', {
+        ad_storage:        'granted',
+        analytics_storage: 'granted'
+      });
+      gtag('config', 'G-GG1981P35F', { send_page_view: true });
+    };
+    document.head.appendChild(ga);
+  }
+
+  // ── Hvis allerede accepteret → load GA med det samme ──
   var existing = localStorage.getItem('cookie_consent');
   if (existing === 'all') {
-    gtag('consent', 'update', {
-      ad_storage:        'granted',
-      analytics_storage: 'granted'
-    });
+    loadGA();
     return;
   }
   if (existing === 'necessary') return;
 
-  // ── VIS BANNER ────────────────────────────────────────────────────────
+  // ══════════════════════════════════════════════════════════════════════
+  // 4. COOKIE BANNER (kun for GA4)
+  // ══════════════════════════════════════════════════════════════════════
   var style = document.createElement('style');
   style.textContent = `
     #cb-overlay {
@@ -77,7 +126,6 @@
   `;
   document.head.appendChild(style);
 
-  // Vent til body er klar
   function showBanner() {
     var overlay = document.createElement('div');
     overlay.id = 'cb-overlay';
@@ -88,23 +136,23 @@
     wrapper.innerHTML = `
       <div id="cb-banner">
         <div id="cb-top">
-          <span>🍪</span>
+          <span>\u{1F36A}</span>
           <span id="cb-headline">Vi bruger cookies</span>
         </div>
         <p id="cb-body">
-          Vi bruger cookies til statistik (Google Analytics) så vi kan forbedre siden.
-          <a href="/legal/privatlivspolitik/">Læs mere</a>
+          Vi bruger cookies til statistik (Google Analytics) s\u00e5 vi kan forbedre siden.
+          <a href="/legal/privatlivspolitik/">L\u00e6s mere</a>
         </p>
         <div id="cb-buttons">
-          <button id="cb-accept">Acceptér</button>
-          <button id="cb-decline">Kun nødvendige</button>
+          <button id="cb-accept">Accept\u00e9r</button>
+          <button id="cb-decline">Kun n\u00f8dvendige</button>
         </div>
       </div>
     `;
     document.body.appendChild(wrapper);
 
-    requestAnimationFrame(function() {
-      setTimeout(function() {
+    requestAnimationFrame(function () {
+      setTimeout(function () {
         overlay.classList.add('cb-visible');
         wrapper.classList.add('cb-visible');
       }, 80);
@@ -114,21 +162,18 @@
       localStorage.setItem('cookie_consent', consent);
       overlay.style.opacity = '0';
       wrapper.style.opacity = '0';
-      setTimeout(function() {
+      setTimeout(function () {
         overlay.remove();
         wrapper.remove();
       }, 350);
 
       if (consent === 'all') {
-        gtag('consent', 'update', {
-          ad_storage:        'granted',
-          analytics_storage: 'granted'
-        });
+        loadGA();
       }
     }
 
-    document.getElementById('cb-accept').addEventListener('click', function() { dismiss('all'); });
-    document.getElementById('cb-decline').addEventListener('click', function() { dismiss('necessary'); });
+    document.getElementById('cb-accept').addEventListener('click', function () { dismiss('all'); });
+    document.getElementById('cb-decline').addEventListener('click', function () { dismiss('necessary'); });
   }
 
   if (document.body) {
