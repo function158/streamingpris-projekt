@@ -1,5 +1,92 @@
-<h1>Siden blev ikke fundet</h1>
-<p>
-  Siden findes ikke længere eller er flyttet.
-</p>
-<a href="/">Gå til MineUdgifter</a>
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Siden blev ikke fundet – MineUdgifter</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="stylesheet" href="/css/css.css">
+  <link rel="preload" href="/fonts/inter-v13-latin-700.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32-blue.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16-blue.png">
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <script defer src="/js/header.js"></script>
+  <script defer src="/js/footer.js"></script>
+  <style>
+    .error-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 55vh;
+      padding: 60px 20px;
+    }
+    .error-code {
+      font-family: var(--serif);
+      font-size: clamp(72px, 15vw, 140px);
+      font-weight: 700;
+      line-height: 1;
+      background: linear-gradient(90deg, #2B3EFF 0%, #6b82ff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin: 0 0 8px;
+    }
+    .error-title {
+      font-family: var(--serif);
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 700;
+      color: var(--ink);
+      margin: 0 0 12px;
+    }
+    .error-text {
+      font-size: 16px;
+      color: #6b7280;
+      line-height: 1.6;
+      max-width: 440px;
+      margin: 0 0 32px;
+    }
+    .error-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: linear-gradient(135deg, #2B3EFF 0%, #5b6bff 100%);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 14px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .error-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(43, 62, 255, 0.35);
+    }
+    .error-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="error-wrap">
+      <p class="error-code">404</p>
+      <h1 class="error-title">Siden blev ikke fundet</h1>
+      <p class="error-text">
+        Siden du leder efter findes ikke længere eller er blevet flyttet.
+        Prøv at gå tilbage til forsiden.
+      </p>
+      <a href="/" class="error-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5"/></svg>
+        Gå til forsiden
+      </a>
+    </div>
+  </main>
+</body>
+</html>

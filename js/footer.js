@@ -35,6 +35,7 @@
           <li><a href="/bookbeat">Bookbeat</a></li>
           <li><a href="/nextory">Nextory</a></li>
           <li><a href="/saxo">Saxo</a></li>
+          <li><a href="/allente">Allente</a></li>
         </ul>
       </div>
 

@@ -62,6 +62,7 @@
             <li><a href="/bookbeat">Bookbeat<span class="dd-desc">Lydbøger & Podcasts</span></a></li>
             <li><a href="/nextory">Nextory<span class="dd-desc">Lydbøger & Podcasts</span></a></li>
             <li><a href="/saxo">Saxo<span class="dd-desc">Lydbøger & Podcasts</span></a></li>
+            <li><a href="/allente">Allente<span class="dd-desc">Film, serier & sport</span></a></li>
           </ul>
         </li>
 
@@ -221,6 +222,7 @@
         <a href="/bookbeat">Bookbeat</a>
         <a href="/nextory">Nextory</a>
         <a href="/saxo">Saxo</a>
+        <a href="/allente">Allente</a>
       </div>
 
       <!-- Udbydere -->
