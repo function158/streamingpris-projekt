@@ -165,6 +165,12 @@
                 <span class="dd-desc">Pakker og priser</span>
               </a>
             </li>
+            <li>
+              <a href="/guides/mobilabonnement-for-studerende/">
+                Mobilabonnement til studerende
+                <span class="dd-desc">Studierabatter & billigste priser</span>
+              </a>
+            </li>
           </ul>
         </li>
 
@@ -256,6 +262,7 @@
         <a href="/guides/streaming-priser/">Streaming priser i Danmark</a>
         <a href="/guides/hvorfor-stiger-streaming-priser/">Hvorfor stiger streaming priser?</a>
         <a href="/guides/mobil-abonnement-med-streaming/">Mobil abonnement med streaming</a>
+        <a href="/guides/mobilabonnement-for-studerende/">Mobilabonnement til studerende</a>
       </div>
 
       <div class="mobile-divider"></div>

@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     cardsEl.innerHTML = "";
 
     Object.entries(categories).forEach(([categoryKey, categoryLabel]) => {
-      const servicesInCategory = services.filter(s => s.category === categoryKey && s.id !== 'spotify');
+      const servicesInCategory = services.filter(s => s.category === categoryKey && s.id !== 'spotify' && s.id !== 'nextory');
       if (servicesInCategory.length === 0) return;
 
       const section = document.createElement("section");

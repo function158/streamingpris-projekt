@@ -144,6 +144,17 @@
     ]
   },
   {
+    "id": "nextory",
+    "name": "Nextory",
+    "logo": "./images/nextory-logo.svg",
+    "category": "books",
+    "plans": [
+      { "name": "Basic", "price": 99 },
+      { "name": "Premium", "price": 129 },
+      { "name": "Unlimited", "price": 149 }
+    ]
+  },
+  {
     "id": "saxo",
     "name": "Saxo",
     "logo": "./images/saxo-logo.svg",

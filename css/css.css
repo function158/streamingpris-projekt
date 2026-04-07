@@ -1919,6 +1919,96 @@
   }
 }
 
+/* ── LIVE BADGE ─────────────────────────────────────────────────────────── */
+.live-badge-row {
+  display: flex; justify-content: center; margin: 1rem auto 1.5rem; gap: 10px; flex-wrap: wrap;
+}
+.live-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 99px;
+  padding: 6px 14px; font-size: 12px; font-weight: 600; color: #1d4ed8;
+}
+.live-badge .dot {
+  width: 7px; height: 7px; border-radius: 50%; background: #22c55e;
+  box-shadow: 0 0 0 2px #bbf7d0; animation: pulse-dot 2.5s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 2px #bbf7d0; }
+  50%       { box-shadow: 0 0 0 4px #86efac; }
+}
+
+/* ── PLAN SPECS GRID ────────────────────────────────────────────────────── */
+.plan-specs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 14px; }
+.spec-box { background: #f9fafb; border-radius: 10px; padding: 8px 6px; text-align: center; }
+.spec-label { font-size: 10px; color: #9ca3af; font-weight: 600; text-transform: uppercase; letter-spacing: .3px; display: block; margin-bottom: 3px; }
+.spec-val { font-size: 13px; font-weight: 700; color: #111; }
+
+/* ── PLAN CARDS (live mobilabonnement) ──────────────────────────────────── */
+.plan-card {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 16px;
+  padding: 18px; margin-bottom: 14px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.plan-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+.plan-card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.plan-card-logo { height: 28px; max-width: 100px; object-fit: contain; }
+.plan-card-network {
+  font-size: 10px; font-weight: 700; color: #fff; background: var(--accent, #1A4F8B);
+  padding: 3px 8px; border-radius: 99px; text-transform: uppercase; letter-spacing: .4px;
+}
+.plan-card-name { font-size: 15px; font-weight: 700; color: var(--ink, #111); margin-bottom: 4px; }
+.plan-card-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.plan-meta-pill {
+  font-size: 11px; font-weight: 600; color: #4b5563;
+  background: #f3f4f6; padding: 3px 8px; border-radius: 99px;
+}
+.plan-card-student-tag {
+  font-size: 11px; font-weight: 700; color: #059669; background: #d1fae5;
+  padding: 3px 9px; border-radius: 99px;
+}
+.plan-card-bottom { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+.plan-card-intro-price { font-size: 26px; font-weight: 900; color: var(--ink, #111); line-height: 1; }
+.plan-card-intro-price small { font-size: 13px; font-weight: 500; color: var(--ink-muted, #6b7280); }
+.plan-card-after { font-size: 12px; color: var(--ink-muted, #6b7280); margin-top: 2px; }
+.plan-card-btn,
+.seo-text .plan-card-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--accent, #1A4F8B); color: #fff;
+  font-size: 13px; font-weight: 700; padding: 10px 18px;
+  border-radius: 10px; text-decoration: none;
+  background-image: none; background-size: unset;
+  transition: background .15s ease; white-space: nowrap;
+}
+.plan-card-btn:hover,
+.seo-text .plan-card-btn:hover { background: var(--accent-dark, #1a2bcc); color: #fff; background-image: none; }
+
+/* ── DISCOUNT TABLE ─────────────────────────────────────────────────────── */
+.discount-table {
+  width: 100%; border-collapse: collapse; font-size: 14px;
+  background: #fff; border-radius: 14px; overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06);
+}
+.discount-table thead { background: #f8fafc; }
+.discount-table th {
+  padding: 12px 14px; text-align: left; font-weight: 700; font-size: 12px;
+  color: #374151; text-transform: uppercase; letter-spacing: .3px;
+  border-bottom: 2px solid #e5e7eb;
+}
+.discount-table td { padding: 12px 14px; border-bottom: 1px solid #f3f4f6; color: #374151; }
+.discount-table tr:last-child td { border-bottom: 0; }
+.discount-table tr:hover td { background: #f8fafc; }
+.discount-highlight { color: #059669; font-weight: 700; }
+
+/* ── SKELETON LOADER ────────────────────────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200%; animation: shimmer 1.3s infinite;
+  border-radius: 16px; height: 140px; margin-bottom: 14px;
+}
+@keyframes shimmer { from { background-position: 200% } to { background-position: -200% } }
+.empty-state { text-align: center; padding: 2rem 1rem; color: var(--ink-muted, #6b7280); }
+
 /* Nulstil hover */
 #resetFilters:hover {
   background: rgba(255,255,255,0.22) !important;
