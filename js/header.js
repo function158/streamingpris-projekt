@@ -30,12 +30,6 @@
                 <span class="dd-desc">Find det billigste abonnement</span>
               </a>
             </li>
-            <li>
-              <a href="#" class="dd-coming-soon" aria-disabled="true">
-                Internet
-                <span class="dd-desc">Kommer snart</span>
-              </a>
-            </li>
           </ul>
         </li>
 
@@ -47,22 +41,24 @@
               <polyline points="6 9 12 15 18 9"/>
             </svg>
           </button>
-          <ul class="dropdown">
+          <ul class="dropdown dropdown--wide">
+            <li class="dd-category-label">Film & serier</li>
             <li><a href="/netflix">Netflix<span class="dd-desc">Streaming</span></a></li>
             <li><a href="/amazon-prime">Amazon Prime<span class="dd-desc">Streaming</span></a></li>
             <li><a href="/viaplay">Viaplay<span class="dd-desc">Streaming</span></a></li>
-            <li><a href="/skyshowtime">Skyshowtime<span class="dd-desc">Streaming</span></a></li>
-            <li><a href="/tv2play">TV2 Play<span class="dd-desc">Streaming</span></a></li>
             <li><a href="/disneyplus">Disney Plus<span class="dd-desc">Streaming</span></a></li>
+            <li><a href="/tv2play">TV2 Play<span class="dd-desc">Streaming</span></a></li>
             <li><a href="/max">Max<span class="dd-desc">Streaming</span></a></li>
-            <li><a href="/nordisk-film-plus">Nordisk Film Plus<span class="dd-desc">Danske film & serier</span></a></li>
-            <li><a href="/deezer">Deezer<span class="dd-desc">Musikstreaming</span></a></li>
-            <li><a href="/podimo">Podimo<span class="dd-desc">Podcast & Lydbøger</span></a></li>
-            <li><a href="/mofibo">Mofibo<span class="dd-desc">Lydbøger & Podcasts</span></a></li>
-            <li><a href="/bookbeat">Bookbeat<span class="dd-desc">Lydbøger & Podcasts</span></a></li>
-            <li><a href="/nextory">Nextory<span class="dd-desc">Lydbøger & Podcasts</span></a></li>
-            <li><a href="/saxo">Saxo<span class="dd-desc">Lydbøger & Podcasts</span></a></li>
-            <li><a href="/allente">Allente<span class="dd-desc">Film, serier & sport</span></a></li>
+            <li><a href="/skyshowtime">Skyshowtime<span class="dd-desc">Streaming</span></a></li>
+            <li><a href="/nordisk-film-plus">Nordisk Film+<span class="dd-desc">Dansk</span></a></li>
+            <li><a href="/allente">Allente<span class="dd-desc">Sport & TV</span></a></li>
+            <li class="dd-category-label dd-category-label--second">Musik & lyd</li>
+            <li><a href="/deezer">Deezer<span class="dd-desc">Musik</span></a></li>
+            <li><a href="/podimo">Podimo<span class="dd-desc">Podcast & lyd</span></a></li>
+            <li><a href="/mofibo">Mofibo<span class="dd-desc">Lydbøger</span></a></li>
+            <li><a href="/bookbeat">Bookbeat<span class="dd-desc">Lydbøger</span></a></li>
+            <li><a href="/nextory">Nextory<span class="dd-desc">Lydbøger</span></a></li>
+            <li><a href="/saxo">Saxo<span class="dd-desc">Lydbøger</span></a></li>
           </ul>
         </li>
 
@@ -180,9 +176,7 @@
         </li>
 
       </ul>
-      <a href="/" class="cta-primary nav-cta">
-        Tjek din pris <span class="arrow">→</span>
-      </a>
+      <a href="/" class="nav-home-btn">Beregn din pris →</a>
       <button class="burger-btn" id="burgerBtn" aria-label="Åbn menu" aria-expanded="false">
         <span></span>
         <span></span>
@@ -203,7 +197,6 @@
       <div class="mobile-sub" id="mobileSammenlign">
   <a href="/">Mobil + Streaming</a>
   <a href="/mobilabonnement">Mobilabonnement</a>
-  <a href="#" class="mobile-coming-soon">Internet <span>· Snart</span></a>
 </div>
 
       <!-- Tjenester -->

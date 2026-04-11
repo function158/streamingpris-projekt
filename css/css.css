@@ -1,3 +1,6 @@
+/* Manrope (headlines) */
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@700;800&display=swap');
+
 /* Inter font */
 @font-face {
   font-family: 'Inter';
@@ -36,29 +39,31 @@
 }
 
 :root {
-  --serif: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --serif: 'Manrope', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --sans:  'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 
     /* Farver */
     --accent:      #1A4F8B;
-    --accent-dark: #1a2bcc;
+    --accent-dark: #0f3a6b;
+    --accent-cta:  #793F00;
+    --secondary:   #546E7A;
     --ink:         #0f0f0f;
     --ink-soft:    #3d3d3d;
     --ink-muted:   #767676;
     --border:      #e2e0d8;
-    --surface:     #fafaf8;
-    --bg:          #f3f4f6;
-  
+    --surface:     #F8FAFC;
+    --bg:          #F8FAFC;
+
     /* Radius */
     --radius-pill: 999px;
     --radius-card: 18px;
     --radius-md:   14px;
-  
+
     /* Shadows */
     --shadow-card:       0 10px 24px rgba(0,0,0,0.08);
     --shadow-card-hover: 0 12px 30px rgba(0,0,0,0.12);
-    --shadow-accent:     0 4px 16px rgba(43,62,255,0.35);
-  
+    --shadow-accent:     0 4px 16px rgba(26,79,139,0.35);
+
     /* Chip tokens (bruges på blå picker-baggrund) */
     --chip-bg:     rgba(255,255,255,0.12);
     --chip-border: rgba(255,255,255,0.35);
@@ -78,10 +83,10 @@
   body {
     margin: 0;
     background:
-    radial-gradient(ellipse 900px 500px at 30% -80px, rgba(43,62,255,0.07), transparent),
-    radial-gradient(ellipse 600px 400px at 100% 20%, rgba(107,130,255,0.05), transparent),
-    radial-gradient(ellipse 500px 300px at 0% 80%, rgba(43,62,255,0.04), transparent),
-    #f4f4f6;
+    radial-gradient(ellipse 900px 500px at 30% -80px, rgba(26,79,139,0.06), transparent),
+    radial-gradient(ellipse 600px 400px at 100% 20%, rgba(84,110,122,0.04), transparent),
+    radial-gradient(ellipse 500px 300px at 0% 80%, rgba(121,63,0,0.03), transparent),
+    #F8FAFC;
   padding: 20px;
   color: var(--ink);
     overflow-y: scroll;
@@ -108,7 +113,7 @@
   .title.fading { opacity: 0; }
   
   .title span {
-    background: linear-gradient(90deg, #2B3EFF 0%, #6b82ff 100%);
+    background: linear-gradient(90deg, #1A4F8B 0%, #546E7A 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -279,13 +284,6 @@
     color: #888; margin-top: 1px;
   }
   
-  /* Nav CTA */
-  .cta-primary.nav-cta {
-    font-size: 13px;
-    padding: 8px 14px;
-    gap: 6px;
-    flex-shrink: 0;
-  }
 
   .cta-primary, .cta-primary:visited {
     color: #fff !important;
@@ -572,11 +570,6 @@
   
   .top-bar .category-title-inline { font-size: 16px; font-weight: 600; color: #333; margin: 0; }
   
-  .top-bar::before {
-    content: "Film & serier";
-    font-size: 16px; font-weight: 600; color: #333;
-  }
-  
   
   /* ============================================================
      9. BUTTONS
@@ -636,13 +629,13 @@
   .cta-primary:hover {
     background: var(--accent-dark);
     transform: translateY(-2px);
-    box-shadow: 0 8px 28px rgba(43,62,255,0.42), 0 2px 6px rgba(0,0,0,0.12);
+    box-shadow: 0 8px 28px rgba(26,79,139,0.38), 0 2px 6px rgba(0,0,0,0.12);
     transition: all 0.2s ease;
   }
-  
+
   .cta-primary:active {
     transform: translateY(0) scale(0.98);
-    box-shadow: 0 3px 10px rgba(43,62,255,0.3), 0 1px 3px rgba(0,0,0,0.1);
+    box-shadow: 0 3px 10px rgba(26,79,139,0.28), 0 1px 3px rgba(0,0,0,0.1);
   }
   
   .cta-primary .arrow {
@@ -714,12 +707,6 @@
     .cta-sub { font-size: 15px; }
   }
 
-  .top-nav .cta-primary {
-    font-size: 13px;
-    padding: 8px 16px;
-    gap: 6px;
-    box-shadow: none;
-  }
   
   /* ============================================================
      12. INSIGHT
@@ -885,7 +872,7 @@
     position: absolute; right: 20px; top: 50%;
     transform: translateY(-50%) rotate(0deg);
     width: 18px; height: 18px;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232B3EFF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231A4F8B' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
     background-repeat: no-repeat; background-size: contain;
     transition: transform 0.25s ease;
   }
@@ -1067,9 +1054,9 @@
   .mobile-picker-wrap { max-width: 420px; margin: 32px auto 12px; }
   
   .mobile-picker-card {
-    background: linear-gradient(135deg, #1a2bcc 0%, #2B3EFF 60%, #4f5fff 100%);
+    background: linear-gradient(135deg, #0f3a6b 0%, #1A4F8B 60%, #2d6eb0 100%);
     border-radius: 22px; padding: 28px 24px 24px;
-    box-shadow: 0 12px 36px rgba(43,62,255,0.28);
+    box-shadow: 0 12px 36px rgba(26,79,139,0.28);
     position: relative; overflow: hidden;
   }
   
@@ -1088,10 +1075,6 @@
 
   .mobile-picker-titles p  { font-size: 14px; color: rgba(255,255,255,0.82); margin: 0; line-height: 1.4; }
   .mobile-picker-titles p strong { color: #fff; font-weight: 700; }
-
-  @media (max-width: 480px) {
-    .mobile-picker-titles h3 { font-size: 17px; }
-  }
 
   @media (max-width: 480px) {
     .mobile-picker-titles h3 { font-size: 21px; }
@@ -1168,7 +1151,7 @@
   .mobile-chip:hover { background: rgba(255,255,255,0.25); border-color: rgba(255,255,255,0.7); transform: translateY(-1px); }
   
   .mobile-chip.active,
-  .mobile-chip.selected { background: #fff; color: #2B3EFF; border-color: #fff; font-weight: 800; box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
+  .mobile-chip.selected { background: #fff; color: #1A4F8B; border-color: #fff; font-weight: 800; box-shadow: 0 4px 14px rgba(0,0,0,0.15); }
   
   /* Custom number input */
   .mobile-custom-input { margin-top: 14px; }
@@ -1211,7 +1194,7 @@
   }
   
   .data-chip:hover  { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.6); }
-  .data-chip.active { background: rgba(255,255,255,0.95); color: #2B3EFF; border-color: #fff; font-weight: 800; box-shadow: 0 3px 10px rgba(0,0,0,0.12); }
+  .data-chip.active { background: rgba(255,255,255,0.95); color: #1A4F8B; border-color: #fff; font-weight: 800; box-shadow: 0 3px 10px rgba(0,0,0,0.12); }
   
   /* EU toggle */
   .data-filter-eu-row { margin-top: 8px; }
@@ -1272,7 +1255,7 @@
     transition: all .25s ease;
   }
   
-  .bundle-card:hover { transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0,0,0,.12); }
+  .bundle-card:hover { box-shadow: 0 16px 36px rgba(0,0,0,.12); }
   
  .bundle-grid {
   display: grid;
@@ -1441,11 +1424,6 @@
   .price-normal       { font-size: 13px; color: #6b7280; margin-top: 2px; }
   .bundle-details-content strong { color: #111; }
   
-  /* Service row – hide prices on mobile */
-  @media (max-width: 520px) {
-    .service-row [style*="text-align:right"],
-    .service-row [style*="text-align: right"] { display: none; }
-  }
   
   
   /* ============================================================
@@ -1722,50 +1700,6 @@
   scroll-margin-top: 100px;
 }
 
-#sticky-reminder {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 9999;
-  display: flex;
-  justify-content: center;
-  pointer-events: none;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.35s ease, transform 0.35s ease;
-  padding: 0 16px calc(16px + env(safe-area-inset-bottom)) 16px;
-}
-
-#sticky-reminder.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-#sticky-reminder-btn {
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 999px;
-  padding: 15px 24px;
-  font-size: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  box-shadow: 0 8px 32px rgba(43,62,255,0.35);
-  max-width: 360px;
-  width: 100%;
-  justify-content: center;
-  -webkit-tap-highlight-color: transparent;
-  transition: transform 0.15s ease;
-}
-
-#sticky-reminder-btn:active {
-  transform: scale(0.97);
-}
 
 /* ============================================================
    TILFØJ DISSE REGLER TIL css/css.css
@@ -1792,25 +1726,45 @@
   list-style: none;
 }
 
-/* "Kommer snart"-links i desktop dropdown */
-.dd-coming-soon {
-  opacity: 0.4 !important;
-  pointer-events: none !important;
-  cursor: default !important;
+/* 2-kolonne Tjenester-dropdown */
+.dropdown--wide {
+  min-width: 420px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  left: 0;
+  transform: translateY(-6px);
+}
+.nav-links > li.open .dropdown--wide {
+  transform: translateY(0);
+}
+.dropdown--wide .dd-category-label {
+  grid-column: 1 / -1;
+}
+.dd-category-label--second {
+  margin-top: 0;
+  padding-top: 2px;
 }
 
-/* "Kommer snart"-links i mobilmenu */
-.mobile-coming-soon {
-  opacity: 0.4;
-  pointer-events: none;
-  cursor: default;
+/* Hjemmeside-knap i desktop-nav */
+.nav-home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 14px;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #1A4F8B;
+  background: #e8f0f8;
+  border-radius: 99px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+.nav-home-btn:hover {
+  background: #d0e2f0;
+  color: #0f3a6b;
 }
 
-.mobile-coming-soon span {
-  font-size: 11px;
-  font-weight: 400;
-  color: #999;
-}
 
 .missing-check-btn {
   display: inline-flex;
@@ -1864,7 +1818,7 @@
   cursor: pointer; transition: all .15s ease; white-space: nowrap;
 }
 .sort-chip.active {
-  background: #2B3EFF; color: #fff; border-color: #2B3EFF;
+  background: #1A4F8B; color: #fff; border-color: #1A4F8B;
 }
 @media (max-width: 600px) {
   .sort-chip { padding: 9px 16px; font-size: 14px; }
