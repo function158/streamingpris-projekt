@@ -7,48 +7,7 @@
   <title>Spar penge på streaming – saml det med dit mobilabonnement</title>
   <meta name="description"
     content="Se hvad Netflix, TV 2 Play, Viaplay og Disney+ koster dig om måneden. Sammenlign med mobilabonnementer med streaming inkluderet og find den billigste løsning." />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background: #fff;
-      color: #1a1a1a
-    }
-
-    .title {
-      font-size: clamp(1.5rem, 4vw, 2.5rem);
-      text-align: center;
-      padding: 1.5rem 1rem 0.5rem;
-      max-width: 800px;
-      margin: 0 auto
-    }
-
-    .intro {
-      text-align: center;
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 0 1rem 1rem;
-      color: #555
-    }
-
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 1rem;
-      max-width: 900px;
-      margin: 0 auto
-    }
-
-    .summary {
-      background: #f5f5f5;
-      border-radius: 12px;
-      padding: 1.25rem;
-      max-width: 900px;
-      margin: 1rem auto;
-      text-align: center
-    }
-  </style>
-  <link rel="stylesheet" href="./css/css.css">
+<link rel="stylesheet" href="./css/css.css">
   <link rel="canonical" href="https://mineudgifter.dk/" />
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="ayNgiUgyjL1TK8uHWOlj4Q" async></script>
   <link rel="preload" href="/fonts/inter-v13-latin-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -58,6 +17,7 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <meta name="msvalidate.01" content="4FE24FFC0FF5E49B9808D026E8AF2966" />
   <script defer src="/js/cookie-consent.js"></script>
+  <script defer src="/js/umami-events.js"></script>
   <script defer src="/js/header.js"></script>
   <script type="application/ld+json">
     {
@@ -80,12 +40,7 @@
 
 <body>
   <main>
-  <div id="sticky-reminder">
-    <button id="sticky-reminder-btn">
-      Godt valgt! Angiv din mobilpris og se besparelsen &nbsp;↓
-    </button>
-  </div>
-  <h1 class="title">
+  <h1 class="title title--hero">
     Vælg dine streamingtjenester og se dine <span>mulige besparelser</span>
   </h1>
   <p class="intro">
@@ -95,46 +50,21 @@
   <section class="seo-text">
     <div id="partners-carousel"></div>
   </section>
-  <div class="top-bar">
-    <button id="resetBtn" class="btn">
-      Nulstil
-    </button>
-  </div>
-  <div id="cards" class="card-grid"></div>
-
-  <div class="summary">
-    <p class="summary-label">Din samlede pris for valgte tjenester</p>
-    <div class="summary-numbers">
-      <div>
-        <span>Månedligt</span>
-        <strong id="monthly">0 kr</strong>
-      </div>
-      <div>
-        <span>Årligt</span>
-        <strong id="yearly">0 kr</strong>
-      </div>
-    </div>
-  </div>
 
   <div class="mobile-picker-wrap">
     <div class="mobile-picker-card">
       <div class="mobile-picker-header">
-        <div class="mobile-picker-icon">📱</div>
-        <div class="mobile-picker-titles">
-          <h3>Hvad betaler du for dit mobilabonnement?</h3>
-          <p>Vi finder bundter der kan spare dig penge på <strong>både streaming og mobil</strong></p>
-        </div>
+        <h3 class="mobile-picker-title">Hvad betaler du for <span>mobilabonnement?</span></h3>
       </div>
-      
+
       <div class="mobile-picker-chips" id="mobileChips">
-        <button class="mobile-chip" data-value="0">Ved ikke</button>
         <button class="mobile-chip" data-value="79">79 kr</button>
         <button class="mobile-chip" data-value="99">99 kr</button>
         <button class="mobile-chip" data-value="129">129 kr</button>
         <button class="mobile-chip" data-value="149">149 kr</button>
         <button class="mobile-chip" data-value="199">199 kr</button>
-        <button class="mobile-chip" data-value="custom" style="width:100%;opacity:0.7;font-weight:500">Indtast andet
-          beløb</button>
+        <button class="mobile-chip" data-value="249">249 kr</button>
+        <button class="mobile-chip mobile-chip--other" data-value="custom">Andet beløb</button>
       </div>
 
       <div class="mobile-custom-input" id="mobileCustomInput" style="display:none;">
@@ -144,7 +74,6 @@
       <div class="data-filter-wrap" id="dataFilterWrap">
         <div class="data-filter-divider"></div>
         <div class="data-filter-header">
-          <span class="data-filter-icon">📶</span>
           <span class="data-filter-label">Data i Danmark</span>
         </div>
         <div class="data-filter-chips" id="dataFilterChips">
@@ -179,8 +108,28 @@
       </div>
 
     </div>
-
     <input type="hidden" id="currentMobileValue" value="0">
+  </div>
+
+  <div class="top-bar">
+    <button id="resetBtn" class="btn">
+      Nulstil
+    </button>
+  </div>
+  <div id="cards" class="card-grid"></div>
+
+  <div class="summary">
+    <p class="summary-label">Din samlede pris for valgte tjenester</p>
+    <div class="summary-numbers">
+      <div>
+        <span>Månedligt</span>
+        <strong id="monthly">0 kr</strong>
+      </div>
+      <div>
+        <span>Årligt</span>
+        <strong id="yearly">0 kr</strong>
+      </div>
+    </div>
   </div>
 
   <section id="bundleSection" class="bundle-section" hidden>
@@ -340,6 +289,7 @@
   <script defer src="/js/partners-carousel.js"></script>
   <script defer src="/js/tracking.js"></script>
   <script defer src="/js/bundles.js"></script>
+  <script defer src="/js/send-offer.js"></script>
   <script defer src="/js/js.js"></script>
   <script defer src="/js/footer.js"></script>
   <script defer src="/js/mode-switch.js"></script>

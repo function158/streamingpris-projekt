@@ -16,43 +16,7 @@
   document.head.appendChild(um);
 
   // ══════════════════════════════════════════════════════════════════════
-  // 2. SCROLL DEPTH TRACKING – sender ÉT event når bruger forlader siden
-  // ══════════════════════════════════════════════════════════════════════
-  (function () {
-    var maxScroll = 0;
-
-    function getScrollPercent() {
-      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (docHeight <= 0) return 100;
-      return Math.round((window.scrollY / docHeight) * 100);
-    }
-
-    var ticking = false;
-    window.addEventListener('scroll', function () {
-      if (!ticking) {
-        requestAnimationFrame(function () {
-          var pct = getScrollPercent();
-          if (pct > maxScroll) maxScroll = pct;
-          ticking = false;
-        });
-        ticking = true;
-      }
-    });
-
-    document.addEventListener('visibilitychange', function () {
-      if (document.visibilityState === 'hidden' && maxScroll > 0) {
-        if (typeof umami !== 'undefined' && umami.track) {
-          umami.track('scroll-depth', {
-            depth: maxScroll + '%',
-            page: window.location.pathname
-          });
-        }
-      }
-    });
-  })();
-
-  // ══════════════════════════════════════════════════════════════════════
-  // 3. HELPERS – sikker localStorage
+  // 2. HELPERS – sikker localStorage
   // ══════════════════════════════════════════════════════════════════════
   function getConsent() {
     try { return localStorage.getItem('cookie_consent'); }
@@ -65,7 +29,7 @@
   }
 
   // ══════════════════════════════════════════════════════════════════════
-  // 4. GOOGLE ANALYTICS – loades KUN hvis bruger accepterer cookies
+  // 3. GOOGLE ANALYTICS – loades KUN hvis bruger accepterer cookies
   // ══════════════════════════════════════════════════════════════════════
   function loadGA() {
     if (window._gaLoaded) return;
@@ -98,7 +62,7 @@
   if (existing === 'necessary') return;
 
   // ══════════════════════════════════════════════════════════════════════
-  // 5. COOKIE BANNER (kun for GA4)
+  // 4. COOKIE BANNER (kun for GA4)
   // ══════════════════════════════════════════════════════════════════════
   var style = document.createElement('style');
   style.textContent = `

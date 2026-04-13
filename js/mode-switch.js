@@ -12,7 +12,7 @@
         intro:        'Opdag om dine streamingtjenester kan blive billigere gennem mobilabonnementer med inkluderet streaming.',
         bundleTitle:  'Du kan måske spare penge',
         summaryLabel: 'Din samlede pris for valgte tjenester',
-        mobileH3: 'Hvad betaler du for dit mobilabonnement?',
+        mobileH3: 'Hvad betaler du for <span>mobilabonnement?</span>',
         mobileP:      'Vi finder bundter, der kan spare dig penge på både streaming og mobil.',
       },
       vil: {
@@ -20,7 +20,7 @@
         intro: 'Vælg dine streamingtjenester. Vi finder mobilabonnementer hvor de allerede er inkluderet.',
         bundleTitle:  'Sådan får du det billigst',
         summaryLabel: 'Samlet listepris, hvis du køber separat',
-        mobileH3: 'Har du et mobilabonnement i dag?',
+        mobileH3: 'Har du et <span>mobilabonnement</span> i dag?',
         mobileP:      'Vi bruger det til at sammenligne med bundter, der måske er billigere.',
       },
     };
@@ -60,11 +60,9 @@
       const summaryLabelEl = document.querySelector('.summary-label');
       if (summaryLabelEl) summaryLabelEl.textContent = m.summaryLabel;
   
-      // Mobile picker tekster
-      const mobileH3 = document.querySelector('.mobile-picker-titles h3');
+      // Mobile picker tekst
+      const mobileH3 = document.querySelector('.mobile-picker-title');
       if (mobileH3) mobileH3.innerHTML = m.mobileH3;
-      const mobileP = document.querySelector('.mobile-picker-titles p');
-      if (mobileP) mobileP.textContent = m.mobileP;
   
       // Knapper
       document.querySelectorAll('.mode-btn').forEach(btn => {
@@ -78,10 +76,10 @@
     }
   
     function init() {
-      // Byg switch og indsæt FØR .top-bar
-      const topBar = document.querySelector('.top-bar');
-      if (!topBar) return;
-  
+      // Byg switch og indsæt FØR .mobile-picker-wrap
+      const pickerWrap = document.querySelector('.mobile-picker-wrap');
+      if (!pickerWrap) return;
+
       const wrap = document.createElement('div');
       wrap.className = 'mode-switch-wrap';
       wrap.innerHTML = `
@@ -94,8 +92,8 @@
           </button>
         </div>
       `;
-  
-      topBar.parentNode.insertBefore(wrap, topBar);
+
+      pickerWrap.parentNode.insertBefore(wrap, pickerWrap);
   
       wrap.querySelectorAll('.mode-btn').forEach(btn => {
         btn.addEventListener('click', () => applyMode(btn.dataset.mode));

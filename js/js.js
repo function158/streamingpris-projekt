@@ -196,10 +196,6 @@ document.addEventListener("DOMContentLoaded", async () => {
     if (typeof renderBundles === "function") {
       renderBundles(selected);
     }
-    // Opdater sticky reminder
-    if (typeof window.updateStickyReminder === 'function') {
-      window.updateStickyReminder();
-    }
   }
 
   // EVENT LISTENERS
@@ -227,9 +223,9 @@ function initMobilePicker() {
   const hiddenInput = document.getElementById('currentMobileValue');
   if (!chips.length) return;
 
-  // Sæt "Ved ikke" som default aktiv
-  const defaultChip = document.querySelector('.mobile-chip[data-value="0"]');
-  if (defaultChip) defaultChip.classList.add('active');
+  // Sæt 79 kr som default aktiv
+  const defaultChip = document.querySelector('.mobile-chip[data-value="79"]');
+  if (defaultChip) { defaultChip.classList.add('active'); setMobileValue(79); }
 
   function setMobileValue(value) {
     if (hiddenInput) hiddenInput.value = value;
@@ -263,15 +259,15 @@ function initMobilePicker() {
       setMobileValue(Number(customInput.value) || 0);
     });
 
-    // Klik udenfor input → gå tilbage til "Ved ikke"
+    // Klik udenfor input → gå tilbage til 79 kr
   if (customInput) {
     customInput.addEventListener('blur', () => {
       if (!customInput.value) {
         if (customWrap) customWrap.style.display = 'none';
         chips.forEach(c => c.classList.remove('active'));
-        const defaultChip = document.querySelector('.mobile-chip[data-value="0"]');
-        if (defaultChip) defaultChip.classList.add('active');
-        setMobileValue(0);
+        const fallbackChip = document.querySelector('.mobile-chip[data-value="79"]');
+        if (fallbackChip) fallbackChip.classList.add('active');
+        setMobileValue(79);
       }
     });
   }
@@ -357,54 +353,3 @@ if (document.readyState === 'loading') {
   initDataFilter();
 }
 
-(function () {
-  const bar = document.getElementById('sticky-reminder');
-  const btn = document.getElementById('sticky-reminder-btn');
-
-  if (!bar || !btn) return;
-
-  function update() {
-    const count = window.selected ? Object.keys(window.selected).length : 0;
-
-    // Skjul altid hvis under 2 valgte
-    if (count < 2) {
-      bar.classList.remove('visible');
-      return;
-    }
-
-    // Skjul hvis mobile-picker-wrap er synlig på skærmen
-    const picker = document.querySelector('.mobile-picker-wrap');
-    const pickerOnScreen = picker
-      && picker.getBoundingClientRect().top < window.innerHeight - 60;
-
-    if (pickerOnScreen) {
-      bar.classList.remove('visible');
-      return;
-    }
-
-    // Skjul hvis bundleSection er synlig på skærmen
-    const bundleSection = document.getElementById('bundleSection');
-    const bundleOnScreen = bundleSection
-      && !bundleSection.hidden
-      && bundleSection.getBoundingClientRect().top < window.innerHeight - 80;
-
-    if (bundleOnScreen) {
-      bar.classList.remove('visible');
-      return;
-    }
-
-    // Vis når 2+ er valgt, picker er scrollet væk, og bundle IKKE er synlig
-    bar.classList.add('visible');
-  }
-
-  // Gør update tilgængelig globalt så calculate() kan kalde den
-  window.updateStickyReminder = update;
-
-  window.addEventListener('scroll', update, { passive: true });
-
-  btn.addEventListener('click', () => {
-    const target = document.querySelector('.mobile-picker-wrap');
-    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-
-})();

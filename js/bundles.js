@@ -811,7 +811,9 @@ const SERVICE_ICONS = {
         </div>
   
         <a href="${applyTracking(bundle.link)}" class="bundle-btn" target="_blank" style="margin-top:15px;width:100%;text-align:center;display:block;text-decoration:none;">Hent tilbud</a>
-  
+
+        <button class="bundle-email-btn" type="button" style="display:block;width:100%;text-align:center;margin-top:8px;padding:10px;background:white;color:#2B3EFF;border:1.5px solid #2B3EFF;border-radius:14px;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:background .15s ease;">&#9993; Gem tilbuddet \u2013 send til min mail</button>
+
         <div style="text-align:center;margin-top:10px;font-size:12px;">${expiryLabel || ''}</div>
   
         <button class="bundle-details-toggle" style="background:none;border:none;color:#6b7280;font-size:13px;width:100%;cursor:pointer;margin-top:12px;">
@@ -872,6 +874,36 @@ const SERVICE_ICONS = {
               const open = missingPanel.style.display === 'block';
               missingPanel.style.display = open ? 'none' : 'block';
               missingBtn.classList.toggle('open', !open);
+          };
+      }
+
+      // ─── "Gem tilbuddet" email-knap ──────────────────────────────────────────
+      const emailBtn = card.querySelector('.bundle-email-btn');
+      if (emailBtn) {
+          emailBtn.onmouseenter = () => { emailBtn.style.background = '#eff6ff'; };
+          emailBtn.onmouseleave = () => { emailBtn.style.background = 'white'; };
+          emailBtn.onclick = () => {
+              if (typeof window.openSendOfferModal !== 'function') return;
+              const offerData = {
+                  bundle: {
+                      provider_name:  provider.name,
+                      provider_logo:  provider.logo,
+                      bundle_name:    bundle.name,
+                      data_amount:    bundle.dataAmount,
+                      affiliate_link: applyTracking(bundle.link),
+                      normal_price:   savings.finalPrice,
+                      intro_price:    savings.priceTiers?.[0]?.total ?? null,
+                      intro_months:   savings.introMonths ?? null,
+                      yearly_savings: Math.round(savings.yearlySavings || 0),
+                      monthly_savings: Math.round(savings.totalSavings || 0),
+                  },
+                  services: coveredEntries.map(entry => ({
+                      id:   entry.id,
+                      name: getService(entry.id)?.name || entry.id,
+                      icon: getServiceIcon(entry.id),
+                  })),
+              };
+              window.openSendOfferModal(offerData);
           };
       }
 
