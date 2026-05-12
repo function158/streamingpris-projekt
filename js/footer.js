@@ -46,6 +46,7 @@
           <ul>
             <li><a href="/">Mobil + Streaming</a></li>
             <li><a href="/mobilabonnement">Mobilabonnement</a></li>
+            <li><a href="/internetabonnement">Internetabonnement</a></li>
           </ul>
         </div>
 
@@ -67,6 +68,9 @@
             <li><a href="/nextory">Nextory</a></li>
             <li><a href="/saxo">Saxo</a></li>
             <li><a href="/allente">Allente</a></li>
+            <li><a href="/apple-tv-plus">Apple TV+</a></li>
+            <li><a href="/britbox">Britbox</a></li>
+            <li><a href="/spotify">Spotify</a></li>
           </ul>
         </div>
 
@@ -81,8 +85,10 @@
             <li><a href="/udbydere/yousee">Yousee</a></li>
             <li><a href="/udbydere/telenor">Telenor</a></li>
             <li><a href="/udbydere/3">3</a></li>
-            <li><a href="/udbydere/3">eesy</a></li>
+            <li><a href="/udbydere/eesy">eesy</a></li>
             <li><a href="/udbydere/flexii">Flexii</a></li>
+            <li><a href="/udbydere/lebara">Lebara</a></li>
+            <li><a href="/udbydere/lyca-mobile">Lyca Mobile</a></li>
           </ul>
         </div>
 
@@ -91,6 +97,9 @@
           <ul>
             <li><a href="/sport/formel-1/">Formel 1</a></li>
             <li><a href="/sport/golf/">Golf</a></li>
+            <li><a href="/sport/fodbold/">Fodbold</a></li>
+            <li><a href="/sport/haandbold/">Håndbold</a></li>
+            <li><a href="/sport/cykling/">Cykling</a></li>
           </ul>
         </div>
 

@@ -30,6 +30,12 @@
                 <span class="dd-desc">Find det billigste abonnement</span>
               </a>
             </li>
+            <li>
+              <a href="/internetabonnement">
+                Internetabonnement
+                <span class="dd-desc">Find det billigste bredbånd</span>
+              </a>
+            </li>
           </ul>
         </li>
 
@@ -52,7 +58,10 @@
             <li><a href="/skyshowtime">Skyshowtime<span class="dd-desc">Streaming</span></a></li>
             <li><a href="/nordisk-film-plus">Nordisk Film+<span class="dd-desc">Dansk</span></a></li>
             <li><a href="/allente">Allente<span class="dd-desc">Sport & TV</span></a></li>
+            <li><a href="/apple-tv-plus">Apple TV+<span class="dd-desc">Streaming</span></a></li>
+            <li><a href="/britbox">Britbox<span class="dd-desc">Britisk streaming</span></a></li>
             <li class="dd-category-label dd-category-label--second">Musik & lyd</li>
+            <li><a href="/spotify">Spotify<span class="dd-desc">Musik</span></a></li>
             <li><a href="/deezer">Deezer<span class="dd-desc">Musik</span></a></li>
             <li><a href="/podimo">Podimo<span class="dd-desc">Podcast & lyd</span></a></li>
             <li><a href="/mofibo">Mofibo<span class="dd-desc">Lydbøger</span></a></li>
@@ -131,6 +140,35 @@
                 <span class="dd-desc">Mobil</span>
               </a>
             </li>
+             <li>
+              <a href="/udbydere/lebara">
+                Lebara
+                <span class="dd-desc">Mobil</span>
+              </a>
+            </li>
+             <li>
+              <a href="/udbydere/lyca-mobile">
+                Lyca Mobile
+                <span class="dd-desc">Mobil</span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- SPORT -->
+        <li>
+          <button class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">
+            Sport
+            <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </button>
+          <ul class="dropdown">
+            <li><a href="/sport/fodbold/">Fodbold<span class="dd-desc">Se fodbold live</span></a></li>
+            <li><a href="/sport/haandbold/">Håndbold<span class="dd-desc">Se håndbold live</span></a></li>
+            <li><a href="/sport/cykling/">Cykling<span class="dd-desc">Se cykling live</span></a></li>
+            <li><a href="/sport/formel-1/">Formel 1<span class="dd-desc">Se Formel 1 live</span></a></li>
+            <li><a href="/sport/golf/">Golf<span class="dd-desc">Se golf live</span></a></li>
           </ul>
         </li>
 
@@ -197,6 +235,7 @@
       <div class="mobile-sub" id="mobileSammenlign">
   <a href="/">Mobil + Streaming</a>
   <a href="/mobilabonnement">Mobilabonnement</a>
+  <a href="/internetabonnement">Internetabonnement</a>
 </div>
 
       <!-- Tjenester -->
@@ -222,6 +261,9 @@
         <a href="/nextory">Nextory</a>
         <a href="/saxo">Saxo</a>
         <a href="/allente">Allente</a>
+        <a href="/apple-tv-plus">Apple TV+</a>
+        <a href="/britbox">Britbox</a>
+        <a href="/spotify">Spotify</a>
       </div>
 
       <!-- Udbydere -->
@@ -242,6 +284,23 @@
         <a href="/udbydere/3">3</a>
         <a href="/udbydere/eesy">eesy</a>
         <a href="/udbydere/flexii">Flexii</a>
+        <a href="/udbydere/lebara">Lebara</a>
+        <a href="/udbydere/lyca-mobile">Lyca Mobile</a>
+      </div>
+
+      <!-- Sport -->
+      <button class="mobile-dd-toggle" data-target="mobileSport">
+        Sport
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="mobile-sub" id="mobileSport">
+        <a href="/sport/fodbold/">Fodbold</a>
+        <a href="/sport/haandbold/">Håndbold</a>
+        <a href="/sport/cykling/">Cykling</a>
+        <a href="/sport/formel-1/">Formel 1</a>
+        <a href="/sport/golf/">Golf</a>
       </div>
 
       <!-- Guides -->

@@ -12,82 +12,23 @@
   <script defer src="/js/footer.js"></script>
   <script defer src="/js/mobilabonnement.js"></script>
   <style>
-    .mob-hero { text-align:center; padding:2rem 1rem 0.5rem; }
-    .mob-hero h1 { font-size:clamp(1.5rem,4vw,2.4rem); font-weight:800; color:var(--ink,#111); margin:0 0 .5rem; max-width:700px; margin-inline:auto; }
-    .mob-hero h1 span { color:#2B3EFF; }
-    .mob-hero p { font-size:15px; color:#6b7280; max-width:520px; margin:.4rem auto 0; line-height:1.6; }
-
     /* ── LAST UPDATED BADGE ── */
-    .last-updated-wrap {
-      display: flex;
-      justify-content: center;
-      margin: 1rem auto 0;
-    }
-    .last-updated-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #eff6ff;
-      border: 1.5px solid #bfdbfe;
-      border-radius: 99px;
-      padding: 7px 16px;
-      font-size: 13px;
-      font-weight: 600;
-      color: #1d4ed8;
-      transition: opacity .3s ease;
-    }
-    .last-updated-badge .badge-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #22c55e;
-      flex-shrink: 0;
-      box-shadow: 0 0 0 2px #bbf7d0;
-      animation: pulse-dot 2.5s ease-in-out infinite;
-    }
-    .last-updated-badge.stale .badge-dot {
-      background: #f59e0b;
-      box-shadow: 0 0 0 2px #fde68a;
-    }
-    .last-updated-badge.loading {
-      opacity: 0.5;
-    }
-    @keyframes pulse-dot {
-      0%, 100% { box-shadow: 0 0 0 2px #bbf7d0; }
-      50%       { box-shadow: 0 0 0 4px #86efac; }
-    }
+    .last-updated-wrap { display:flex; justify-content:center; margin:1rem auto 0; }
+    .last-updated-badge { display:inline-flex; align-items:center; gap:8px; background:#eff6ff; border:1.5px solid #bfdbfe; border-radius:99px; padding:7px 16px; font-size:13px; font-weight:600; color:#1d4ed8; transition:opacity .3s ease; }
+    .last-updated-badge .badge-dot { width:7px; height:7px; border-radius:50%; background:#22c55e; flex-shrink:0; box-shadow:0 0 0 2px #bbf7d0; animation:pulse-dot 2.5s ease-in-out infinite; }
+    .last-updated-badge.stale .badge-dot { background:#f59e0b; box-shadow:0 0 0 2px #fde68a; }
+    .last-updated-badge.loading { opacity:0.5; }
+    @keyframes pulse-dot { 0%,100%{box-shadow:0 0 0 2px #bbf7d0} 50%{box-shadow:0 0 0 4px #86efac} }
 
-    .filter-panel {
-      max-width:480px; margin:1.5rem auto 0;
-      background:linear-gradient(135deg,#1a2bcc 0%,#2B3EFF 60%,#4f5fff 100%);
-      border-radius:22px; padding:24px 20px 20px;
-      box-shadow:0 12px 36px rgba(43,62,255,0.28);
-    }
-    .filter-section { margin-bottom:18px; }
-    .filter-section:last-child { margin-bottom:0; }
-    .filter-label { font-size:12px; font-weight:700; color:rgba(255,255,255,.75); text-transform:uppercase; letter-spacing:.6px; margin-bottom:9px; display:flex; align-items:center; gap:6px; }
-    .filter-chips { display:flex; flex-wrap:wrap; gap:7px; }
-    .fchip { padding:7px 13px; border-radius:99px; border:2px solid rgba(255,255,255,.28); background:rgba(255,255,255,.09); color:rgba(255,255,255,.85); font-size:13px; font-weight:600; cursor:pointer; transition:all .15s ease; white-space:nowrap; font-family:inherit; }
-    .fchip:hover { background:rgba(255,255,255,.2); border-color:rgba(255,255,255,.6); }
-    .fchip.active { background:rgba(255,255,255,.95); color:#2B3EFF; border-color:#fff; font-weight:800; box-shadow:0 3px 10px rgba(0,0,0,.12); }
-    .filter-divider { height:1px; background:rgba(255,255,255,.15); margin:14px 0; }
-    .price-slider-row { display:flex; align-items:center; gap:12px; }
-    .price-slider-row input[type=range] { flex:1; accent-color:#fff; cursor:pointer; }
-    .price-val { font-size:15px; font-weight:800; color:#fff; min-width:68px; text-align:right; white-space:nowrap; }
-    .toggle-row { display:flex; align-items:center; justify-content:space-between; }
-    .toggle-row label { font-size:14px; font-weight:600; color:rgba(255,255,255,.9); cursor:pointer; }
-    .tog { position:relative; width:44px; height:24px; flex-shrink:0; }
-    .tog input { opacity:0; width:0; height:0; }
-    .tog-track { position:absolute; inset:0; background:rgba(255,255,255,.2); border-radius:99px; transition:background .2s; cursor:pointer; border:2px solid rgba(255,255,255,.35); }
-    .tog input:checked + .tog-track { background:#fff; }
-    .tog-track::after { content:''; position:absolute; top:2px; left:2px; width:16px; height:16px; border-radius:50%; background:rgba(255,255,255,.7); transition:transform .2s; }
-    .tog input:checked + .tog-track::after { transform:translateX(20px); background:#2B3EFF; }
+    /* Kompakt filter – mindre chips end forsiden */
+    .mobile-picker-wrap .mobile-chip { padding:10px 14px; font-size:13px; }
+    .mobile-picker-wrap .data-filter-header { margin-bottom:8px; }
+    #bindingChips { grid-template-columns: repeat(2, 1fr); }
 
-    .results-header { max-width:480px; margin:1.5rem auto .75rem; display:flex; align-items:center; justify-content:space-between; }
+    .results-header { max-width:740px; margin:1.5rem auto .75rem; display:flex; align-items:center; justify-content:space-between; }
     .results-count { font-size:14px; color:#6b7280; font-weight:500; }
-    .sort-select { font-size:13px; font-weight:600; color:#111; border:1px solid #e5e7eb; border-radius:99px; background:#fff; padding:6px 12px; cursor:pointer; font-family:inherit; outline:none; }
 
-    .plans-list { max-width:480px; margin:0 auto; display:flex; flex-direction:column; gap:14px; padding-bottom:2rem; }
+    .plans-list { max-width:740px; margin:0 auto; display:flex; flex-direction:column; gap:14px; padding-bottom:2rem; }
     .plan-card { background:#fff; border-radius:18px; padding:18px 16px 16px; box-shadow:0 2px 12px rgba(0,0,0,.07); border:1.5px solid #f0f0ee; transition:all .22s ease; position:relative; overflow:hidden; }
     .plan-card:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(0,0,0,.11); }
     .plan-card.featured { border-color:#2B3EFF; }
@@ -96,7 +37,6 @@
     .plan-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
     .plan-logo { height:36px; max-width:110px; object-fit:contain; display:block; }
     .plan-logo-fallback { display:inline-flex; align-items:center; justify-content:center; height:36px; padding:0 12px; background:#f3f4f6; border-radius:8px; font-size:13px; font-weight:700; color:#374151; letter-spacing:.3px; }
-    .plan-name-text { font-size:14px; font-weight:700; color:#111; }
     .plan-network-badge { font-size:11px; font-weight:700; color:#fff; background:#2B3EFF; padding:3px 9px; border-radius:99px; text-transform:uppercase; }
     .plan-5g-badge { font-size:11px; font-weight:700; color:#059669; background:#d1fae5; padding:3px 9px; border-radius:99px; margin-left:6px; }
     .plan-specs { display:grid; grid-template-columns:repeat(3,1fr); gap:6px; margin-bottom:14px; }
@@ -119,7 +59,6 @@
     .skeleton { background:linear-gradient(90deg,#f0f0f0 25%,#e8e8e8 50%,#f0f0f0 75%); background-size:200%; animation:shimmer 1.3s infinite; border-radius:18px; height:200px; }
     @keyframes shimmer { from{background-position:200%} to{background-position:-200%} }
 
-    @media(min-width:601px) { .filter-panel,.results-header,.plans-list { max-width:640px; } }
     @media(min-width:900px) {
       .plans-list { max-width:900px; display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
       .results-header { max-width:900px; }
@@ -144,61 +83,67 @@
       <span id="lastUpdatedText">Henter priser…</span>
     </div>
   </div>
-  <div class="filter-panel" id="filterPanel">
+  <div class="mobile-picker-wrap">
+    <div class="mobile-picker-card">
+      <div class="mobile-picker-header">
+        <h3 class="mobile-picker-title">Filtrer <span>mobilabonnementer</span></h3>
+      </div>
 
-    <div class="filter-section">
-      <div class="filter-label">Data i Danmark</div>
-      <div class="filter-chips" id="dataChips">
-        <button class="fchip active" data-gb="0">Alle</button>
-        <button class="fchip" data-gb="10">10 GB+</button>
-        <button class="fchip" data-gb="20">20 GB+</button>
-        <button class="fchip" data-gb="50">50 GB+</button>
-        <button class="fchip" data-gb="9999">Fri data</button>
+      <div class="data-filter-header">
+        <span class="data-filter-label">Data i Danmark</span>
       </div>
+      <div class="mobile-picker-chips" id="dataChips">
+        <button class="mobile-chip active" data-gb="0">Alle</button>
+        <button class="mobile-chip" data-gb="10">10 GB+</button>
+        <button class="mobile-chip" data-gb="20">20 GB+</button>
+        <button class="mobile-chip" data-gb="50">50 GB+</button>
+        <button class="mobile-chip" data-gb="100">100 GB+</button>
+        <button class="mobile-chip" data-gb="9999">Fri data</button>
+      </div>
+
+      <div style="height:1px;background:#e5e7eb;margin:20px 0;"></div>
+
+      <div class="data-filter-header">
+        <span class="data-filter-label">Maks. pris</span>
+      </div>
+      <div class="mobile-picker-chips" id="priceChips">
+        <button class="mobile-chip active" data-price="300">Alle</button>
+        <button class="mobile-chip" data-price="75">75 kr</button>
+        <button class="mobile-chip" data-price="100">100 kr</button>
+        <button class="mobile-chip" data-price="150">150 kr</button>
+        <button class="mobile-chip" data-price="200">200 kr</button>
+        <button class="mobile-chip" data-price="250">250 kr</button>
+      </div>
+
+      <div style="height:1px;background:#e5e7eb;margin:20px 0;"></div>
+
+      <div class="data-filter-header">
+        <span class="data-filter-label">Netværk</span>
+      </div>
+      <div class="mobile-picker-chips" id="netChips">
+        <button class="mobile-chip active" data-net="alle">Alle</button>
+        <button class="mobile-chip" data-net="3">3</button>
+        <button class="mobile-chip" data-net="telenor">Telenor</button>
+        <button class="mobile-chip" data-net="tdc">TDC</button>
+        <button class="mobile-chip" data-net="telia">Telia</button>
+      </div>
+
+      <div style="height:1px;background:#e5e7eb;margin:20px 0;"></div>
+
+      <div class="data-filter-header">
+        <span class="data-filter-label">Binding</span>
+      </div>
+      <div class="mobile-picker-chips" id="bindingChips">
+        <button class="mobile-chip active" data-binding="alle">Alle</button>
+        <button class="mobile-chip" data-binding="ingen">Ingen binding</button>
+      </div>
+
+      <div style="height:1px;background:#e5e7eb;margin:20px 0;"></div>
+
+      <button id="resetFilters" style="width:100%;padding:9px 0;background:#f3f4f6;border:1.5px solid #e5e7eb;border-radius:99px;color:#374151;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">
+        Nulstil filtre
+      </button>
     </div>
-  
-    <div class="filter-divider"></div>
-  
-    <div class="filter-section">
-      <div class="filter-label">Maks. pris</div>
-      <div class="filter-chips" id="priceChips">
-        <button class="fchip active" data-price="300">Alle</button>
-        <button class="fchip" data-price="50">50 kr</button>
-        <button class="fchip" data-price="100">100 kr</button>
-        <button class="fchip" data-price="150">150 kr</button>
-        <button class="fchip" data-price="200">200 kr</button>
-      </div>
-    </div>
-  
-    <div class="filter-divider"></div>
-  
-    <div class="filter-grid-two">
-      <div class="filter-section">
-        <div class="filter-label">Netværk</div>
-        <div class="filter-chips" id="netChips">
-          <button class="fchip active" data-net="alle">Alle</button>
-          <button class="fchip" data-net="3">3</button>
-          <button class="fchip" data-net="telenor">Telenor</button>
-          <button class="fchip" data-net="tdc">TDC</button>
-          <button class="fchip" data-net="telia">Telia</button>
-        </div>
-      </div>
-  
-      <div class="filter-section">
-        <div class="filter-label">Binding</div>
-        <div class="filter-chips" id="bindingChips">
-          <button class="fchip active" data-binding="alle">Alle</button>
-          <button class="fchip" data-binding="ingen">Ingen</button>
-        </div>
-      </div>
-    </div>
-  
-    <div class="filter-divider"></div>
-  
-    <button id="resetFilters" style="width:100%;padding:9px 0;background:rgba(255,255,255,0.12);border:1.5px solid rgba(255,255,255,0.3);border-radius:99px;color:rgba(255,255,255,0.85);font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;">
-      Nulstil filtre
-    </button>
-  
   </div>
 
   <div class="results-header">
@@ -215,10 +160,61 @@
     <div class="skeleton"></div>
   </div>
 
-  <section style="max-width:640px;margin:3rem auto;padding:0 1rem;">
+  <section style="max-width:740px;margin:3rem auto;padding:0 1rem;" class="seo-text">
     <h2>Mobilabonnementer i Danmark 2026</h2>
     <p>Vi samler og opdaterer løbende de bedste mobilabonnementer fra alle udbydere. Priser hentes automatisk og opdateres dagligt.</p>
+
+    <h2>Billigste mobilabonnement i Danmark</h2>
+    <p>
+      De billigste mobilabonnementer i Danmark starter fra under 30 kr./md. De billigste udbydere på markedet i 2026 er typisk:
+    </p>
+    <ul style="line-height:1.9; padding-left:20px; font-size:15px;">
+      <li><strong><a href="/udbydere/lyca-mobile/">Lyca Mobile</a></strong> – fra 19 kr./md. (5 GB, Telias 5G-netværk)</li>
+      <li><strong><a href="/udbydere/lebara/">Lebara</a></strong> – fra 19 kr./md. (5 GB, Telenors netværk)</li>
+      <li><strong><a href="/udbydere/flexii/">Flexii</a></strong> – fra 29 kr./md. (5G, 3's netværk)</li>
+      <li><strong><a href="/udbydere/eesy/">eesy</a></strong> – fra 29 kr./md. (3's netværk)</li>
+      <li><strong><a href="/udbydere/oister/">OiSTER</a></strong> – fra 29 kr./md. (3's netværk)</li>
+    </ul>
+    <p>
+      Alle ovenstående udbydere har ingen binding og gratis oprettelse. Brug filtrene ovenfor til at finde det billigste abonnement med præcis det data, du har brug for.
+    </p>
+
+    <h2>Mobilabonnement uden binding</h2>
+    <p>
+      De fleste billige mobilabonnementer i Danmark har ingen binding – du kan opsige dem fra måned til måned. Det gælder fx <a href="/udbydere/lebara/">Lebara</a>, <a href="/udbydere/flexii/">Flexii</a>, <a href="/udbydere/eesy/">eesy</a> og <a href="/udbydere/oister/">OiSTER</a>.
+      De større udbydere som <a href="/udbydere/telmore/">Telmore</a> og <a href="/udbydere/yousee/">YouSee</a> tilbyder typisk også abonnementer uden binding ved lav pris – men kan have bindingsperiode ved køb af mobiltelefon.
+    </p>
+
+    <h2>Mobilabonnement med streaming inkluderet</h2>
+    <p>
+      Vil du have streaming inkluderet i dit mobilabonnement, er <strong>Telmore Play</strong> det bedste valg. Du kan vælge Netflix, TV 2 Play, Disney+, Amazon Prime Video m.fl. ind i dit abonnement og betale samlet.
+      Læs mere: <a href="/guides/mobil-abonnement-med-streaming/">Mobilabonnement med streaming inkluderet – sådan fungerer det</a>.
+    </p>
+
+    <h2>Hvilket netværk er bedst?</h2>
+    <p>
+      De fire store mobilnetværk i Danmark er <strong>TDC NET, Telenor, 3 og Telia</strong>. Alle fire dækker langt størstedelen af landet, men der er forskelle i 5G-dækning og datahastighed.
+    </p>
+    <ul style="line-height:1.9; padding-left:20px; font-size:15px;">
+      <li><strong>TDC NET:</strong> Bredt 5G-netværk – bruges af Telmore, CBB, YouSee</li>
+      <li><strong>Telenor:</strong> God landsdækning – bruges af Lebara, Norlys</li>
+      <li><strong>3:</strong> Stærkt 5G i byerne – bruges af Flexii, eesy, OiSTER</li>
+      <li><strong>Telia:</strong> Solidt netværk – bruges af Telia direkte</li>
+    </ul>
+    <p style="font-size:13px; color:#888; margin-top:8px;">Senest opdateret: 5. maj 2026</p>
   </section>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type":"Question","name":"Hvilket mobilabonnement er billigst i Danmark?","acceptedAnswer":{"@type":"Answer","text":"Det billigste mobilabonnement i Danmark er Lebara 5/5 til 19 kr./md. med 5 GB data og 5 timers tale på Telenors 4G-netværk. Flexii og eesy starter fra 29 kr./md. med 5G."}},
+      {"@type":"Question","name":"Kan man få mobilabonnement uden binding?","acceptedAnswer":{"@type":"Answer","text":"Ja. De fleste billige mobiludbydere i Danmark tilbyder abonnementer uden binding. Det gælder fx Lebara, Flexii, eesy og OiSTER – alle kan opsiges fra måned til måned."}},
+      {"@type":"Question","name":"Kan man få streaming inkluderet i mobilabonnement?","acceptedAnswer":{"@type":"Answer","text":"Ja. Telmore Play tilbyder mobilabonnementer, hvor du kan vælge Netflix, TV 2 Play, Disney+, Amazon Prime Video og andre streamingtjenester ind i din pakke og betale samlet."}}
+    ]
+  }
+  </script>
 </main>
 </body>
 </html>

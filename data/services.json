@@ -50,7 +50,7 @@
       { "name": "Film & Serier", "price": 159 },
       { "name": "Champions League, Film & Serier", "price": 299 },
       { "name": "Dansk Fodbold, Film & Serier", "price": 299 },
-      { "name": "Premium", "price": 499 },
+      { "name": "Premium", "price": 509 },
       { "name": "Film & Serier med reklamer", "price": 99 }
     ]
   },
@@ -77,6 +77,15 @@
       { "name": "Favorit uden reklamer", "price": 179 },
       { "name": "Favorit + Sport med reklamer", "price": 219 },
       { "name": "Favorit + Sport uden reklamer", "price": 249 }
+    ]
+  },
+  {
+    "id": "britbox",
+    "name": "BritBox",
+    "logo": "./images/britbox-logo.svg",
+    "category": "film",
+    "plans": [
+      { "name": "Månedlig", "price": 79 }
     ]
   },
   {
@@ -115,7 +124,7 @@
     "category": "books",
     "plans": [
       { "name": "Premium", "price": 129 },
-      { "name": "Unlimited", "price": 159 },
+      { "name": "Unlimited", "price": 149 },
       { "name": "Family", "price": 179 },
       { "name": "Flex", "price": 89 }
     ]

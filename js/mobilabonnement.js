@@ -15,7 +15,12 @@ var LOGOS = {
   "cbb-mobil": "/images/cbb-mobil.png",
   norlys:      "/images/norlys-logo.svg",
   hiper:       "/images/hiper-logo.png",
-  ewii:        "/images/ewii-logo.svg"
+  ewii:        "/images/ewii-logo.svg",
+  "lyca-mobile":      "/images/lyca-mobil-logo.svg",
+  yousee:             "/images/yousee-logo.svg",
+  "oister-20-rabat":  "/images/oister.svg",
+  "oister-25-rabat":  "/images/oister.svg",
+  "lebara-copy":      ""
 };
 
 // ─── STATE ─────────────────────────────────────────────────────────────────
@@ -51,7 +56,7 @@ function updateLastUpdatedBadge(updatedAt) {
   var hoursAgo   = Math.floor(minutesAgo / 60);
   var daysAgo    = Math.floor(hoursAgo / 24);
   var label;
-  if (hoursAgo < 1)        label = "Opdateret for " + minutesAgo + " min. siden";
+  if (hoursAgo < 1)        label = "Opdateret for " + Math.max(1, minutesAgo) + " min. siden";
   else if (hoursAgo === 1) label = "Opdateret for 1 time siden";
   else if (hoursAgo < 24)  label = "Opdateret for " + hoursAgo + " timer siden";
   else if (daysAgo === 1)  label = "Opdateret for 1 dag siden";
@@ -66,7 +71,7 @@ function applyFilters() {
   return allPlans.filter(function(p) {
     var gb    = parseGb(p.data_amount);
     var euGb  = parseGb(p.data_eu);   // null/undefined → 0 via parseGb
-    var price = toNum(p.intro_price_mobile != null ? p.intro_price_mobile : p.mobile_base_price);
+    var price = (p.intro_price_mobile != null && p.intro_price_mobile > 0) ? toNum(p.intro_price_mobile) : toNum(p.mobile_base_price);
     var is5g  = p.network && p.network.indexOf("5G") !== -1;
     var gbOk  = filters.gb === 9999 ? gb >= 9999 : gb >= filters.gb;
     var euOk  = filters.eu === 0 || euGb >= filters.eu;
@@ -82,7 +87,7 @@ function applyFilters() {
 
 function sortPlans(arr) {
   return arr.slice().sort(function(a, b) {
-    if (sortBy === "intro")  return toNum(a.intro_price_mobile != null ? a.intro_price_mobile : a.mobile_base_price) - toNum(b.intro_price_mobile != null ? b.intro_price_mobile : b.mobile_base_price);
+    if (sortBy === "intro")  return ((a.intro_price_mobile != null && a.intro_price_mobile > 0) ? toNum(a.intro_price_mobile) : toNum(a.mobile_base_price)) - ((b.intro_price_mobile != null && b.intro_price_mobile > 0) ? toNum(b.intro_price_mobile) : toNum(b.mobile_base_price));
     if (sortBy === "data")   return parseGb(b.data_amount) - parseGb(a.data_amount);
     if (sortBy === "normal") return toNum(a.mobile_base_price) - toNum(b.mobile_base_price);
     return 0;
@@ -94,7 +99,7 @@ function buildCard(p, i) {
   var logo          = LOGOS[p.provider_id] || "";
   var baseP         = toNum(p.mobile_base_price);
   var introP        = p.intro_price_mobile != null ? toNum(p.intro_price_mobile) : null;
-  var hasIntro      = introP !== null && introP < baseP;
+  var hasIntro      = introP !== null && introP > 0 && introP < baseP;
   var is5g          = p.network && p.network.indexOf("5G") !== -1;
   var netLabel      = (p.network || "").replace(/\s*\(.*\)/, "").trim();
   var planName      = p.name || p.data_amount || "";
@@ -227,7 +232,10 @@ fetch(SB_URL + "/rest/v1/mobile_plans?status=eq.active&select=*", {
   return res.json();
 })
 .then(function(data) {
-  allPlans = data;
+  allPlans = data.map(function(p) {
+    if (p.provider_id === "lyca-mobile") p.network = "Telenor (4G)";
+    return p;
+  });
   if (allPlans.length === 0) {
     showError("\u26A0\uFE0F 0 planer hentet");
     return;
@@ -251,7 +259,7 @@ function chipListener(containerId, attr, stateKey, parseAsInt) {
   el.addEventListener("click", function(e) {
     var c = e.target.closest("[" + attr + "]");
     if (!c) return;
-    this.querySelectorAll(".fchip").forEach(function(ch) { ch.classList.remove("active"); });
+    this.querySelectorAll(".mobile-chip").forEach(function(ch) { ch.classList.remove("active"); });
     c.classList.add("active");
     filters[stateKey] = parseAsInt ? parseInt(c.getAttribute(attr), 10) : c.getAttribute(attr);
     render();
@@ -289,7 +297,7 @@ var resetBtn = document.getElementById("resetFilters");
 if (resetBtn) resetBtn.addEventListener("click", function() {
   filters = { gb: 0, maxPrice: 300, net: "alle", only5g: false, binding: "alle", eu: 0 };
   ["dataChips","priceChips","netChips","bindingChips"].forEach(function(id) {
-    var chips = document.querySelectorAll("#" + id + " .fchip");
+    var chips = document.querySelectorAll("#" + id + " .mobile-chip");
     for (var i = 0; i < chips.length; i++) chips[i].classList.remove("active");
     if (chips[0]) chips[0].classList.add("active");
   });

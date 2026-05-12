@@ -112,7 +112,7 @@
   const path = window.location.pathname;
 
   // Kør ikke på forsiden eller mobilabonnement-beregneren
-  if (path === '/' || path === '/index.html' || path.startsWith('/mobilabonnement')) return;
+  if (path === '/' || path === '/index.html' || path.startsWith('/mobilabonnement') || path.startsWith('/internetabonnement')) return;
 
   const config = CTA_MAP.find(c => path.startsWith(c.match)) || DEFAULT_CTA;
 
