@@ -1,0 +1,27 @@
+name: Daglig link-tjek
+
+on:
+  schedule:
+    - cron: '0 9 * * *'  # kl. 10:00 dansk tid (UTC+1) — justér til '0 8 * * *' om sommeren (UTC+2)
+  workflow_dispatch:       # Kan også køres manuelt fra GitHub Actions
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Kør link-tjekker
+        env:
+          SUPABASE_URL: https://jrjwronitlemdnctzkdj.supabase.co
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python scripts/check-links.py
