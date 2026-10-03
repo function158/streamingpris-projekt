@@ -49,8 +49,8 @@ def supabase_get(table, params):
       path = f"/rest/v1/{table}?{params}"
       conn = http.client.HTTPSConnection(host, context=ssl.create_default_context(),
   timeout=10)
-      conn.request("GET", path, headers={"apikey": SUPABASE_KEY, "Authorization": f"Bearer
-  {SUPABASE_KEY}"})
+      conn.request("GET", path, headers={"apikey": SUPABASE_KEY, "Authorization": "Bearer "
+   + SUPABASE_KEY})
       r = conn.getresponse()
       data = r.read()
       conn.close()
