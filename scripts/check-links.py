@@ -44,10 +44,19 @@ PROVIDER_URLS = {
 
 
 def supabase_get(table, params):
-    url = f"{SUPABASE_URL}/rest/v1/{table}?{params}"
-    req = urllib.request.Request(url, headers=HEADERS)
-    with urllib.request.urlopen(req, timeout=10) as r:
-        return json.loads(r.read())
+      import http.client, ssl
+      host = "jrjwronitlemdnctzkdj.supabase.co"
+      path = f"/rest/v1/{table}?{params}"
+      conn = http.client.HTTPSConnection(host, context=ssl.create_default_context(),
+  timeout=10)
+      conn.request("GET", path, headers={"apikey": SUPABASE_KEY, "Authorization": f"Bearer
+  {SUPABASE_KEY}"})
+      r = conn.getresponse()
+      data = r.read()
+      conn.close()
+      if r.status != 200:
+          raise Exception(f"Supabase {r.status}: {data[:200]}")
+      return json.loads(data)
 
 
 def extract_dest_url(affiliate_link):
