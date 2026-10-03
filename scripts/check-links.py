@@ -1,4 +1,4 @@
- #!/usr/bin/env python3
+#!/usr/bin/env python3
   """
   Daglig link-tjekker for mineudgifter.dk
   Henter aktive planer fra Supabase, udtrækker destination-URL fra affiliate-links
