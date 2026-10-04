@@ -2,8 +2,8 @@ name: Daglig link-tjek
 
 on:
   schedule:
-    - cron: '0 9 * * *'  # kl. 10:00 dansk tid (UTC+1) — justér til '0 8 * * *' om sommeren (UTC+2)
-  workflow_dispatch:       # Kan også køres manuelt fra GitHub Actions
+    - cron: '0 8 * * *'
+  workflow_dispatch:
 
 jobs:
   check-links:
@@ -18,10 +18,24 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Kør link-tjekker
+      - name: Gendan fejl fra forrige koersel
+        uses: actions/cache@v4
+        with:
+          path: link-check-prev-failures.json
+          key: link-check-failures-${{ github.run_id }}
+          restore-keys: |
+            link-check-failures-
+
+      - name: Koer link-tjekker
         env:
-          SUPABASE_URL: https://jrjwronitlemdnctzkdj.supabase.co
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: python scripts/check-links.py
+
+      - name: Gem fejl til naeste koersel
+        if: always()
+        uses: actions/cache/save@v4
+        with:
+          path: link-check-prev-failures.json
+          key: link-check-failures-${{ github.run_id }}
