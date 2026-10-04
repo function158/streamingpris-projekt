@@ -1,11 +1,4 @@
 import os
-  import json
-  import urllib.request
-  import urllib.parse
-  import urllib.error
-  import http.client
-  import ssl
-  from datetime import datetime
 
   SUPABASE_HOST = "jrjwronitlemdnctzkdj.supabase.co"
   SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impy
